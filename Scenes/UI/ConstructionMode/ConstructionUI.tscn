@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://tht5m577dqw"]
+
+[ext_resource type="Script" path="res://Scenes/UI/ConstructionMode/ConstructionUI.gd" id="1_dpso8"]
+[ext_resource type="Texture2D" uid="uid://dgjs8tn5618in" path="res://Sprites/Interface/menuBG1.png" id="2_ttqj2"]
+[ext_resource type="Texture2D" uid="uid://dt5fm8u00jnn5" path="res://Sprites/Interface/constructionBtn.png" id="3_5ihty"]
+[ext_resource type="Texture2D" uid="uid://dj0c6wn5cpnhd" path="res://Sprites/items/pierre.png" id="4_mkfhj"]
+[ext_resource type="Texture2D" uid="uid://dvbbda5cjjw4k" path="res://Sprites/items/arrosoire.png" id="5_yqeul"]
+[ext_resource type="Texture2D" uid="uid://xfj6g6sym871" path="res://Sprites/items/hache.png" id="6_457pf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmh83"]
+size = Vector2(451, 100)
+
+[node name="ConstructionUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dpso8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 436.0
+offset_bottom = 102.0
+mouse_filter = 2
+texture = ExtResource("2_ttqj2")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="constructionBtn" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 33.0
+offset_right = 215.0
+offset_bottom = 74.0
+texture_normal = ExtResource("3_5ihty")
+
+[node name="constructionItemPanel" type="Panel" parent="TextureRect"]
+visible = false
+layout_mode = 0
+offset_left = 53.0
+offset_top = -41.0
+offset_right = 229.0
+offset_bottom = 11.0
+
+[node name="wallBtn" type="TextureButton" parent="TextureRect/constructionItemPanel"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 13.0
+offset_right = 53.0
+offset_bottom = 44.0
+texture_normal = ExtResource("4_mkfhj")
+stretch_mode = 0
+
+[node name="floorBtn" type="TextureButton" parent="TextureRect/constructionItemPanel"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 11.0
+offset_right = 102.0
+offset_bottom = 44.0
+texture_normal = ExtResource("5_yqeul")
+stretch_mode = 0
+
+[node name="doorBtn" type="TextureButton" parent="TextureRect/constructionItemPanel"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 17.0
+offset_right = 148.0
+offset_bottom = 44.0
+texture_normal = ExtResource("6_457pf")
+stretch_mode = 0
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(224, 54)
+shape = SubResource("RectangleShape2D_tmh83")
+
+[connection signal="pressed" from="TextureRect/constructionBtn" to="." method="_on_construction_btn_pressed"]
+[connection signal="pressed" from="TextureRect/constructionItemPanel/wallBtn" to="." method="_on_wall_btn_pressed"]
+[connection signal="pressed" from="TextureRect/constructionItemPanel/floorBtn" to="." method="_on_floor_btn_pressed"]
+[connection signal="pressed" from="TextureRect/constructionItemPanel/doorBtn" to="." method="_on_door_btn_pressed"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

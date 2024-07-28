@@ -1,0 +1,32 @@
+{
+	"wooden_sword":{
+		"item_name": "Wooden Sword",
+		"type" : "weapon",
+		"max_stack": 1,
+		"attack": 10,
+		"icon_path": "0,160,32,32"
+	},
+	"iron_sword":{
+		"item_name": "Iron Sword",
+		"type" : "weapon",
+		"max_stack": 1,
+		"attack": 5,
+		"icon_path": "32,160,32,32"
+	},
+	"red_hat":{
+		"item_name": "Red Hat",
+		"type" : "head",
+		"defense": 5,
+		"max_stack": 1,
+		"icon_path": "32,224,32,32"
+	},
+	"life_potion":{
+		"item_name": "Life Potion",
+		"type" : "default",
+		"use":"consumable",
+		"health": 20,
+		"max_stack": 16,
+		"icon_path": "256,288,32,32"
+	}
+	
+}

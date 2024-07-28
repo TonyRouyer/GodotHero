@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://l7as36yvvpwx"]
+
+[ext_resource type="Script" path="res://Scenes/Divers/Grid.gd" id="1_hsl7a"]
+[ext_resource type="Texture2D" uid="uid://bojhurgqi7ueb" path="res://Sprites/constructionSpritesheet.png" id="2_cp4ei"]
+[ext_resource type="Texture2D" uid="uid://lt31owl766we" path="res://Sprites/tileSelected.png" id="3_5uq88"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ysvac"]
+texture = ExtResource("2_cp4ei")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2722u"]
+texture = ExtResource("3_5uq88")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_53421"]
+sources/0 = SubResource("TileSetAtlasSource_ysvac")
+sources/1 = SubResource("TileSetAtlasSource_2722u")
+
+[node name="Grid" type="Node2D"]
+script = ExtResource("1_hsl7a")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="GridMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_53421")
+format = 2
+layer_0/name = "Overlay"
+layer_1/name = "Overlay"
+layer_1/tile_data = PackedInt32Array()
+
+[node name="CursorLayer" type="Sprite2D" parent="."]
+texture = ExtResource("3_5uq88")
+
+[connection signal="size_changed" from="SubViewport" to="." method="_on_sub_viewport_size_changed"]

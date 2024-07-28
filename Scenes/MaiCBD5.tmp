@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjlfs7504hewa"]
+
+[ext_resource type="PackedScene" uid="uid://bfxhmp8vcao0l" path="res://Scenes/UI/HeroRecruitmentUI.tscn" id="1_kwy7a"]
+[ext_resource type="PackedScene" uid="uid://deiclps377nb0" path="res://Scenes/Level/Level.tscn" id="1_nits4"]
+[ext_resource type="PackedScene" uid="uid://c36v1wltil0al" path="res://Scenes/Divers/Dropable.tscn" id="4_2r5sp"]
+[ext_resource type="PackedScene" uid="uid://1sl61klypsv7" path="res://Scenes/Divers/DayManager.tscn" id="4_f3dba"]
+[ext_resource type="Script" path="res://Scenes/Divers/GameCamera.gd" id="5_ffsep"]
+[ext_resource type="PackedScene" uid="uid://gdw3guluh7u3" path="res://Scenes/UI/RessourcesManager.tscn" id="5_n206g"]
+[ext_resource type="PackedScene" uid="uid://tht5m577dqw" path="res://Scenes/UI/ConstructionUI.tscn" id="7_wxrls"]
+[ext_resource type="PackedScene" uid="uid://cikud7p4b827j" path="res://Scenes/Level/Room.tscn" id="9_jb1iq"]
+[ext_resource type="PackedScene" uid="uid://l7as36yvvpwx" path="res://Scenes/Level/Grid.tscn" id="10_lyfeo"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_nits4")]
+
+[node name="GameCamera" type="Camera2D" parent="."]
+limit_left = -150
+limit_top = -150
+limit_right = 2200
+limit_bottom = 1100
+script = ExtResource("5_ffsep")
+
+[node name="Heroes" type="Node2D" parent="."]
+
+[node name="Dropables" type="Node" parent="."]
+
+[node name="Dropable" parent="Dropables" groups=["dropable"] instance=ExtResource("4_2r5sp")]
+position = Vector2(361, 227)
+scale = Vector2(0.302013, 0.260858)
+
+[node name="Dropable2" parent="Dropables" groups=["dropable"] instance=ExtResource("4_2r5sp")]
+position = Vector2(441, 228)
+scale = Vector2(0.302013, 0.260858)
+
+[node name="Dropable3" parent="Dropables" groups=["dropable"] instance=ExtResource("4_2r5sp")]
+position = Vector2(521, 230)
+scale = Vector2(0.302013, 0.260858)
+
+[node name="Dropable4" parent="Dropables" groups=["dropable"] instance=ExtResource("4_2r5sp")]
+position = Vector2(363, 358)
+scale = Vector2(0.302013, 0.260858)
+
+[node name="Dropable5" parent="Dropables" groups=["dropable"] instance=ExtResource("4_2r5sp")]
+position = Vector2(441, 356)
+scale = Vector2(0.302013, 0.260858)
+
+[node name="Dropable6" parent="Dropables" groups=["dropable"] instance=ExtResource("4_2r5sp")]
+position = Vector2(522, 357)
+scale = Vector2(0.302013, 0.260858)
+
+[node name="Drop_magie" type="Node" parent="."]
+
+[node name="Dropable" parent="Drop_magie" groups=["dropable"] instance=ExtResource("4_2r5sp")]
+position = Vector2(656, 239)
+scale = Vector2(0.302013, 0.260858)
+for_mana = true
+
+[node name="Dropable2" parent="Drop_magie" groups=["dropable"] instance=ExtResource("4_2r5sp")]
+position = Vector2(721, 239)
+scale = Vector2(0.302013, 0.260858)
+for_mana = true
+
+[node name="Drop_def" type="Node" parent="."]
+
+[node name="Dropable" parent="Drop_def" groups=["dropable"] instance=ExtResource("4_2r5sp")]
+position = Vector2(658, 351)
+scale = Vector2(0.302013, 0.260858)
+for_def = true
+
+[node name="Dropable2" parent="Drop_def" groups=["dropable"] instance=ExtResource("4_2r5sp")]
+position = Vector2(719, 351)
+scale = Vector2(0.302013, 0.260858)
+for_def = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HeroRecruitmentUI" parent="CanvasLayer" instance=ExtResource("1_kwy7a")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+
+[node name="DayManager" parent="CanvasLayer" instance=ExtResource("4_f3dba")]
+offset_left = 1069.0
+offset_top = 563.0
+offset_right = 1069.0
+offset_bottom = 563.0
+
+[node name="RessourcesManager" parent="CanvasLayer" instance=ExtResource("5_n206g")]
+offset_left = 21.0
+offset_top = 474.0
+offset_right = -1131.0
+offset_bottom = -174.0
+
+[node name="ConstructionUi" parent="CanvasLayer" instance=ExtResource("7_wxrls")]
+offset_left = 17.0
+offset_top = 557.0
+offset_right = -1135.0
+offset_bottom = -91.0
+
+[node name="Grid" parent="." instance=ExtResource("10_lyfeo")]
+
+[node name="Room" parent="." instance=ExtResource("9_jb1iq")]

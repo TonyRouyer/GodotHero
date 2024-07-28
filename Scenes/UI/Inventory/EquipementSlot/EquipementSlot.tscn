@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://6ybkobn7mivj"]
+
+[ext_resource type="Texture2D" uid="uid://duy1q3av7ej3k" path="res://Sprites/Divers/inventorySlot.png" id="1_ohymn"]
+[ext_resource type="Script" path="res://Scenes/UI/Inventory/EquipementSlot/EquipementSlot.gd" id="2_3aa3a"]
+
+[node name="EquipementSlot0" type="TextureRect"]
+texture = ExtResource("1_ohymn")
+script = ExtResource("2_3aa3a")
+
+[node name="Icon" type="Sprite2D" parent="."]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc03j8bp3fq5e"]
+
+[ext_resource type="PackedScene" uid="uid://1sl61klypsv7" path="res://Scenes/UI/TimeManager/DayManager.tscn" id="3_b74hl"]
+[ext_resource type="PackedScene" uid="uid://gdw3guluh7u3" path="res://Scenes/UI/RessourcesManager/RessourcesManager.tscn" id="4_5ua8r"]
+
+[node name="GestionUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DayManager" parent="." instance=ExtResource("3_b74hl")]
+offset_left = 66.0
+offset_top = 97.0
+offset_right = 66.0
+offset_bottom = 97.0
+
+[node name="RessourcesManager" parent="." instance=ExtResource("4_5ua8r")]
+layout_mode = 1
+offset_left = 35.0
+offset_top = 174.0
+offset_right = -1055.0
+offset_bottom = -434.0

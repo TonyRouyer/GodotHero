@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq8eso3p7w3w0"]
+
+[ext_resource type="PackedScene" uid="uid://6ybkobn7mivj" path="res://Scenes/UI/Inventory/EquipementSlot/EquipementSlot.tscn" id="1_43po2"]
+[ext_resource type="Texture2D" uid="uid://cbsaxnusysajp" path="res://Sprites/heros/Orc.png" id="2_kfg1s"]
+
+[node name="HeroInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="EquipementSlot0" parent="HBoxContainer/VBoxContainer" instance=ExtResource("1_43po2")]
+layout_mode = 2
+
+[node name="EquipementSlot1" parent="HBoxContainer/VBoxContainer" instance=ExtResource("1_43po2")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/VBoxContainer2"]
+position = Vector2(0, 18)
+scale = Vector2(2, 2)
+texture = ExtResource("2_kfg1s")
+region_enabled = true
+region_rect = Rect2(43, 41, 24, 17)
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="EquipementSlot3" parent="HBoxContainer/VBoxContainer3" instance=ExtResource("1_43po2")]
+layout_mode = 2
+
+[node name="EquipementSlot4" parent="HBoxContainer/VBoxContainer3" instance=ExtResource("1_43po2")]
+layout_mode = 2
