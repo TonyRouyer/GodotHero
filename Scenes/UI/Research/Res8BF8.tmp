@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://sbkqulnwaelb"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Research/ResearchUI.gd" id="1_s420v"]
+[ext_resource type="PackedScene" uid="uid://dqou0byjkvvqm" path="res://Scenes/UI/Research/ResearchManager.tscn" id="2_m1sbf"]
+
+[node name="ResearchUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s420v")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ItemList" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ItemList"]
+layout_mode = 2
+text = "Available Researches"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/ItemList"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="ResearchList" type="VBoxContainer" parent="HBoxContainer/ItemList/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/ItemList"]
+layout_mode = 2
+text = "Research Details"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ItemList"]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/ItemList/VBoxContainer"]
+layout_mode = 2
+
+[node name="CostLabel" type="Label" parent="HBoxContainer/ItemList/VBoxContainer"]
+layout_mode = 2
+
+[node name="DurationLabel" type="Label" parent="HBoxContainer/ItemList/VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="HBoxContainer/ItemList"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Current Research
+"
+
+[node name="CurrentResearchLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "No research in progress
+"
+
+[node name="ResearchProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResearchManager" parent="." instance=ExtResource("2_m1sbf")]
+
+[connection signal="pressed" from="HBoxContainer/ItemList/StartButton" to="." method="_on_start_button_pressed"]

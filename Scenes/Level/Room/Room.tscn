@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://cikud7p4b827j"]
+
+[ext_resource type="Script" path="res://Scenes/Level/Room/Room.gd" id="1_hhtpd"]
+[ext_resource type="PackedScene" uid="uid://w5yfrp7m2045" path="res://Scenes/Level/Room/Previsu.tscn" id="2_exrah"]
+[ext_resource type="PackedScene" uid="uid://dqthqsu00qxxw" path="res://Scenes/Level/Room/RoomUtilityFunctions.tscn" id="3_6pcoo"]
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_hhtpd")
+
+[node name="Previsu" parent="." instance=ExtResource("2_exrah")]
+
+[node name="RoomUtilityFunctions" parent="." instance=ExtResource("3_6pcoo")]
+
+[node name="Panel" type="PanelContainer" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.7, 0.7)
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="DeleteBtn" type="Button" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Delete"
+
+[node name="MoveBtn" type="Button" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 12
+text = "Move"
+
+[node name="CloseBtn" type="Button" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Close"
+
+[connection signal="mouse_entered" from="Panel" to="." method="_on_mouse_in_menu"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_mouse_out_menu"]
+[connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/DeleteBtn" to="." method="_on_mouse_in_menu"]
+[connection signal="mouse_exited" from="Panel/MarginContainer/HBoxContainer/DeleteBtn" to="." method="_on_mouse_out_menu"]
+[connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/MoveBtn" to="." method="_on_mouse_in_menu"]
+[connection signal="mouse_exited" from="Panel/MarginContainer/HBoxContainer/MoveBtn" to="." method="_on_mouse_out_menu"]
+[connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/CloseBtn" to="." method="_on_mouse_in_menu"]
+[connection signal="mouse_exited" from="Panel/MarginContainer/HBoxContainer/CloseBtn" to="." method="_on_mouse_out_menu"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/CloseBtn" to="." method="_on_close_btn_pressed"]

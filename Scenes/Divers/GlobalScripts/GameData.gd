@@ -1,7 +1,7 @@
 extends Node
 
 var game_items = {}
-var file_path = "res://Items/items.json"
+var file_path = "res://Json/items.json"
 var default_icon = "res://Sprites/items/arrosoire.png"
 var active_hero = null  # Référence au héros actif
 

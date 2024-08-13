@@ -11,7 +11,8 @@ enum Type{
 }
 @export var slot_type:Type = Type.Default
 @onready var icon = $Icon
-@onready var root_hero_node = get_node("../../../..")
+@onready var root_hero_node = get_node("../../..")
+@onready var inventory_node = get_node("../../../GlobalInventory")
 
 #setup the slot data
 func set_slot(data:Dictionary):
@@ -73,3 +74,14 @@ func get_item_texture(item_name: String):
 		var h = int(coords[3])
 		var region = Rect2(x, y, w, h)
 		return region
+
+# Handle double click to equip item
+func _gui_input(event):
+	if event is InputEventMouseButton and event.double_click  and not root_hero_node.equipment[name].is_empty():
+		desequip_item_double_click()
+
+func desequip_item_double_click():
+	var item = root_hero_node.equipment[name]
+	var equip_slot = inventory_node.find_first_empty_slot()
+	if equip_slot:
+		root_hero_node.unequip_item(name, equip_slot, item)

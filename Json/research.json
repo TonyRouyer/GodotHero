@@ -1,0 +1,402 @@
+{
+	"recherche_de_forge": {
+		"research_name": "Recherche de Forge",
+		"level": 1,
+		"pos": [32,32],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet de construire une forge pour réparation du matériel et la création arme/armure (rang F)",
+		"prerequisites": [],
+		"cost": 100,
+		"duration": 60
+	},
+	"couture": {
+		"research_name": "Couture",
+		"level": 1,
+		"pos": [32,96],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet de construire salle de tissage et de réparer les armure cuir/tissu et la création (rang F)",
+		"prerequisites": [],
+		"cost": 100,
+		"duration": 60
+	},
+	"recyclage": {
+		"research_name": "Recyclage",
+		"level": 1,
+		"pos": [32,224],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet de construire recyclé arme et armure pour récupérer une partie des ressource première. (25%)",
+		"prerequisites": [],
+		"cost": 100,
+		"duration": 60
+	},
+	"acier_de_forge": {
+		"research_name": "Acier de Forge",
+		"level": 2,
+		"pos": [112,32],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet d'augmenter le tier des arme/armure en fer jusqu’au rang D",
+		"prerequisites": ["recherche_de_forge"],
+		"cost": 200,
+		"duration": 120
+	},
+	"tissage_renforcé": {
+		"research_name": "Tissage Renforcé",
+		"level": 2,
+		"pos": [112,96],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet d'augmenter le tier des armure tissus/cuir jusqu’au rang D",
+		"prerequisites": ["couture"],
+		"cost": 200,
+		"duration": 120
+	},
+	"stockage": {
+		"research_name": "Stockage",
+		"level": 2,
+		"pos": [112,224],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création de salle de stockage",
+		"prerequisites": ["recyclage"],
+		"cost": 200,
+		"duration": 120
+	},
+	"techniques_de_cuisine_avancées": {
+		"research_name": "Techniques de Cuisine Avancées",
+		"level": 2,
+		"pos": [112,288],
+		"icon": "recherche_de_forge.png",
+		"description": "Développe des méthodes de cuisine plus sophistiquées pour améliorer la qualité des repas.",
+		"prerequisites": ["recyclage"],
+		"cost": 200,
+		"duration": 120
+	},
+	"entrainement_martial": {
+		"research_name": "Entraînement Martial",
+		"level": 3,
+		"pos": [192,32],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création de la salle d'entraînement",
+		"prerequisites": ["acier_de_forge"],
+		"cost": 300,
+		"duration": 180
+	},
+	"entrainement_magique": {
+		"research_name": "Entraînement Magique",
+		"level": 3,
+		"pos": [192,96],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création de la bibliothèque",
+		"prerequisites": ["tissage_renforcé"],
+		"cost": 300,
+		"duration": 180
+	},
+	"gestion_avancée_des_ressources": {
+		"research_name": "Gestion Avancée des Ressources",
+		"level": 3,
+		"pos": [192,224],
+		"icon": "recherche_de_forge.png",
+		"description": "Réduit le coups pour la création d'équipement (-25%)",
+		"prerequisites": ["stockage"],
+		"cost": 300,
+		"duration": 180
+	},
+	"soin_de_base": {
+		"research_name": "Soin de Base",
+		"level": 3,
+		"pos": [192,288],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création d’une infirmerie",
+		"prerequisites": ["techniques_de_cuisine_avancées"],
+		"cost": 300,
+		"duration": 180
+	},
+	"atelier_d_armurier_agile": {
+		"research_name": "Atelier d'Armurier Agile",
+		"level": 4,
+		"pos": [272,32],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création d'armures légères,cuir/tissus (rang C max et amélioration)",
+		"prerequisites": ["entrainement_martial"],
+		"cost": 400,
+		"duration": 240
+	},
+	"forge_de_maître_d_armes": {
+		"research_name": "Forge de Maître d'Armes",
+		"level": 4,
+		"pos": [272,96],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création d’arme/armure (rang C max et amélioration)",
+		"prerequisites": ["entrainement_magique"],
+		"cost": 400,
+		"duration": 240
+	},
+	"amélioration_de_logements": {
+		"research_name": "Amélioration de Logements",
+		"level": 4,
+		"pos": [272,224],
+		"icon": "recherche_de_forge.png",
+		"description": "Amélioration les logements des employés, gain de moral plus efficace",
+		"prerequisites": ["gestion_avancée_des_ressources"],
+		"cost": 400,
+		"duration": 240
+	},
+	"cartographie": {
+		"research_name": "Cartographie",
+		"level": 4,
+		"pos": [272,288],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création de la salle des cartes",
+		"prerequisites": ["soin_de_base"],
+		"cost": 400,
+		"duration": 240
+	},
+	"enchantement_d_equipement": {
+		"research_name": "Enchantement d'Équipement",
+		"level": 5,
+		"pos": [352,64],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création de la salle d’enchantement",
+		"prerequisites": ["atelier_d_armurier_agile", "forge_de_maître_d_armes"],
+		"cost": 500,
+		"duration": 300
+	},
+	"chambres_individuelles": {
+		"research_name": "Chambres Individuelles",
+		"level": 5,
+		"pos": [352,224],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la construction de chambres individuelles pour les aventuriers, améliorant leur moral et repos.",
+		"prerequisites": ["amélioration_de_logements"],
+		"cost": 500,
+		"duration": 300
+	},
+	"recyclage_avancé": {
+		"research_name": "Recyclage Avancé",
+		"level": 5,
+		"pos": [352,288],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet recyclé equipement/arme et récupérer une partie des ressource première (50%)",
+		"prerequisites": ["cartographie"],
+		"cost": 500,
+		"duration": 300
+	},
+	"alchimie": {
+		"research_name": "Alchimie",
+		"level": 5,
+		"pos": [352,352],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création du laboratoire d’alchimie",
+		"prerequisites": ["cartographie"],
+		"cost": 500,
+		"duration": 300
+	},
+	"enclume_de_forgeron": {
+		"research_name": "Enclume de forgeron",
+		"level": 6,
+		"pos": [432,32],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création d'armes/armures de rang B (et amélioration)",
+		"prerequisites": ["enchantement_d_equipement"],
+		"cost": 600,
+		"duration": 360
+	},
+	"techniques_de_tannage_avancé": {
+		"research_name": "Techniques de Tannage Avancé",
+		"level": 6,
+		"pos": [432,96],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création d'armures cuir/tissu. de rang B  (et amélioration)",
+		"prerequisites": ["enchantement_d_equipement"],
+		"cost": 600,
+		"duration": 360
+	},
+	"arme_enchantées_avancées": {
+		"research_name": "Arme enchantées avancées",
+		"level": 6,
+		"pos": [432,160],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet de rechercher davantage d’enchantement pour les armes",
+		"prerequisites": ["enchantement_d_equipement"],
+		"cost": 600,
+		"duration": 360
+	},
+	"salle_d_ascension": {
+		"research_name": "Salle d'Ascension",
+		"level": 6,
+		"pos": [432,224],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet au aventurier de haut niveau d’évoluer leurs classe",
+		"prerequisites": ["chambres_individuelles"],
+		"cost": 600,
+		"duration": 360
+	},
+	"alchimiste_accomplie": {
+		"research_name": "Alchimiste accomplie",
+		"level": 6,
+		"pos": [432,352],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet de créer davantage de potion différente",
+		"prerequisites": ["alchimie"],
+		"cost": 600,
+		"duration": 360
+	},
+	"magie_des_runes": {
+		"research_name": "Magie des Runes",
+		"level": 7,
+		"pos": [512,64],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet l'utilisation de runes magiques pour améliorer armes et armures.",
+		"prerequisites": ["enclume_de_forgeron", "techniques_de_tannage_avancé"],
+		"cost": 700,
+		"duration": 420
+	},
+	"armures_magiques": {
+		"research_name": "Armures Magiques",
+		"level": 7,
+		"pos": [512,160],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet de rechercher davantage d’enchantement pour les armure",
+		"prerequisites": ["arme_enchantées_avancées"],
+		"cost": 700,
+		"duration": 420
+	},
+	"optimisation_de_l_entrepôt": {
+		"research_name": "Optimisation de l'Entrepôt",
+		"level": 7,
+		"pos": [512,224],
+		"icon": "recherche_de_forge.png",
+		"description": "Augmente l'efficacité du stockage augmentant le nombre d’objet entreposable sur chaque stockage",
+		"prerequisites": ["salle_d_ascension"],
+		"cost": 700,
+		"duration": 420
+	},
+	"jardin_botanique": {
+		"research_name": "Jardin Botanique",
+		"level": 7,
+		"pos": [512,352],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet de créer un jardin qui fait pousser quelque plante commune",
+		"prerequisites": ["alchimiste_accomplie"],
+		"cost": 700,
+		"duration": 420
+	},
+	"maîtrise_de_la_forge_haute_qualité": {
+		"research_name": "Maîtrise de la Forge Haute Qualité",
+		"level": 8,
+		"pos": [592,32],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création d'armes/armures de rang A (et amélioration)",
+		"prerequisites": ["magie_des_runes"],
+		"cost": 800,
+		"duration": 480
+	},
+	"confection_d_armures_élites": {
+		"research_name": "Confection d'Armures Élites",
+		"level": 8,
+		"pos": [592,96],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la création d'armures cuir/tissu. de rang A  (et amélioration)",
+		"prerequisites": ["magie_des_runes"],
+		"cost": 800,
+		"duration": 480
+	},
+	"alchimiste_économe": {
+		"research_name": "Alchimiste économe",
+		"level": 8,
+		"pos": [592,320],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet d’utiliser moins de ressource pour les potion (25%)",
+		"prerequisites": ["jardin_botanique"],
+		"cost": 800,
+		"duration": 480
+	},
+	"systèmes_de_soins_innovants": {
+		"research_name": "Systèmes de Soins Innovants",
+		"level": 8,
+		"pos": [592,384],
+		"icon": "recherche_de_forge.png",
+		"description": "Introduit des techniques médicales avancées, améliorant significativement l'efficacité des soins dans l'infirmerie.",
+		"prerequisites": ["jardin_botanique"],
+		"cost": 800,
+		"duration": 480
+	},
+	"maîtrise_de_l_enchantement": {
+		"research_name": "Maîtrise de l'Enchantement",
+		"level": 9,
+		"pos": [672,64],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet d'enchanter les bijoux",
+		"prerequisites": ["maîtrise_de_la_forge_haute_qualité", "confection_d_armures_élites"],
+		"cost": 900,
+		"duration": 540
+	},
+	"stratégie_de_guerre_avancée": {
+		"research_name": "Stratégie de Guerre Avancée",
+		"level": 9,
+		"pos": [672,160],
+		"icon": "recherche_de_forge.png",
+		"description": "Donne un leger bonus de dommage au aventurier (a définir)",
+		"prerequisites": ["alchimiste_économe", "systèmes_de_soins_innovants"],
+		"cost": 900,
+		"duration": 540
+	},
+	"logistique_de_stockage_avancée": {
+		"research_name": "Logistique de Stockage Avancée",
+		"level": 9,
+		"pos": [672,224],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet une gestion quasi parfaite des stocks, augmentant significativement l'espace de stockage disponible.",
+		"prerequisites": ["optimisation_de_l_entrepôt"],
+		"cost": 900,
+		"duration": 540
+	},
+	"milice_privée": {
+		"research_name": "Milice Privée",
+		"level": 9,
+		"pos": [672,352],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet de recruter des mercenaires dévoués à la défense de la guilde.",
+		"prerequisites": ["optimisation_de_l_entrepôt"],
+		"cost": 900,
+		"duration": 540
+	},
+	"forgeron_légendaires": {
+		"research_name": "Forgeron Légendaires",
+		"level": 10,
+		"pos": [752,32],
+		"icon": "recherche_de_forge.png",
+		"description": "Maîtrise la fabrication d'armes/armure de légende Rang S",
+		"prerequisites": ["maîtrise_de_l_enchantement"],
+		"cost": 1000,
+		"duration": 600
+	},
+	"couturier_légendaires": {
+		"research_name": "Couturier Légendaires",
+		"level": 10,
+		"pos": [752,96],
+		"icon": "recherche_de_forge.png",
+		"description": "Maîtrise la fabrication d ‘armure cuir/tissu rang S",
+		"prerequisites": ["maîtrise_de_l_enchantement"],
+		"cost": 1000,
+		"duration": 600
+	},
+	"recyclage_intégral": {
+		"research_name": "Recyclage Intégral",
+		"level": 10,
+		"pos": [752,224],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet recyclé equipement/arme et récupérer une partie des ressource première (100%)",
+		"prerequisites": ["logistique_de_stockage_avancée"],
+		"cost": 1000,
+		"duration": 600
+	},
+	"ingénierie_de_guilde_spécialisée": {
+		"research_name": "Ingénierie de Guilde Spécialisée",
+		"level": 10,
+		"pos": [752,352],
+		"icon": "recherche_de_forge.png",
+		"description": "Permet la conception et la construction de structures de guilde hautement spécialisées et personnalisées.",
+		"prerequisites": ["stratégie_de_guerre_avancée"],
+		"cost": 1000,
+		"duration": 600
+	}
+}
