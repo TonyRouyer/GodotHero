@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cihbrf63gwcw0"]
-
-[ext_resource type="Script" path="res://Scenes/Heroes/HeroLogique/HeroInventorySystem.gd" id="1_spb0j"]
-
-[node name="HeroInventorySystem" type="Node2D"]
-script = ExtResource("1_spb0j")

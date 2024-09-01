@@ -1,0 +1,201 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci3tq7hejom4l"]
+
+[ext_resource type="Script" path="res://Scenes/UI/HeroPanelInfo/hero_panel_info.gd" id="1_wqeiy"]
+[ext_resource type="PackedScene" uid="uid://d36fl7160ynpf" path="res://Scenes/UI/HeroPanelInfo/hero_equipement_ui.tscn" id="3_1pljo"]
+[ext_resource type="PackedScene" uid="uid://cywxfe684f010" path="res://Scenes/UI/Inventory/GlobalInventory.tscn" id="3_4ybj6"]
+[ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/QuitIcon.png" id="4_1b0xy"]
+
+[node name="HeroPanelInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 1
+script = ExtResource("1_wqeiy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -404.0
+offset_top = -177.5
+offset_right = 404.0
+offset_bottom = 177.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatsWindow" type="PanelContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/StatsWindow"]
+layout_mode = 2
+
+[node name="TitleContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HeroInfoTitle" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/TitleContainer/MarginContainer"]
+layout_mode = 2
+text = "Heros Info"
+
+[node name="CloseButton" type="TextureButton" parent="HBoxContainer/StatsWindow/VBoxContainer/TitleContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("4_1b0xy")
+stretch_mode = 0
+
+[node name="ContentContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+
+[node name="StatsContainer" type="VBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 2
+
+[node name="InfoContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer"]
+layout_mode = 2
+
+[node name="Nom" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/InfoContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nom"
+
+[node name="Level" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/InfoContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "level"
+
+[node name="Race" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "race"
+
+[node name="Classe" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "classe"
+
+[node name="Spacer" type="Control" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="StrengthContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Strength" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/StrengthContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "strength"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/StrengthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DefenseContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Defense" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/DefenseContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Defense"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/DefenseContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AgilityContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Agility" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/AgilityContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "agility"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/AgilityContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ManaContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Mana" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/ManaContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "mana"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/ManaContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LuckContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Luck" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/LuckContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "luck"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/StatsContainer/LuckContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer"]
+layout_mode = 2
+
+[node name="HeroEquipementUi" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/VBoxContainer" instance=ExtResource("3_1pljo")]
+custom_minimum_size = Vector2(212, 184)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Hp" type="ProgressBar" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 10.0
+step = 1.0
+value = 5.0
+
+[node name="ButtonContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="GlobalInventory" parent="HBoxContainer" instance=ExtResource("3_4ybj6")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/StatsWindow/VBoxContainer/TitleContainer/CloseButton" to="." method="_on_button_pressed"]

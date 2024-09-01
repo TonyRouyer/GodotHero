@@ -1,7 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://tht5m577dqw"]
+[gd_scene load_steps=15 format=3 uid="uid://tht5m577dqw"]
 
 [ext_resource type="Script" path="res://Scenes/UI/ConstructionMode/ConstructionUI.gd" id="1_dpso8"]
-[ext_resource type="Texture2D" uid="uid://b0ef6xydbi8y2" path="res://icon.svg" id="2_er0gc"]
+[ext_resource type="Texture2D" uid="uid://b5fhd3uply2it" path="res://Sprites/Interface/construction item icon/wooden_wall.png" id="2_2q5cx"]
+[ext_resource type="Texture2D" uid="uid://dcuvw7kefi3bl" path="res://Sprites/Interface/construction item icon/stone_wall.png" id="3_ivqrr"]
+[ext_resource type="Texture2D" uid="uid://dyuqliyoneu7i" path="res://Sprites/Interface/construction item icon/wooden_door.png" id="4_rrvf7"]
+[ext_resource type="Texture2D" uid="uid://c3c16lgp3y4ky" path="res://Sprites/Interface/construction item icon/reinforced_door.png" id="5_rhf1k"]
+[ext_resource type="Texture2D" uid="uid://di6vcjxokpxxg" path="res://Sprites/Interface/MenusBox_34x34.png" id="6_xqe6g"]
+[ext_resource type="Texture2D" uid="uid://cuqo1f31e2pec" path="res://Sprites/Interface/construction item icon/wooden_floor.png" id="7_dh03f"]
+[ext_resource type="Texture2D" uid="uid://binloa2sc4gs7" path="res://Sprites/Interface/construction item icon/stone_floor.png" id="8_ep0la"]
+[ext_resource type="Texture2D" uid="uid://cgjgn04hnelxf" path="res://Sprites/Interface/construction item icon/anvil.png" id="9_jml66"]
+[ext_resource type="Texture2D" uid="uid://cpfmorgryxyhp" path="res://Sprites/Interface/construction item icon/training_dummy.png" id="10_dnjjk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wtu25"]
+texture = ExtResource("6_xqe6g")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rbksq"]
+texture = ExtResource("6_xqe6g")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40osl"]
+texture = ExtResource("6_xqe6g")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byhad"]
+texture = ExtResource("6_xqe6g")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
 
 [node name="ConstructionUi" type="Control"]
 layout_mode = 3
@@ -33,153 +69,256 @@ text = "Object"
 layout_mode = 2
 text = "Action"
 
-[node name="Menu" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="GlobalPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
 offset_top = -310.0
-offset_right = 264.0
+offset_right = 281.0
 
-[node name="WallsAndDoorsPanel" type="Control" parent="Menu"]
+[node name="MarginContainer" type="MarginContainer" parent="GlobalPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Menu" type="HBoxContainer" parent="GlobalPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="WallsAndDoorsPanel" type="Control" parent="GlobalPanel/MarginContainer/Menu"]
 visible = false
 layout_mode = 2
 
-[node name="PanelSelector" type="HBoxContainer" parent="Menu/WallsAndDoorsPanel"]
+[node name="PanelSelector" type="HBoxContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="Menu/WallsAndDoorsPanel/PanelSelector"]
+[node name="Button" type="Button" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector"]
 layout_mode = 2
 text = "Wall"
 
-[node name="Button2" type="Button" parent="Menu/WallsAndDoorsPanel/PanelSelector"]
+[node name="Button2" type="Button" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector"]
 layout_mode = 2
 text = "Door"
 
-[node name="Wall" type="GridContainer" parent="Menu/WallsAndDoorsPanel"]
-layout_mode = 2
-offset_top = 40.0
-offset_right = 260.0
-offset_bottom = 310.0
+[node name="Wall" type="GridContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel"]
+layout_mode = 0
+offset_top = 45.0
+offset_right = 250.0
+offset_bottom = 275.0
+theme_override_constants/h_separation = 15
 columns = 5
 
-[node name="TextureButton" type="TextureButton" parent="Menu/WallsAndDoorsPanel/Wall"]
+[node name="PanelContainer" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("2_er0gc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
 
-[node name="Label" type="Label" parent="Menu/WallsAndDoorsPanel/Wall/TextureButton"]
+[node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_2q5cx")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer/TextureButton"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Mur en bois
+offset_left = -4.0
+offset_top = 28.0
+offset_right = 30.0
+offset_bottom = 55.0
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+text = "Mur en 
+bois
 "
 
-[node name="TextureButton2" type="TextureButton" parent="Menu/WallsAndDoorsPanel/Wall"]
+[node name="PanelContainer2" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("2_er0gc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
 
-[node name="Label" type="Label" parent="Menu/WallsAndDoorsPanel/Wall/TextureButton2"]
+[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("3_ivqrr")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer2/TextureButton2"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Mur en pierre
+offset_left = -4.0
+offset_top = 28.0
+offset_right = 30.0
+offset_bottom = 55.0
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+text = "Mur en 
+pierre
 "
 
-[node name="Door" type="GridContainer" parent="Menu/WallsAndDoorsPanel"]
+[node name="Door" type="GridContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel"]
 visible = false
 layout_mode = 2
-offset_top = 40.0
-offset_right = 260.0
-offset_bottom = 310.0
+offset_top = 45.0
+offset_right = 250.0
+offset_bottom = 275.0
+theme_override_constants/h_separation = 15
 columns = 5
 
-[node name="TextureButton" type="TextureButton" parent="Menu/WallsAndDoorsPanel/Door"]
+[node name="PanelContainer4" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("2_er0gc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
 
-[node name="Label" type="Label" parent="Menu/WallsAndDoorsPanel/Door/TextureButton"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Porte en bois"
-
-[node name="TextureButton2" type="TextureButton" parent="Menu/WallsAndDoorsPanel/Door"]
+[node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer4"]
 layout_mode = 2
-texture_normal = ExtResource("2_er0gc")
+texture_normal = ExtResource("4_rrvf7")
+stretch_mode = 3
 
-[node name="Label" type="Label" parent="Menu/WallsAndDoorsPanel/Door/TextureButton2"]
+[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer4/TextureButton"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Porte Renforcé
+offset_left = -6.0
+offset_top = 27.0
+offset_right = 38.0
+offset_bottom = 54.0
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+text = "Porte en 
+bois"
+
+[node name="PanelContainer3" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
+
+[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("5_rhf1k")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer3/TextureButton2"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 28.0
+offset_right = 41.0
+offset_bottom = 55.0
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+text = "Porte 
+Renforcé
 "
 
-[node name="FloorsPanel" type="GridContainer" parent="Menu"]
+[node name="FloorsPanel" type="GridContainer" parent="GlobalPanel/MarginContainer/Menu"]
 visible = false
 layout_mode = 2
+theme_override_constants/h_separation = 15
 columns = 5
 
-[node name="TextureButton" type="TextureButton" parent="Menu/FloorsPanel"]
+[node name="PanelContainer" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("2_er0gc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_rbksq")
 
-[node name="Label" type="Label" parent="Menu/FloorsPanel/TextureButton"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Sol en bois"
-
-[node name="TextureButton2" type="TextureButton" parent="Menu/FloorsPanel"]
+[node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_er0gc")
+texture_normal = ExtResource("7_dh03f")
+stretch_mode = 3
 
-[node name="Label" type="Label" parent="Menu/FloorsPanel/TextureButton2"]
+[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer/TextureButton"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Sol en pierre"
+offset_left = -1.0
+offset_top = 27.0
+offset_right = 30.0
+offset_bottom = 54.0
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+text = "Sol en 
+bois"
 
-[node name="ObjectsPanel" type="GridContainer" parent="Menu"]
+[node name="PanelContainer2" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rbksq")
+
+[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("8_ep0la")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer2/TextureButton2"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 28.0
+offset_right = 37.0
+offset_bottom = 55.0
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+text = "Sol en 
+pierre"
+
+[node name="ObjectsPanel" type="GridContainer" parent="GlobalPanel/MarginContainer/Menu"]
 visible = false
 layout_mode = 2
+theme_override_constants/h_separation = 15
 columns = 5
 
-[node name="TextureButton" type="TextureButton" parent="Menu/ObjectsPanel"]
+[node name="PanelContainer2" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("2_er0gc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
 
-[node name="Label" type="Label" parent="Menu/ObjectsPanel/TextureButton"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Training dummy"
-
-[node name="TextureButton2" type="TextureButton" parent="Menu/ObjectsPanel"]
+[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2"]
 layout_mode = 2
-texture_normal = ExtResource("2_er0gc")
+texture_normal = ExtResource("9_jml66")
+stretch_mode = 3
 
-[node name="Label" type="Label" parent="Menu/ObjectsPanel/TextureButton2"]
+[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2/TextureButton2"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -4.0
+offset_top = 28.0
+offset_right = 38.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 12
 text = "Enclume"
 
-[node name="ActionsPanel" type="HBoxContainer" parent="Menu"]
+[node name="PanelContainer" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_byhad")
+
+[node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("10_dnjjk")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer/TextureButton"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 28.0
+offset_right = 35.0
+offset_bottom = 55.0
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+text = "Training
+dummy"
+
+[node name="ActionsPanel" type="HBoxContainer" parent="GlobalPanel/MarginContainer/Menu"]
 visible = false
 layout_mode = 2
 
-[node name="DestroyAll" type="Button" parent="Menu/ActionsPanel"]
+[node name="DestroyAll" type="Button" parent="GlobalPanel/MarginContainer/Menu/ActionsPanel"]
 layout_mode = 2
 text = "Destroy"
 
-[node name="DestroyWall" type="Button" parent="Menu/ActionsPanel"]
+[node name="DestroyWall" type="Button" parent="GlobalPanel/MarginContainer/Menu/ActionsPanel"]
 layout_mode = 2
 text = "Destroy Wall"
 
-[node name="DestroyFloor" type="Button" parent="Menu/ActionsPanel"]
+[node name="DestroyFloor" type="Button" parent="GlobalPanel/MarginContainer/Menu/ActionsPanel"]
 layout_mode = 2
 text = "Destroy Floor"
 
-[node name="DestroyObject" type="Button" parent="Menu/ActionsPanel"]
+[node name="DestroyObject" type="Button" parent="GlobalPanel/MarginContainer/Menu/ActionsPanel"]
 layout_mode = 2
 text = "Destroy Object"
 
@@ -195,49 +334,49 @@ text = "Destroy Object"
 [connection signal="mouse_entered" from="Button/Action" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Button/Action" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="Button/Action" to="." method="_on_action_pressed"]
-[connection signal="mouse_entered" from="Menu/WallsAndDoorsPanel/PanelSelector/Button" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/WallsAndDoorsPanel/PanelSelector/Button" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/WallsAndDoorsPanel/PanelSelector/Button" to="." method="_on_show_wall_panel_pressed"]
-[connection signal="mouse_entered" from="Menu/WallsAndDoorsPanel/PanelSelector/Button2" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/WallsAndDoorsPanel/PanelSelector/Button2" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/WallsAndDoorsPanel/PanelSelector/Button2" to="." method="_on_show_door_panel_pressed"]
-[connection signal="mouse_entered" from="Menu/WallsAndDoorsPanel/Wall/TextureButton" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/WallsAndDoorsPanel/Wall/TextureButton" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/WallsAndDoorsPanel/Wall/TextureButton" to="." method="_on_item_pressed" binds= ["wall", "wooden_wall"]]
-[connection signal="mouse_entered" from="Menu/WallsAndDoorsPanel/Wall/TextureButton2" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/WallsAndDoorsPanel/Wall/TextureButton2" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/WallsAndDoorsPanel/Wall/TextureButton2" to="." method="_on_item_pressed" binds= ["wall", "stone_wall"]]
-[connection signal="mouse_entered" from="Menu/WallsAndDoorsPanel/Door/TextureButton" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/WallsAndDoorsPanel/Door/TextureButton" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/WallsAndDoorsPanel/Door/TextureButton" to="." method="_on_item_pressed" binds= ["door", "wooden_door"]]
-[connection signal="mouse_entered" from="Menu/WallsAndDoorsPanel/Door/TextureButton2" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/WallsAndDoorsPanel/Door/TextureButton2" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/WallsAndDoorsPanel/Door/TextureButton2" to="." method="_on_item_pressed" binds= ["door", "reinforced_door"]]
-[connection signal="mouse_entered" from="Menu/FloorsPanel" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/FloorsPanel" to="." method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Menu/FloorsPanel/TextureButton" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/FloorsPanel/TextureButton" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/FloorsPanel/TextureButton" to="." method="_on_item_pressed" binds= ["floor", "wooden_floor"]]
-[connection signal="mouse_entered" from="Menu/FloorsPanel/TextureButton2" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/FloorsPanel/TextureButton2" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/FloorsPanel/TextureButton2" to="." method="_on_item_pressed" binds= ["floor", "stone_floor"]]
-[connection signal="mouse_entered" from="Menu/ObjectsPanel" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/ObjectsPanel" to="." method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Menu/ObjectsPanel/TextureButton" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/ObjectsPanel/TextureButton" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/ObjectsPanel/TextureButton" to="." method="_on_item_pressed" binds= ["usable_object", "training_dummy"]]
-[connection signal="mouse_entered" from="Menu/ObjectsPanel/TextureButton2" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/ObjectsPanel/TextureButton2" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/ObjectsPanel/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "anvil"]]
-[connection signal="mouse_entered" from="Menu/ActionsPanel/DestroyAll" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/ActionsPanel/DestroyAll" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/ActionsPanel/DestroyAll" to="." method="_on_destroy_all_pressed"]
-[connection signal="mouse_entered" from="Menu/ActionsPanel/DestroyWall" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/ActionsPanel/DestroyWall" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/ActionsPanel/DestroyWall" to="." method="_on_destroy_wall_pressed"]
-[connection signal="mouse_entered" from="Menu/ActionsPanel/DestroyFloor" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/ActionsPanel/DestroyFloor" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/ActionsPanel/DestroyFloor" to="." method="_on_destroy_floor_pressed"]
-[connection signal="mouse_entered" from="Menu/ActionsPanel/DestroyObject" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Menu/ActionsPanel/DestroyObject" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="Menu/ActionsPanel/DestroyObject" to="." method="_on_destroy_object_pressed"]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector/Button" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector/Button" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector/Button" to="." method="_on_show_wall_panel_pressed"]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector/Button2" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector/Button2" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector/Button2" to="." method="_on_show_door_panel_pressed"]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer/TextureButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer/TextureButton" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer/TextureButton" to="." method="_on_item_pressed" binds= ["wall", "wooden_wall"]]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer2/TextureButton2" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer2/TextureButton2" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer2/TextureButton2" to="." method="_on_item_pressed" binds= ["wall", "stone_wall"]]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer4/TextureButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer4/TextureButton" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer4/TextureButton" to="." method="_on_item_pressed" binds= ["door", "wooden_door"]]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer3/TextureButton2" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer3/TextureButton2" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer3/TextureButton2" to="." method="_on_item_pressed" binds= ["door", "reinforced_door"]]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/FloorsPanel" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/FloorsPanel" to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer/TextureButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer/TextureButton" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer/TextureButton" to="." method="_on_item_pressed" binds= ["floor", "wooden_floor"]]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer2/TextureButton2" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer2/TextureButton2" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer2/TextureButton2" to="." method="_on_item_pressed" binds= ["floor", "stone_floor"]]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel" to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2/TextureButton2" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2/TextureButton2" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "anvil"]]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer/TextureButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer/TextureButton" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer/TextureButton" to="." method="_on_item_pressed" binds= ["object", "training_dummy"]]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyAll" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyAll" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyAll" to="." method="_on_destroy_all_pressed"]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyWall" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyWall" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyWall" to="." method="_on_destroy_wall_pressed"]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyFloor" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyFloor" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyFloor" to="." method="_on_destroy_floor_pressed"]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyObject" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyObject" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyObject" to="." method="_on_destroy_object_pressed"]

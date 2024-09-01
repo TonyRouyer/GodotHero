@@ -1,0 +1,77 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dmykwkqu0itm"]
+
+[ext_resource type="Texture2D" uid="uid://b3ll86e4l0nur" path="res://Sprites/Interface/Button_52x14.png" id="1_gvtum"]
+[ext_resource type="Texture2D" uid="uid://dvfjm7d7j2evm" path="res://Sprites/Interface/RectangleBox_96x96.png" id="1_mimu0"]
+[ext_resource type="FontFile" uid="uid://bhoycv755jiia" path="res://Sprites/fonts/coolvetica rg.otf" id="1_qkax4"]
+[ext_resource type="Texture2D" uid="uid://bf386lfjdvkba" path="res://Sprites/Interface/ValueBar_128x16.png" id="3_e0plx"]
+[ext_resource type="Texture2D" uid="uid://bvj6c3m1o725t" path="res://Sprites/Interface/ValueBlue_120x8.png" id="4_o2771"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ff02k"]
+texture = ExtResource("1_gvtum")
+texture_margin_left = 7.0
+texture_margin_top = 5.0
+texture_margin_right = 7.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vnvnu"]
+texture = ExtResource("1_mimu0")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mqk0l"]
+texture = ExtResource("3_e0plx")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n8sug"]
+texture = ExtResource("4_o2771")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu2l6"]
+bg_color = Color(0.594423, 0.377168, 0.0599865, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rovh3"]
+bg_color = Color(0.81847, 0.529711, 0.112542, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfpgy"]
+bg_color = Color(0.819608, 0.529412, 0.113725, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jla3j"]
+bg_color = Color(0.980558, 0.697725, 0.357375, 1)
+draw_center = false
+border_width_left = 10
+border_color = Color(0.980392, 0.698039, 0.356863, 1)
+
+[resource]
+default_font = ExtResource("1_qkax4")
+Button/fonts/font = ExtResource("1_qkax4")
+Button/styles/normal = SubResource("StyleBoxTexture_ff02k")
+Fonts/fonts/normal = ExtResource("1_qkax4")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_vnvnu")
+ProgressBar/constants/outline_size = 0
+ProgressBar/styles/background = SubResource("StyleBoxTexture_mqk0l")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_n8sug")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_vu2l6")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_rovh3")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_nfpgy")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_jla3j")

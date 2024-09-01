@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cevu7bdkx2qyv"]
+
+[ext_resource type="Script" path="res://Scenes/Level/Usables/anvil.gd" id="1_r72d5"]
+[ext_resource type="Texture2D" uid="uid://bvc8soxkx53l7" path="res://Sprites/terrain/usable.png" id="2_m238g"]
+
+[node name="Anvil" type="Node2D"]
+script = ExtResource("1_r72d5")
+node_name = "anvil"
+cost = 30
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m238g")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 16)

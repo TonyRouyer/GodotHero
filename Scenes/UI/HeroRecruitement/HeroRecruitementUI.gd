@@ -2,7 +2,7 @@ extends Control
 
 @onready var heroesNode = $"../../../Heroes"
 
-const HeroData = preload("res://Scenes/Heroes/HeroData.gd")
+const HeroData = preload("res://Scenes/Heroes/hero_data.gd")
 var heroDataInstance = HeroData.new()
 var selectedHeroes = []
 
@@ -19,7 +19,7 @@ func _ready():
 
 #Action fermeture de la fenetre de recrutement
 func _on_btn_close_pressed():
-	global.move_camera = true
+	Global.mouse_in_menu = false
 	# Ferme la fenêtre des détails des héros
 	hero_recruitment_ui.hide()
 
@@ -45,13 +45,13 @@ func create_new_hero(hero_index):
 		heroInstance.position = Vector2(500,475)
 		heroesNode.add_child(heroInstance)
 	
-		var heroContainers = [$ColorRect/VBoxContainer/Hero1, $ColorRect/VBoxContainer/Hero2, $ColorRect/VBoxContainer/Hero3]
+		var heroContainers = [$PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero1, $PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero2, $PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero3]
 		heroContainers[hero_index].get_node("RecruteBtn").disabled = true
 
 #Affiche la liste des hero a recuter dans la fenetre
 func create_heros_liste(refresh):
 	# Conteneurs pour les héros (Hero1, Hero2, Hero3)
-	var heroContainers = [$ColorRect/VBoxContainer/Hero1, $ColorRect/VBoxContainer/Hero2, $ColorRect/VBoxContainer/Hero3]
+	var heroContainers = [$PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero1, $PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero2, $PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero3]
 
 	# Ajoute les détails des héros sélectionnés
 	for i in range(heroContainers.size()):
@@ -77,7 +77,7 @@ func create_heros_liste(refresh):
 
 
 func create_hero_instance(heroInfo) -> Node2D:
-	var heroScene = preload("res://Scenes/Heroes/Hero.tscn")  # Changez cela par le chemin de votre scène de héros
+	var heroScene = preload("res://Scenes/Heroes/hero.tscn")  # Changez cela par le chemin de votre scène de héros
 	var heroInstance = heroScene.instantiate() as Node2D
 	# Configurez les propriétés du héros ici
 	heroInstance.set("name", heroInfo.name)
@@ -91,16 +91,28 @@ func create_hero_instance(heroInfo) -> Node2D:
 	heroInstance.set("hp", heroInfo.hp_max)
 	heroInstance.set("race", heroInfo.race)
 	heroInstance.set("classe", heroInfo.classe)
-	heroInstance.set("idle_animation", heroInfo.animated_skin)
+	heroInstance.set("skin", heroInfo.skin)
 	heroInstance.set("moral", 100)
 	heroInstance.set("rang", "F")
 	heroInstance.set("skill_point", 0)
 	
+	#on ajoute le skin au hero
+	var animation_node = load("res://Scenes/Heroes/SpriteAnimations/"+ str(heroInfo.skin) +".tscn")
+	var animation = animation_node.instantiate()
+	animation.name = "AnimatedSprite2D"
+	heroInstance.add_child(animation)
+	
+	var animation_ui = animation_node.instantiate()
+	animation_ui.name = "Sprite"
+	
+	heroInstance.get_node("CanvasLayer/HeroPanelInfo/HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/VBoxContainer/HeroEquipementUi").add_child(animation_ui)
+	animation_ui.position = Vector2(105,107)
+	animation_ui.scale = Vector2(5,5)
 	return heroInstance
 
 
 func _on_recrut_btn_pressed():
-	global.move_camera = false
+	Global.mouse_in_menu = true
 	# Affiche la fenêtre des détails des héros
 
 	hero_recruitment_ui.show()

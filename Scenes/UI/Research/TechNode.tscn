@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwceq1qv51ja0"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Research/TechNode.gd" id="1_vnnnu"]
+[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="2_8qv0l"]
+
+[node name="TechNode" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vnnnu")
+
+[node name="Button" type="TextureButton" parent="."]
+z_index = 1
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_8qv0l")
+stretch_mode = 0
+
+[node name="ButtonHide" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

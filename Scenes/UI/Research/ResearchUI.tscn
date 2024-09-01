@@ -1,88 +1,276 @@
 [gd_scene load_steps=3 format=3 uid="uid://sbkqulnwaelb"]
 
 [ext_resource type="Script" path="res://Scenes/UI/Research/ResearchUI.gd" id="1_s420v"]
-[ext_resource type="Texture2D" uid="uid://c72ylf32g1qud" path="res://Sprites/Interface/research/background.png" id="2_aog0g"]
+[ext_resource type="PackedScene" uid="uid://bwceq1qv51ja0" path="res://Scenes/UI/Research/TechNode.tscn" id="2_1nxv2"]
 
 [node name="ResearchUi" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+mouse_filter = 1
 script = ExtResource("1_s420v")
 
-[node name="PanelContainer" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_top = 261.0
-offset_right = 240.0
-offset_bottom = 616.0
-grow_horizontal = 2
-color = Color(0.368627, 0.262745, 0.152941, 1)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 374.0
+theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="InfoPanel" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
-offset_right = 240.0
-offset_bottom = 355.0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="DescriptionPanel" type="MarginContainer" parent="HBoxContainer/InfoPanel"]
 layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Titre" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CurrentSearchPanel" type="VBoxContainer" parent="HBoxContainer/InfoPanel/DescriptionPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Titre" type="Label" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
 layout_mode = 2
 text = "Current search"
 
-[node name="CurrentSearchLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "toto"
-
-[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Separator" type="HSeparator" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CurrentSearchLabel" type="Label" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
+visible = false
+layout_mode = 2
+text = "research name"
+horizontal_alignment = 1
+
+[node name="Description" type="TextEdit" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Permet la construction de chambres individuelles pour les aventuriers, améliorant leur moral et repos."
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
+visible = false
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonContainer" type="HBoxContainer" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
+visible = false
 layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StartButton" type="Button" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Start"
 
-[node name="CancelButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CancelButton" type="Button" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer"]
 layout_mode = 2
-text = "Stop"
+size_flags_horizontal = 3
+text = "Cancel
+"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Spacer2" type="Control" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DisplaySearchPanel" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/DisplaySearchPanel"]
+layout_mode = 2
+mouse_filter = 0
+horizontal_scroll_mode = 0
+
+[node name="researchItem" type="Control" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer"]
+custom_minimum_size = Vector2(816, 650)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="recherche_de_forge" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
 layout_mode = 0
-offset_left = 240.0
-offset_top = 261.0
-offset_right = 1152.0
-offset_bottom = 616.0
+offset_left = 115.0
+offset_top = 525.0
+offset_right = 179.0
+offset_bottom = 589.0
+btn_content = "Recherche de forge"
+tech_name = "recherche_de_forge"
+tech_icon = "recherche_de_forge.png"
+description = "Permet de construire une forge pour réparation du matériel et la création arme/armure (rang F)"
+duration = 100
+cost = 60
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+[node name="couture" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 903.0
-offset_bottom = 360.0
+offset_left = 370.0
+offset_top = 525.0
+offset_right = 434.0
+offset_bottom = 589.0
+btn_content = "Couture"
+tech_name = "couture"
+tech_icon = "recherche_de_forge.png"
+description = "Permet de construire salle de tissage et de réparer les armure cuir/tissu et la création (rang F)"
+duration = 100
+cost = 60
 
-[node name="Control" type="Control" parent="Panel/ScrollContainer"]
-custom_minimum_size = Vector2(816, 447)
-layout_mode = 2
+[node name="acier_de_forge" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 425.0
+offset_right = 179.0
+offset_bottom = 489.0
+btn_content = "Acier de forge"
+tech_name = "acier_de_forge"
+tech_icon = "recherche_de_forge.png"
+description = "Permet d'augmenter le tier des arme/armure en fer jusqu’au rang D"
+parents = ["recherche_de_forge"]
+duration = 200
+cost = 120
 
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ScrollContainer/Control"]
-position = Vector2(407, 222)
-texture = ExtResource("2_aog0g")
+[node name="tissage_renforce" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 425.0
+offset_right = 434.0
+offset_bottom = 489.0
+btn_content = "Tissage renforcé"
+tech_name = "tissage_renforce"
+tech_icon = "recherche_de_forge.png"
+description = "Permet d'augmenter le tier des armure tissus/cuir jusqu’au rang D"
+parents = ["couture"]
+duration = 200
+cost = 120
 
-[node name="researchItem" type="Control" parent="Panel/ScrollContainer"]
-custom_minimum_size = Vector2(816, 447)
-layout_mode = 2
+[node name="entrainement_martial" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 325.0
+offset_right = 179.0
+offset_bottom = 389.0
+btn_content = "Entrainement martial"
+tech_name = "entrainement_martial"
+tech_icon = "recherche_de_forge.png"
+description = "Permet la création de la salle d'entraînement"
+parents = ["acier_de_forge"]
+duration = 300
+cost = 180
+
+[node name="entrainement_magique" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 325.0
+offset_right = 434.0
+offset_bottom = 389.0
+btn_content = "Entrainement magique"
+tech_name = "entrainement_magique"
+tech_icon = "recherche_de_forge.png"
+description = "Permet la création de la bibliothèque"
+parents = ["tissage_renforce"]
+duration = 300
+cost = 180
+
+[node name="forge_de_maitre_arme" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 225.0
+offset_right = 179.0
+offset_bottom = 289.0
+btn_content = "Forge de maitre d'arme"
+tech_name = "forge_de_maitre_arme"
+tech_icon = "recherche_de_forge.png"
+description = "Permet la création d’arme/armure (rang C max et amélioration)"
+parents = ["entrainement_martial"]
+duration = 400
+cost = 240
+
+[node name="atelier_armurier_agile" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 225.0
+offset_right = 434.0
+offset_bottom = 289.0
+btn_content = "Atelier d'armurier agile"
+tech_name = "atelier_armurier_agile"
+tech_icon = "recherche_de_forge.png"
+description = "Permet la création d'armures légères,cuir/tissus (rang C max et amélioration)"
+parents = ["entrainement_magique"]
+duration = 400
+cost = 240
+
+[node name="enchantement_equipement" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 125.0
+offset_right = 314.0
+offset_bottom = 189.0
+btn_content = "Enchantement d'equipement"
+tech_name = "enchantement_equipement"
+tech_icon = "recherche_de_forge.png"
+description = "Permet la création de la salle d’enchantement"
+parents = ["atelier_armurier_agile", "forge_de_maitre_arme"]
+duration = 500
+cost = 300
+
+[node name="enclume_de_forgeron" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 25.0
+offset_right = 114.0
+offset_bottom = 89.0
+btn_content = "Enclume de forgeron"
+tech_name = "enclume_de_forgeron"
+tech_icon = "recherche_de_forge.png"
+description = "Permet la création d'armes/armures de rang B (et amélioration)"
+parents = ["enchantement_equipement"]
+duration = 600
+cost = 360
+
+[node name="technique_de_tissage_avance" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 25.0
+offset_right = 314.0
+offset_bottom = 89.0
+btn_content = "Technique de tissage avancée"
+tech_name = "technique_de_tissage_renforce"
+tech_icon = "recherche_de_forge.png"
+description = "\"Permet la création d'armures cuir/tissu. de rang B  (et amélioration)"
+parents = ["enchantement_equipement"]
+duration = 600
+cost = 360
+
+[node name="arme_enchante_avance" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 25.0
+offset_right = 514.0
+offset_bottom = 89.0
+btn_content = "Arme enchantée avancée"
+tech_name = "arme_enchante_avance"
+tech_icon = "recherche_de_forge.png"
+description = "Permet de rechercher davantage d’enchantement pour les armes"
+parents = ["enchantement_equipement"]
+duration = 600
+cost = 360
 
 [node name="ToolTip" type="PanelContainer" parent="."]
 visible = false
+z_index = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -99,5 +287,9 @@ layout_mode = 2
 text = "zerze
 "
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[node name="ColorRect" type="ColorRect" parent="ToolTip"]
+layout_mode = 2
+color = Color(0.38, 0.38, 0.38, 0.756863)
+
+[connection signal="pressed" from="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

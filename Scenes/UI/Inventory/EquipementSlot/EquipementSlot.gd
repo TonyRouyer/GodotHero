@@ -11,8 +11,9 @@ enum Type{
 }
 @export var slot_type:Type = Type.Default
 @onready var icon = $Icon
-@onready var root_hero_node = get_node("../../..")
-@onready var inventory_node = get_node("../../../GlobalInventory")
+@onready var root_hero_node = get_node("../../../../../../../../../../HeroInventorySystem")
+@onready var inventory_node = get_node("../../../../../../../../../../../../UICanvasLayer/Menu/GlobalInventory")
+
 
 #setup the slot data
 func set_slot(data:Dictionary):
@@ -25,7 +26,8 @@ func set_slot(data:Dictionary):
 	icon.region_enabled = true
 	icon.region_rect = get_item_texture(data.item_name)
 	icon.position = Vector2(16,16)
-	
+
+
 #begin of a drag from this slot generate data needed
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if root_hero_node.equipment[name].is_empty():
@@ -44,25 +46,27 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	data.dragged = self
 	return data
 
+
 #check if data can be dropped on this slot
-#useful for equipment i.e swords can only go in weapon slot
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	if GameData.get_item_type(data.item_name) == slot_type:
 		return true
 	return false
-	
+
+
 #drop the data on this slot
-#make all changes here 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if slot_type != data.dragged.slot_type: #depuis l'inventaire
 		root_hero_node.equip_item(data.from_slot,name,data) 
 	else: #depuis l'equipement
 		root_hero_node.equip_item(data.from_slot,name,data, false)
-		
+
+
 #end of a drag
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END:
 		modulate = Color(1,1,1,1)
+
 
 func get_item_texture(item_name: String):
 	var icon_path = GameData.get_icon_path(item_name)
@@ -75,10 +79,12 @@ func get_item_texture(item_name: String):
 		var region = Rect2(x, y, w, h)
 		return region
 
+
 # Handle double click to equip item
 func _gui_input(event):
 	if event is InputEventMouseButton and event.double_click  and not root_hero_node.equipment[name].is_empty():
 		desequip_item_double_click()
+
 
 func desequip_item_double_click():
 	var item = root_hero_node.equipment[name]

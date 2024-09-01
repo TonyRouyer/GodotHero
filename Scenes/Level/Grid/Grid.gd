@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var tile_size = 16
-@export var grid_width = 124
-@export var grid_height = 64
+@export var grid_width = 72
+@export var grid_height = 41
 @export var grid_color = Color(1, 1, 1, 0.3)
 
 func _ready():

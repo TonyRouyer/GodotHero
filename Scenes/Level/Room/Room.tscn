@@ -1,15 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://cikud7p4b827j"]
 
-[ext_resource type="Script" path="res://Scenes/Level/Room/Room.gd" id="1_hhtpd"]
-[ext_resource type="PackedScene" uid="uid://w5yfrp7m2045" path="res://Scenes/Level/Room/Previsu.tscn" id="2_exrah"]
-[ext_resource type="PackedScene" uid="uid://dqthqsu00qxxw" path="res://Scenes/Level/Room/RoomUtilityFunctions.tscn" id="3_6pcoo"]
+[ext_resource type="Script" path="res://Scenes/Level/Room/room.gd" id="1_hhtpd"]
+[ext_resource type="PackedScene" uid="uid://w5yfrp7m2045" path="res://Scenes/Level/Previsualisation/previsu.tscn" id="2_exrah"]
+[ext_resource type="PackedScene" uid="uid://l7as36yvvpwx" path="res://Scenes/Level/Grid/grid.tscn" id="4_xp43g"]
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_hhtpd")
 
 [node name="Previsu" parent="." instance=ExtResource("2_exrah")]
 
-[node name="RoomUtilityFunctions" parent="." instance=ExtResource("3_6pcoo")]
+[node name="Grid" parent="." instance=ExtResource("4_xp43g")]
+z_index = 1
 
 [node name="Panel" type="PanelContainer" parent="."]
 visible = false

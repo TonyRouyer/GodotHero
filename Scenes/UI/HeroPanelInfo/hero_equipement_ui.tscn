@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://d36fl7160ynpf"]
+
+[ext_resource type="PackedScene" uid="uid://6ybkobn7mivj" path="res://Scenes/UI/Inventory/EquipementSlot/EquipementSlot.tscn" id="1_fhwyn"]
+[ext_resource type="Texture2D" uid="uid://chsnbbbar83v8" path="res://Sprites/Interface/CharacterBox_56x57.png" id="1_pnfah"]
+[ext_resource type="PackedScene" uid="uid://55fs1nuj667g" path="res://Scenes/Heroes/SpriteAnimations/mage_animation1.tscn" id="2_voa1s"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HeroEquipementUi" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 212.0
+offset_bottom = 184.0
+texture = ExtResource("1_pnfah")
+
+[node name="EquipementSlot0" parent="HeroEquipementUi" instance=ExtResource("1_fhwyn")]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 15.0
+offset_right = 197.0
+offset_bottom = 47.0
+slot_type = 1
+
+[node name="EquipementSlot1" parent="HeroEquipementUi" instance=ExtResource("1_fhwyn")]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 57.0
+offset_right = 197.0
+offset_bottom = 89.0
+slot_type = 4
+
+[node name="EquipementSlot2" parent="HeroEquipementUi" instance=ExtResource("1_fhwyn")]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 97.0
+offset_right = 197.0
+offset_bottom = 129.0
+slot_type = 5
+
+[node name="EquipementSlot3" parent="HeroEquipementUi" instance=ExtResource("1_fhwyn")]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 137.0
+offset_right = 197.0
+offset_bottom = 169.0
+slot_type = 6
+
+[node name="EquipementSlot4" parent="HeroEquipementUi" instance=ExtResource("1_fhwyn")]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 47.0
+offset_bottom = 47.0
+
+[node name="EquipementSlot5" parent="HeroEquipementUi" instance=ExtResource("1_fhwyn")]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 57.0
+offset_right = 47.0
+offset_bottom = 89.0
+
+[node name="EquipementSlot6" parent="HeroEquipementUi" instance=ExtResource("1_fhwyn")]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 97.0
+offset_right = 47.0
+offset_bottom = 129.0
+slot_type = 3
+
+[node name="EquipementSlot7" parent="HeroEquipementUi" instance=ExtResource("1_fhwyn")]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 137.0
+offset_right = 47.0
+offset_bottom = 169.0
+
+[node name="MageAnimation1" parent="." instance=ExtResource("2_voa1s")]
+visible = false
+position = Vector2(105, 107)
+scale = Vector2(5, 5)

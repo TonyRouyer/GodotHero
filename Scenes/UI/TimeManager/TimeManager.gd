@@ -68,12 +68,12 @@ func play_continuous_animation():
 func _on_btn_pause_pressed():
 	selecteur.position = Vector2(194,125)
 	day_timer.paused = true
-	global.game_paused = true
+	Global.game_paused = true
 
 
 func _on_btn_play_pressed():
 	selecteur.position = Vector2(263,125)
 	day_timer.paused = false
-	global.game_paused = false
+	Global.game_paused = false
 	
 
