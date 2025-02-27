@@ -1,9 +1,10 @@
 extends Node2D
 
-signal hero_resting(hero)
+@onready var timer = $Timer
 
 @export var node_name:String
 @export var rotate_state:int
+@export var cost:int = 20
 @export var views :Dictionary = {
 	"front": [64,0,32,16],
 	"right_side": [96,0,16,32],

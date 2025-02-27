@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://bknsgqg3i8p51"]
+
+[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_g6mk7"]
+[ext_resource type="Script" path="res://Scenes/Research/new code/research_data.gd" id="2_bw1ic"]
+[ext_resource type="Resource" uid="uid://ctkdk1is1ojj0" path="res://Scenes/Research/new code/ResearchResources/logistique_de_stockage_avancee.tres" id="3_8qdrs"]
+
+[resource]
+script = ExtResource("2_bw1ic")
+research_name = "Recyclage intégral"
+serialised_name = "recyclage_integral"
+research_description = "Permet recyclé equipement/arme et récupérer une partie des ressource première (100%)"
+research_level = 10
+research_column = 4.0
+research_icon = ExtResource("1_g6mk7")
+research_prerequsites = Array[ExtResource("2_bw1ic")]([ExtResource("3_8qdrs")])
+research_cost = 1000
+research_duration = 600

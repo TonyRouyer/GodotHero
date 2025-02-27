@@ -1,20 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjlfs7504hewa"]
+[gd_scene load_steps=14 format=3 uid="uid://bjlfs7504hewa"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_ivlpv"]
-[ext_resource type="PackedScene" uid="uid://bfxhmp8vcao0l" path="res://Scenes/UI/HeroRecruitement/HeroRecruitmentUI.tscn" id="1_kwy7a"]
+[ext_resource type="PackedScene" uid="uid://bfxhmp8vcao0l" path="res://Scenes/Heroes/HeroRecruitement/hero_recruitment_ui.tscn" id="1_kwy7a"]
 [ext_resource type="PackedScene" uid="uid://deiclps377nb0" path="res://Scenes/Level/level.tscn" id="1_nits4"]
-[ext_resource type="PackedScene" uid="uid://1sl61klypsv7" path="res://Scenes/UI/TimeManager/TimeManager.tscn" id="4_f3dba"]
+[ext_resource type="PackedScene" uid="uid://1sl61klypsv7" path="res://Scenes/Divers/TimeManager/time_manager.tscn" id="4_f3dba"]
 [ext_resource type="Script" path="res://Scenes/Divers/game_camera.gd" id="5_ffsep"]
-[ext_resource type="PackedScene" uid="uid://tht5m577dqw" path="res://Scenes/UI/ConstructionMode/ConstructionUI.tscn" id="7_wxrls"]
-[ext_resource type="PackedScene" uid="uid://cywxfe684f010" path="res://Scenes/UI/Inventory/GlobalInventory.tscn" id="8_oam5w"]
-[ext_resource type="PackedScene" uid="uid://sbkqulnwaelb" path="res://Scenes/UI/Research/ResearchUI.tscn" id="9_0bj76"]
+[ext_resource type="PackedScene" uid="uid://tht5m577dqw" path="res://Scenes/Level/ConstructionMode/ConstructionUI.tscn" id="7_wxrls"]
+[ext_resource type="PackedScene" uid="uid://cywxfe684f010" path="res://Scenes/Inventory/global_inventory.tscn" id="8_oam5w"]
+[ext_resource type="PackedScene" uid="uid://sbkqulnwaelb" path="res://Scenes/Research/research_ui.tscn" id="9_0bj76"]
 [ext_resource type="PackedScene" uid="uid://cikud7p4b827j" path="res://Scenes/Level/Room/room.tscn" id="9_jb1iq"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_ebrt1"]
-vertices = PackedVector2Array(1142, 642, -3, 641, 0, 13, 1137, 12)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1153, 0, 1153, 655, 0, 656)])
-source_geometry_group_name = &"navigation_polygon_source_group"
+[ext_resource type="PackedScene" uid="uid://ci3rc2qtbagbt" path="res://Scenes/Heroes/HeroPlanning/hero_planning.tscn" id="10_w81yg"]
+[ext_resource type="PackedScene" uid="uid://cpc3326l27uf4" path="res://Scenes/Heroes/HeroGestion/hero_gestion.tscn" id="11_2g5h8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54aik"]
 bg_color = Color(0.576471, 0.466667, 0.215686, 1)
@@ -26,7 +22,6 @@ bg_color = Color(0.576471, 0.466667, 0.215686, 1)
 script = ExtResource("1_ivlpv")
 
 [node name="GameCamera" type="Camera2D" parent="."]
-visible = false
 limit_left = -150
 limit_top = -150
 limit_right = 2200
@@ -34,18 +29,15 @@ limit_bottom = 1100
 script = ExtResource("5_ffsep")
 
 [node name="TileMap" parent="." instance=ExtResource("1_nits4")]
+process_mode = 3
 
 [node name="Heroes" type="Node2D" parent="."]
 
 [node name="Room" parent="." instance=ExtResource("9_jb1iq")]
-
-[node name="Navigation2D" type="NavigationRegion2D" parent="."]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_ebrt1")
-constrain_avoidance = true
-avoidance_layers = 0
+process_mode = 3
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="TopMenu" type="Control" parent="UICanvasLayer"]
 layout_mode = 3
@@ -57,7 +49,8 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 30.0
 
-[node name="Panel" type="Panel" parent="UICanvasLayer/TopMenu/HBoxContainer"]
+[node name="TopPanel" type="Panel" parent="UICanvasLayer/TopMenu/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -85,49 +78,10 @@ layout_mode = 2
 text = "Menu"
 
 [node name="GoldLabel" type="Label" parent="UICanvasLayer/TopMenu/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Gold : 0"
-
-[node name="Menu" type="Control" parent="UICanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HeroRecruitmentUI" parent="UICanvasLayer/Menu" instance=ExtResource("1_kwy7a")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 293.0
-offset_top = 164.0
-offset_right = 293.0
-offset_bottom = 164.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GlobalInventory" parent="UICanvasLayer/Menu" instance=ExtResource("8_oam5w")]
-visible = false
-layout_mode = 1
-offset_left = -1.0
-offset_top = 123.0
-offset_right = -1.0
-offset_bottom = 123.0
-size_flags_vertical = 4
-
-[node name="ResearchUi" parent="UICanvasLayer/Menu" instance=ExtResource("9_0bj76")]
-visible = false
-layout_mode = 0
-offset_top = 242.0
-offset_bottom = 242.0
 
 [node name="BottomMenu" type="Control" parent="UICanvasLayer"]
 layout_mode = 3
@@ -144,7 +98,8 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 40.0
 
-[node name="Panel" type="Panel" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
+[node name="BottomPanel" type="Panel" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -177,6 +132,71 @@ text = "Inventory"
 layout_mode = 2
 text = "Research"
 
+[node name="PlanningBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
+layout_mode = 2
+text = "Planning"
+
+[node name="GestionHeroBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
+layout_mode = 2
+text = "Gestion heros"
+
+[node name="Menu" type="Control" parent="UICanvasLayer"]
+layout_mode = 3
+anchor_top = 0.0462963
+anchor_right = 1.0
+anchor_bottom = 0.939815
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HeroRecruitmentUI" parent="UICanvasLayer/Menu" instance=ExtResource("1_kwy7a")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -150.0
+offset_right = -289.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GlobalInventory" parent="UICanvasLayer/Menu" instance=ExtResource("8_oam5w")]
+visible = false
+layout_mode = 1
+offset_left = -1.0
+offset_top = 123.0
+offset_right = -1.0
+offset_bottom = 123.0
+size_flags_vertical = 4
+
+[node name="ResearchUi" parent="UICanvasLayer/Menu" instance=ExtResource("9_0bj76")]
+visible = false
+layout_mode = 0
+offset_top = 204.0
+offset_bottom = 204.0
+
+[node name="HeroPlanning" parent="UICanvasLayer/Menu" instance=ExtResource("10_w81yg")]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -242.0
+offset_right = 0.0
+offset_bottom = 579.0
+grow_horizontal = 0
+
+[node name="HeroGestion" parent="UICanvasLayer/Menu" instance=ExtResource("11_2g5h8")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/RecrutBtn" to="UICanvasLayer/Menu/HeroRecruitmentUI" method="_on_recrut_btn_pressed"]
 [connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/OpenInvBtn" to="UICanvasLayer/Menu/GlobalInventory" method="_on_open_inv_btn_pressed"]
 [connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/SearchBtn" to="UICanvasLayer/Menu/ResearchUi" method="_open_btn_pressed"]
+[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/PlanningBtn" to="UICanvasLayer/Menu/HeroPlanning" method="_on_planning_btn_pressed"]
+[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/GestionHeroBtn" to="UICanvasLayer/Menu/HeroGestion" method="_on_hero_gestion_btn_pressed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cywxfe684f010"]
+
+[ext_resource type="Script" path="res://Scenes/Inventory/global_inventory.gd" id="1_hdf6w"]
+
+[node name="GlobalInventory" type="Control" groups=["inventory"]]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_hdf6w")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 350.0
+offset_bottom = 350.0
+horizontal_scroll_mode = 0
+
+[node name="ItemGrid" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+columns = 5

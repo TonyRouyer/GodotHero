@@ -21,7 +21,9 @@ region_rect = Rect2(64, 0, 32, 16)
 position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_fugfa")
 
-[node name="Position" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(21, 0)
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Hero_body_entered"]

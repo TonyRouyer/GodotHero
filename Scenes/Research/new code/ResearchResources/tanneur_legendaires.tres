@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://b2d7oyqjoocy4"]
+
+[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_fpgiw"]
+[ext_resource type="Script" path="res://Scenes/Research/new code/research_data.gd" id="2_iiu4f"]
+[ext_resource type="Resource" uid="uid://cr27fe68wkkbh" path="res://Scenes/Research/new code/ResearchResources/maîtrise_de_l_enchantement.tres" id="3_jq5fr"]
+
+[resource]
+script = ExtResource("2_iiu4f")
+research_name = "Tanneur légendaire"
+serialised_name = "tanneur_legendaires"
+research_description = "Maîtrise la fabrication d ‘armure cuir/tissu rang S"
+research_level = 10
+research_column = 2.0
+research_icon = ExtResource("1_fpgiw")
+research_prerequsites = Array[ExtResource("2_iiu4f")]([ExtResource("3_jq5fr")])
+research_cost = 1000
+research_duration = 600

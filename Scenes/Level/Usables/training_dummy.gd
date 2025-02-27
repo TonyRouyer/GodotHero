@@ -1,12 +1,11 @@
 extends Node2D
 
-signal hero_trained(hero)
-
 @onready var timer = $Timer
 
-@export var node_name:String
+
+@export var node_name:String = "training_dummy"
 @export var rotate_state:int
-@export var cost:int
+@export var cost:int = 20
 @export var views :Dictionary = {
 	"front": [64,32,32,16],
 	"right_side": [96,32,16,32],
@@ -27,36 +26,47 @@ func _ready():
 
 
 func _on_Hero_body_entered(body):
+	var marker = $Marker2D
 	if body is Hero:
 		hero = body
-		#hero.position = position + Vector2(9,2)
-		hero.flip_sprite(false)
-		hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_side")
+		hero.set_physics_process(false)
+		hero.position = marker.global_position - Vector2(0,6)
+		used = true
+		match rotate_state:
+			0:
+				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_left")
+			1:
+				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_up")
+			2:
+				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_right")
+			3:
+				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_down")
 		timer.start()
 		
 func _on_area_2d_body_exited(_body):
-	used = false
-	if hero != null:
-		hero.flip_sprite(false)
 	hero = null
-	
+	used = false
+
+
 func _on_timer_timeout():
 	if hero != null:
 		hero.strength += 1
-		print(hero.strength)
+		hero.fatigue -= 1
 
 
 func rotate_item(side):
 	var sprite = $Sprite2D
 	var collision = $Area2D/CollisionShape2D
-
+	var marker = $Marker2D
+	
 	if views.has(side):
 		var view = views[side]
 		var pos = Vector2(view[0], view[1])
 		var size = Vector2(view[2], view[3])
+		var rect_shape = RectangleShape2D.new()
+		rect_shape.size = size
 		
-		collision.position = collision_pos[side]
+
+		collision.set_shape(rect_shape)
+		marker.position = collision_pos[side]
 		sprite.region_rect = Rect2(pos, size) 
-
-
-

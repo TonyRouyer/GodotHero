@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpc3326l27uf4"]
+
+[ext_resource type="Script" path="res://Scenes/Heroes/HeroGestion/hero_gestion.gd" id="1_dh787"]
+
+[node name="HeroGestion" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_dh787")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -125.0
+offset_right = 280.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="ConfirmationPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -40.0
+offset_right = 62.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ConfirmationPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmationPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ConfirmationPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Yes"
+
+[node name="Button2" type="Button" parent="ConfirmationPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "No"
+
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/ScrollContainer" to="." method="_mouse_in_menu"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/ScrollContainer" to="." method="_mouse_out_menu"]
+[connection signal="pressed" from="ConfirmationPanel/MarginContainer/HBoxContainer/Button" to="." method="_on_confirm_fire"]
+[connection signal="pressed" from="ConfirmationPanel/MarginContainer/HBoxContainer/Button2" to="." method="_on_cancel_fire"]

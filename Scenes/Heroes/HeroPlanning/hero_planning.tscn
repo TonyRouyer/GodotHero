@@ -1,0 +1,351 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci3rc2qtbagbt"]
+
+[ext_resource type="PackedScene" uid="uid://biecrs1xmkof7" path="res://Scenes/Heroes/HeroPlanning/planning_item.tscn" id="2_b57n3"]
+[ext_resource type="Script" path="res://Scenes/Heroes/HeroPlanning/hero_planning.gd" id="2_w2pkf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmxfm"]
+bg_color = Color(0.374139, 0.374139, 0.374139, 1)
+
+[node name="HeroPlanning" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 242.0
+offset_bottom = 590.0
+mouse_filter = 1
+script = ExtResource("2_w2pkf")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 242.0
+offset_bottom = 590.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_jmxfm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Planning"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HoursContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label24" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "0 h"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "1 h"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "2 h"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "3 h"
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "4 h"
+
+[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "5 h"
+
+[node name="Label6" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "6 h"
+
+[node name="Label7" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "7 h"
+
+[node name="Label8" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "8 h"
+
+[node name="Label9" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "9 h"
+
+[node name="Label10" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "10 h"
+
+[node name="Label11" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "11 h"
+
+[node name="Label12" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "12 h"
+
+[node name="Label13" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "13 h"
+
+[node name="Label14" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "14 h"
+
+[node name="Label15" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "15 h"
+
+[node name="Label16" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "16 h"
+
+[node name="Label17" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "17 h"
+
+[node name="Label18" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "18 h"
+
+[node name="Label19" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "19 h"
+
+[node name="Label20" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "20 h"
+
+[node name="Label21" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "21 h"
+
+[node name="Label22" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "22 h"
+
+[node name="Label23" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/HoursContainer"]
+layout_mode = 2
+text = "23 h"
+
+[node name="ActivityContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PlanningItem24" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+
+[node name="PlanningItem" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 1
+
+[node name="PlanningItem2" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 2
+
+[node name="PlanningItem3" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 3
+
+[node name="PlanningItem4" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 4
+
+[node name="PlanningItem5" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 5
+
+[node name="PlanningItem6" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 6
+
+[node name="PlanningItem7" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 7
+
+[node name="PlanningItem8" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 8
+
+[node name="PlanningItem9" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 9
+
+[node name="PlanningItem10" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 10
+
+[node name="PlanningItem11" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 11
+
+[node name="PlanningItem12" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 12
+
+[node name="PlanningItem13" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 13
+
+[node name="PlanningItem14" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 14
+
+[node name="PlanningItem15" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 15
+
+[node name="PlanningItem16" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 16
+
+[node name="PlanningItem17" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 17
+
+[node name="PlanningItem18" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 18
+
+[node name="PlanningItem19" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 19
+
+[node name="PlanningItem20" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 20
+
+[node name="PlanningItem21" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 21
+
+[node name="PlanningItem22" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 22
+
+[node name="PlanningItem23" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+hour = 23
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ActivitySelectorContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PlanningItem" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer2/ActivitySelectorContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "sleep"
+is_selector = true
+
+[node name="PlanningItem2" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer2/ActivitySelectorContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "eat"
+is_selector = true
+
+[node name="PlanningItem3" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer2/ActivitySelectorContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "train"
+is_selector = true
+
+[node name="PlanningItem4" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer2/ActivitySelectorContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+is_selector = true
+
+[node name="HourTracker" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 112.0
+offset_top = 76.0
+offset_right = 212.0
+offset_bottom = 96.0
+mouse_filter = 2
+
+[node name="Line2D" type="Line2D" parent="HourTracker"]
+position = Vector2(0, 11)
+points = PackedVector2Array(0, 0, 50, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="HourTracker"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 1.0
+offset_right = 97.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "00h 00"
+vertical_alignment = 1

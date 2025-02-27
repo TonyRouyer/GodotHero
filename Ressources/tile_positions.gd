@@ -4,20 +4,20 @@ extends Node
 
 #Id du terrain (autotile)
 const WALL_TILES = {
-	"wooden_wall" : Vector2(0, 0),
-	"stone_wall" : Vector2(4, 0),
+	"wooden_wall" : {"index": 0, "cost": 10},
+	"stone_wall" : {"index": 1, "cost": 15}
 }
 
 const DOOR_TILES = {
-	"wooden_door": Vector2(9, 3),
-	"reinforced_door": Vector2(9, 2)
+	"wooden_door": {"pos": Vector2(9, 3), "cost": 20},
+	"reinforced_door": {"pos": Vector2(9, 2), "cost": 25},
 }
 
 const FLOOR_TILES = {
-	"wooden_floor": Vector2(8, 3),
-	"stone_floor": Vector2(8, 1),
-	"dirt": Vector2(8, 0),
-	"grass": Vector2(6, 5)
+	"wooden_floor": {"pos": Vector2(8, 3), "cost": 10},
+	"stone_floor": {"pos": Vector2(8, 1), "cost": 15},
+	"dirt": {"pos": Vector2(8, 0), "cost": 8},
+	"grass":{"pos": Vector2(6, 5), "cost": 0},
 	
 }
 
@@ -26,5 +26,8 @@ const USABLE_OBJECTS = {
 	"bed": preload("res://Scenes/Level/Usables/bed.tscn"),
 	"table": preload("res://Scenes/Level/Usables/table.tscn"),
 	"training_dummy": preload("res://Scenes/Level/Usables/training_dummy.tscn"),
-	"anvil": preload("res://Scenes/Level/Usables/anvil.tscn")
+	"anvil": preload("res://Scenes/Level/Usables/anvil.tscn"),
+	"weight": preload("res://Scenes/Level/Usables/weight.tscn"),
+	"archery_target": preload("res://Scenes/Level/Usables/archery_target.tscn"),
+	"magical_library": preload("res://Scenes/Level/Usables/magical_library.tscn"),
 }

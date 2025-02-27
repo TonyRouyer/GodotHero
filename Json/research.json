@@ -279,6 +279,13 @@
 		"cost": 700,
 		"duration": 420
 	},
+	
+	
+	
+	
+	
+	
+	
 	"maîtrise_de_la_forge_haute_qualité": {
 		"research_name": "Maîtrise de la Forge Haute Qualité",
 		"level": 8,
@@ -369,8 +376,8 @@
 		"cost": 1000,
 		"duration": 600
 	},
-	"couturier_légendaires": {
-		"research_name": "Couturier Légendaires",
+	"tanneur_légendaire": {
+		"research_name": "Tanneur Légendaire",
 		"level": 10,
 		"pos": [752,96],
 		"icon": "recherche_de_forge.png",

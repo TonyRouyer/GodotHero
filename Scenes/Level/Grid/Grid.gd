@@ -1,14 +1,16 @@
 extends Node2D
 
-@export var tile_size = 16
-@export var grid_width = 72
-@export var grid_height = 41
-@export var grid_color = Color(1, 1, 1, 0.3)
+@export var tile_size : int = 16
+@export var grid_width : int = 72
+@export var grid_height : int = 41
+@export var grid_color : Color = Color(1, 1, 1, 0.3)
 
-func _ready():
+
+func _ready() -> void:
 	queue_redraw()
 
-func _draw():
+
+func _draw() -> void:
 	var width = grid_width * tile_size
 	var height = grid_height * tile_size
 	

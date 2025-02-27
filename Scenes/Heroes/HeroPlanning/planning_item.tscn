@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://biecrs1xmkof7"]
+
+[ext_resource type="Script" path="res://Scenes/Heroes/HeroPlanning/planning_item.gd" id="1_8ql0y"]
+[ext_resource type="Texture2D" uid="uid://b6dx8mryxu7ey" path="res://Sprites/Interface/panel_hover.png" id="2_k21vm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7legu"]
+texture = ExtResource("2_k21vm")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[node name="PlanningItem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 20.0
+mouse_filter = 1
+script = ExtResource("1_8ql0y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 20.0
+mouse_filter = 1
+color = Color(0.364706, 0.94902, 0.364706, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.27451, 0.141176, 0.141176, 1)
+text = "Free"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hover" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 51.0
+offset_bottom = 21.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_7legu")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

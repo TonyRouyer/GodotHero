@@ -1,3 +1,4 @@
+class_name HeroData
 extends Resource
 
 # Définition des listes de noms
@@ -51,12 +52,8 @@ const RACES = ["Human", "Orc"]
 const CLASSES = ["Mage", "Warrior"]
 
 
-
-func get_random_hero():
+func get_random_hero() -> Dictionary:
 	var hero = {}
-	
-	# Définir un niveau de base
-	hero.level = 1
 	
 	# Définir une race aléatoire
 	hero.race = RACES[randi() % RACES.size()]
@@ -70,13 +67,15 @@ func get_random_hero():
 	else:
 		hero.name = ORC_MALE_NAMES[randi() % ORC_MALE_NAMES.size()]
 		
-	#Definir un skin aleatoire en fonction de la classe
-	if hero.classe == "Warrior":
-		var warrior_skin = ["warrior_animation1", "warrior_animation2", "warrior_animation3"]
-		hero.skin = warrior_skin.pick_random()
-	elif hero.classe == "Mage":
-		var mage_skin = ["mage_animation1", "mage_animation2"]
-		hero.skin = mage_skin.pick_random()
+	#Definir un skin aleatoire
+	hero.skin = "male_skin1"
+	
+	#if hero.classe == "Warrior":
+		#var warrior_skin = ["warrior_animation1", "warrior_animation2", "warrior_animation3"]
+		#hero.skin = warrior_skin.pick_random()
+	#elif hero.classe == "Mage":
+		#var mage_skin = ["mage_animation1", "mage_animation2"]
+		#hero.skin = mage_skin.pick_random()
 		
 	hero.strength = randi_range(3,15)
 	hero.defense = randi_range(3,15)
@@ -86,9 +85,9 @@ func get_random_hero():
 	hero.hp_max = calculate_max_hp(hero)
 	hero.hp = hero.hp_max
 	return hero
-	
+
+
 func calculate_max_hp(hero_stats: Dictionary) -> int:
 	var base_hp = 100
-
 	var hp_max = base_hp + (hero_stats["strength"] * 2) + (hero_stats["defense"] * 1.5) 
 	return hp_max
