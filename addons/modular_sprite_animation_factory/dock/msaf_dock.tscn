@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dh4eckdue2vu"]
 
-[ext_resource type="Script" path="res://addons/modular_sprite_animation_factory/dock/msaf_dock.gd" id="1_0o686"]
+[ext_resource type="Script" uid="uid://fe3wsji1ku0y" path="res://addons/modular_sprite_animation_factory/dock/msaf_dock.gd" id="1_0o686"]
 
 [node name="MSAF" type="Control"]
 layout_mode = 3

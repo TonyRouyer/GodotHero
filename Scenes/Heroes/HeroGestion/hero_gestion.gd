@@ -8,7 +8,7 @@ var hero: Hero
 
 func _ready() -> void:
 	add_to_group("UI")
-	var slider = scroll_container.get_node("_v_scroll")
+	#var slider = scroll_container.get_node("_v_scroll")
 
 
 #Affiche/Masque et met a jour le contenue de la fenettre de gestion des hero
@@ -16,6 +16,7 @@ func _on_hero_gestion_btn_pressed() -> void:
 	if !self.visible:
 		GameData.hide_ui()
 		populate()
+		GameData.construction_type = ""
 	self.visible = !self.visible
 	GameData.menu_open = !GameData.menu_open
 

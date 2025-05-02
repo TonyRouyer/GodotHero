@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://b6idg6oib3uxb"]
+
+[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_4jim5"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_tvtmf"]
+[ext_resource type="Resource" uid="uid://b8vfuk2jrulyj" path="res://Scenes/Research/ResearchResources/techniques_de_cuisine_avancees.tres" id="3_2xm1s"]
+
+[resource]
+script = ExtResource("2_tvtmf")
+research_name = "Soin de base"
+serialised_name = "soin_de_base"
+research_description = "Permet la création d’une infirmerie"
+research_level = 3
+research_column = 5.0
+research_icon = ExtResource("1_4jim5")
+research_prerequsites = Array[ExtResource("2_tvtmf")]([ExtResource("3_2xm1s")])
+research_cost = 300
+research_duration = 180

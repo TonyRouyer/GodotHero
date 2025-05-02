@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://dwgbgt8f0h2hk"]
+
+[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_k0tcq"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_jndbq"]
+[ext_resource type="Resource" uid="uid://bk3w4xsyduwxl" path="res://Scenes/Research/ResearchResources/magie_des_runes.tres" id="3_jyg0h"]
+
+[resource]
+script = ExtResource("2_jndbq")
+research_name = "Maitrise de la forge de haute qualité"
+serialised_name = "maitrise_de_la_forge_haute_qualite"
+research_description = "Permet la création d'armes/armures de rang A (et amélioration)"
+research_level = 8
+research_column = 1.0
+research_icon = ExtResource("1_k0tcq")
+research_prerequsites = Array[ExtResource("2_jndbq")]([ExtResource("3_jyg0h")])
+research_cost = 800
+research_duration = 480

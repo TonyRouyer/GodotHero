@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://62ma5xmxbosw"]
+
+[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_re6cc"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_52oxi"]
+[ext_resource type="Resource" uid="uid://dgxf7dtxiwvjs" path="res://Scenes/Research/ResearchResources/stockage.tres" id="3_apykr"]
+
+[resource]
+script = ExtResource("2_52oxi")
+research_name = "Gestion avancée des resources"
+serialised_name = "gestion_avancee_des_ressources"
+research_description = "Réduit le coups pour la création d'équipement (-25%)"
+research_level = 3
+research_column = 4.0
+research_icon = ExtResource("1_re6cc")
+research_prerequsites = Array[ExtResource("2_52oxi")]([ExtResource("3_apykr")])
+research_cost = 300
+research_duration = 180

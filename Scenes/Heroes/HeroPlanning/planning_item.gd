@@ -37,6 +37,9 @@ func set_data() -> void:
 		"free":
 			activity_color = Color.html("#5df25d")
 			activity_text = "Free"
+		"work":
+			activity_color = Color.html("#b9db0b")
+			activity_text = "Work"
 	color_rect.color = activity_color
 	label.text = activity_text
 

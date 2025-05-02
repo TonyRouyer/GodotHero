@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://btiy0kuv5d03e"]
+
+[ext_resource type="Script" uid="uid://b4gnh4wg7c1uk" path="res://Scenes/Heroes/HeroLogique/Pathfinding/hero_pathfinding.gd" id="1_cnc1h"]
+
+[node name="HeroPathfinding" type="Node2D"]
+script = ExtResource("1_cnc1h")
+
+[node name="StuckCheckTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 8.0
+path_max_distance = 16.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
+
+[connection signal="timeout" from="StuckCheckTimer" to="." method="_on_timer_timeout"]
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_hero_navigation_finished"]

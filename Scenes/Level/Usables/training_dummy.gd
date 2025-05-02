@@ -1,72 +1,62 @@
 extends Node2D
 
-@onready var timer = $Timer
-
-
 @export var node_name:String = "training_dummy"
-@export var rotate_state:int
-@export var cost:int = 20
-@export var views :Dictionary = {
-	"front": [64,32,32,16],
-	"right_side": [96,32,16,32],
-	"back": [64,48,32,16],
-	"left_side": [112,32,16,32]
-}
-var collision_pos :Dictionary = {
-	"front": Vector2(6.5,2),
-	"right_side": Vector2(1,10),
-	"back": Vector2(-7,2), 
-	"left_side":  Vector2(1,-4)
-}
+@export var rotate_state:int # 1: Front / 2: Right / 3: Back / 4: Left
+@export var cost:int = 40
 var used: bool = false
-var hero:Hero
-
-func _ready():
-	timer.wait_time = 5
+var x_size: int
+var y_size: int
 
 
-func _on_Hero_body_entered(body):
+func use(hero : Hero):
 	var marker = $Marker2D
-	if body is Hero:
-		hero = body
+	if hero:
 		hero.set_physics_process(false)
-		hero.position = marker.global_position - Vector2(0,6)
-		used = true
+		var animation_player = hero.get_node("AnimatedSprite2D/AnimationPlayer")
+		hero.position = marker.global_position
+		var animation_name: String = "" 
 		match rotate_state:
 			0:
-				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_left")
+				animation_name = "hit_down"
 			1:
-				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_up")
+				animation_name = "hit_left"
 			2:
-				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_right")
+				animation_name = "hit_up"
 			3:
-				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_down")
-		timer.start()
-		
-func _on_area_2d_body_exited(_body):
-	hero = null
+				animation_name = "hit_right"
+		animation_player.play(animation_name) 
+
+
+func exit(hero: Hero):
+	print("exit ", self.name)
+	if hero:
+		var hero_sprite = hero.get_node("AnimatedSprite2D/Skin")
+		hero_sprite.flip_h = false
 	used = false
 
 
-func _on_timer_timeout():
-	if hero != null:
-		hero.strength += 1
-		hero.fatigue -= 1
-
-
 func rotate_item(side):
-	var sprite = $Sprite2D
-	var collision = $Area2D/CollisionShape2D
-	var marker = $Marker2D
-	
-	if views.has(side):
-		var view = views[side]
-		var pos = Vector2(view[0], view[1])
-		var size = Vector2(view[2], view[3])
-		var rect_shape = RectangleShape2D.new()
-		rect_shape.size = size
+	for view in self.get_children():
+		view.visible = false
 		
-
-		collision.set_shape(rect_shape)
-		marker.position = collision_pos[side]
-		sprite.region_rect = Rect2(pos, size) 
+	match side:
+		"front":
+			$FrontView.visible = true
+			$Marker2D.position = Vector2(8,25)
+			x_size = $FrontView/Area2D/CollisionShape2D.shape.size.x
+			y_size = $FrontView/Area2D/CollisionShape2D.shape.size.y
+		"right_side":
+			$RightView.visible = true
+			$Marker2D.position = Vector2(23,3)
+			x_size = $RightView/Area2D/CollisionShape2D.shape.size.x
+			y_size = $RightView/Area2D/CollisionShape2D.shape.size.y
+		"back":
+			$BackView.visible = true
+			$Marker2D.position = Vector2(0,-8)
+			x_size = $BackView/Area2D/CollisionShape2D.shape.size.x
+			y_size = $BackView/Area2D/CollisionShape2D.shape.size.y
+		"left_side":
+			$LeftView.visible = true
+			$Marker2D.position = Vector2(-9,3)
+			x_size = $LeftView/Area2D/CollisionShape2D.shape.size.x
+			y_size = $LeftView/Area2D/CollisionShape2D.shape.size.y

@@ -36,11 +36,9 @@ var selected_type: String = ""
 
 func _ready() -> void:
 	add_to_group("UI")
-	var time_manager = get_tree().get_root().get_node("Main/UICanvasLayer/TopMenu/TimeManager")
-	if time_manager:
-		time_manager.connect("hour_changed", _on_hour_changed)
-		var actual_hour = time_manager.current_hour
-		hour_tracker.position.y = 56 + (actual_hour * 20)
+	TimeManager.connect("hour_changed", _on_hour_changed)
+	var actual_hour = TimeManager.current_hour
+	hour_tracker.position.y = 56 + (actual_hour * 20)
 		
 	for activity in activity_container.get_children():
 		activity.connect("activity_selected", _on_activity_selected)
@@ -54,7 +52,7 @@ func _ready() -> void:
 #Mes a jour les data d'un slot en fonction de la selection
 func _on_activity_selected(instance : Object) -> void:
 	var type = instance.type
-	if selected_type in ["sleep", "eat", "train", "free"] and selected_type != type:
+	if selected_type in ["train", "free", "work"] and selected_type != type:
 		instance.set_type(selected_type)
 		update_activity_list()
 
@@ -85,6 +83,7 @@ func _on_planning_btn_pressed() -> void:
 	selected_type = ""
 	if !self.visible:
 		GameData.hide_ui()
+		GameData.construction_type = ""
 	self.visible  = !self.visible 
 	GameData.menu_open = !GameData.menu_open
 
@@ -97,3 +96,4 @@ func _mouse_enter_activity(instance : Object) -> void:
 
 func _on_hour_changed(new_hour : int) -> void:
 	hour_tracker.position.y = 56 + (new_hour * 20)
+	hour_tracker.get_node("Label").text = str(TimeManager.current_hour) + "h00"

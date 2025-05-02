@@ -1,31 +1,123 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6xk4es1qudcq"]
+[gd_scene load_steps=7 format=3 uid="uid://c6xk4es1qudcq"]
 
-[ext_resource type="Script" path="res://Scenes/Level/Usables/bed.gd" id="1_yd4sg"]
-[ext_resource type="Texture2D" uid="uid://bvc8soxkx53l7" path="res://Sprites/terrain/usable.png" id="2_jr32a"]
+[ext_resource type="Script" uid="uid://bxh52evfe6wgw" path="res://Scenes/Level/Usables/bed.gd" id="1_yd4sg"]
+[ext_resource type="Texture2D" uid="uid://d2x0vf4f3jieg" path="res://Sprites/terrain/object_sprite.png" id="2_354i5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fugfa"]
-size = Vector2(26, 12)
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlvow"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtnkp"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sls15"]
+size = Vector2(32, 16)
 
 [node name="Bed" type="Node2D"]
 script = ExtResource("1_yd4sg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_jr32a")
-region_enabled = true
-region_rect = Rect2(0, 32, 32, 16)
+[node name="FrontView" type="Node2D" parent="."]
+visible = false
+position = Vector2(8, 16)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="SpriteUnder" type="Sprite2D" parent="FrontView"]
+texture = ExtResource("2_354i5")
+region_enabled = true
+region_rect = Rect2(96, 0, 16, 32)
+
+[node name="SpriteUpper" type="Sprite2D" parent="FrontView"]
+z_index = 2
+texture = ExtResource("2_354i5")
+region_enabled = true
+region_rect = Rect2(112, 0, 16, 32)
+
+[node name="Area2D" type="Area2D" parent="FrontView"]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontView/Area2D"]
 shape = SubResource("RectangleShape2D_fugfa")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="RightView" type="Node2D" parent="."]
+visible = false
+position = Vector2(16, 0)
+
+[node name="SpriteUnder" type="Sprite2D" parent="RightView"]
+unique_name_in_owner = true
+texture = ExtResource("2_354i5")
+region_enabled = true
+region_rect = Rect2(64, 32, 32, 32)
+
+[node name="SpriteUpper" type="Sprite2D" parent="RightView"]
+unique_name_in_owner = true
+z_index = 2
+texture = ExtResource("2_354i5")
+region_enabled = true
+region_rect = Rect2(96, 32, 32, 32)
+
+[node name="Area2D" type="Area2D" parent="RightView"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightView/Area2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_tlvow")
+
+[node name="BackView" type="Node2D" parent="."]
+visible = false
+position = Vector2(8, 16)
+
+[node name="SpriteUnder" type="Sprite2D" parent="BackView"]
+texture = ExtResource("2_354i5")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 32)
+
+[node name="SpriteUpper" type="Sprite2D" parent="BackView"]
+z_index = 2
+position = Vector2(0, -1)
+texture = ExtResource("2_354i5")
+region_enabled = true
+region_rect = Rect2(80, 0, 16, 32)
+
+[node name="Area2D" type="Area2D" parent="BackView"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackView/Area2D"]
+shape = SubResource("RectangleShape2D_rtnkp")
+
+[node name="LeftView" type="Node2D" parent="."]
+visible = false
+position = Vector2(16, 0)
+
+[node name="SpriteUnder" type="Sprite2D" parent="LeftView"]
+texture = ExtResource("2_354i5")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="SpriteUpper" type="Sprite2D" parent="LeftView"]
+z_index = 2
+texture = ExtResource("2_354i5")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="Area2D" type="Area2D" parent="LeftView"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftView/Area2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_sls15")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(6, 8)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_Hero_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="FrontView/Area2D" to="." method="_on_Hero_body_entered"]
+[connection signal="body_exited" from="FrontView/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="RightView/Area2D" to="." method="_on_Hero_body_entered"]
+[connection signal="body_exited" from="RightView/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="BackView/Area2D" to="." method="_on_Hero_body_entered"]
+[connection signal="body_exited" from="BackView/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="LeftView/Area2D" to="." method="_on_Hero_body_entered"]
+[connection signal="body_exited" from="LeftView/Area2D" to="." method="_on_area_2d_body_exited"]

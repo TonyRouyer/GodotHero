@@ -1,16 +1,18 @@
+class_name EquipementSlot
 extends TextureRect
 
 enum Type{
-	Default,
-	Head,
-	Hand,
-	Weapon,
-	Chest,
-	Pants,
-	Feet
+	DEFAULT,
+	USABLE,
+	WEAPON,
+	JEWELRY,
+	HEAD,
+	CHEST,
+	PANTS,
+	FEET
 }
 
-@export var slot_type:Type = Type.Default
+@export var slot_type:Type = Type.DEFAULT
 @onready var icon : Sprite2D = $Icon
 @onready var root_hero_node : Node2D = get_node("../../../../../../../../../../HeroInventorySystem")
 
@@ -21,12 +23,9 @@ func set_slot(data:Dictionary) -> void:
 		tooltip_text = ""
 		icon.texture = null
 		return
-	tooltip_text = GameData.get_item_name(data.item_name)
-	icon.texture = load("res://Sprites/items/items_transparent_drop_shadow.png")
-	icon.region_enabled = true
-	icon.region_rect = get_item_texture(data.item_name)
-	icon.position = Vector2(16,16)
-	icon.scale = Vector2(1,1)
+	var item_data = data.item
+	tooltip_text = item_data.item_name
+	icon.texture = item_data.item_icon
 
 
 #begin of a drag from this slot generate data needed
@@ -42,7 +41,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	prev.add_child(picon)
 	set_drag_preview(prev)
 	modulate = Color(1,1,1,0.5)
-	var data = root_hero_node.equipment[name].duplicate()	
+	var data = root_hero_node.equipment[name].duplicate()
 	data.from_slot = name
 	data.dragged = self
 	return data
@@ -50,7 +49,8 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 
 #check if data can be dropped on this slot
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
-	if GameData.get_item_type(data.item_name) == slot_type:
+	var item = GameData.get_item(data.item.item_name_serialised)
+	if item.item_type == slot_type:
 		return true
 	return false
 
@@ -69,28 +69,20 @@ func _notification(what: int) -> void:
 		modulate = Color(1,1,1,1)
 
 
-func get_item_texture(item_name: String) -> Rect2:
-	var icon_path = GameData.get_icon_path(item_name)
-	if icon_path:
-		var coords = icon_path.split(",")
-		var x = int(coords[0])
-		var y = int(coords[1])
-		var w = int(coords[2])
-		var h = int(coords[3])
-		var region = Rect2(x, y, w, h)
-		return region
-	return Rect2(0,0,0,0)
-
-
-# Handle double click to equip item
+ #Handle double click to equip item
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.double_click  and not root_hero_node.equipment[name].is_empty():
+	var equipedContent = root_hero_node.equipment[name]
+	if event is InputEventMouseButton and event.double_click and not equipedContent.is_empty():
 		desequip_item_double_click()
 
 
 func desequip_item_double_click() -> void:
-	var inventory_node = get_node("../../../../../../../../../../../../UICanvasLayer/Menu/GlobalInventory")
 	var item = root_hero_node.equipment[name]
-	var equip_slot = inventory_node.find_first_empty_slot()
-	if equip_slot:
-		root_hero_node.unequip_item(name, equip_slot, item)
+	var select_hero = GameData.get_active_hero()
+
+	if select_hero != null:
+		var inventory = get_tree().get_first_node_in_group('inventory')
+		var hero_node = select_hero.get_node("HeroInventorySystem")
+		var equip_slot = inventory.find_first_empty_slot()
+		if equip_slot:
+			hero_node.unequip_item(name, equip_slot , item)

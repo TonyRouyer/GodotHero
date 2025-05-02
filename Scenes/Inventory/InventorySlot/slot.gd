@@ -1,39 +1,36 @@
-class_name Slot
+class_name InventorySlot
 extends TextureRect
 
 enum Type{
-	Default,
-	Head,
-	Hand,
-	Weapon,
-	Chest,
-	Pants,
-	Feet
+	DEFAULT,
+	USABLE,
+	WEAPON,
+	JEWELRY,
+	HEAD,
+	CHEST,
+	PANTS,
+	FEET
 }
 
-@export var slot_type : Type = Type.Default
+@export var slot_type : Type = Type.DEFAULT
 @onready var icon : Sprite2D = $Icon
 @onready var quantity : Label = $Quantity
 @onready var global_inventory : Control = get_node("../../..")
 
 
 #setup the slot data
-func set_slot(data:Dictionary) -> void:
+func set_slot(data: Dictionary) -> void:
 	quantity.hide()
 	if data.is_empty():
 		tooltip_text = ""
 		icon.texture = null
 		return
-	tooltip_text = GameData.get_item_name(data.item_name)
-
-	icon.texture = load("res://Sprites/items/items_transparent_drop_shadow.png")
-	icon.region_enabled = true
-	icon.region_rect = get_item_texture(data.item_name)
-	icon.scale = Vector2(2,2)
-	icon.position = Vector2(32,32)
-	
-	quantity.text = "%2d" % data.quantity
-	if data.quantity > 1:
+	var item_data = data.item
+	var item_quantity = data.quantity
+	tooltip_text = item_data.item_name
+	icon.texture = item_data.item_icon
+	quantity.text = "%2d" % item_quantity
+	if item_quantity > 1:
 		quantity.show()
 
 
@@ -59,16 +56,8 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 			data.quantity = round(data.quantity/2)
 	elif Input.is_action_pressed("control"):
 		data.quantity = 1
-	
 	data.from_slot = name
 	data.dragged = self
-	
-		# Add attack and defense if they exist
-	if "attack" in  GameData.get_item_data(data.item_name):
-		data.attack = GameData.get_item_data(data.item_name)["attack"]
-	if "defense" in GameData.get_item_data(data.item_name):
-		data.defense = GameData.get_item_data(data.item_name)["defense"]
-		
 	return data
 
 
@@ -79,9 +68,11 @@ func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 
 #drop the data on this slot
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
+	var to_node = name
+	
 	if data.dragged.slot_type == 0: 
 		#si drop dans l'inventaire
-		global_inventory.move_item(data,name) 
+		global_inventory.move_item(data,to_node) 
 	else: 
 		#si drop dans un slot equipement
 		var hero_node = GameData.get_active_hero().get_node("HeroInventorySystem")
@@ -94,20 +85,7 @@ func _notification(what: int) -> void:
 		modulate = Color(1,1,1,1)
 
 
-func get_item_texture(item_name: String) -> Rect2:
-	var icon_path = GameData.get_icon_path(item_name)
-	if icon_path:
-		var coords = icon_path.split(",")
-		var x = int(coords[0])
-		var y = int(coords[1])
-		var w = int(coords[2])
-		var h = int(coords[3])
-		var region = Rect2(x, y, w, h)
-		return region
-	return Rect2(0,0,0,0)
-
-
-# Handle double click to equip item
+ #Handle double click to equip item
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.double_click  and not GameData.inventory[name].is_empty():
 		equip_item_double_click()
@@ -115,9 +93,11 @@ func _gui_input(event: InputEvent) -> void:
 
 func equip_item_double_click() -> void:
 	var item = GameData.inventory[name]
-	var item_type = GameData.get_item_type(item.item_name)
-	var hero_node = GameData.get_active_hero().get_node("HeroInventorySystem")
-	var equip_slot = hero_node.find_first_empty_slot(item_type)
-	if equip_slot:
-		print("equip_item_double_click ", item)
-		hero_node.equip_item(name, equip_slot, item, true)
+	var item_type = item.item.item_type
+
+	var select_hero = GameData.get_active_hero()
+	if select_hero != null:
+		var hero_node = select_hero.get_node("HeroInventorySystem")
+		var equip_slot = hero_node.find_first_empty_slot(item_type)
+		if equip_slot:
+			hero_node.equip_item(name, equip_slot, item, true)

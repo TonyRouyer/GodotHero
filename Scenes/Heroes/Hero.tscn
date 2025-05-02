@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://nj6eu7f6821s"]
+[gd_scene load_steps=8 format=3 uid="uid://nj6eu7f6821s"]
 
-[ext_resource type="Script" path="res://Scenes/Heroes/hero.gd" id="1_kyd4t"]
-[ext_resource type="PackedScene" uid="uid://cihbrf63gwcw0" path="res://Scenes/Heroes/HeroLogique/hero_inventory_system.tscn" id="3_qnicn"]
+[ext_resource type="Script" uid="uid://cug2jtcskyur2" path="res://Scenes/Heroes/hero.gd" id="1_kyd4t"]
+[ext_resource type="PackedScene" uid="uid://cihbrf63gwcw0" path="res://Scenes/Heroes/HeroLogique/Inventory/hero_inventory_system.tscn" id="3_qnicn"]
 [ext_resource type="PackedScene" uid="uid://ci3tq7hejom4l" path="res://Scenes/Heroes/HeroPanelInfo/hero_panel_info.tscn" id="3_rawoh"]
-[ext_resource type="PackedScene" uid="uid://btiy0kuv5d03e" path="res://Scenes/Heroes/HeroLogique/hero_pathfinding.tscn" id="4_n6bfd"]
-[ext_resource type="PackedScene" uid="uid://cmkurut11klch" path="res://Scenes/Heroes/HeroLogique/hero_routine.tscn" id="6_dq2e5"]
+[ext_resource type="PackedScene" uid="uid://btiy0kuv5d03e" path="res://Scenes/Heroes/HeroLogique/Pathfinding/hero_pathfinding.tscn" id="4_n6bfd"]
+[ext_resource type="PackedScene" uid="uid://dpq1qshlavpl1" path="res://Scenes/Heroes/HeroLogique/Needs/hero_needs.tscn" id="5_3cr8a"]
+[ext_resource type="PackedScene" uid="uid://cmkurut11klch" path="res://Scenes/Heroes/HeroLogique/Routine/hero_routine.tscn" id="6_dq2e5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j34ca"]
 size = Vector2(13, 12)
@@ -12,22 +13,28 @@ size = Vector2(13, 12)
 [node name="Heroes" type="CharacterBody2D" groups=["hero"]]
 disable_mode = 2
 collision_layer = 4
-collision_mask = 3
+collision_mask = 6
 input_pickable = true
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_kyd4t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
 visibility_layer = 2
 position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_j34ca")
 
 [node name="HeroRoutine" parent="." instance=ExtResource("6_dq2e5")]
+unique_name_in_owner = true
 
 [node name="HeroInventorySystem" parent="." instance=ExtResource("3_qnicn")]
+unique_name_in_owner = true
 
 [node name="HeroPathfinding" parent="." instance=ExtResource("4_n6bfd")]
+unique_name_in_owner = true
+
+[node name="HeroNeeds" parent="." instance=ExtResource("5_3cr8a")]
 unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

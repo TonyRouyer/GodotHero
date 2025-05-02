@@ -2,7 +2,6 @@ extends Control
 
 signal gold_changed
 
-@onready var research_ui : Control = self
 @onready var research_container : Control = %ResearchItems
 @onready var current_project_label : Label = %CurrentSearchLabel
 @onready var progress_bar : ProgressBar = %CurrentSearchProgressBar
@@ -20,7 +19,7 @@ var not_finished_research : Dictionary = {}
 func _ready() -> void:
 	add_to_group("UI")
 	research_container.position = Vector2(-100, 0 )
-	var research_items = GameData.get_all_file_paths("res://Scenes/Research/new code/ResearchResources/")
+	var research_items = GameData.get_all_file_paths("res://Scenes/Research/ResearchResources/")
 	var margin = Vector2(64,64)
 	var save_y_size: int = 0
 	
@@ -67,7 +66,7 @@ func _ready() -> void:
 	draw_tech_ligne()
 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	tool_tip.position = get_local_mouse_position()
 
 func complete_research() -> void:
@@ -144,7 +143,8 @@ func save_current_research():
 func _open_btn_pressed() -> void:
 	if !self.visible:
 		GameData.hide_ui()
-	research_ui.visible = !research_ui.visible
+		GameData.construction_type = ""
+	self.visible = !self.visible
 	GameData.menu_open = !GameData.menu_open
 
 

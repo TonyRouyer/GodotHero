@@ -12,14 +12,14 @@ config_version=5
 
 config/name="Hero"
 run/main_scene="res://Scenes/main.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameData="*res://Scenes/Divers/game_data.gd"
-ResearchGobal="*res://Scenes/Research/research_gobal.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+TimeManager="*res://Scenes/Divers/TimeManager/time_manager.gd"
 
 [debug]
 
@@ -128,7 +128,7 @@ rotate={
 
 [navigation]
 
-2d/default_edge_connection_margin=8.0
+2d/use_edge_connections=false
 
 [rendering]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bo5m64d4cvano"]
 
-[ext_resource type="Script" path="res://Scenes/Heroes/HeroGestion/hero_gestion_item.gd" id="1_24gwc"]
+[ext_resource type="Script" uid="uid://bhqbx2a0diltw" path="res://Scenes/Heroes/HeroGestion/hero_gestion_item.gd" id="1_24gwc"]
 
 [node name="HeroGestionItem" type="Control"]
 layout_mode = 3

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ci3rc2qtbagbt"]
 
 [ext_resource type="PackedScene" uid="uid://biecrs1xmkof7" path="res://Scenes/Heroes/HeroPlanning/planning_item.tscn" id="2_b57n3"]
-[ext_resource type="Script" path="res://Scenes/Heroes/HeroPlanning/hero_planning.gd" id="2_w2pkf"]
+[ext_resource type="Script" uid="uid://nysid03qist5" path="res://Scenes/Heroes/HeroPlanning/hero_planning.gd" id="2_w2pkf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmxfm"]
 bg_color = Color(0.374139, 0.374139, 0.374139, 1)
@@ -152,36 +152,36 @@ theme_override_constants/separation = 0
 [node name="PlanningItem24" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 
 [node name="PlanningItem" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 1
 
 [node name="PlanningItem2" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 2
 
 [node name="PlanningItem3" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 3
 
 [node name="PlanningItem4" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 4
 
 [node name="PlanningItem5" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 5
 
 [node name="PlanningItem6" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
@@ -211,49 +211,49 @@ hour = 9
 [node name="PlanningItem10" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "work"
 hour = 10
 
 [node name="PlanningItem11" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "work"
 hour = 11
 
 [node name="PlanningItem12" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 12
 
 [node name="PlanningItem13" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 13
 
 [node name="PlanningItem14" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "work"
 hour = 14
 
 [node name="PlanningItem15" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "work"
 hour = 15
 
 [node name="PlanningItem16" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "work"
 hour = 16
 
 [node name="PlanningItem17" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 17
 
 [node name="PlanningItem18" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
@@ -271,25 +271,25 @@ hour = 19
 [node name="PlanningItem20" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 20
 
 [node name="PlanningItem21" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 21
 
 [node name="PlanningItem22" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 22
 
 [node name="PlanningItem23" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/ActivityContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
-type = "train"
+type = "free"
 hour = 23
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
@@ -302,18 +302,6 @@ theme_override_constants/margin_bottom = 15
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PlanningItem" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer2/ActivitySelectorContainer" instance=ExtResource("2_b57n3")]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-type = "sleep"
-is_selector = true
-
-[node name="PlanningItem2" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer2/ActivitySelectorContainer" instance=ExtResource("2_b57n3")]
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-type = "eat"
-is_selector = true
-
 [node name="PlanningItem3" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer2/ActivitySelectorContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
@@ -323,13 +311,20 @@ is_selector = true
 [node name="PlanningItem4" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer2/ActivitySelectorContainer" instance=ExtResource("2_b57n3")]
 custom_minimum_size = Vector2(50, 20)
 layout_mode = 2
+type = "work"
+is_selector = true
+
+[node name="PlanningItem5" parent="PanelContainer/VBoxContainer/VBoxContainer/MarginContainer2/ActivitySelectorContainer" instance=ExtResource("2_b57n3")]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+type = "free"
 is_selector = true
 
 [node name="HourTracker" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 112.0
+offset_left = 139.0
 offset_top = 76.0
-offset_right = 212.0
+offset_right = 239.0
 offset_bottom = 96.0
 mouse_filter = 2
 

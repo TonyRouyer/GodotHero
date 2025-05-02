@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://b8vfuk2jrulyj"]
+
+[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_ycc4q"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_r4fje"]
+[ext_resource type="Resource" uid="uid://cbe4fxr2px4g0" path="res://Scenes/Research/ResearchResources/recyclage.tres" id="3_ncf86"]
+
+[resource]
+script = ExtResource("2_r4fje")
+research_name = "Techeniques de cuisine avancées"
+serialised_name = "techniques_de_cuisine_avancees"
+research_description = "Développe des méthodes de cuisine plus sophistiquées pour améliorer la qualité des repas."
+research_level = 2
+research_column = 5.0
+research_icon = ExtResource("1_ycc4q")
+research_prerequsites = Array[ExtResource("2_r4fje")]([ExtResource("3_ncf86")])
+research_cost = 200
+research_duration = 120

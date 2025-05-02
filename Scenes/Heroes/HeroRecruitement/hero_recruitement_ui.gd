@@ -112,8 +112,10 @@ func create_hero_instance(heroInfo : Dictionary) -> Node2D:
 func _on_recrut_btn_pressed() -> void:
 	if !self.visible:
 		GameData.hide_ui()
-	create_heros_liste(false)
+		create_heros_liste(false)
+		GameData.construction_type = ""
 	self.visible = !self.visible
+	GameData.menu_open = !GameData.menu_open
 	
 	GameData.menu_open = !GameData.menu_open
 	## Affiche la fenêtre des détails des héros

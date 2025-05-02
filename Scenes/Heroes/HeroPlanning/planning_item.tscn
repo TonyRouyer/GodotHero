@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://biecrs1xmkof7"]
 
-[ext_resource type="Script" path="res://Scenes/Heroes/HeroPlanning/planning_item.gd" id="1_8ql0y"]
+[ext_resource type="Script" uid="uid://b2teutqrplc2" path="res://Scenes/Heroes/HeroPlanning/planning_item.gd" id="1_8ql0y"]
 [ext_resource type="Texture2D" uid="uid://b6dx8mryxu7ey" path="res://Sprites/Interface/panel_hover.png" id="2_k21vm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7legu"]

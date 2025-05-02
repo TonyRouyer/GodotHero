@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmkurut11klch"]
+
+[ext_resource type="Script" uid="uid://pea1ys3tb5pr" path="res://Scenes/Heroes/HeroLogique/Routine/hero_routine.gd" id="1_tohf3"]
+[ext_resource type="Script" uid="uid://bfu117vh5dqk6" path="res://Scenes/Heroes/HeroLogique/Routine/sleep.gd" id="2_jge1b"]
+[ext_resource type="Script" uid="uid://c7fjev8ri8jq3" path="res://Scenes/Heroes/HeroLogique/Routine/work.gd" id="3_7qs6g"]
+[ext_resource type="Script" uid="uid://dpuvu58d5j7jr" path="res://Scenes/Heroes/HeroLogique/Routine/eat.gd" id="4_s6lqw"]
+[ext_resource type="Script" uid="uid://ofrlvhbklpe6" path="res://Scenes/Heroes/HeroLogique/Routine/train.gd" id="5_cs8p8"]
+[ext_resource type="Script" uid="uid://dfep312glvxrf" path="res://Scenes/Heroes/HeroLogique/Routine/free.gd" id="6_jel63"]
+
+[node name="HeroRoutine" type="Node2D"]
+script = ExtResource("1_tohf3")
+
+[node name="Sleep" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_jge1b")
+
+[node name="Work" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_7qs6g")
+
+[node name="Eat" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_s6lqw")
+
+[node name="Train" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_cs8p8")
+
+[node name="Free" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_jel63")
+
+[node name="UpdateBesoinTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="FreeActivityTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="UpdateBesoinTimer" to="." method="update_besoins"]
+[connection signal="timeout" from="FreeActivityTimer" to="Free" method="_on_free_activity_timer_timeout"]

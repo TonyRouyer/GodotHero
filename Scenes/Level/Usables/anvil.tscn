@@ -1,14 +1,86 @@
-[gd_scene load_steps=3 format=3 uid="uid://cevu7bdkx2qyv"]
+[gd_scene load_steps=7 format=3 uid="uid://cevu7bdkx2qyv"]
 
-[ext_resource type="Script" path="res://Scenes/Level/Usables/anvil.gd" id="1_r72d5"]
-[ext_resource type="Texture2D" uid="uid://bvc8soxkx53l7" path="res://Sprites/terrain/usable.png" id="2_m238g"]
+[ext_resource type="Script" uid="uid://xlwlebfkenj2" path="res://Scenes/Level/Usables/anvil.gd" id="1_r72d5"]
+[ext_resource type="Texture2D" uid="uid://d2x0vf4f3jieg" path="res://Sprites/terrain/object_sprite.png" id="2_bucwg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnjm0"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbp22"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73uwx"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_282br"]
+size = Vector2(32, 16)
 
 [node name="Anvil" type="Node2D"]
 script = ExtResource("1_r72d5")
-node_name = "anvil"
-cost = 30
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_m238g")
+[node name="FrontView" type="Node2D" parent="."]
+position = Vector2(8, 16)
+
+[node name="Sprite" type="Sprite2D" parent="FrontView"]
+texture = ExtResource("2_bucwg")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 32)
+
+[node name="Area2D" type="Area2D" parent="FrontView"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontView/Area2D"]
+shape = SubResource("RectangleShape2D_hnjm0")
+
+[node name="RightView" type="Node2D" parent="."]
+visible = false
+position = Vector2(16, 8)
+
+[node name="Sprite" type="Sprite2D" parent="RightView"]
+unique_name_in_owner = true
+texture = ExtResource("2_bucwg")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 16)
+
+[node name="Area2D" type="Area2D" parent="RightView"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightView/Area2D"]
+shape = SubResource("RectangleShape2D_mbp22")
+
+[node name="BackView" type="Node2D" parent="."]
+visible = false
+position = Vector2(8, 16)
+
+[node name="Sprite" type="Sprite2D" parent="BackView"]
+texture = ExtResource("2_bucwg")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 32)
+
+[node name="Area2D" type="Area2D" parent="BackView"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackView/Area2D"]
+shape = SubResource("RectangleShape2D_73uwx")
+
+[node name="LeftView" type="Node2D" parent="."]
+visible = false
+position = Vector2(16, 8)
+
+[node name="Sprite" type="Sprite2D" parent="LeftView"]
+texture = ExtResource("2_bucwg")
+region_enabled = true
+region_rect = Rect2(0, 16, 32, 16)
+
+[node name="Area2D" type="Area2D" parent="LeftView"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftView/Area2D"]
+shape = SubResource("RectangleShape2D_282br")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(8, 6)

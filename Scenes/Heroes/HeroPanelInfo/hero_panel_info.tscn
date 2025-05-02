@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ci3tq7hejom4l"]
 
-[ext_resource type="Script" path="res://Scenes/Heroes/HeroPanelInfo/hero_panel_info.gd" id="1_wqeiy"]
+[ext_resource type="Script" uid="uid://dmr1y5ih6de55" path="res://Scenes/Heroes/HeroPanelInfo/hero_panel_info.gd" id="1_wqeiy"]
 [ext_resource type="PackedScene" uid="uid://d36fl7160ynpf" path="res://Scenes/Heroes/HeroPanelInfo/hero_equipement_ui.tscn" id="3_1pljo"]
 [ext_resource type="PackedScene" uid="uid://cywxfe684f010" path="res://Scenes/Inventory/global_inventory.tscn" id="3_4ybj6"]
 [ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/QuitIcon.png" id="4_1b0xy"]
@@ -77,7 +77,18 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+mouse_filter = 0
 text = "Nom"
+
+[node name="NameInput" type="LineEdit" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/VBoxContainer/InfoContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+text = "Conan"
+max_length = 15
 
 [node name="Level" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/VBoxContainer/InfoContainer"]
 unique_name_in_owner = true
@@ -162,6 +173,23 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "luck"
 
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 6
+popup/item_0/text = "Aucun"
+popup/item_0/id = 0
+popup/item_1/text = "Acceuil"
+popup/item_1/id = 1
+popup/item_2/text = "Artisan"
+popup/item_2/id = 2
+popup/item_3/text = "Mage"
+popup/item_3/id = 3
+popup/item_4/text = "Chercheur"
+popup/item_4/id = 4
+popup/item_5/text = "Cuisinier"
+popup/item_5/id = 5
+
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer"]
 layout_mode = 2
 
@@ -183,6 +211,67 @@ max_value = 10.0
 step = 1.0
 value = 5.0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Faim" type="ProgressBar" parent="HBoxContainer/StatsWindow/VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 1.0
+value = 100.0
+
+[node name="Label" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Faim
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Sommeil" type="ProgressBar" parent="HBoxContainer/StatsWindow/VBoxContainer/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 1.0
+value = 100.0
+
+[node name="Label" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Sommeil
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/StatsWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Moral" type="ProgressBar" parent="HBoxContainer/StatsWindow/VBoxContainer/HBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 1.0
+value = 100.0
+
+[node name="Label" type="Label" parent="HBoxContainer/StatsWindow/VBoxContainer/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+text = "Moral
+"
+
 [node name="ButtonContainer" type="HBoxContainer" parent="HBoxContainer/StatsWindow/VBoxContainer"]
 layout_mode = 2
 alignment = 2
@@ -202,7 +291,10 @@ visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/StatsWindow/VBoxContainer/TitleContainer/CloseButton" to="." method="_on_button_pressed"]
+[connection signal="gui_input" from="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/VBoxContainer/InfoContainer/Nom" to="." method="_on_name_label_gui_input"]
+[connection signal="text_submitted" from="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/VBoxContainer/InfoContainer/NameInput" to="." method="_on_name_input_text_submitted"]
 [connection signal="value_changed" from="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/VBoxContainer/StrengthContainer/HSlider" to="." method="_on_priority_slider_changed" binds= ["strength"]]
 [connection signal="value_changed" from="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/VBoxContainer/DefenseContainer/HSlider" to="." method="_on_priority_slider_changed" binds= ["defense"]]
 [connection signal="value_changed" from="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/VBoxContainer/AgilityContainer/HSlider" to="." method="_on_priority_slider_changed" binds= ["agility"]]
 [connection signal="value_changed" from="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/VBoxContainer/ManaContainer/HSlider" to="." method="_on_priority_slider_changed" binds= ["mana"]]
+[connection signal="item_selected" from="HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/MarginContainer/VBoxContainer/OptionButton" to="." method="_on_metier_selected"]

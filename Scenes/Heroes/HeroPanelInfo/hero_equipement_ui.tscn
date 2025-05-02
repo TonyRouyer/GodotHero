@@ -51,6 +51,7 @@ offset_left = 15.0
 offset_top = 15.0
 offset_right = 47.0
 offset_bottom = 47.0
+slot_type = 1
 
 [node name="EquipementSlot5" parent="HeroEquipementUi" instance=ExtResource("1_fhwyn")]
 layout_mode = 0
@@ -58,6 +59,7 @@ offset_left = 15.0
 offset_top = 57.0
 offset_right = 47.0
 offset_bottom = 89.0
+slot_type = 3
 
 [node name="EquipementSlot6" parent="HeroEquipementUi" instance=ExtResource("1_fhwyn")]
 layout_mode = 0
@@ -73,3 +75,4 @@ offset_left = 15.0
 offset_top = 137.0
 offset_right = 47.0
 offset_bottom = 169.0
+slot_type = 2

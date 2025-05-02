@@ -39,28 +39,20 @@ func _draw() -> void:
 
 
 func _process(_delta) -> void:
-	end_pos = room.check_cell()
+	end_pos = room.grid.check_cell()
 	
 	if GameData.construction_type in ["object", "move"]:
 		if preview_instance:
-			var aligned_pos = room.check_cell()  * grid_size
+			var aligned_pos = room.grid.check_cell()  * grid_size # position de la sourie sur le tileset (haut gauche d'une tile)/ exemple Vector2(832,176)
+			preview_instance.modulate = Color(0.2,0.9,0,0.5) # module la couleur de la prvisualisation en vert
 			room.rotate_object(preview_instance, current_rotation)
+			preview_instance.position = aligned_pos 
 			
-			var new_pos: Vector2i
-			if preview_instance.rotate_state == 0:
-				new_pos = aligned_pos + Vector2i(0,8)
-			elif preview_instance.rotate_state == 1:
-				new_pos = aligned_pos + Vector2i(8,0)
-			elif preview_instance.rotate_state == 2:
-				new_pos = aligned_pos + Vector2i(0,8)
-			elif preview_instance.rotate_state == 3:
-				new_pos = aligned_pos + Vector2i(8,0)
-	
-			preview_instance.position = new_pos 
 	elif GameData.construction_type in ["door"]:
 		if preview_instance:
-			var aligned_pos = room.check_cell() * grid_size
-			preview_instance.position = aligned_pos
+			var aligned_pos = room.grid.check_cell() * grid_size
+			preview_instance.position = aligned_pos + Vector2(8,8)
+			preview_instance.modulate = Color(0.2,0.9,0,0.5) # module la couleur de la prvisualisation en vert
 	elif is_selecting:
 		queue_redraw()
 
@@ -96,7 +88,7 @@ func instantiate_preview() -> void:
 
 func reset_previsualisation() -> void:
 	is_selecting = false
-	start_pos = room.check_cell()
+	start_pos = room.grid.check_cell()
 	end_pos = Vector2()
 	current_rotation = 0  # Reset rotation to the front face when resetting the preview
 	queue_redraw()

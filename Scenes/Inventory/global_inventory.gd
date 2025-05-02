@@ -3,21 +3,35 @@ extends Control
 signal updated()
 
 @onready var item_grid : GridContainer = $ScrollContainer/ItemGrid
-@onready var global_inventory : Control = $"."
-@export var SLOTS : int= 25
+@export var slots_count : int = 25
 
 
 func _ready() -> void:
 	add_to_group("UI")
-	# Initialize Global inventory if it's empty
-	if GameData.inventory.is_empty():
-		create_inventory_slots(SLOTS)
+	create_inventory_slots(slots_count)
+	
+	#charge les item que lors du 1er chargement de l'inventaire
+	#Evite les duplication pour les hero qui possede une instance de l'inventaire
+	if GameData.inventory_first_load:
 		create_sample_inventory()
-	else:
-		create_inventory_slots(SLOTS)  # Just create the slots, no need to populate
-		load_inventory()
+		
+	load_inventory()
 
 
+#cree un inventaire par defaut
+func create_sample_inventory() -> void:	
+	add_item(GameData.get_item("red_hat"), 1, "Slot0")
+	add_item(GameData.get_item("wooden_sword"), 1, "Slot1")
+	add_item(GameData.get_item("iron_sword"), 1, "Slot2")
+	#add_item(GameData.get_item("iron_sword"), 3, "Slot2")
+	add_item(GameData.get_item("life_potion"), 10, "Slot3")
+	add_item(GameData.get_item("life_potion"), 14, "Slot4")
+	add_item(GameData.get_item("mana_potion"), 7, "Slot5")
+	
+	GameData.inventory_first_load = false
+
+
+#Cree les slots de l'inventaire
 func create_inventory_slots(nb_slots : int) -> void:
 	# Check if slots are already created
 	if item_grid.get_child_count() > 0:
@@ -33,107 +47,116 @@ func create_inventory_slots(nb_slots : int) -> void:
 			GameData.inventory["Slot" + str(i)] = {}
 
 
-func create_sample_inventory() -> void:
-	# Check if inventory already has items
-	if not GameData.inventory["Slot0"].is_empty():
-		load_inventory()
-		return
-	
-	GameData.inventory["Slot0"] = GameData.get_item("red_hat", 1)
-	GameData.inventory["Slot1"] = GameData.get_item("wooden_sword", 1)
-	GameData.inventory["Slot2"] = GameData.get_item("iron_sword", 1)
-	GameData.inventory["Slot3"] = GameData.get_item("iron_sword", 1)
-	GameData.inventory["Slot4"] = GameData.get_item("life_potion", 7)
-	load_inventory()
-
-
+#Charge les objet de la variabla inventory dans l'inventaire
 func load_inventory() -> void:
 	for child in item_grid.get_children():
 		var data = GameData.inventory[child.name]
+		#print("******* load_inventory data ******")
+		#print(data)
 		child.set_slot(data)
+		
 
+#AJoute un objet dans le slot selectionné
+func add_item(item : ItemData, quantity : int, slot : String) -> void:
+	var inventory_slot = GameData.inventory[slot]
 
-func add_item(item_name : String, quantity : int) -> void:
-	var item_added = false
-	for slot in GameData.inventory:
-		if GameData.inventory[slot].get("item_name") == item_name and GameData.get_stackable(item_name):
-			var potential_new_quantity = GameData.inventory[slot].quantity + quantity
-			var max_stack = GameData.max_stack(item_name)
-			if potential_new_quantity <= max_stack:
-				GameData.inventory[slot].quantity = potential_new_quantity
-				item_added = true
-				break
-			else:
-				quantity = potential_new_quantity - max_stack
-				GameData.inventory[slot].quantity = max_stack
-	
-	# Find first empty slot if item not fully added
-	if not item_added or quantity > 0:
-		for slot in GameData.inventory:
-			if GameData.inventory[slot].is_empty() or GameData.inventory[slot].get("item_name", "") == "":
-				GameData.inventory[slot] = {
-					"item_name": item_name,
-					"quantity": min(quantity, GameData.max_stack(item_name)),
-					"type": GameData.get_item_type(item_name)
-				}
-				quantity -= GameData.inventory[slot].quantity
-				if quantity <= 0:
-					break
-	load_inventory()
-
-
-func remove_item(slot : int, quantity : int):
-	GameData.inventory[slot].quantity -= quantity
-	if GameData.inventory[slot].quantity <= 0:
-		GameData.inventory[slot] = {}
-	load_inventory()
-
-
-func move_item(data : Variant, to_slot : String) -> void:
-	var quantity = data.quantity
-	var from_slot = data.from_slot
-	var from_slot_type = data.dragged.slot_type
-
-	if from_slot_type == 0: #si on bouge depuis un equipement slot
-		var item = GameData.inventory[from_slot]
-		if GameData.inventory[to_slot].is_empty():
-			GameData.inventory[to_slot] = {
-				"item_name" : item.item_name,
-				"quantity" : quantity
-			}
-			GameData.inventory[from_slot].quantity -= quantity
-		elif GameData.inventory[to_slot].item_name == item.item_name:
-			if GameData.get_stackable(item.item_name):
-				GameData.inventory[to_slot].quantity += quantity
-				GameData.inventory[from_slot].quantity -= quantity
-		else:
-			swap_item(from_slot, to_slot)
-
-		if GameData.inventory[from_slot].quantity <= 0:
-			GameData.inventory[from_slot].clear()
+	#si le slot est vide on ajoute l'objet
+	if inventory_slot.is_empty():
+		inventory_slot.item = item
+		inventory_slot.quantity = quantity
+		
+	#si le slot est deja prit parle meme objet on adapte le quantité en fonctio nde max_stack
 	else:
-		pass
+		var new_item_stackable : bool = item.item_stackable
+		var new_item_max_stack : int = item.item_max_stack
+		
+		#Si l'objet qu'on ajoute est stackable et le meme que celui en place
+		if new_item_stackable and item == inventory_slot.item:
+			var new_qty = quantity + inventory_slot.quantity
+			if new_qty <= new_item_max_stack:
+				inventory_slot.item = item
+				inventory_slot.quantity = new_qty
+			else:
+				print("impossible d'ajouter l'objet (qty > max_stack)")
+		else:
+			print("impossible d'ajouter l'objet (objet different ou non stackable)")
+	#Possibliter d'ajouter le reste dans un autre slot si qty > max_stack
+
+
+#Retire un objet de l'inventaire au slot selectioné
+func remove_item(slot : String) -> void:
+	GameData.inventory[slot].clear()
 	load_inventory()
 
 
-func swap_item(from_slot : int, to_slot : String) -> void:
+#Tente de deplacer un item entre 2 emplacement
+func move_item(from_data : Variant, to : String) -> void:
+	var from_slot : Dictionary = GameData.inventory[from_data.from_slot]
+	var to_slot : Dictionary = GameData.inventory[to]
+	
+	#Si l'emplacement de base est vide on ne fait rien
+	if from_slot.is_empty():
+		print("from est vide")
+		return
+	
+	#Si l'emplacement de destination n'est pas vide
+	if not to_slot.is_empty():
+		var to_slot_item = to_slot.item
+		
+		#et si l'item de destionation est le meme que celui de base , et qu'il est stackable
+		if from_slot.item == to_slot_item and to_slot_item.item_stackable:
+			var new_qty = from_data.quantity + to_slot.quantity
+			#Si le total ne depasse pas le stack max
+			if new_qty <= to_slot_item.item_max_stack:
+				from_slot.quantity -= from_data.quantity
+				to_slot.quantity += from_data.quantity
+			else:
+				var left_qty = new_qty - to_slot_item.item_max_stack
+				#Exemple : max_stack = 16, max_qty = 24 -> left_qty =  24 - 16 = 8
+				from_slot.quantity = left_qty
+				to_slot.quantity = to_slot_item.item_max_stack
+		else:
+			swap_item(from_data.from_slot, to)
+	else:
+		from_slot.quantity -= from_data.quantity
+		to_slot.item = from_slot.item
+		to_slot.quantity = from_data.quantity
+	
+	if from_slot.quantity <= 0:
+		from_slot.clear()
+		
+	load_inventory()
+
+
+#Swap le contenue de 2 emplacement d'inventaire
+func swap_item(from_slot : String, to_slot : String) -> void:
 	var item_to_move = GameData.inventory[from_slot]
 	var item_to_replace = GameData.inventory[to_slot]
 	GameData.inventory[to_slot] = item_to_move
 	GameData.inventory[from_slot] = item_to_replace
 
 
-
+#Ouvre et ferme l'inventaire principal
 func _on_open_inv_btn_pressed() -> void:
 	if !self.visible:
 		GameData.hide_ui()
 		load_inventory()
-	global_inventory.visible = !global_inventory.visible
+		GameData.construction_type = ""
+	self.visible = !self.visible
 	GameData.menu_open = !GameData.menu_open
 
 
-func find_first_empty_slot() -> String:
+#func find_first_empty_slot() -> String:
+	#for slot in GameData.inventory.keys():
+		#if GameData.inventory[slot].is_empty():
+			#return slot
+	#return ""
+
+
+# Find the first empty slot of the given type
+func find_first_empty_slot():
 	for slot in GameData.inventory.keys():
-		if GameData.inventory[slot].is_empty():
+		var data = GameData.inventory[slot]
+		if data.is_empty():
 			return slot
-	return ""
+	return null

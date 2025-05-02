@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cikud7p4b827j"]
+[gd_scene load_steps=5 format=3 uid="uid://cikud7p4b827j"]
 
-[ext_resource type="Script" path="res://Scenes/Level/Room/room.gd" id="1_hhtpd"]
+[ext_resource type="Script" uid="uid://dt4h8k1rd0715" path="res://Scenes/Level/Room/room.gd" id="1_hhtpd"]
 [ext_resource type="PackedScene" uid="uid://w5yfrp7m2045" path="res://Scenes/Level/Previsualisation/previsu.tscn" id="2_exrah"]
+[ext_resource type="PackedScene" uid="uid://bc41ufu0q6ah1" path="res://Scenes/Level/Room/contextual_menu.tscn" id="4_77xee"]
 [ext_resource type="PackedScene" uid="uid://l7as36yvvpwx" path="res://Scenes/Level/Grid/grid.tscn" id="4_xp43g"]
 
 [node name="Room" type="Node2D"]
@@ -12,44 +13,6 @@ script = ExtResource("1_hhtpd")
 [node name="Grid" parent="." instance=ExtResource("4_xp43g")]
 z_index = 1
 
-[node name="Panel" type="PanelContainer" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.7, 0.7)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
-layout_mode = 2
-
-[node name="DeleteBtn" type="Button" parent="Panel/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Delete"
-
-[node name="MoveBtn" type="Button" parent="Panel/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 12
-text = "Move"
-
-[node name="CloseBtn" type="Button" parent="Panel/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Close"
-
-[connection signal="mouse_entered" from="Panel" to="." method="_on_mouse_in_menu"]
-[connection signal="mouse_exited" from="Panel" to="." method="_on_mouse_out_menu"]
-[connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/DeleteBtn" to="." method="_on_mouse_in_menu"]
-[connection signal="mouse_exited" from="Panel/MarginContainer/HBoxContainer/DeleteBtn" to="." method="_on_mouse_out_menu"]
-[connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/MoveBtn" to="." method="_on_mouse_in_menu"]
-[connection signal="mouse_exited" from="Panel/MarginContainer/HBoxContainer/MoveBtn" to="." method="_on_mouse_out_menu"]
-[connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/CloseBtn" to="." method="_on_mouse_in_menu"]
-[connection signal="mouse_exited" from="Panel/MarginContainer/HBoxContainer/CloseBtn" to="." method="_on_mouse_out_menu"]
-[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/CloseBtn" to="." method="_on_close_btn_pressed"]
+[node name="ContextualMenu" parent="CanvasLayer" instance=ExtResource("4_77xee")]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=5 format=3 uid="uid://cr27fe68wkkbh"]
+
+[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_mlfrn"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_an747"]
+[ext_resource type="Resource" uid="uid://dwgbgt8f0h2hk" path="res://Scenes/Research/ResearchResources/maitrise_de_la_forge_haute_qualite.tres" id="3_lx610"]
+[ext_resource type="Resource" uid="uid://d4l6c8sjyxq61" path="res://Scenes/Research/ResearchResources/confection_d_armures_elites.tres" id="4_yyb4l"]
+
+[resource]
+script = ExtResource("2_an747")
+research_name = "Maitrise de l'enchantement"
+serialised_name = "maîtrise_de_l_enchantement"
+research_description = "Permet d'enchanter les bijoux"
+research_level = 9
+research_column = 1.5
+research_icon = ExtResource("1_mlfrn")
+research_prerequsites = Array[ExtResource("2_an747")]([ExtResource("3_lx610"), ExtResource("4_yyb4l")])
+research_cost = 900
+research_duration = 540

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://dfxdrc83qg150"]
+
+[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_mxouc"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_caph0"]
+[ext_resource type="Resource" uid="uid://p8hgfs3mpoua" path="res://Scenes/Research/ResearchResources/arme_enchantées_avancees.tres" id="3_n1s1u"]
+
+[resource]
+script = ExtResource("2_caph0")
+research_name = "Armures lagiques"
+serialised_name = "armures_magiques"
+research_description = "Permet de rechercher davantage d’enchantement pour les armure"
+research_level = 7
+research_column = 3.0
+research_icon = ExtResource("1_mxouc")
+research_prerequsites = Array[ExtResource("2_caph0")]([ExtResource("3_n1s1u")])
+research_cost = 700
+research_duration = 420

@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dw6o00l3ywg5k"]
 
-[ext_resource type="Texture2D" uid="uid://dkhuaw8ia7s55" path="res://Sprites/mc/body_male_spritesheet.png" id="1_2pdbh"]
+[ext_resource type="Texture2D" uid="uid://dkhuaw8ia7s55" path="res://Sprites/hero/body/body_male_spritesheet.png" id="1_2pdbh"]
 
 [sub_resource type="Animation" id="Animation_ob20i"]
 length = 0.001
@@ -359,19 +359,19 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3v4n6"]
 _data = {
-"RESET": SubResource("Animation_ob20i"),
-"hit_down": SubResource("Animation_2o33a"),
-"hit_left": SubResource("Animation_aes1d"),
-"hit_right": SubResource("Animation_pl1x1"),
-"hit_up": SubResource("Animation_4asjk"),
-"idle_down": SubResource("Animation_vexe6"),
-"idle_left": SubResource("Animation_1jh3n"),
-"idle_right": SubResource("Animation_voidl"),
-"idle_up": SubResource("Animation_rnvd1"),
-"walk_down": SubResource("Animation_0jkga"),
-"walk_left": SubResource("Animation_rss1n"),
-"walk_right": SubResource("Animation_s52hp"),
-"walk_up": SubResource("Animation_crs5g")
+&"RESET": SubResource("Animation_ob20i"),
+&"hit_down": SubResource("Animation_2o33a"),
+&"hit_left": SubResource("Animation_aes1d"),
+&"hit_right": SubResource("Animation_pl1x1"),
+&"hit_up": SubResource("Animation_4asjk"),
+&"idle_down": SubResource("Animation_vexe6"),
+&"idle_left": SubResource("Animation_1jh3n"),
+&"idle_right": SubResource("Animation_voidl"),
+&"idle_up": SubResource("Animation_rnvd1"),
+&"walk_down": SubResource("Animation_0jkga"),
+&"walk_left": SubResource("Animation_rss1n"),
+&"walk_right": SubResource("Animation_s52hp"),
+&"walk_up": SubResource("Animation_crs5g")
 }
 
 [node name="maleSkin1" type="Node2D"]
@@ -382,7 +382,7 @@ texture = ExtResource("1_2pdbh")
 flip_h = true
 hframes = 7
 vframes = 7
-frame = 20
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

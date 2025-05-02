@@ -1,16 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://tht5m577dqw"]
+[gd_scene load_steps=22 format=3 uid="uid://tht5m577dqw"]
 
-[ext_resource type="Script" path="res://Scenes/Level/ConstructionMode/ConstructionUI.gd" id="1_dpso8"]
-[ext_resource type="Texture2D" uid="uid://b5fhd3uply2it" path="res://Sprites/Interface/construction item icon/wooden_wall.png" id="2_2q5cx"]
-[ext_resource type="Texture2D" uid="uid://dcuvw7kefi3bl" path="res://Sprites/Interface/construction item icon/stone_wall.png" id="3_ivqrr"]
-[ext_resource type="Texture2D" uid="uid://dyuqliyoneu7i" path="res://Sprites/Interface/construction item icon/wooden_door.png" id="4_rrvf7"]
-[ext_resource type="Texture2D" uid="uid://c3c16lgp3y4ky" path="res://Sprites/Interface/construction item icon/reinforced_door.png" id="5_rhf1k"]
+[ext_resource type="Script" uid="uid://dl42v6eso8xw6" path="res://Scenes/Level/ConstructionMode/ConstructionUI.gd" id="1_dpso8"]
+[ext_resource type="Texture2D" uid="uid://bo0hl71pkw315" path="res://Sprites/terrain/terrain.png" id="3_fxj30"]
+[ext_resource type="Texture2D" uid="uid://d2x0vf4f3jieg" path="res://Sprites/terrain/object_sprite.png" id="4_f3pd8"]
 [ext_resource type="Texture2D" uid="uid://di6vcjxokpxxg" path="res://Sprites/Interface/MenusBox_34x34.png" id="6_xqe6g"]
-[ext_resource type="Texture2D" uid="uid://cuqo1f31e2pec" path="res://Sprites/Interface/construction item icon/wooden_floor.png" id="7_dh03f"]
-[ext_resource type="Texture2D" uid="uid://binloa2sc4gs7" path="res://Sprites/Interface/construction item icon/stone_floor.png" id="8_ep0la"]
-[ext_resource type="Texture2D" uid="uid://cgjgn04hnelxf" path="res://Sprites/Interface/construction item icon/anvil.png" id="9_jml66"]
-[ext_resource type="Texture2D" uid="uid://cpfmorgryxyhp" path="res://Sprites/Interface/construction item icon/training_dummy.png" id="10_dnjjk"]
-[ext_resource type="Texture2D" uid="uid://b0ef6xydbi8y2" path="res://icon.svg" id="11_bd0t5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wtu25"]
 texture = ExtResource("6_xqe6g")
@@ -19,12 +12,36 @@ texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfqxi"]
+atlas = ExtResource("3_fxj30")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q75q4"]
+atlas = ExtResource("3_fxj30")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_572mc"]
+atlas = ExtResource("3_fxj30")
+region = Rect2(144, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdeoa"]
+atlas = ExtResource("3_fxj30")
+region = Rect2(144, 32, 16, 16)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rbksq"]
 texture = ExtResource("6_xqe6g")
 texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ty6v"]
+atlas = ExtResource("3_fxj30")
+region = Rect2(128, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t17se"]
+atlas = ExtResource("3_fxj30")
+region = Rect2(128, 16, 16, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byhad"]
 texture = ExtResource("6_xqe6g")
@@ -33,12 +50,40 @@ texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw1es"]
+atlas = ExtResource("4_f3pd8")
+region = Rect2(32, 64, 16, 32)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40osl"]
 texture = ExtResource("6_xqe6g")
 texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf2lw"]
+atlas = ExtResource("4_f3pd8")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnoug"]
+atlas = ExtResource("4_f3pd8")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usvoo"]
+atlas = ExtResource("4_f3pd8")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8y6u"]
+atlas = ExtResource("4_f3pd8")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm3wj"]
+atlas = ExtResource("4_f3pd8")
+region = Rect2(16, 112, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1k4d"]
+atlas = ExtResource("4_f3pd8")
+region = Rect2(96, 64, 16, 16)
 
 [node name="ConstructionUi" type="Control"]
 layout_mode = 3
@@ -117,7 +162,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
 
 [node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_2q5cx")
+texture_normal = SubResource("AtlasTexture_rfqxi")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer/TextureButton"]
@@ -139,7 +184,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
 
 [node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer2"]
 layout_mode = 2
-texture_normal = ExtResource("3_ivqrr")
+texture_normal = SubResource("AtlasTexture_q75q4")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer2/TextureButton2"]
@@ -170,7 +215,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
 
 [node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer4"]
 layout_mode = 2
-texture_normal = ExtResource("4_rrvf7")
+texture_normal = SubResource("AtlasTexture_572mc")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer4/TextureButton"]
@@ -191,7 +236,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
 
 [node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer3"]
 layout_mode = 2
-texture_normal = ExtResource("5_rhf1k")
+texture_normal = SubResource("AtlasTexture_tdeoa")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer3/TextureButton2"]
@@ -218,7 +263,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_rbksq")
 
 [node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer"]
 layout_mode = 2
-texture_normal = ExtResource("7_dh03f")
+texture_normal = SubResource("AtlasTexture_4ty6v")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer/TextureButton"]
@@ -239,7 +284,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_rbksq")
 
 [node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer2"]
 layout_mode = 2
-texture_normal = ExtResource("8_ep0la")
+texture_normal = SubResource("AtlasTexture_t17se")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer2/TextureButton2"]
@@ -267,7 +312,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_byhad")
 [node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-texture_normal = ExtResource("10_dnjjk")
+texture_normal = SubResource("AtlasTexture_xw1es")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer/TextureButton"]
@@ -288,7 +333,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
 
 [node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2"]
 layout_mode = 2
-texture_normal = ExtResource("9_jml66")
+texture_normal = SubResource("AtlasTexture_gf2lw")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2/TextureButton2"]
@@ -299,6 +344,7 @@ offset_right = 38.0
 offset_bottom = 43.0
 theme_override_font_sizes/font_size = 12
 text = "Enclume"
+horizontal_alignment = 1
 
 [node name="PanelContainer3" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
 custom_minimum_size = Vector2(32, 32)
@@ -307,7 +353,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
 
 [node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer3"]
 layout_mode = 2
-texture_normal = ExtResource("11_bd0t5")
+texture_normal = SubResource("AtlasTexture_jnoug")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer3/TextureButton2"]
@@ -317,7 +363,8 @@ offset_top = 28.0
 offset_right = 38.0
 offset_bottom = 43.0
 theme_override_font_sizes/font_size = 12
-text = "Poids"
+text = "Table"
+horizontal_alignment = 1
 
 [node name="PanelContainer4" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
 custom_minimum_size = Vector2(32, 32)
@@ -326,7 +373,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
 
 [node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer4"]
 layout_mode = 2
-texture_normal = ExtResource("11_bd0t5")
+texture_normal = SubResource("AtlasTexture_usvoo")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer4/TextureButton2"]
@@ -336,7 +383,8 @@ offset_top = 28.0
 offset_right = 38.0
 offset_bottom = 43.0
 theme_override_font_sizes/font_size = 12
-text = "Cible d'archerie"
+text = "Tabouret"
+horizontal_alignment = 1
 
 [node name="PanelContainer5" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
 custom_minimum_size = Vector2(32, 32)
@@ -345,7 +393,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
 
 [node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5"]
 layout_mode = 2
-texture_normal = ExtResource("11_bd0t5")
+texture_normal = SubResource("AtlasTexture_h8y6u")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5/TextureButton2"]
@@ -355,7 +403,48 @@ offset_top = 28.0
 offset_right = 38.0
 offset_bottom = 43.0
 theme_override_font_sizes/font_size = 12
-text = "Bibilioteque magic"
+text = "Lit"
+horizontal_alignment = 1
+
+[node name="PanelContainer6" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
+
+[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer6"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_sm3wj")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer6/TextureButton2"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 28.0
+offset_right = 38.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 12
+text = "Luth"
+horizontal_alignment = 1
+
+[node name="PanelContainer7" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
+
+[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer7"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_m1k4d")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer7/TextureButton2"]
+layout_mode = 2
+offset_left = -4.0
+offset_top = 28.0
+offset_right = 38.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 12
+text = "Furnace"
+horizontal_alignment = 1
 
 [node name="ActionsPanel" type="HBoxContainer" parent="GlobalPanel/MarginContainer/Menu"]
 layout_mode = 2
@@ -394,11 +483,17 @@ text = "Destroy Object"
 [connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer/TextureButton" to="." method="_on_item_pressed" binds= ["object", "training_dummy"]]
 [connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "anvil"]]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer3/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "weight"]]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer4/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "archery_target"]]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer3/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "table"]]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer4/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "stool"]]
 [connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5/TextureButton2" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5/TextureButton2" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "magical_library"]]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "bed"]]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer6/TextureButton2" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer6/TextureButton2" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer6/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "luth"]]
+[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer7/TextureButton2" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer7/TextureButton2" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer7/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "furnace"]]
 [connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyAll" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyAll" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyAll" to="." method="_on_destroy_all_pressed"]
