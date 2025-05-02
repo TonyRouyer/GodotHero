@@ -96,7 +96,6 @@ size_flags_stretch_ratio = 3.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/DisplaySearchPanel"]
 layout_mode = 2
-mouse_filter = 0
 horizontal_scroll_mode = 0
 
 [node name="ResearchItems" type="Control" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer"]

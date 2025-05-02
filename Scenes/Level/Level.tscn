@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=4 uid="uid://deiclps377nb0"]
 
-[ext_resource type="Texture2D" uid="uid://b2g74xyli0s63" path="res://Sprites/terrain/interior.png" id="2_vpy0a"]
+[ext_resource type="Texture2D" uid="uid://b2g74xyli0s63" path="res://Sprites/items/interior.png" id="2_vpy0a"]
 [ext_resource type="PackedScene" uid="uid://c1toudfwavpr0" path="res://Scenes/Level/Usables/training_dummy.tscn" id="3_06ioy"]
 [ext_resource type="Texture2D" uid="uid://bo0hl71pkw315" path="res://Sprites/terrain/terrain.png" id="4_6wbvb"]
 [ext_resource type="PackedScene" uid="uid://cevu7bdkx2qyv" path="res://Scenes/Level/Usables/anvil.tscn" id="4_x701m"]

@@ -44,7 +44,7 @@ func eat() -> void:
 	else:
 		# Pas de repas : le héros retourne à sa tâche planifiée
 		print("Pas de repas disponible. Retour au planning.")
-		var current_time = TimeManager.currentHour
+		var current_time = TimeManager.current_hour
 		var task = parent.hero_planning.planning[current_time]
 		match task:
 			"train":

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://cjvy4kj2yrn6j"]
 
-[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_8yfxk"]
+[ext_resource type="Texture2D" uid="uid://dcobecc4urhfk" path="res://Sprites/Interface/research icon/alchimiste acomplit.png" id="1_wj484"]
 [ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_1jkwb"]
 [ext_resource type="Resource" uid="uid://dvijhmpljyg7q" path="res://Scenes/Research/ResearchResources/alchimie.tres" id="3_v65yb"]
 
@@ -11,7 +11,7 @@ serialised_name = "alchimiste_accomplie"
 research_description = "Permet de créer davantage de potion différente"
 research_level = 6
 research_column = 6.0
-research_icon = ExtResource("1_8yfxk")
+research_icon = ExtResource("1_wj484")
 research_prerequsites = Array[ExtResource("2_1jkwb")]([ExtResource("3_v65yb")])
 research_cost = 600
 research_duration = 360

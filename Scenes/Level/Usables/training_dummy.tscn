@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1toudfwavpr0"]
 
 [ext_resource type="Script" uid="uid://7xjhaa5dqjby" path="res://Scenes/Level/Usables/training_dummy.gd" id="1_vl4mo"]
-[ext_resource type="Texture2D" uid="uid://d2x0vf4f3jieg" path="res://Sprites/terrain/object_sprite.png" id="2_4ci3h"]
+[ext_resource type="Texture2D" uid="uid://d2x0vf4f3jieg" path="res://Sprites/items/object_sprite.png" id="2_4ci3h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6bc4"]
 size = Vector2(16, 32)

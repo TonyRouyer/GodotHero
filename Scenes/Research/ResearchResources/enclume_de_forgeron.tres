@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://d3iluc1jhxay6"]
 
-[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_anxu5"]
+[ext_resource type="Texture2D" uid="uid://d2en87xgr2o65" path="res://Sprites/Interface/research icon/enclume de forgeron.png" id="1_n14rt"]
 [ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_lydll"]
 [ext_resource type="Resource" uid="uid://cu5bk2g253fer" path="res://Scenes/Research/ResearchResources/enchantement_d_equipement.tres" id="3_cqs0f"]
 
@@ -11,7 +11,7 @@ serialised_name = "enclume_de_forgeron"
 research_description = "Permet la création d'armes/armures de rang B (et amélioration)"
 research_level = 6
 research_column = 1.0
-research_icon = ExtResource("1_anxu5")
+research_icon = ExtResource("1_n14rt")
 research_prerequsites = Array[ExtResource("2_lydll")]([ExtResource("3_cqs0f")])
 research_cost = 500
 research_duration = 300

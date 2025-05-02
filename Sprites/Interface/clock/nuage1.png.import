@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp2nga5gk4b75"
-path="res://.godot/imported/nuage1.png-43bf9da009da6e3acd54c8eb7552f5d2.ctex"
+path="res://.godot/imported/nuage1.png-29c02a08eb49bb561328eddc7157fd78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Interface/clock/nuage1.png"
-dest_files=["res://.godot/imported/nuage1.png-43bf9da009da6e3acd54c8eb7552f5d2.ctex"]
+source_file="res://Sprites/Interface/Clock/nuage1.png"
+dest_files=["res://.godot/imported/nuage1.png-29c02a08eb49bb561328eddc7157fd78.ctex"]
 
 [params]
 

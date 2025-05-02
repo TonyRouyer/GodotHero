@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3tcaqufb8fwi"
-path="res://.godot/imported/fondNuit.png-5a589cad8172d7133a39d1fb9cb51f80.ctex"
+path="res://.godot/imported/fondNuit.png-dbcad59e9edecd8d260a98afc0a21925.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Interface/clock/fondNuit.png"
-dest_files=["res://.godot/imported/fondNuit.png-5a589cad8172d7133a39d1fb9cb51f80.ctex"]
+source_file="res://Sprites/Interface/Clock/fondNuit.png"
+dest_files=["res://.godot/imported/fondNuit.png-dbcad59e9edecd8d260a98afc0a21925.ctex"]
 
 [params]
 

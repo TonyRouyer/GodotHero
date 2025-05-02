@@ -30,8 +30,8 @@ func _on_hour_changed(_new_hour : int):
 	_update_moral()
 
 
-func _on_day_changed(new_day : int):
-	print('il est le: ', new_day)
+func _on_day_changed(_new_day : int):
+	pass
 	
 
 func _on_remove_day_timer_timeout():
@@ -47,8 +47,6 @@ func _update_faim():
 	if  routineNode.last_need == 2 or routineNode.last_need == 3:
 		modifier = 1.5
 	var faim_per_tick = -FAIM_LOSS_PER_HOUR * modifier
-	
-	print("faim=", faim_per_tick)
 	
 	hero.faim += faim_per_tick
 	hero.faim = clamp(hero.faim, 0, 100)

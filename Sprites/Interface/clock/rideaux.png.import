@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgs0hpm82jwru"
-path="res://.godot/imported/rideaux.png-db0b5c7f15ca09574c2a01979c01ca1d.ctex"
+path="res://.godot/imported/rideaux.png-885b7d06acc93e689bfcda22ee3a1df0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Interface/clock/rideaux.png"
-dest_files=["res://.godot/imported/rideaux.png-db0b5c7f15ca09574c2a01979c01ca1d.ctex"]
+source_file="res://Sprites/Interface/Clock/rideaux.png"
+dest_files=["res://.godot/imported/rideaux.png-885b7d06acc93e689bfcda22ee3a1df0.ctex"]
 
 [params]
 

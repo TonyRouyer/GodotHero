@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dl42v6eso8xw6" path="res://Scenes/Level/ConstructionMode/ConstructionUI.gd" id="1_dpso8"]
 [ext_resource type="Texture2D" uid="uid://bo0hl71pkw315" path="res://Sprites/terrain/terrain.png" id="3_fxj30"]
-[ext_resource type="Texture2D" uid="uid://d2x0vf4f3jieg" path="res://Sprites/terrain/object_sprite.png" id="4_f3pd8"]
-[ext_resource type="Texture2D" uid="uid://di6vcjxokpxxg" path="res://Sprites/Interface/MenusBox_34x34.png" id="6_xqe6g"]
+[ext_resource type="Texture2D" uid="uid://d2x0vf4f3jieg" path="res://Sprites/items/object_sprite.png" id="4_f3pd8"]
+[ext_resource type="Texture2D" uid="uid://di6vcjxokpxxg" path="res://Sprites/Interface/Panel/MenusBox_34x34.png" id="6_xqe6g"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wtu25"]
 texture = ExtResource("6_xqe6g")

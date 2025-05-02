@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResearchData" load_steps=5 format=3 uid="uid://46g074vaxw0i"]
 
-[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_0jqw3"]
+[ext_resource type="Texture2D" uid="uid://dvdrype358i6q" path="res://Sprites/Interface/research icon/strategie de guerre avancée.png" id="1_tsrgr"]
 [ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_6bpx5"]
 [ext_resource type="Resource" uid="uid://hemg2x4h0gt" path="res://Scenes/Research/ResearchResources/alchimiste_econome.tres" id="3_n1s6q"]
 [ext_resource type="Resource" uid="uid://cgixgj0vmhd7w" path="res://Scenes/Research/ResearchResources/systemes_de_soins_innovants.tres" id="4_irkog"]
@@ -12,7 +12,7 @@ serialised_name = "strategie_de_guerre_avancee"
 research_description = "Donne un leger bonus de dommage au aventurier (a définir)"
 research_level = 9
 research_column = 6.0
-research_icon = ExtResource("1_0jqw3")
+research_icon = ExtResource("1_tsrgr")
 research_prerequsites = Array[ExtResource("2_6bpx5")]([ExtResource("3_n1s6q"), ExtResource("4_irkog")])
 research_cost = 900
 research_duration = 540

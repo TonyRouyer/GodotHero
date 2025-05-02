@@ -107,7 +107,7 @@ func get_preview_atlas_texture(item_type : String) -> AtlasTexture:
 			tileset_texture = preload("res://Sprites/terrain/terrain.png")
 			tile_coords = TilePositions.DOOR_TILES[item_type].pos
 		"object", "move":
-			tileset_texture = preload("res://Sprites/terrain/interior.png")
+			tileset_texture = preload("res://Sprites/items/interior.png")
 			tile_coords = TilePositions.USABLE_OBJECTS[item_type].pos
 			grid_size_x *= 2
 		"wall":

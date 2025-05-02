@@ -53,10 +53,13 @@ func _ready() -> void:
 		#Affiche le nom du node sous ce dernier
 		#draw_tech_sub_text(research_node)
 			
+		#Affiche les nodes au dessus des ligne
+		research_node.z_index = 1
+		
 		#connecte les signal pour afficher le tool tip
 		research_node.connect("mouse_entered" , _on_research_button_hovered.bind(research_node.data.research_name))
 		research_node.connect("mouse_exited" , _on_research_button_out)
-		research_node.pressed.connect(_on_research_button_pressed.bind(research_node.data))
+		research_node.connect("pressed", _on_research_button_pressed.bind(research_node.data))
 		
 		#Redimentionne correctement l enfant du scroll node en Y
 		if y_pos > save_y_size:
@@ -67,7 +70,8 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
-	tool_tip.position = get_local_mouse_position()
+	tool_tip.position = get_local_mouse_position() + Vector2(15,15)
+
 
 func complete_research() -> void:
 	print('just complete: ', current_research)
@@ -117,21 +121,7 @@ func all_prereqs_completed(prerequisites : Array[ResearchData]) -> bool:
 	return true
 
 
-#func draw_tech_sub_text(tech) -> void:
-	#var tech_icon = tech
-	#var tech_btn = Label.new()
-	#
-	#tech_btn.text = tech.data.research_name
-	#tech_btn.add_theme_font_size_override("font_size", 14)
-	#tech_btn.z_index = 1
-	#tech_btn.position.y = 64
-	#tech.add_child(tech_btn)
-	#tech_btn.text = tech.data.research_name
-	#tech_btn.size.x = 0
-	#tech_btn.position.x = (tech_icon.size.x /2 ) - (tech_btn.size.x /2) 
-
-
-func save_current_research():
+func save_current_research() -> void:
 	if current_research != "" and selected_research == current_research:
 		not_finished_research[current_research] = {
 			'time_left' : progress_bar.value,
@@ -148,7 +138,9 @@ func _open_btn_pressed() -> void:
 	GameData.menu_open = !GameData.menu_open
 
 
+#Affiche les data d'une recherche quand on la selectione
 func _on_research_button_pressed(research) -> void:
+	print("toto")
 	save_current_research()
 	if research.serialised_name != selected_research:
 		selected_research = research.serialised_name
@@ -206,6 +198,7 @@ func _on_pause_button_pressed():
 func _on_research_button_hovered(research_name) -> void:
 	tool_tip.show()
 	tool_tip.get_node("MarginContainer/ToolTipName").text = str(research_name)
+
 
 
 func _on_research_button_out() -> void:

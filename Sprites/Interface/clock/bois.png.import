@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8l35q7mdpsiu"
-path="res://.godot/imported/bois.png-30597dade2f7cc454872bc00e73e18b0.ctex"
+path="res://.godot/imported/bois.png-05c3ac37f0d88437393d0a61cd7d5b4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Interface/clock/bois.png"
-dest_files=["res://.godot/imported/bois.png-30597dade2f7cc454872bc00e73e18b0.ctex"]
+source_file="res://Sprites/Interface/Clock/bois.png"
+dest_files=["res://.godot/imported/bois.png-05c3ac37f0d88437393d0a61cd7d5b4c.ctex"]
 
 [params]
 

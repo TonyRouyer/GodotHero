@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dmr1y5ih6de55" path="res://Scenes/Heroes/HeroPanelInfo/hero_panel_info.gd" id="1_wqeiy"]
 [ext_resource type="PackedScene" uid="uid://d36fl7160ynpf" path="res://Scenes/Heroes/HeroPanelInfo/hero_equipement_ui.tscn" id="3_1pljo"]
 [ext_resource type="PackedScene" uid="uid://cywxfe684f010" path="res://Scenes/Inventory/global_inventory.tscn" id="3_4ybj6"]
-[ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/QuitIcon.png" id="4_1b0xy"]
+[ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/Button/QuitIcon.png" id="4_1b0xy"]
 
 [node name="HeroPanelInfo" type="Control"]
 layout_mode = 3

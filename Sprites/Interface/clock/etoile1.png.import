@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lth66cf3ghur"
-path="res://.godot/imported/etoile1.png-f12c4d8e88b23dacbbd3133a2c3a79e0.ctex"
+path="res://.godot/imported/etoile1.png-6c6489e9e057e77aeffb78ba5d81f010.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Interface/clock/etoile1.png"
-dest_files=["res://.godot/imported/etoile1.png-f12c4d8e88b23dacbbd3133a2c3a79e0.ctex"]
+source_file="res://Sprites/Interface/Clock/etoile1.png"
+dest_files=["res://.godot/imported/etoile1.png-6c6489e9e057e77aeffb78ba5d81f010.ctex"]
 
 [params]
 
