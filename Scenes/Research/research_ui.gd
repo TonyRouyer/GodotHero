@@ -140,7 +140,6 @@ func _open_btn_pressed() -> void:
 
 #Affiche les data d'une recherche quand on la selectione
 func _on_research_button_pressed(research) -> void:
-	print("toto")
 	save_current_research()
 	if research.serialised_name != selected_research:
 		selected_research = research.serialised_name

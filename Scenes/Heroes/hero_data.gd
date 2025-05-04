@@ -69,6 +69,9 @@ func get_random_hero() -> Dictionary:
 		
 	#Definir un skin aleatoire
 	hero.skin = "male_skin1"
+	hero.hair = ["hair1_male_spritesheet", "hair2_male_spritesheet"].pick_random()
+	hero.chest = "miner_chest_spritsheet"
+	hero.pant = "miner_pant_spritsheet"
 	
 	#if hero.classe == "Warrior":
 		#var warrior_skin = ["warrior_animation1", "warrior_animation2", "warrior_animation3"]

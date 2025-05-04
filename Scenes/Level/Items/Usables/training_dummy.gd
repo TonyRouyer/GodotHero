@@ -1,42 +1,36 @@
 extends Node2D
 
-@export var node_name:String = "bed"
+@export var node_name:String = "training_dummy"
 @export var rotate_state:int # 1: Front / 2: Right / 3: Back / 4: Left
-@export var cost:int = 20
+@export var cost:int = 40
 var used: bool = false
 var x_size: int
 var y_size: int
 
 
-func use(hero: Hero):
+func use(hero : Hero):
 	var marker = $Marker2D
-	hero = hero
-
 	if hero:
-		var sprite = hero.get_node("AnimatedSprite2D/Skin")
 		hero.set_physics_process(false)
+		var animation_player = hero.get_node("AnimatedSprite2D/AnimationPlayer")
 		hero.position = marker.global_position
-
+		var animation_name: String = "" 
 		match rotate_state:
-			#0:
-				#animation_player.play("idle_right")
+			0:
+				animation_name = "hit_up"
 			1:
-				sprite.rotation = -90
-				#animation_player.play("idle_down")
+				animation_name = "hit_left"
 			2:
-				sprite.rotation = -180
-				#animation_player.play("idle_left")
+				animation_name = "hit_down"
 			3:
-				sprite.rotation = 90
-				sprite.flip_h = true
-				#animation_player.play("idle_up")
-		used = true
-		
+				animation_name = "hit_right"
+		animation_player.play(animation_name) 
+
 
 func exit(hero: Hero):
+	print("exit ", self.name)
 	if hero:
 		var hero_sprite = hero.get_node("AnimatedSprite2D/Skin")
-		hero_sprite.rotation = 0
 		hero_sprite.flip_h = false
 	used = false
 
@@ -48,21 +42,21 @@ func rotate_item(side):
 	match side:
 		"front":
 			$FrontView.visible = true
-			$Marker2D.position = Vector2(0,8)
+			$Marker2D.position = Vector2(8,24)
 			x_size = $FrontView/Area2D/CollisionShape2D.shape.size.x
 			y_size = $FrontView/Area2D/CollisionShape2D.shape.size.y
 		"right_side":
 			$RightView.visible = true
-			$Marker2D.position = Vector2(8,3)
+			$Marker2D.position = Vector2(24,8)
 			x_size = $RightView/Area2D/CollisionShape2D.shape.size.x
 			y_size = $RightView/Area2D/CollisionShape2D.shape.size.y
 		"back":
 			$BackView.visible = true
-			$Marker2D.position = Vector2(0,-9)
+			$Marker2D.position = Vector2(8,8)
 			x_size = $BackView/Area2D/CollisionShape2D.shape.size.x
 			y_size = $BackView/Area2D/CollisionShape2D.shape.size.y
 		"left_side":
 			$LeftView.visible = true
-			$Marker2D.position = Vector2(-9,3)
+			$Marker2D.position = Vector2(8,8)
 			x_size = $LeftView/Area2D/CollisionShape2D.shape.size.x
 			y_size = $LeftView/Area2D/CollisionShape2D.shape.size.y

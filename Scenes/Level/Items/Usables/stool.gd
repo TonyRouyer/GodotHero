@@ -19,14 +19,14 @@ func use(hero: Hero):
 
 		match rotate_state:
 			0:
-				animation_player.play("idle_up")
+				animation_player.play("sit_up")
 			1:
-				animation_player.play("idle_left")
+				animation_player.play("sit_left")
 			2:
-				animation_player.play("idle_down")
+				animation_player.play("sit_down")
 			3:
 				sprite.flip_h = true
-				animation_player.play("idle_right")
+				animation_player.play("sit_right")
 		used = true
 		
 		

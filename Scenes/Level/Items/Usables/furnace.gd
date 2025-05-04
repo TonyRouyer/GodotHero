@@ -6,7 +6,8 @@ extends Node2D
 var used: bool = false
 var x_size: int
 var y_size: int
-var disponible_meal: int = 5
+
+var disponible_meal: int = 50
 
 
 func use(hero : Hero):
@@ -16,15 +17,15 @@ func use(hero : Hero):
 		var animation_player = hero.get_node("AnimatedSprite2D/AnimationPlayer")
 		hero.position = marker.global_position
 		
-		if hero.get_node("HeroRoutine").performed_activity == "work":
+		if hero.get_node("HeroRoutine").last_need == 0: # 0 == hunger
 			var animation_name: String = "" 
 			match rotate_state:
 				0:
-					animation_name = "idle_down"
+					animation_name = "idle_up"
 				1:
 					animation_name = "idle_left"
 				2:
-					animation_name = "idle_up"
+					animation_name = "idle_down"
 				3:
 					animation_name = "idle_right"
 			animation_player.play(animation_name) 

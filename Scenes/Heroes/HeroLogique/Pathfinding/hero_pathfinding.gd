@@ -11,7 +11,6 @@ func _physics_process(_delta: float) -> void:
 	if navigation_agent.is_navigation_finished():
 		# Stop animation et reset vitesse
 		hero.velocity = Vector2.ZERO
-		animated_sprite.play("idle_down")  # Animation par défaut
 		return
 
 	var next_position = navigation_agent.get_next_path_position()
@@ -31,7 +30,7 @@ func _physics_process(_delta: float) -> void:
 			else:
 				animated_sprite.play("walk_up")
 	else:
-		animated_sprite.play("idle_down")  # Si très proche ou stop
+		animated_sprite.play("idle_up")  # Si très proche ou stop
 
 	# Appliquer le mouvement
 	hero.move_and_slide()

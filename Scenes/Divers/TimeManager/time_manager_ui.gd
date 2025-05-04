@@ -49,13 +49,13 @@ func _on_animation_finished(anim_name : String) -> void:
 
 func _on_btn_pause_pressed() -> void:
 	selecteur.position = Vector2(194,125)
-	TimeManager.get_node("Timer").paused = true
+	$Timer.paused = true
 	GameData.game_paused = true
 	get_tree().paused = true
 
 
 func _on_btn_play_pressed() -> void:
 	selecteur.position = Vector2(263,125)
-	TimeManager.get_node("Timer").paused = false
+	$Timer.paused = false
 	GameData.game_paused = false
 	get_tree().paused = false

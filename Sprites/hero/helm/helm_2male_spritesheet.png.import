@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cocko1k32jok5"
-path="res://.godot/imported/hair2-male_spriteshetpng.png-0b58958db559cb971b7ff612d02f5142.ctex"
+uid="uid://gtbr3pi254qd"
+path="res://.godot/imported/helm_2male_spritesheet.png-40333c7ea8bca89b7036298bf316bc48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/hero/hair/hair2-male_spriteshetpng.png"
-dest_files=["res://.godot/imported/hair2-male_spriteshetpng.png-0b58958db559cb971b7ff612d02f5142.ctex"]
+source_file="res://Sprites/hero/helm/helm_2male_spritesheet.png"
+dest_files=["res://.godot/imported/helm_2male_spritesheet.png-40333c7ea8bca89b7036298bf316bc48.ctex"]
 
 [params]
 

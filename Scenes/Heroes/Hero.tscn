@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cmkurut11klch" path="res://Scenes/Heroes/HeroLogique/Routine/hero_routine.tscn" id="6_dq2e5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j34ca"]
-size = Vector2(13, 12)
+size = Vector2(8, 14)
 
 [node name="Heroes" type="CharacterBody2D" groups=["hero"]]
 disable_mode = 2
@@ -22,7 +22,6 @@ script = ExtResource("1_kyd4t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
 visibility_layer = 2
-position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_j34ca")
 
 [node name="HeroRoutine" parent="." instance=ExtResource("6_dq2e5")]

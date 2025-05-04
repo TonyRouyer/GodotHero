@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kkw0utw8ewxy"
-path="res://.godot/imported/female_skin_spriteshet.png-672e256673dcee89ce87167256bcdc7a.ctex"
+uid="uid://dl5cte60o6av3"
+path="res://.godot/imported/miner_chest_spritsheet.png-0fb1e4118d72d580b8b7da27c857247a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/hero/body/female_skin_spriteshet.png"
-dest_files=["res://.godot/imported/female_skin_spriteshet.png-672e256673dcee89ce87167256bcdc7a.ctex"]
+source_file="res://Sprites/hero/chest/miner_chest_spritsheet.png"
+dest_files=["res://.godot/imported/miner_chest_spritsheet.png-0fb1e4118d72d580b8b7da27c857247a.ctex"]
 
 [params]
 

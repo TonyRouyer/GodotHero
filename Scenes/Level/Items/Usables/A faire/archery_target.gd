@@ -36,11 +36,11 @@ func _on_Hero_body_entered(body):
 			0:
 				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_right")
 			1:
-				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_up")
+				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_down")
 			2:
 				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_left")
 			3:
-				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_down")
+				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_up")
 		timer.start()
 		
 func _on_area_2d_body_exited(_body):

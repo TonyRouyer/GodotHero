@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://vfq482vuvrbi"]
 
-[ext_resource type="Script" uid="uid://di4tck33i41mg" path="res://Scenes/Level/Usables/furnace.gd" id="1_7bjrl"]
+[ext_resource type="Script" uid="uid://di4tck33i41mg" path="res://Scenes/Level/Items/Usables/furnace.gd" id="1_7bjrl"]
 [ext_resource type="Texture2D" uid="uid://d2x0vf4f3jieg" path="res://Sprites/items/object_sprite.png" id="2_mejwp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_om2rh"]

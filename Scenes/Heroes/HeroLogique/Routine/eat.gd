@@ -16,12 +16,14 @@ func eat() -> void:
 	# Cherche un tiroir contenant un repas
 	for object in parent.objects_node.get_children():
 		if object.node_name == "furnace" and object.disponible_meal >= 1:
+			print('furnace found ')
 			found_meal = true
 			meal_drawer = object
 			object_position = object.global_position
 			break
 
 	if found_meal:
+		print('found_meal ', found_meal)
 		parent.used_object = meal_drawer
 		parent.hero_pathfinding.set_destination(object_position)
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://drdgstc1joej2"]
 
-[ext_resource type="Script" uid="uid://b7qmu678xvlys" path="res://Scenes/Level/Usables/luth.gd" id="1_t0pri"]
+[ext_resource type="Script" uid="uid://b7qmu678xvlys" path="res://Scenes/Level/Items/Usables/luth.gd" id="1_t0pri"]
 [ext_resource type="Texture2D" uid="uid://d2x0vf4f3jieg" path="res://Sprites/items/object_sprite.png" id="2_qf5bq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnjm0"]
@@ -52,7 +52,7 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_mbp22")
 
 [node name="BackView" type="Node2D" parent="."]
-visible = false
+z_index = 1
 position = Vector2(8, 16)
 
 [node name="Sprite" type="Sprite2D" parent="BackView"]
@@ -68,6 +68,7 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_73uwx")
 
 [node name="LeftView" type="Node2D" parent="."]
+visible = false
 position = Vector2(16, 16)
 
 [node name="Sprite" type="Sprite2D" parent="LeftView"]

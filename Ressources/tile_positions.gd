@@ -23,13 +23,12 @@ const FLOOR_TILES = {
 
 
 const USABLE_OBJECTS = {
-	"bed": preload("res://Scenes/Level/Usables/bed.tscn"),
-	"table": preload("res://Scenes/Level/Usables/table.tscn"),
-	"anvil": preload("res://Scenes/Level/Usables/anvil.tscn"),
-	"training_dummy": preload("res://Scenes/Level/Usables/training_dummy.tscn"),
-	"stool": preload("res://Scenes/Level/Usables/stool.tscn"),
-	"luth": preload("res://Scenes/Level/Usables/luth.tscn"),
-	"furnace": preload("res://Scenes/Level/Usables/furnace.tscn")
-
-
+	"bed": preload("res://Scenes/Level/Items/Usables/bed.tscn"),
+	"anvil": preload("res://Scenes/Level/Items/Usables/anvil.tscn"),
+	"training_dummy": preload("res://Scenes/Level/Items/Usables/training_dummy.tscn"),
+	"stool": preload("res://Scenes/Level/Items/Usables/stool.tscn"),
+	"luth": preload("res://Scenes/Level/Items/Usables/luth.tscn"),
+	"furnace": preload("res://Scenes/Level/Items/Usables/furnace.tscn"),
+	
+	"table": preload("res://Scenes/Level/Items/Decoration/table.tscn"),
 }

@@ -1,9 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://deiclps377nb0"]
+[gd_scene load_steps=15 format=4 uid="uid://deiclps377nb0"]
 
 [ext_resource type="Texture2D" uid="uid://b2g74xyli0s63" path="res://Sprites/items/interior.png" id="2_vpy0a"]
-[ext_resource type="PackedScene" uid="uid://c1toudfwavpr0" path="res://Scenes/Level/Usables/training_dummy.tscn" id="3_06ioy"]
 [ext_resource type="Texture2D" uid="uid://bo0hl71pkw315" path="res://Sprites/terrain/terrain.png" id="4_6wbvb"]
-[ext_resource type="PackedScene" uid="uid://cevu7bdkx2qyv" path="res://Scenes/Level/Usables/anvil.tscn" id="4_x701m"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gp6d0"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -498,12 +496,6 @@ use_edge_connections = false
 navigation_layers = 3
 
 [node name="Object" type="Node2D" parent="."]
-
-[node name="Anvil" parent="Object" instance=ExtResource("4_x701m")]
-position = Vector2(479, 510)
-
-[node name="TrainingDummy" parent="Object" instance=ExtResource("3_06ioy")]
-position = Vector2(808, 425)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(576, 352)

@@ -45,7 +45,7 @@ func show_stats_overlay() -> void:
 	%Hp.value = float(hero.hp)
 
 	# Charge lE sprite du héros dans l'UI
-	self.get_node("HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/VBoxContainer/HeroEquipementUi/Sprite/AnimationPlayer").play("idle_up")
+	self.get_node("HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/VBoxContainer/HeroEquipementUi/Sprite/AnimationPlayer").play("idle_down")
 	global_inventory.load_inventory()
 	global_inventory.show()
 
