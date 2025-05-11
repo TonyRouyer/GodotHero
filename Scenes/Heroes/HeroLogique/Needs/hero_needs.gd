@@ -2,90 +2,152 @@ extends Node2D
 
 @onready var hero: Hero = get_parent()
 @onready var routineNode = get_parent().get_node("HeroRoutine")
-@onready var removeDayTimer: Timer = $RemoveDayTimer #timer qui decroit les jour quand le hero a faim
 
-# Constantes de gestion des besoins
-const FAIM_LOSS_PER_HOUR = 2  # en %/heure en jeu
-const FATIGUE_LOSS_PER_HOUR = 2.5
-const TIMER_INTERVAL = 1.0 # Intervalle du timer en secondes
-const SECONDS_PER_HOUR = 60.0   # donc 3.3 / 60 ≈ 0.055 / sec
-var days_without_food: int = 7
-
+#Moral
 enum MoralEffectType { TEMPORARY, CONSTANT, PROGRESSIVE }
 var moral_effects: Array = []
 
-#Besoin des hero : 0 = HUNGER, 1 = SLEEP, 2 = TRAIN, 3 = WORK, 4 = FREE
+#Constantes de gestion des besoins
+const HUNGER_LOSS_PER_HOUR = 2  # en %/heure en jeu
+const ENERGY_LOSS_PER_HOUR = 2.5
+const ENTERTAINMENT_LOSS_PER_HOUR = 2.0
+const TOILET_LOSS_PER_HOUR = 3.0
+const HYGIENE_LOSS_PER_HOUR = 2.0
+
+var starving: bool = false
+var exausted: bool = false
+#Besoin des hero : HUNGER = 0, SLEEP = 1, TOILET = 2, HYGIENE = 3, ENTERTAINMENT = 4, TRAIN = 5, WORK = 6, FREE = 7 }
+
+
 
 func _ready():
 	TimeManager.connect("hour_changed", _on_hour_changed)
-	TimeManager.connect("day_changed", _on_day_changed)
-		
+
+
 func _on_hour_changed(_new_hour : int):
 	#Calcule de la diminution de faim en fonction du temps
-	_update_faim()
+	if hero.hunger <= 0:
+		starving = true
+	elif hero.hunger >= 5:
+		starving = false
+	_update_hunger()
 	#Calcule de la diminution et gain de someil en fonction du temps
-	_update_fatigue()
+	if hero.energy <= 0:
+		exausted = true
+	else:
+		exausted = false
+	_update_energy()
+	#Calcule de la diminution/gain de la stat divertisement en fonction du temps
+	_update_entertainment()
+	#Calcule de la diminution/gain de la stat toilette en fonction du temps
+	_update_toilet()
+	#Calcule de la diminution/gain de la stat hygiene en fonction du temps
+	_update_hygiene()
+	
 	#Calcule du moral
 	hero.moral = 100
 	_update_moral()
 
 
-func _on_day_changed(_new_day : int):
-	pass
-	
-
-func _on_remove_day_timer_timeout():
-	days_without_food -= 1
-
-
 # ---------------------
 # Gestion de la Faim
 # ---------------------
-func _update_faim():
+func _update_hunger():
 	# Entraînement ou travail peuvent augmenter le taux
 	var modifier = 1.0
-	if  routineNode.last_need == 2 or routineNode.last_need == 3:
+	if  routineNode.last_need == 5 or routineNode.last_need == 6:
 		modifier = 1.5
-	var faim_per_tick = -FAIM_LOSS_PER_HOUR * modifier
+	var hunger_per_tick = -HUNGER_LOSS_PER_HOUR * modifier
 	
-	hero.faim += faim_per_tick
-	hero.faim = clamp(hero.faim, 0, 100)
+	hero.hunger += hunger_per_tick
+	hero.hunger = clamp(hero.hunger, 0, 100)
 	
-	# tu le hero si il passe 7 jour sans manger
-	if hero.faim <= 0:
-		if removeDayTimer.is_stopped():
-			removeDayTimer.start()
-			
-		if days_without_food == 0:
-			print("Le héros est mort de faim !")
-			#hero.die()
+	# blesse le hero si il est affamé
+	if starving == true:
+		hero.hp -= 1
 
 
 # ---------------------
 # Gestion de la Fatigue
 # ---------------------
-func _update_fatigue():
-	var fatigue_change = 0.0
+func _update_energy():
+	var energy_change = 0.0
 
 	if routineNode.last_need == 1:
 		# Dépend du lit
-
 		if routineNode.get_node("Sleep").is_ground_sleeping:
-			print("hero is ground sleeping")
-			fatigue_change = 100 / 12
+			var energy_restore_ground = 8.3
+			energy_change = energy_restore_ground
 		else:
-			print("hero lit")
-			fatigue_change = 100 / 8
+			var energy_restore_bed = 12.5
+			energy_change = energy_restore_bed
 
 	else:
 		# Entraînement ou travail peuvent augmenter le taux
 		var modifier = 1.0
-		if  routineNode.last_need == 2 or routineNode.last_need == 3:
+		if  routineNode.last_need == 5 or routineNode.last_need == 6:
 			modifier = 1.5
-		fatigue_change = -FATIGUE_LOSS_PER_HOUR * modifier
+		energy_change = -ENERGY_LOSS_PER_HOUR * modifier
 
-	hero.fatigue += fatigue_change
-	hero.fatigue = clamp(hero.fatigue, 0, 100)
+	hero.energy += energy_change
+	hero.energy = clamp(hero.energy, 0, 100)
+	
+	if exausted == true:
+		hero.moral -= 1
+
+	# Impact sur le moral
+	if hero.energy < 10:
+		add_moral_effect("Fatigue", -5, 1, MoralEffectType.CONSTANT)
+	else:
+		remove_moral_effect("Fatigue")
+
+# ---------------------
+# Gestion du divertisement
+# ---------------------
+func _update_entertainment():
+	var loss = ENTERTAINMENT_LOSS_PER_HOUR
+	# Peut être augmenté si jamais tu veux que certaines actions soient plus stressantes
+
+	hero.entertainment -= loss
+	hero.entertainment = clamp(hero.entertainment, 0, 100)
+
+	# Impact sur le moral
+	if hero.entertainment < 25:
+		add_moral_effect("Ennui", -3, 1, MoralEffectType.CONSTANT)
+	else:
+		remove_moral_effect("Ennui")
+
+
+# ---------------------
+# Gestion toilette
+# ---------------------
+func _update_toilet():
+	var loss = TOILET_LOSS_PER_HOUR	
+	hero.toilet -= loss
+	hero.toilet = clamp(hero.toilet, 0, 100)
+
+	if hero.toilet <= 10:
+		add_moral_effect("Besoin pressant", -5, 1, MoralEffectType.CONSTANT)
+	else:
+		remove_moral_effect("Besoin pressant")
+
+
+# ---------------------
+# Gestion du hygiene
+# ---------------------
+func _update_hygiene():
+	var modifier = 1.0
+	if routineNode.last_need == 5 or routineNode.last_need == 6:
+		modifier = 2
+	var hygiene_per_tick = -HYGIENE_LOSS_PER_HOUR * modifier
+
+	hero.hygiene += hygiene_per_tick
+	hero.hygiene = clamp(hero.hygiene, 0, 100)
+
+	if hero.hygiene < 20:
+		add_moral_effect("Sale", -4, 1, MoralEffectType.CONSTANT)
+	else:
+		remove_moral_effect("Sale")
 
 # ---------------------
 # Gestion du Moral
@@ -153,10 +215,9 @@ func add_moral_effect(effect_name: String, value: float, duration: float, effect
 				"elapsed": 0.0
 			})
 
+
 #Retire un effet au hero en le selectionnat par son nom
 func remove_moral_effect(effect_name: String) -> void:
-	print(moral_effects)
 	for i in range(moral_effects.size() - 1, -1, -1):
 		if moral_effects[i]["name"] == effect_name:
 			moral_effects.remove_at(i)
-	print(moral_effects)

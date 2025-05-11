@@ -12,6 +12,7 @@ var research_finished : Array = []
 var inventory : Dictionary = {}
 var reputation : int = 0
 var inventory_first_load : bool = true
+var planning_copy: Dictionary = {}
 
 
 

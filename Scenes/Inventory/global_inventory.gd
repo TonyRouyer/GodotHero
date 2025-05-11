@@ -51,8 +51,6 @@ func create_inventory_slots(nb_slots : int) -> void:
 func load_inventory() -> void:
 	for child in item_grid.get_children():
 		var data = GameData.inventory[child.name]
-		#print("******* load_inventory data ******")
-		#print(data)
 		child.set_slot(data)
 		
 
@@ -96,7 +94,6 @@ func move_item(from_data : Variant, to : String) -> void:
 	
 	#Si l'emplacement de base est vide on ne fait rien
 	if from_slot.is_empty():
-		print("from est vide")
 		return
 	
 	#Si l'emplacement de destination n'est pas vide

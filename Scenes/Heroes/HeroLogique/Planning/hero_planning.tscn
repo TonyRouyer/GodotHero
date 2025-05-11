@@ -1,0 +1,492 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj7kppmqtr5dh"]
+
+[ext_resource type="Script" uid="uid://ckefdw0w4rel3" path="res://Scenes/Heroes/HeroLogique/Planning/hero_planning.gd" id="1_dtrmk"]
+[ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/Button/QuitIcon.png" id="2_quwp6"]
+[ext_resource type="PackedScene" uid="uid://b4y7rhnq13x54" path="res://Scenes/Heroes/HeroLogique/Planning/planning_item.tscn" id="3_0kkex"]
+[ext_resource type="Texture2D" uid="uid://cpj3i1j2pjbc5" path="res://Sprites/Interface/Clock/btnPlay.png" id="4_vt5a1"]
+
+[node name="HeroPlanning" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dtrmk")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Planning"
+
+[node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("2_quwp6")
+stretch_mode = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TimeBlock" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="PlanningItem" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+
+[node name="PlanningItem2" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 1
+
+[node name="PlanningItem3" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 2
+
+[node name="PlanningItem4" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 3
+
+[node name="PlanningItem5" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 4
+
+[node name="PlanningItem6" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 5
+
+[node name="PlanningItem7" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 6
+
+[node name="PlanningItem8" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 7
+
+[node name="PlanningItem9" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 8
+
+[node name="PlanningItem10" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 9
+
+[node name="PlanningItem11" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 10
+
+[node name="PlanningItem12" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 11
+
+[node name="PlanningItem13" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 12
+
+[node name="PlanningItem14" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 13
+
+[node name="PlanningItem15" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 14
+
+[node name="PlanningItem16" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 15
+
+[node name="PlanningItem17" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 16
+
+[node name="PlanningItem18" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 17
+
+[node name="PlanningItem19" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 18
+
+[node name="PlanningItem20" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 19
+
+[node name="PlanningItem21" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 20
+
+[node name="PlanningItem22" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 21
+
+[node name="PlanningItem23" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 22
+
+[node name="PlanningItem24" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
+layout_mode = 2
+type = "free"
+hour = 23
+
+[node name="MarginContainer3" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TimeLabel" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "0h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "1h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "2h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "3h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "4h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "5h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "6h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "7h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "8h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "9h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "10h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "11h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "12h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label14" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "13h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label15" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "14h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label16" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "15h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label17" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "16h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label18" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "17h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label19" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "18h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label20" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "19h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label21" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "20h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label22" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "21h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label23" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "22h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label24" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer3/TimeLabel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "23h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+
+[node name="Options" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Sleep" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_vt5a1")
+
+[node name="Train" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_vt5a1")
+
+[node name="Work" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_vt5a1")
+
+[node name="Free" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_vt5a1")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Copy" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("4_vt5a1")
+
+[node name="Past" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("4_vt5a1")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 35
+alignment = 2
+
+[node name="NightLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("4_vt5a1")
+
+[node name="MorningLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("4_vt5a1")
+
+[node name="AfternoonLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("4_vt5a1")
+
+[node name="JourneyLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("4_vt5a1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Sleep"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Train"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Work"
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Free"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Copy"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Past"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Night"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Morning"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Afternoon"
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "All day"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer/Sleep" to="." method="_on_sleep_pressed" binds= ["sleep"]]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer/Train" to="." method="_on_train_pressed" binds= ["train"]]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer/Work" to="." method="_on_work_pressed" binds= ["work"]]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer/Free" to="." method="_on_free_pressed" binds= ["free"]]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer2/Copy" to="." method="_on_copy_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer2/Past" to="." method="_on_past_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3/NightLayout" to="." method="_on_night_layout_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3/MorningLayout" to="." method="_on_morning_layout_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3/AfternoonLayout" to="." method="_on_afternoon_layout_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3/JourneyLayout" to="." method="_on_journey_layout_pressed"]

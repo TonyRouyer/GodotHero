@@ -11,7 +11,7 @@ func _on_free_activity_timer_timeout():
 
 
 func free_time() -> void:
-	parent.last_need = parent.Besoins.FREE
+	parent.last_need = parent.Needs.FREE
 	
 	# 1. Parler avec un autre héros
 	if last_free_activity != "talk":
@@ -23,7 +23,6 @@ func free_time() -> void:
 				last_free_activity = "talk"
 				free_activity_timer.wait_time = randi_range(5, 10)
 				free_activity_timer.start()
-				print("free time: le héros discute pour ", free_activity_timer.wait_time, " secondes")
 				return
 
 	# 2. Jouer d’un instrument
@@ -36,7 +35,6 @@ func free_time() -> void:
 				last_free_activity = "play"
 				free_activity_timer.wait_time = randi_range(5, 10)
 				free_activity_timer.start()
-				print("free time: le héros joue pour ", free_activity_timer.wait_time, " secondes")
 				return
 
 	# 3. Se promener
@@ -47,5 +45,4 @@ func free_time() -> void:
 		last_free_activity = "walk"
 		free_activity_timer.wait_time = randi_range(5, 10)
 		free_activity_timer.start()
-		print("free time: le héros se promène pour ", free_activity_timer.wait_time, " secondes")
 		return

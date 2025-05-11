@@ -13,6 +13,7 @@ var disponible_meal: int = 50
 func use(hero : Hero):
 	var marker = $Marker2D
 	if hero:
+		print(hero.name, " use ", self.name)
 		hero.set_physics_process(false)
 		var animation_player = hero.get_node("AnimatedSprite2D/AnimationPlayer")
 		hero.position = marker.global_position

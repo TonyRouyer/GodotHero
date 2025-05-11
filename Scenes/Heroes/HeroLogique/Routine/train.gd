@@ -45,5 +45,5 @@ func choose_training_activity() -> Vector2:
 
 
 func train(object_pos: Vector2) -> void:
-	parent.last_need = parent.Besoins.TRAIN
+	parent.last_need = parent.Needs.TRAIN
 	parent.hero_pathfinding.set_destination(object_pos)

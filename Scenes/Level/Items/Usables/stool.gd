@@ -12,6 +12,7 @@ func use(hero: Hero):
 	var marker = $Marker2D
 
 	if hero:
+		print(hero.name, " use ", self.name)
 		var animation_player = hero.get_node("AnimatedSprite2D/AnimationPlayer")
 		var sprite = hero.get_node("AnimatedSprite2D/Skin")
 		hero.set_physics_process(false)
@@ -30,8 +31,7 @@ func use(hero: Hero):
 		used = true
 		
 		
-		hero.faim += 30
-		print("hero faim: ", hero.faim)
+		hero.hunger += 30
 
 
 func exit(hero):

@@ -3,7 +3,6 @@ extends Control
 @onready var hero : Hero = $"../.."
 @onready var ui_stats_panel : PanelContainer = %StatsWindow
 @onready var global_inventory : Control = %GlobalInventory
-
 @onready var nameLabel : Label = %Nom
 @onready var nameInput : LineEdit = %NameInput
 
@@ -12,19 +11,30 @@ var defense_priority : float = 0
 var agility_priority : float = 0
 var mana_priority : float = 0
 
+var social_skill_progress: float = 0
+var manual_work_skill_progress: float = 0
+var magic_work_skill_progress: float = 0
+var cook_skill_progress: float = 0
+var research_skill_progress: float = 0
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ui_stats_panel.add_to_group("UI")
-	global_inventory.add_to_group("UI")
+
+
 	
-func _process(_delta):
-	#S'assure de bien reset les data si on ferme le hero detail via un autre moyen que le btn close
-	if ui_stats_panel.visible == false and GameData.active_hero == hero:
-		_on_button_pressed()
-		
-	%Faim.value = hero.faim
-	%Sommeil.value = hero.fatigue
-	%Moral.value = hero.moral
+#func _process(_delta):
+	##S'assure de bien reset les data si on ferme le hero detail via un autre moyen que le btn close
+	#if ui_stats_panel.visible == false and GameData.active_hero == hero:
+		#_on_button_pressed()
+		#
+	#%Hunger.text = "Hunger: " + str(hero.hunger)
+	#%Energy.text = "Energy: " + str(hero.energy)
+	#%Toilet.text = "Toilet: " + str(hero.toilet)
+	#%Hygiene.text = "Hygiene: " + str(hero.hygiene)
+
 
 
 # Affiche info detailler d'un hero
@@ -33,7 +43,7 @@ func show_stats_overlay() -> void:
 	# Remplit les informations du héros dans l'UI
 	%Nom.text = hero.name
 	%Race.text = hero.race
-	%Classe.text = "Classe: " + str(hero.classe)
+	%Classe.text = "Class: " + str(hero.classe)
 	%Level.text = "Lvl: " + str(hero.level)
 	%Strength.text = "Strength: " + str(hero.strength)
 	%Defense.text = "Defense: " + str(hero.defense)
@@ -45,9 +55,8 @@ func show_stats_overlay() -> void:
 	%Hp.value = float(hero.hp)
 
 	# Charge lE sprite du héros dans l'UI
-	self.get_node("HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/VBoxContainer/HeroEquipementUi/Sprite/AnimationPlayer").play("idle_down")
+	self.get_node("StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/HeroEquipementUi/Sprite/AnimationPlayer").play("idle_down")
 	global_inventory.load_inventory()
-	global_inventory.show()
 
 
 #met a jour les stats du hero
@@ -64,7 +73,6 @@ func update_stats() -> void:
 func _on_button_pressed() -> void:
 	#Masque des panneau
 	ui_stats_panel.hide()
-	global_inventory.hide()
 	
 	#Reset du champ nameInput
 	if nameInput.visible:
@@ -107,3 +115,10 @@ func _on_name_input_text_submitted(new_text):
 
 func _on_metier_selected(index):
 	hero.job = index
+
+
+
+func _on_planning_button_pressed():
+	%HeroDetailContainer.hide()
+	hero.get_node("CanvasLayer/HeroPlanning").show()
+	

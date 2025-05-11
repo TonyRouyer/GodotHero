@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Hero
 
 
-# Stats princiapl hero de base
+# Stats Principal
 @export var strength: int
 @export var defense: int
 @export var agility: int
@@ -16,14 +16,25 @@ class_name Hero
 @export var research : int
 @export var cook : int
 
+#Attribut primaire
+@export var energy: float = 100
+@export var hunger: float = 100
+@export var entertainment: float = 100 #divertisement
+@export var toilet: float = 100 #envie d'aller au WC
+@export var hygiene: float = 100 #propreté/hygiène
+
 #stats secondaire
-@export var speed:int = 65
-#@export var speed:int = 300
 @export var hp_max: int
 @export var hp: int
 @export var moral: float = 100
-@export var fatigue: float = 100
-@export var faim: float = 100
+@export var speed:int = 65
+#@export var speed:int = 300
+
+#Variable progression
+@export var experience: int = 0
+@export var skill_point: int = 0
+@export var level: int = 1
+@export var rang: int = 0
 
 #variable Definition du hero
 @export var race: String
@@ -31,11 +42,7 @@ class_name Hero
 @export var skin: String
 @export var job : int = 0 # 0.aucun / 1.Acceuil / 2.Artisant / 3.Mage / 4.Chercheur / 5.Cuisinier
 
-#Variable progression
-@export var level: int = 1
-@export var experience: int = 0
-@export var rang: int = 0
-@export var skill_point: int = 0
+
 
 # Références aux nœuds
 @onready var animatedSprite : AnimationPlayer = $AnimatedSprite2D/AnimationPlayer
@@ -48,6 +55,7 @@ func _ready() -> void:
 	# Si il y une animation de hero, lance l'animation
 	if skin != "":
 		animatedSprite.play("idle_down")
+	%HeroPlanning.connect("close_planning", _on_close_Planning_pressed)
 
 
 func _input(event : InputEvent) -> void:
@@ -117,3 +125,7 @@ func level_up():
 	agility += randi_range(1,5)
 	mana += randi_range(1,5)
 	luck += randi_range(1,5)
+
+func _on_close_Planning_pressed():
+	%HeroPanelInfo.show()
+	%HeroPlanning.hide()

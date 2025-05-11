@@ -74,7 +74,6 @@ func _process(_delta) -> void:
 
 
 func complete_research() -> void:
-	print('just complete: ', current_research)
 	GameData.research_finished.append(current_research)
 	not_finished_research.erase(current_research)  # Supprime la recherche complétée
 	start_research = false

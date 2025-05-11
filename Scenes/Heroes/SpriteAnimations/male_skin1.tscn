@@ -2222,7 +2222,7 @@ texture = ExtResource("1_2pdbh")
 flip_h = true
 hframes = 7
 vframes = 8
-frame = 19
+frame = 43
 
 [node name="Eyes" type="Sprite2D" parent="."]
 visible = false

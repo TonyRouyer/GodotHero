@@ -32,13 +32,13 @@ func _on_Hero_body_entered(body):
 		hero.position = marker.global_position - Vector2(0,6)
 		match rotate_state:
 			0:
-				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_side")
+				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_left")
 			1:
-				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_back")
+				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_down")
 			2:
-				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_side")
+				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_right")
 			3:
-				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_front")
+				hero.get_node("AnimatedSprite2D/AnimationPlayer").play("idle_up")
 		timer.start()
 		
 func _on_area_2d_body_exited(_body):
@@ -48,7 +48,7 @@ func _on_area_2d_body_exited(_body):
 func _on_timer_timeout():
 	if hero != null:
 		hero.strength += 1
-		hero.fatigue -= 1
+		hero.energy -= 1
 
 
 func rotate_item(side):

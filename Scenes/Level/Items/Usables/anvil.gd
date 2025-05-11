@@ -12,6 +12,7 @@ func use(hero: Hero):
 	var marker = $Marker2D
 
 	if hero:
+		print(hero.name, " use ", self.name)
 		var animation_player = hero.get_node("AnimatedSprite2D/AnimationPlayer")
 		hero.set_physics_process(false)
 		hero.position = marker.global_position

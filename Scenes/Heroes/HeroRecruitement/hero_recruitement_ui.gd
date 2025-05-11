@@ -107,10 +107,9 @@ func create_hero_instance(heroInfo : Dictionary) -> Node2D:
 	#Instantie une 2nf fois le sprite pour l'afficher dans les detail du hero
 	var animation_ui = animation_node.instantiate()
 	animation_ui.name = "Sprite"
-	heroInstance.get_node("CanvasLayer/HeroPanelInfo/HBoxContainer/StatsWindow/VBoxContainer/ContentContainer/VBoxContainer/HeroEquipementUi").add_child(animation_ui)
+	heroInstance.get_node("CanvasLayer/HeroPanelInfo/StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/HeroEquipementUi").add_child(animation_ui)
 	animation_ui.position = Vector2(105,107)
 	animation_ui.scale = Vector2(5,5)
-	
 	animation_ui.get_node("Hair").texture = load("res://Sprites/hero/hair/" + str(heroInfo.hair) + ".png")
 	animation_ui.get_node("Chest").texture = load("res://Sprites/hero/chest/" + str(heroInfo.chest) + ".png")
 	animation_ui.get_node("Pant").texture = load("res://Sprites/hero/pant/" + str(heroInfo.pant) + ".png")

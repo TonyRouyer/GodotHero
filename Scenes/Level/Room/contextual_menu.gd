@@ -29,13 +29,10 @@ func _on_delete_btn_pressed() -> void:
 		
 # Permet de déplacer des objets via le menu contextuel
 func _on_move_btn_pressed() -> void:
-	print("move btn")
 	close_contextual_menu()
-		
-	print("try get object at ", room.selected_object_position)
+	
 	if get_object_at(room.selected_object_position):
 		var node_instance = get_object_at(room.selected_object_position)
-		print("node_instance ",node_instance)
 		GameData.construction_type = "move"
 		GameData.construction_item = node_instance.node_name
 		room.rotation_change.emit(node_instance.rotate_state)

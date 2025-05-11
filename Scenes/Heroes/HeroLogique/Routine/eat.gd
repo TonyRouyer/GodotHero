@@ -4,7 +4,7 @@ extends Node2D
 
 
 func eat() -> void:
-	parent.last_need = parent.Besoins.HUNGER
+	parent.last_need = parent.Needs.HUNGER
 	var object_position = Vector2.ZERO
 	var found_meal = false
 	var meal_drawer : Node2D = null
@@ -16,14 +16,12 @@ func eat() -> void:
 	# Cherche un tiroir contenant un repas
 	for object in parent.objects_node.get_children():
 		if object.node_name == "furnace" and object.disponible_meal >= 1:
-			print('furnace found ')
 			found_meal = true
 			meal_drawer = object
 			object_position = object.global_position
 			break
 
 	if found_meal:
-		print('found_meal ', found_meal)
 		parent.used_object = meal_drawer
 		parent.hero_pathfinding.set_destination(object_position)
 
@@ -41,11 +39,11 @@ func eat() -> void:
 			
 		parent.hero_pathfinding.set_destination(object_position)
 		
-		parent.hero.faim += 30
+		parent.hero.hunger += 30
+		parent.hero.toilet -= 15
 
 	else:
 		# Pas de repas : le héros retourne à sa tâche planifiée
-		print("Pas de repas disponible. Retour au planning.")
 		var current_time = TimeManager.current_hour
 		var task = parent.hero_planning.planning[current_time]
 		match task:

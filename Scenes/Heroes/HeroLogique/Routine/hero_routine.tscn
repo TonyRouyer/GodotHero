@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmkurut11klch"]
+[gd_scene load_steps=9 format=3 uid="uid://cmkurut11klch"]
 
 [ext_resource type="Script" uid="uid://pea1ys3tb5pr" path="res://Scenes/Heroes/HeroLogique/Routine/hero_routine.gd" id="1_tohf3"]
 [ext_resource type="Script" uid="uid://bfu117vh5dqk6" path="res://Scenes/Heroes/HeroLogique/Routine/sleep.gd" id="2_jge1b"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dpuvu58d5j7jr" path="res://Scenes/Heroes/HeroLogique/Routine/eat.gd" id="4_s6lqw"]
 [ext_resource type="Script" uid="uid://ofrlvhbklpe6" path="res://Scenes/Heroes/HeroLogique/Routine/train.gd" id="5_cs8p8"]
 [ext_resource type="Script" uid="uid://dfep312glvxrf" path="res://Scenes/Heroes/HeroLogique/Routine/free.gd" id="6_jel63"]
+[ext_resource type="Script" uid="uid://drq0rmoulcd7k" path="res://Scenes/Heroes/HeroLogique/Routine/toilet.gd" id="7_8sruf"]
+[ext_resource type="Script" uid="uid://f4k8u3hwf3as" path="res://Scenes/Heroes/HeroLogique/Routine/hygiene.gd" id="7_mk2vp"]
 
 [node name="HeroRoutine" type="Node2D"]
 script = ExtResource("1_tohf3")
@@ -25,6 +27,14 @@ script = ExtResource("4_s6lqw")
 [node name="Train" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_cs8p8")
+
+[node name="Toilet" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_8sruf")
+
+[node name="Hygiene" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_mk2vp")
 
 [node name="Free" type="Node2D" parent="."]
 unique_name_in_owner = true

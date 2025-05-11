@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var parent = get_parent()
 
-
 func chose_work_object() -> Vector2:
 	var job_map = {
 		1: "reception_desk",
@@ -29,5 +28,5 @@ func chose_work_object() -> Vector2:
 	
 	
 func work(object_pos: Vector2) -> void:
-	parent.last_need = parent.Besoins.WORK
+	parent.last_need = parent.Needs.WORK
 	parent.hero_pathfinding.set_destination(object_pos)

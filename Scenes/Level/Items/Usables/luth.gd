@@ -6,11 +6,21 @@ extends Node2D
 var used: bool = false
 var x_size: int
 var y_size: int
+var hero_in_use: Hero = null
 
+func _ready():
+	TimeManager.connect("time_tick", _update_entertainement)
+
+func _update_entertainement(_hour:int, _minute:int) -> void:
+	if hero_in_use:
+		hero_in_use.entertainment += 2
 
 func use(hero : Hero):
 	var marker = $Marker2D
+	
 	if hero:
+		print(hero.name, " use ", self.name)
+		hero_in_use = hero
 		var animation_player = hero.get_node("AnimatedSprite2D/AnimationPlayer")
 		hero.set_physics_process(false)
 		hero.position = marker.global_position

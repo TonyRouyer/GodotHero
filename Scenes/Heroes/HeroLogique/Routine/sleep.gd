@@ -5,11 +5,10 @@ extends Node2D
 var is_ground_sleeping: bool = false
 
 func sleep() -> void:
-	parent.last_need = parent.Besoins.SLEEP
+	parent.last_need = parent.Needs.SLEEP
 	is_ground_sleeping = false
 	
-	
-	#3.5 si le hero utilisait un objet on le quitte
+	#si le hero utilisait un objet on le quitte
 	if parent.used_object != null:
 		parent.used_object.exit(parent.hero)
 	
@@ -20,6 +19,6 @@ func sleep() -> void:
 			parent.used_object = object
 			parent.hero_pathfinding.set_destination(object.global_position)
 			return
+			
 	#si pas d'objet dispo le hero dort sur place 
 	is_ground_sleeping = true
-	parent.hero_pathfinding.set_destination(parent.hero.global_position)

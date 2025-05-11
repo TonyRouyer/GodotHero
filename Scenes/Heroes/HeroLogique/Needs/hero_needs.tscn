@@ -4,8 +4,3 @@
 
 [node name="HeroNeeds" type="Node2D"]
 script = ExtResource("1_5njsb")
-
-[node name="RemoveDayTimer" type="Timer" parent="."]
-wait_time = 60.0
-
-[connection signal="timeout" from="RemoveDayTimer" to="." method="_on_remove_day_timer_timeout"]

@@ -58,8 +58,6 @@ func _unhandled_input(event) -> void:
 			if GameData.construction_type in ["move"]:
 				start_pos = selected_object_position
 				end_pos = checked_cell
-				print("start_pos ", start_pos)
-				print("end_pos ", end_pos)
 				move_object(start_pos, end_pos)
 				selecting_signal.emit(true,start_pos)
 				previsu.reset_previsualisation()
@@ -245,7 +243,6 @@ func destroy_objects(tile_origin: Vector2) -> void:
 
 # Déplace un objet d'une position à une autre
 func move_object(from: Vector2, to: Vector2) -> void:
-	print("move object")
 	var object_container = floorLayer.get_node("../Object")
 	var found_object = null
 	var object_size = Vector2()
@@ -254,9 +251,7 @@ func move_object(from: Vector2, to: Vector2) -> void:
 	for child in object_container.get_children():
 		if child is Node2D:
 			var child_position = floor(child.global_position / grid_size)
-			print("child_position", child_position)
 			object_size = Vector2(child.x_size, child.y_size) / grid_size
-			print('size ', object_size)
 
 			if child_position == from:
 				found_object = child

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjlfs7504hewa"]
+[gd_scene load_steps=13 format=3 uid="uid://bjlfs7504hewa"]
 
 [ext_resource type="Script" uid="uid://bfqojah7afdhh" path="res://Scenes/main.gd" id="1_ivlpv"]
 [ext_resource type="PackedScene" uid="uid://bfxhmp8vcao0l" path="res://Scenes/Heroes/HeroRecruitement/hero_recruitment_ui.tscn" id="1_kwy7a"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cywxfe684f010" path="res://Scenes/Inventory/global_inventory.tscn" id="8_oam5w"]
 [ext_resource type="PackedScene" uid="uid://sbkqulnwaelb" path="res://Scenes/Research/research_ui.tscn" id="9_0bj76"]
 [ext_resource type="PackedScene" uid="uid://cikud7p4b827j" path="res://Scenes/Level/Room/room.tscn" id="9_jb1iq"]
-[ext_resource type="PackedScene" uid="uid://ci3rc2qtbagbt" path="res://Scenes/Heroes/HeroPlanning/hero_planning.tscn" id="10_w81yg"]
 [ext_resource type="PackedScene" uid="uid://cpc3326l27uf4" path="res://Scenes/Heroes/HeroGestion/hero_gestion.tscn" id="11_2g5h8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54aik"]
@@ -134,10 +133,6 @@ text = "Inventory"
 layout_mode = 2
 text = "Research"
 
-[node name="PlanningBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
-layout_mode = 2
-text = "Planning"
-
 [node name="GestionHeroBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
 layout_mode = 2
 text = "Gestion heros"
@@ -182,17 +177,6 @@ layout_mode = 0
 offset_top = 204.0
 offset_bottom = 204.0
 
-[node name="HeroPlanning" parent="UICanvasLayer/Menu" instance=ExtResource("10_w81yg")]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -296.0
-offset_right = -1.0
-offset_bottom = 579.0
-grow_horizontal = 0
-
 [node name="HeroGestion" parent="UICanvasLayer/Menu" instance=ExtResource("11_2g5h8")]
 visible = false
 layout_mode = 1
@@ -200,5 +184,4 @@ layout_mode = 1
 [connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/RecrutBtn" to="UICanvasLayer/Menu/HeroRecruitmentUI" method="_on_recrut_btn_pressed"]
 [connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/OpenInvBtn" to="UICanvasLayer/Menu/GlobalInventory" method="_on_open_inv_btn_pressed"]
 [connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/SearchBtn" to="UICanvasLayer/Menu/ResearchUi" method="_open_btn_pressed"]
-[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/PlanningBtn" to="UICanvasLayer/Menu/HeroPlanning" method="_on_planning_btn_pressed"]
 [connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/GestionHeroBtn" to="UICanvasLayer/Menu/HeroGestion" method="_on_hero_gestion_btn_pressed"]

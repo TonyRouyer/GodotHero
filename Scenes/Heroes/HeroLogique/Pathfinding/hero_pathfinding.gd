@@ -30,14 +30,14 @@ func _physics_process(_delta: float) -> void:
 			else:
 				animated_sprite.play("walk_up")
 	else:
-		animated_sprite.play("idle_up")  # Si très proche ou stop
+		animated_sprite.play("idle_down")  # Si très proche ou stop
+		pass
 
 	# Appliquer le mouvement
 	hero.move_and_slide()
 
 
 func set_destination(pos: Vector2):
-	print("set destination", pos)
 	navigation_agent.target_position = pos
 	navigation_agent.set_velocity(Vector2.ZERO)  # Optionnel pour être clean
 	navigation_agent.get_next_path_position()  #  FORCE le calcul du chemin

@@ -51,7 +51,6 @@ func _on_area_2d_body_exited(_body):
 func _on_timer_timeout():
 	if hero != null:
 		hero.agility += 1
-		print(hero.agility)
 
 
 func rotate_item(side):
