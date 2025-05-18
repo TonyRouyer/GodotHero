@@ -47,6 +47,8 @@ class_name Hero
 # Références aux nœuds
 @onready var animatedSprite : AnimationPlayer = $AnimatedSprite2D/AnimationPlayer
 @onready var hero_panel_info : Control = %HeroPanelInfo
+@onready var hero_planning : Control = %HeroPlanning
+@onready var hero_skills : Control = %HeroSkills
 @onready var pathfinding : Node2D = %HeroPathfinding
 @onready var mouse_in : bool = false
 
@@ -55,7 +57,9 @@ func _ready() -> void:
 	# Si il y une animation de hero, lance l'animation
 	if skin != "":
 		animatedSprite.play("idle_down")
-	%HeroPlanning.connect("close_planning", _on_close_Planning_pressed)
+	hero_panel_info.connect("close_info", _on_close_info_pressed)
+	hero_planning.connect("close_planning", _on_close_planning_pressed)
+	hero_skills.connect("close_skills", _on_close_skills_pressed)
 
 
 func _input(event : InputEvent) -> void:
@@ -64,6 +68,7 @@ func _input(event : InputEvent) -> void:
 		GameData.menu_open = !GameData.menu_open
 		GameData.set_active_hero(self)
 		hero_panel_info.show_stats_overlay()
+		hero_panel_info.show()
 
 
 func _on_mouse_entered() -> void:
@@ -126,6 +131,13 @@ func level_up():
 	mana += randi_range(1,5)
 	luck += randi_range(1,5)
 
-func _on_close_Planning_pressed():
-	%HeroPanelInfo.show()
-	%HeroPlanning.hide()
+func _on_close_planning_pressed() -> void:
+	hero_panel_info.show()
+	hero_planning.hide()
+
+func _on_close_info_pressed() -> void:
+	hero_panel_info.hide()
+	
+func _on_close_skills_pressed() -> void:
+	hero_panel_info.show()
+	hero_skills.hide()

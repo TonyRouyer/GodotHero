@@ -32,7 +32,8 @@ size_flags_stretch_ratio = 20.0
 text = "Recruit Hero"
 horizontal_alignment = 1
 
-[node name="refreshBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="RefreshBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Refresh"
 
@@ -51,6 +52,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 9.0
 
 [node name="Hero1" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 
@@ -75,6 +77,7 @@ layout_mode = 2
 text = "recute"
 
 [node name="Hero2" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 
@@ -99,6 +102,7 @@ layout_mode = 2
 text = "ezcute"
 
 [node name="Hero3" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+visible = false
 layout_mode = 2
 alignment = 1
 
@@ -123,6 +127,7 @@ layout_mode = 2
 text = "rectuer"
 
 [node name="btnClose" type="TextureButton" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 offset_left = 556.0
@@ -134,8 +139,6 @@ grow_vertical = 2
 texture_normal = ExtResource("2_df04y")
 stretch_mode = 0
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/refreshBtn" to="." method="_on_refresh_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero1/RecruteBtn" to="." method="_on_recrute_btn_pressed" binds= [0]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero2/RecruteBtn" to="." method="_on_recrute_btn_pressed" binds= [1]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero3/RecruteBtn" to="." method="_on_recrute_btn_pressed" binds= [2]]
-[connection signal="pressed" from="btnClose" to="." method="_on_btn_close_pressed"]

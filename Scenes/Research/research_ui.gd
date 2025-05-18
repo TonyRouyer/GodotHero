@@ -18,6 +18,8 @@ var not_finished_research : Dictionary = {}
 
 func _ready() -> void:
 	add_to_group("UI")
+	%StartButton.connect("pressed",_on_start_button_pressed)
+	%PauseButton.connect("pressed",_on_pause_button_pressed)
 	research_container.position = Vector2(-100, 0 )
 	var research_items = GameData.get_all_file_paths("res://Scenes/Research/ResearchResources/")
 	var margin = Vector2(64,64)
@@ -132,7 +134,6 @@ func save_current_research() -> void:
 func _open_btn_pressed() -> void:
 	if !self.visible:
 		GameData.hide_ui()
-		GameData.construction_type = ""
 	self.visible = !self.visible
 	GameData.menu_open = !GameData.menu_open
 

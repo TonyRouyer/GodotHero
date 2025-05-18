@@ -1,22 +1,34 @@
 extends Control
 
-@onready var v_box_container : VBoxContainer = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer
-@onready var scroll_container : ScrollContainer = $PanelContainer/MarginContainer/ScrollContainer
+@onready var panel_container = %PanelContainer
+@onready var HeroStatContainer : VBoxContainer = %HeroStatContainer
+@onready var HeroPlanningContainer : VBoxContainer = %HeroPlanningContainer
 @onready var confirmation_panel : PanelContainer = %ConfirmationPanel
+
 var hero: Hero
+var selected_type: String = ""
 
 
 func _ready() -> void:
 	add_to_group("UI")
-	#var slider = scroll_container.get_node("_v_scroll")
+	
+	%TabContainer.connect("tab_clicked", _on_tab_container_tab_clicked)
+	
+	%Sleep.connect("pressed", _on_sleep_pressed.bind("sleep"))
+	%Train.connect("pressed", _on_train_pressed.bind("train"))
+	%Work.connect("pressed", _on_work_pressed.bind("work"))
+	%Free.connect("pressed", _on_free_pressed.bind("free"))
+	
+	%ConfirmFire.connect("pressed", _on_confirm_fire)
+	%CancelFire.connect("pressed", _on_cancel_fire)
 
 
-#Affiche/Masque et met a jour le contenue de la fenettre de gestion des hero
+
+#Affiche/Masque et met a jour le contenue de la fenetre de gestion des hero
 func _on_hero_gestion_btn_pressed() -> void:
 	if !self.visible:
 		GameData.hide_ui()
 		populate()
-		GameData.construction_type = ""
 	self.visible = !self.visible
 	GameData.menu_open = !GameData.menu_open
 
@@ -25,7 +37,7 @@ func _on_hero_gestion_btn_pressed() -> void:
 func _on_confirm_fire() -> void:
 	hero.queue_free()
 	confirmation_panel.hide()
-	var items = v_box_container.get_children()
+	var items = HeroStatContainer.get_children()
 	for item in items:
 		if item.hero == hero:
 			item.queue_free()
@@ -37,23 +49,59 @@ func _on_cancel_fire() -> void:
 
 #Met a jour le contenue de la fenetre de gestion des hero
 func populate() -> void:
-	var items = v_box_container.get_children()
-	for item in items:
+	var infos = HeroStatContainer.get_children()
+	for item in infos:
+		item.queue_free()
+	var plannings = HeroPlanningContainer.get_children()
+	for item in plannings:
 		item.queue_free()
 	
 	var heros = get_tree().get_root().get_node("Main/Heroes").get_children()
 	for hero_item in heros:
-		var item = preload("res://Scenes/Heroes/HeroGestion/hero_gestion_item.tscn").instantiate()
-		item.connect("fire_pressed", fire_hero.bind(hero_item))
-		item.set_nom(hero_item.name)
-		item.set_level(hero_item.level)
-		item.set_classe(hero_item.classe)
-		item.hero = hero_item
-		item.set_custom_minimum_size(Vector2(470,30))
-		v_box_container.add_child(item)
+		#Infos
+		var info_instance = preload("res://Scenes/Heroes/HeroGestion/hero_gestion_item.tscn").instantiate()
+		info_instance.connect("fire_pressed", fire_hero.bind(hero_item))
+
+		info_instance.hero = hero_item
+		info_instance.set_custom_minimum_size(Vector2(470,30))
+		HeroStatContainer.add_child(info_instance)
+		
+		#Planning
+		var planning_instance = preload("res://Scenes/Heroes/HeroGestion/hero_gestion_planning_item.tscn").instantiate()
+		planning_instance.hero = hero_item
+		HeroPlanningContainer.add_child(planning_instance)
+		
 
 
 #Affiche la confirmation de livcenssiment des hero
 func fire_hero(selected_hero : Hero) -> void:
 	confirmation_panel.show()
 	hero = selected_hero
+ 
+
+
+func _on_tab_container_tab_clicked(tab):
+	match tab:
+		0:
+			panel_container.size.x = 560
+		1:
+			panel_container.size.x = 1030
+			
+
+	panel_container.position.x = (panel_container.get_parent().size.x / 2 - panel_container.size.x / 2)
+
+
+func _on_sleep_pressed(activity: String):
+	selected_type = activity
+
+
+func _on_train_pressed(activity: String):
+	selected_type = activity
+
+
+func _on_work_pressed(activity: String):
+	selected_type = activity
+
+
+func _on_free_pressed(activity: String):
+	selected_type = activity

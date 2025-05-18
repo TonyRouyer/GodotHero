@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bj7kppmqtr5dh"]
 
-[ext_resource type="Script" uid="uid://ckefdw0w4rel3" path="res://Scenes/Heroes/HeroLogique/Planning/hero_planning.gd" id="1_dtrmk"]
+[ext_resource type="Script" uid="uid://ckefdw0w4rel3" path="res://Scenes/Heroes/HeroPlanning/hero_planning.gd" id="1_dtrmk"]
 [ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/Button/QuitIcon.png" id="2_quwp6"]
-[ext_resource type="PackedScene" uid="uid://b4y7rhnq13x54" path="res://Scenes/Heroes/HeroLogique/Planning/planning_item.tscn" id="3_0kkex"]
-[ext_resource type="Texture2D" uid="uid://cpj3i1j2pjbc5" path="res://Sprites/Interface/Clock/btnPlay.png" id="4_vt5a1"]
+[ext_resource type="PackedScene" uid="uid://b4y7rhnq13x54" path="res://Scenes/Heroes/HeroPlanning/planning_item.tscn" id="3_0kkex"]
+[ext_resource type="Texture2D" uid="uid://cpj3i1j2pjbc5" path="res://Sprites/Interface/clock/btnPlay.png" id="4_vt5a1"]
 
 [node name="HeroPlanning" type="Control"]
 layout_mode = 3
@@ -38,6 +38,7 @@ size_flags_horizontal = 3
 text = "Planning"
 
 [node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("2_quwp6")
@@ -69,7 +70,7 @@ hour = 2
 
 [node name="PlanningItem4" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
 layout_mode = 2
-type = "free"
+type = "train"
 hour = 3
 
 [node name="PlanningItem5" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
@@ -368,18 +369,22 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 15
 
 [node name="Sleep" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("4_vt5a1")
 
 [node name="Train" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("4_vt5a1")
 
 [node name="Work" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("4_vt5a1")
 
 [node name="Free" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("4_vt5a1")
 
@@ -390,10 +395,12 @@ theme_override_constants/separation = 15
 alignment = 1
 
 [node name="Copy" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("4_vt5a1")
 
 [node name="Past" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("4_vt5a1")
 
@@ -404,18 +411,22 @@ theme_override_constants/separation = 35
 alignment = 2
 
 [node name="NightLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("4_vt5a1")
 
 [node name="MorningLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("4_vt5a1")
 
 [node name="AfternoonLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("4_vt5a1")
 
 [node name="JourneyLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("4_vt5a1")
 
@@ -479,14 +490,13 @@ text = "Afternoon"
 layout_mode = 2
 text = "All day"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer/Sleep" to="." method="_on_sleep_pressed" binds= ["sleep"]]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer/Train" to="." method="_on_train_pressed" binds= ["train"]]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer/Work" to="." method="_on_work_pressed" binds= ["work"]]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer/Free" to="." method="_on_free_pressed" binds= ["free"]]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer2/Copy" to="." method="_on_copy_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer2/Past" to="." method="_on_past_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3/NightLayout" to="." method="_on_night_layout_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3/MorningLayout" to="." method="_on_morning_layout_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3/AfternoonLayout" to="." method="_on_afternoon_layout_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3/JourneyLayout" to="." method="_on_journey_layout_pressed"]
+[node name="HourTracker" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Line2D" type="Line2D" parent="HourTracker"]
+position = Vector2(-388, -46)
+points = PackedVector2Array(0, 0, 0, 42)
+width = 8.0

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl1vvj6v14a1k"
-path="res://.godot/imported/soleil.png-938b3dfea26b92ccc745e5da4e992065.ctex"
+path="res://.godot/imported/soleil.png-1903334077c6cd76056aee115ed29606.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Interface/Clock/soleil.png"
-dest_files=["res://.godot/imported/soleil.png-938b3dfea26b92ccc745e5da4e992065.ctex"]
+source_file="res://Sprites/Interface/clock/soleil.png"
+dest_files=["res://.godot/imported/soleil.png-1903334077c6cd76056aee115ed29606.ctex"]
 
 [params]
 

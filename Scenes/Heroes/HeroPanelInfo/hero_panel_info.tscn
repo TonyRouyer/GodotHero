@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci3tq7hejom4l"]
+[gd_scene load_steps=6 format=3 uid="uid://ci3tq7hejom4l"]
 
 [ext_resource type="Script" uid="uid://dmr1y5ih6de55" path="res://Scenes/Heroes/HeroPanelInfo/hero_panel_info.gd" id="1_iwm31"]
 [ext_resource type="PackedScene" uid="uid://d36fl7160ynpf" path="res://Scenes/Heroes/HeroPanelInfo/hero_equipement_ui.tscn" id="3_1pljo"]
 [ext_resource type="PackedScene" uid="uid://cywxfe684f010" path="res://Scenes/Inventory/global_inventory.tscn" id="3_4ybj6"]
 [ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/Button/QuitIcon.png" id="4_1b0xy"]
+[ext_resource type="PackedScene" uid="uid://de4ohkcbh7bq6" path="res://Scenes/Inventory/InventorySlot/slot.tscn" id="4_ww2u5"]
 
 [node name="HeroPanelInfo" type="Control"]
 layout_mode = 3
@@ -19,7 +20,6 @@ script = ExtResource("1_iwm31")
 
 [node name="StatsWindow" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,6 +51,7 @@ layout_mode = 2
 text = "Heros Info"
 
 [node name="CloseButton" type="TextureButton" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Header"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("4_1b0xy")
@@ -514,8 +515,95 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
 
-[node name="HeroEquipementUi" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer" instance=ExtResource("3_1pljo")]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer"]
+layout_mode = 2
+
+[node name="HeroEquipementUi" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer" instance=ExtResource("3_1pljo")]
 custom_minimum_size = Vector2(212, 184)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InvContainer" type="GridContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="Slot0" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot1" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot2" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot3" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot4" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot5" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot6" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot7" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot8" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot9" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot10" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot11" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot12" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot13" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot14" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot15" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot16" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot17" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot18" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot19" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot20" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot21" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot22" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot23" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+layout_mode = 2
+
+[node name="Slot24" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
 layout_mode = 2
 
 [node name="Footer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer"]
@@ -532,6 +620,7 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
 [node name="CenterViewButton" type="Button" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Footer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Voir"
 
@@ -543,6 +632,7 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
 [node name="CompetenceButton" type="Button" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Footer/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Competence"
 
@@ -554,6 +644,7 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
 [node name="PlanningButton" type="Button" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Footer/MarginContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Planning"
 
@@ -561,8 +652,6 @@ text = "Planning"
 unique_name_in_owner = true
 layout_mode = 2
 
-[connection signal="pressed" from="StatsWindow/HeroDetailContainer/VBoxContainer/Header/CloseButton" to="." method="_on_button_pressed"]
 [connection signal="gui_input" from="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Nom" to="." method="_on_name_label_gui_input"]
 [connection signal="text_submitted" from="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NameInput" to="." method="_on_name_input_text_submitted"]
 [connection signal="item_selected" from="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/OptionButton" to="." method="_on_metier_selected"]
-[connection signal="pressed" from="StatsWindow/HeroDetailContainer/VBoxContainer/Footer/MarginContainer3/PlanningButton" to="." method="_on_planning_button_pressed"]

@@ -138,7 +138,6 @@ func _on_open_inv_btn_pressed() -> void:
 	if !self.visible:
 		GameData.hide_ui()
 		load_inventory()
-		GameData.construction_type = ""
 	self.visible = !self.visible
 	GameData.menu_open = !GameData.menu_open
 

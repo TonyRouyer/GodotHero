@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpd3ais0m4em6"
-path="res://.godot/imported/speedx3.png-d209d482545460e40adec34f8a9c302b.ctex"
+path="res://.godot/imported/speedx3.png-398d173689cc7f1eba505bc7ca205af6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Interface/Clock/speedx3.png"
-dest_files=["res://.godot/imported/speedx3.png-d209d482545460e40adec34f8a9c302b.ctex"]
+source_file="res://Sprites/Interface/clock/speedx3.png"
+dest_files=["res://.godot/imported/speedx3.png-398d173689cc7f1eba505bc7ca205af6.ctex"]
 
 [params]
 

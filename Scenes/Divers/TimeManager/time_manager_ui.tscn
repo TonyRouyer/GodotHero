@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://1sl61klypsv7"]
 
 [ext_resource type="Script" uid="uid://dnwedli3tgpp6" path="res://Scenes/Divers/TimeManager/time_manager_ui.gd" id="1_gjvf7"]
-[ext_resource type="Texture2D" uid="uid://dmft2mobpy8wt" path="res://Sprites/Interface/Clock/pause.png" id="17_8qboa"]
-[ext_resource type="Texture2D" uid="uid://lwpw7n8eqw77" path="res://Sprites/Interface/Clock/play.png" id="18_hpjv0"]
-[ext_resource type="Texture2D" uid="uid://iggisvqxqrua" path="res://Sprites/Interface/Clock/speedx2.png" id="19_k8mui"]
-[ext_resource type="Texture2D" uid="uid://cpd3ais0m4em6" path="res://Sprites/Interface/Clock/speedx3.png" id="20_lotxr"]
+[ext_resource type="Texture2D" uid="uid://dmft2mobpy8wt" path="res://Sprites/Interface/clock/pause.png" id="17_8qboa"]
+[ext_resource type="Texture2D" uid="uid://lwpw7n8eqw77" path="res://Sprites/Interface/clock/play.png" id="18_hpjv0"]
+[ext_resource type="Texture2D" uid="uid://iggisvqxqrua" path="res://Sprites/Interface/clock/speedx2.png" id="19_k8mui"]
+[ext_resource type="Texture2D" uid="uid://cpd3ais0m4em6" path="res://Sprites/Interface/clock/speedx3.png" id="20_lotxr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7agt2"]
 bg_color = Color(0.155, 0.155, 0.155, 0.249)
@@ -81,18 +81,22 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="Pause" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("17_8qboa")
 
 [node name="Play" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("18_hpjv0")
 
 [node name="PlayFast" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("19_k8mui")
 
 [node name="PlayVeryFast" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("20_lotxr")
 
@@ -106,7 +110,3 @@ offset_bottom = 54.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hbei4")
 
 [connection signal="timeout" from="Timer" to="." method="_timer_timeout"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Pause" to="." method="_on_pause_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/PlayFast" to="." method="_on_play_fast_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/PlayVeryFast" to="." method="_on_play_very_fast_pressed"]

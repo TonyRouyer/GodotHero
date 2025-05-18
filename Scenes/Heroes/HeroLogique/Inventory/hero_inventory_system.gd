@@ -1,12 +1,11 @@
 extends Node2D
 
-@onready var equipement_container : Control = $"../CanvasLayer/HeroPanelInfo/StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/HeroEquipementUi"
+@onready var equipement_container : Control = $"../CanvasLayer/HeroPanelInfo/StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/HeroEquipementUi"
 @onready var global_inventory_node : Control = $"../CanvasLayer/HeroPanelInfo/StatsWindow/HeroDetailContainer/GlobalInventory"
 @onready var hero = get_parent()
 var equipment : Dictionary = {}
 
 func _ready() -> void:
-
 	for i in range(equipement_container.get_node("HeroEquipementUi").get_children().size()):
 		equipment["EquipementSlot" + str(i)] = {}
 

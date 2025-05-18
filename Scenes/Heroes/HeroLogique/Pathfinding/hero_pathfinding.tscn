@@ -11,6 +11,7 @@ wait_time = 0.2
 autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
 path_desired_distance = 5.0
 target_desired_distance = 8.0
 path_max_distance = 16.0
@@ -19,4 +20,3 @@ avoidance_enabled = true
 debug_enabled = true
 
 [connection signal="timeout" from="StuckCheckTimer" to="." method="_on_timer_timeout"]
-[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_hero_navigation_finished"]

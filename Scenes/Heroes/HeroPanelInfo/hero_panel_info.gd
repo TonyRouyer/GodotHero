@@ -1,7 +1,8 @@
 extends Control
 
+signal close_info()
+
 @onready var hero : Hero = $"../.."
-@onready var ui_stats_panel : PanelContainer = %StatsWindow
 @onready var global_inventory : Control = %GlobalInventory
 @onready var nameLabel : Label = %Nom
 @onready var nameInput : LineEdit = %NameInput
@@ -19,27 +20,32 @@ var research_skill_progress: float = 0
 
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ui_stats_panel.add_to_group("UI")
-
-
+	add_to_group("UI")
 	
-#func _process(_delta):
-	##S'assure de bien reset les data si on ferme le hero detail via un autre moyen que le btn close
-	#if ui_stats_panel.visible == false and GameData.active_hero == hero:
-		#_on_button_pressed()
-		#
-	#%Hunger.text = "Hunger: " + str(hero.hunger)
-	#%Energy.text = "Energy: " + str(hero.energy)
-	#%Toilet.text = "Toilet: " + str(hero.toilet)
-	#%Hygiene.text = "Hygiene: " + str(hero.hygiene)
+	%CenterViewButton .connect("pressed", _on_center_view_button_pressed)
+	%CompetenceButton.connect("pressed", _on_competence_button_pressed)
+	%PlanningButton.connect("pressed", _on_planning_button_pressed)
+	
+	%CloseButton.connect("pressed", _on_button_pressed)
 
+
+func _process(_delta):
+	#S'assure de bien reset les data si on ferme le hero detail via un autre moyen que le btn close
+	if self.visible == false and GameData.active_hero == hero:
+		_on_button_pressed()
+		
+	%Hunger.value = hero.hunger
+	%Energy.value = hero.energy
+	%Toilet.value = hero.toilet
+	%Hygiene.value = hero.hygiene
+	
+	%Hp.value = hero.hp
+	%Moral.value = hero.moral
 
 
 # Affiche info detailler d'un hero
 func show_stats_overlay() -> void:
-	ui_stats_panel.show()
 	# Remplit les informations du héros dans l'UI
 	%Nom.text = hero.name
 	%Race.text = hero.race
@@ -55,8 +61,9 @@ func show_stats_overlay() -> void:
 	%Hp.value = float(hero.hp)
 
 	# Charge lE sprite du héros dans l'UI
-	self.get_node("StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/HeroEquipementUi/Sprite/AnimationPlayer").play("idle_down")
+	self.get_node("StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/HeroEquipementUi/Sprite/AnimationPlayer").play("idle_down")
 	global_inventory.load_inventory()
+	load_inventory()
 
 
 #met a jour les stats du hero
@@ -72,7 +79,7 @@ func update_stats() -> void:
 #Quand on ferme le menu detail du hero
 func _on_button_pressed() -> void:
 	#Masque des panneau
-	ui_stats_panel.hide()
+	close_info.emit()
 	
 	#Reset du champ nameInput
 	if nameInput.visible:
@@ -118,7 +125,24 @@ func _on_metier_selected(index):
 
 
 
-func _on_planning_button_pressed():
-	%HeroDetailContainer.hide()
-	hero.get_node("CanvasLayer/HeroPlanning").show()
+func _on_center_view_button_pressed():
+	self.hide()
+	get_tree().get_root().get_node("Main/GameCamera").position = Vector2(hero.global_position)
 	
+func _on_competence_button_pressed():
+	self.hide()
+	hero.get_node("CanvasLayer/HeroSkills").show()
+
+	
+	
+func _on_planning_button_pressed():
+	self.hide()
+	hero.get_node("CanvasLayer/HeroPlanning").show()
+	hero.get_node("CanvasLayer/HeroPlanning").update_visual_by_planning()
+
+
+#Charge les objet de la variabla inventory dans l'inventaire
+func load_inventory() -> void:
+	for child in %InvContainer.get_children():
+		var data = GameData.inventory[child.name]
+		child.set_slot(data)

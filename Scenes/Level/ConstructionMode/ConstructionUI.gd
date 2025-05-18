@@ -34,7 +34,6 @@ func _on_wall_and_door_pressed() -> void:
 		walls_and_doors_panel.show()
 		GameData.menu_open = false
 	else:
-		GameData.construction_type = ""
 		hide_all_panels()
 
 
@@ -45,7 +44,6 @@ func _on_floor_pressed() -> void:
 		floors_panel.show()
 		GameData.menu_open = false
 	else:
-		GameData.construction_type = ""
 		hide_all_panels()
 
 
@@ -56,7 +54,6 @@ func _on_object_pressed() -> void:
 		objects_panel.show()
 		GameData.menu_open = false
 	else:
-		GameData.construction_type = ""
 		hide_all_panels()
 
 
@@ -67,7 +64,6 @@ func _on_action_pressed() -> void:
 		actions_panel.show()
 		GameData.menu_open = false
 	else:
-		GameData.construction_type = ""
 		hide_all_panels()
 
 

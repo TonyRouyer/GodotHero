@@ -33,6 +33,8 @@ func set_reputation(value : int) -> void:
 
 
 func hide_ui() -> void:
+	construction_type = ""
+	construction_item = ""
 	var ui_to_hide = get_tree().get_nodes_in_group("UI")
 	for ui in ui_to_hide:
 		ui.hide()

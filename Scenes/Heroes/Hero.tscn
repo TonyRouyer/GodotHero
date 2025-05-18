@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://nj6eu7f6821s"]
+[gd_scene load_steps=10 format=3 uid="uid://nj6eu7f6821s"]
 
-[ext_resource type="Script" uid="uid://cug2jtcskyur2" path="res://Scenes/Heroes/hero.gd" id="1_kyd4t"]
+[ext_resource type="Script" uid="uid://cug2jtcskyur2" path="res://Scenes/Heroes/Hero.gd" id="1_kyd4t"]
 [ext_resource type="PackedScene" uid="uid://cihbrf63gwcw0" path="res://Scenes/Heroes/HeroLogique/Inventory/hero_inventory_system.tscn" id="3_qnicn"]
 [ext_resource type="PackedScene" uid="uid://ci3tq7hejom4l" path="res://Scenes/Heroes/HeroPanelInfo/hero_panel_info.tscn" id="3_rawoh"]
 [ext_resource type="PackedScene" uid="uid://btiy0kuv5d03e" path="res://Scenes/Heroes/HeroLogique/Pathfinding/hero_pathfinding.tscn" id="4_n6bfd"]
 [ext_resource type="PackedScene" uid="uid://dpq1qshlavpl1" path="res://Scenes/Heroes/HeroLogique/Needs/hero_needs.tscn" id="5_3cr8a"]
 [ext_resource type="PackedScene" uid="uid://cmkurut11klch" path="res://Scenes/Heroes/HeroLogique/Routine/hero_routine.tscn" id="6_dq2e5"]
-[ext_resource type="PackedScene" uid="uid://bj7kppmqtr5dh" path="res://Scenes/Heroes/HeroLogique/Planning/hero_planning.tscn" id="7_5o1xf"]
+[ext_resource type="PackedScene" uid="uid://b88qh6673e7cq" path="res://Scenes/Heroes/HeroSkills/Hero_skills.tscn" id="6_tm8gv"]
+[ext_resource type="PackedScene" uid="uid://bj7kppmqtr5dh" path="res://Scenes/Heroes/HeroPlanning/hero_planning.tscn" id="7_5o1xf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j34ca"]
 size = Vector2(8, 14)
@@ -41,6 +42,7 @@ unique_name_in_owner = true
 
 [node name="HeroPanelInfo" parent="CanvasLayer" instance=ExtResource("3_rawoh")]
 unique_name_in_owner = true
+visible = false
 z_index = -1
 
 [node name="HeroPlanning" parent="CanvasLayer" instance=ExtResource("7_5o1xf")]
@@ -54,6 +56,10 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+
+[node name="HeroSkills" parent="CanvasLayer" instance=ExtResource("6_tm8gv")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

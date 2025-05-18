@@ -5,9 +5,12 @@ extends Node2D
 @onready var routine : Node2D = get_parent().get_node("HeroRoutine")
 @onready var navigation_agent : NavigationAgent2D = $NavigationAgent2D
 
+func _ready():
+	%NavigationAgent2D.connect("navigation_finished", _on_hero_navigation_finished)
 
 
-func _physics_process(_delta: float) -> void:
+
+func _physics_process(_delta: float) -> void:	
 	if navigation_agent.is_navigation_finished():
 		# Stop animation et reset vitesse
 		hero.velocity = Vector2.ZERO

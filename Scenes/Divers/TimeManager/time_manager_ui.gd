@@ -9,6 +9,11 @@ var is_daytime : bool = true
 
 
 func _ready():
+	%Pause.connect("pressed", _on_pause_pressed)
+	%Play.connect("pressed", _on_play_pressed)
+	%PlayFast.connect("pressed", _on_play_fast_pressed)
+	%PlayVeryFast.connect("pressed", _on_play_very_fast_pressed)
+	
 	timer.wait_time = TimeManager.seconds_per_hour
 	day.text = "Day: " + str(TimeManager.current_day)
 	time.text = "%02dh%02d" % [TimeManager.current_hour, TimeManager.current_minute]
@@ -21,7 +26,7 @@ func _ready():
 		is_daytime = false
 
 
-func _timer_timeout() -> void:
+func _timer_timeout():
 	TimeManager.timer_finished()
 	timer.start()
 

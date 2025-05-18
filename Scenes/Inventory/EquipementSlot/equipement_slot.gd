@@ -14,7 +14,7 @@ enum Type{
 
 @export var slot_type:Type = Type.DEFAULT
 @onready var icon : Sprite2D = $Icon
-@onready var root_hero_node : Node2D = get_node("../../../../../../../../../../HeroInventorySystem")
+@onready var root_hero_node : Node2D = get_node("../../../../../../../../../../../HeroInventorySystem")
 
 
 #setup the slot data

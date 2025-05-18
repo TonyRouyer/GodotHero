@@ -9,6 +9,7 @@ var activity_color: Color
 
 func _ready() -> void:
 	set_data()
+	connect("gui_input", _on_gui_input)
 
 
 func set_type(new_type : String):
@@ -31,4 +32,4 @@ func set_data() -> void:
 
 func _on_gui_input(event : InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			emit_signal("activity_selected", self)
+		emit_signal("activity_selected", self)

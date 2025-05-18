@@ -1,20 +1,21 @@
 extends Node2D
 
-@onready var parent = get_parent()
+@onready var parent = get_parent().get_parent().get_node("%HeroPanelInfo")
 
 
 func choose_training_activity() -> Vector2:
+	return Vector2(0,0)
 	#Logique
 		#Cherche ordonne les priorité du hero en matiere d'entrainement
 		#exemple: force,agilité puis magie
 		#Pour chaque, cherche le/les objet diponible et libre et renvois la position
-	var objects = parent.objects_node.get_children()
+	var objects  = parent.objects_node.get_children()
 	
 	# 1. Récupérer les priorités d'entraînement
-	var strength_priority = parent.hero_panel_info.strength_priority
-	var defense_priority = parent.hero_panel_info.defense_priority
-	var agility_priority = parent.hero_panel_info.agility_priority
-	var mana_priority = parent.hero_panel_info.mana_priority
+	var strength_priority = parent.strength_priority
+	var defense_priority = parent.defense_priority
+	var agility_priority = parent.agility_priority
+	var mana_priority = parent.mana_priority
 	
 	# 2. Créer une liste ordonnée des priorités avec les noms d'objets correspondants
 	var priorities = [

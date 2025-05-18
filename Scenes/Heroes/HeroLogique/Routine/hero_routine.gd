@@ -29,13 +29,8 @@ func _update_needs(_hour: int, _minute: int):
 
 # Mise à jour de la planification du héros
 func perform_activity():
-	print("perform activity")
 	#recupere le besoin actuel 
 	var besoin = get_immediate_needs()
-	
-	#print("last_need ", last_need)
-	print("besoin ", besoin)
-	
 	
 	#si le besoin actuel est le meme que le dernier on stop
 	if besoin == last_need:
@@ -83,10 +78,6 @@ func get_immediate_needs() -> Needs:
 	var current_time = TimeManager.current_hour  # Obtenez l'heure actuelle du jeu
 	var task_for_the_hour = hero_planning.planning[current_time]  # Obtenez la tâche définie pour cette heure
 	
-	print("current_time =", current_time)
-	print("planning =", hero_planning.planning)
-	print("planning[current_time] =", hero_planning.planning.get(current_time, "MISSING"))
-
 	# Si le héros est en phase de repos, il dor jusqu'a la fin de la phase
 	if task_for_the_hour == "sleep":
 		return Needs.SLEEP

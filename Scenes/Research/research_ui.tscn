@@ -75,11 +75,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="StartButton" type="Button" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Start"
 
 [node name="PauseButton" type="Button" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Pause
@@ -132,8 +134,4 @@ color = Color(0.38, 0.38, 0.38, 0.756863)
 unique_name_in_owner = true
 autostart = true
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="timeout" from="ResearchTimer" to="." method="_on_timer_timeout"]

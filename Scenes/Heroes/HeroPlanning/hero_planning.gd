@@ -3,7 +3,7 @@ extends Control
 signal close_planning()
 
 @onready var activity_container = %TimeBlock
-#@onready var hour_tracker : Control= $HourTracker
+@onready var hour_tracker : Line2D = %HourTracker/Line2D
 
 #sleep, train , work , free
 var planning: Dictionary = {
@@ -36,9 +36,23 @@ var selected_type: String = ""
 
 
 func _ready() -> void:
-	#TimeManager.connect("hour_changed", _on_hour_changed)
-	#var actual_hour = TimeManager.current_hour
-	#hour_tracker.position.y = 56 + (actual_hour * 20)
+	add_to_group("UI")
+	TimeManager.connect("hour_changed", _on_hour_changed)
+	%CloseButton.connect("pressed", _on_close_button_pressed)
+	%Sleep.connect("pressed", _on_sleep_pressed)
+	%Train.connect("pressed", _on_train_pressed)
+	%Work.connect("pressed", _on_work_pressed)
+	%Free.connect("pressed", _on_free_pressed)
+	%Copy.connect("pressed", _on_copy_pressed)
+	%Past.connect("pressed", _on_past_pressed)
+	%NightLayout.connect("pressed", _on_night_layout_pressed)
+	%MorningLayout.connect("pressed", _on_morning_layout_pressed)
+	%AfternoonLayout.connect("pressed", _on_afternoon_layout_pressed)
+	%JourneyLayout.connect("pressed", _on_journey_layout_pressed)
+	
+	var actual_hour = TimeManager.current_hour
+	hour_tracker.position.y = -46
+	hour_tracker.position.x = -425 + (actual_hour * 37)
 	
 	for activity in activity_container.get_children():
 		activity.connect("activity_selected", _on_activity_selected)
@@ -59,6 +73,7 @@ func update_activity_list() -> void:
 	for activity in activity_container.get_children():
 		planning[activity.hour] = activity.type
 
+
 func update_visual_by_planning() -> void:
 	for item in activity_container.get_children():
 		var new_type = planning[item.hour]
@@ -66,9 +81,8 @@ func update_visual_by_planning() -> void:
 		item.set_type(new_type)
 
 
-#func _on_hour_changed(new_hour : int) -> void:
-	#hour_tracker.position.y = 56 + (new_hour * 20)
-	#hour_tracker.get_node("Label").text = str(TimeManager.current_hour) + "h00"
+func _on_hour_changed(new_hour : int) -> void:
+	hour_tracker.position.x = -425 + (new_hour * 37)
 
 
 func _on_sleep_pressed(activity):

@@ -9,6 +9,8 @@ var selectedHeroes : Array
 
 func _ready() -> void:
 	add_to_group("UI")
+	%RefreshBtn.connect("pressed",_on_refresh_btn_pressed)
+	%BtnClose.connect("pressed",_on_btn_close_pressed)
 	# Sélectionne aléatoirement 3 héros au démarrage
 	for x in 3:
 		selectedHeroes.append( heroDataInstance.get_random_hero())
@@ -77,7 +79,7 @@ func create_heros_liste(refresh : bool) -> void:
 
 
 func create_hero_instance(heroInfo : Dictionary) -> Node2D:
-	var heroScene = preload("res://Scenes/Heroes/hero.tscn") 
+	var heroScene = preload("res://Scenes/Heroes/Hero.tscn") 
 	var heroInstance = heroScene.instantiate() as Node2D
 	
 	# Configurez les propriétés du héros ici
@@ -107,7 +109,7 @@ func create_hero_instance(heroInfo : Dictionary) -> Node2D:
 	#Instantie une 2nf fois le sprite pour l'afficher dans les detail du hero
 	var animation_ui = animation_node.instantiate()
 	animation_ui.name = "Sprite"
-	heroInstance.get_node("CanvasLayer/HeroPanelInfo/StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/HeroEquipementUi").add_child(animation_ui)
+	heroInstance.get_node("CanvasLayer/HeroPanelInfo/StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/HeroEquipementUi").add_child(animation_ui)
 	animation_ui.position = Vector2(105,107)
 	animation_ui.scale = Vector2(5,5)
 	animation_ui.get_node("Hair").texture = load("res://Sprites/hero/hair/" + str(heroInfo.hair) + ".png")
@@ -121,7 +123,6 @@ func _on_recrut_btn_pressed() -> void:
 	if !self.visible:
 		GameData.hide_ui()
 		create_heros_liste(false)
-		GameData.construction_type = ""
 	self.visible = !self.visible
 	GameData.menu_open = !GameData.menu_open
 	
