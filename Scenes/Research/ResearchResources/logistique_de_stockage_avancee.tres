@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://ctkdk1is1ojj0"]
+
+[ext_resource type="Texture2D" uid="uid://dh3r7gs07bxhb" path="res://Sprites/Interface/research icon/logistique de stockage avancé.png" id="1_y75ee"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_qxtrc"]
+[ext_resource type="Resource" uid="uid://mvm8dkkn6p0i" path="res://Scenes/Research/ResearchResources/optimisation_de_l_entrepot.tres" id="3_1oscy"]
+
+[resource]
+script = ExtResource("2_qxtrc")
+research_name = "Logistique de stockage avancée"
+serialised_name = "logistique_de_stockage_avancee"
+research_description = "Permet une gestion quasi parfaite des stocks, augmentant significativement l'espace de stockage disponible."
+research_level = 9
+research_column = 4.0
+research_icon = ExtResource("1_y75ee")
+research_prerequsites = Array[ExtResource("2_qxtrc")]([ExtResource("3_1oscy")])
+research_cost = 90
+research_duration = 540

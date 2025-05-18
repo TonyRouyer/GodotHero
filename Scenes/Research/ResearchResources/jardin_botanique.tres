@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://c4ud50j54ymd1"]
+
+[ext_resource type="Texture2D" uid="uid://b61gguav0vk0k" path="res://Sprites/Interface/research icon/jardin botanique.png" id="1_1em73"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_lpv7a"]
+[ext_resource type="Resource" uid="uid://cjvy4kj2yrn6j" path="res://Scenes/Research/ResearchResources/alchimiste_accomplie.tres" id="3_qaqtf"]
+
+[resource]
+script = ExtResource("2_lpv7a")
+research_name = "Jardin botanique"
+serialised_name = "jardin_botanique"
+research_description = "Permet de créer un jardin qui fait pousser quelque plante commune"
+research_level = 7
+research_column = 6.0
+research_icon = ExtResource("1_1em73")
+research_prerequsites = Array[ExtResource("2_lpv7a")]([ExtResource("3_qaqtf")])
+research_cost = 700
+research_duration = 420

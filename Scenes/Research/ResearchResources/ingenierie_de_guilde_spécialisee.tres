@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://b10jc6hvp5n8m"]
+
+[ext_resource type="Texture2D" uid="uid://bm5s641nnj0jo" path="res://Sprites/Interface/research icon/ingenerie de guide specialisé.png" id="1_bgjas"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_w4kap"]
+[ext_resource type="Resource" uid="uid://46g074vaxw0i" path="res://Scenes/Research/ResearchResources/strategie_de_guerre_avancee.tres" id="3_uympy"]
+
+[resource]
+script = ExtResource("2_w4kap")
+research_name = "Ingénerie de guilde spécialisée"
+serialised_name = "ingenierie_de_guilde_spécialisee"
+research_description = "Permet la conception et la construction de structures de guilde hautement spécialisées et personnalisées."
+research_level = 10
+research_column = 6.0
+research_icon = ExtResource("1_bgjas")
+research_prerequsites = Array[ExtResource("2_w4kap")]([ExtResource("3_uympy")])
+research_cost = 1000
+research_duration = 600

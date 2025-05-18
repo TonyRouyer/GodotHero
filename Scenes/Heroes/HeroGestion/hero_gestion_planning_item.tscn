@@ -1,0 +1,121 @@
+[gd_scene load_steps=3 format=3 uid="uid://dni8di2k312bk"]
+
+[ext_resource type="Script" uid="uid://ewjly66dq7rn" path="res://Scenes/Heroes/HeroGestion/hero_gestion_planning_item.gd" id="1_5rca7"]
+[ext_resource type="PackedScene" uid="uid://b4y7rhnq13x54" path="res://Scenes/Heroes/HeroPlanning/planning_item.tscn" id="2_5rca7"]
+
+[node name="HeroGestionPlanningItem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_5rca7")
+
+[node name="Nom" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 5.0
+offset_right = 87.0
+offset_bottom = 28.0
+text = "Hero name"
+
+[node name="TimeBlock" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 100.0
+offset_right = 983.0
+offset_bottom = 32.0
+theme_override_constants/separation = 5
+
+[node name="PlanningItem" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+
+[node name="PlanningItem2" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 1
+
+[node name="PlanningItem3" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 2
+
+[node name="PlanningItem4" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 3
+
+[node name="PlanningItem5" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 4
+
+[node name="PlanningItem6" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 5
+
+[node name="PlanningItem7" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 6
+
+[node name="PlanningItem8" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 7
+
+[node name="PlanningItem9" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 8
+
+[node name="PlanningItem10" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 9
+
+[node name="PlanningItem11" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 10
+
+[node name="PlanningItem12" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 11
+
+[node name="PlanningItem13" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 12
+
+[node name="PlanningItem14" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 13
+
+[node name="PlanningItem15" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 14
+
+[node name="PlanningItem16" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 15
+
+[node name="PlanningItem17" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 16
+
+[node name="PlanningItem18" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 17
+
+[node name="PlanningItem19" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 18
+
+[node name="PlanningItem20" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 19
+
+[node name="PlanningItem21" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 20
+
+[node name="PlanningItem22" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 21
+
+[node name="PlanningItem23" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 22
+
+[node name="PlanningItem24" parent="TimeBlock" instance=ExtResource("2_5rca7")]
+layout_mode = 2
+hour = 23

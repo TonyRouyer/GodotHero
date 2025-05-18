@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://dvijhmpljyg7q"]
+
+[ext_resource type="Texture2D" uid="uid://dseyd0p7xxrt8" path="res://Sprites/Interface/research icon/alchimie.png" id="1_6c0dm"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_runjk"]
+[ext_resource type="Resource" uid="uid://dpgcwrklc238m" path="res://Scenes/Research/ResearchResources/cartographie.tres" id="3_pb56y"]
+
+[resource]
+script = ExtResource("2_runjk")
+research_name = "Alchimie"
+serialised_name = "alchimie"
+research_description = "Permet la création du laboratoire d’alchimie"
+research_level = 5
+research_column = 6.0
+research_icon = ExtResource("1_6c0dm")
+research_prerequsites = Array[ExtResource("2_runjk")]([ExtResource("3_pb56y")])
+research_cost = 500
+research_duration = 300

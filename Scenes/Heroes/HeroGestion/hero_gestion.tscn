@@ -1,0 +1,188 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpc3326l27uf4"]
+
+[ext_resource type="Script" uid="uid://boi0gl8cstyxx" path="res://Scenes/Heroes/HeroGestion/hero_gestion.gd" id="1_dh787"]
+[ext_resource type="Texture2D" uid="uid://cpj3i1j2pjbc5" path="res://Sprites/Interface/clock/btnPlay.png" id="2_3glvs"]
+
+[node name="HeroGestion" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_dh787")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -125.0
+offset_right = 325.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+current_tab = 0
+
+[node name="Infos" type="TabBar" parent="PanelContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Infos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/TabContainer/Infos/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="HeroStatContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Infos/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Planning" type="TabBar" parent="PanelContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Planning"]
+layout_mode = 0
+offset_right = 1010.0
+offset_bottom = 202.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HeroPlanningContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 37
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(980, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Options" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Sleep" type="TextureButton" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Options/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_3glvs")
+
+[node name="Train" type="TextureButton" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Options/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_3glvs")
+
+[node name="Work" type="TextureButton" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Options/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_3glvs")
+
+[node name="Free" type="TextureButton" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Options/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_3glvs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Sleep"
+
+[node name="Label2" type="Label" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Train"
+
+[node name="Label3" type="Label" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Work"
+
+[node name="Label4" type="Label" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Free"
+
+[node name="ConfirmationPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -40.0
+offset_right = 62.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ConfirmationPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmationPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="ConfirmFire" type="Button" parent="ConfirmationPanel/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Yes"
+
+[node name="CancelFire" type="Button" parent="ConfirmationPanel/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No"

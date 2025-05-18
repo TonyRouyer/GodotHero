@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://ddc8abel5l6vo"]
+
+[ext_resource type="Texture2D" uid="uid://87cx3vsd4yma" path="res://Sprites/Interface/research icon/tissage renforcé.png" id="1_ck66o"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_e8cs1"]
+[ext_resource type="Resource" uid="uid://y6jog46r17ui" path="res://Scenes/Research/ResearchResources/couture.tres" id="3_n0hox"]
+
+[resource]
+script = ExtResource("2_e8cs1")
+research_name = "Tissage renforcé"
+serialised_name = "tissage_renforce"
+research_description = "Permet d'augmenter le tier des armure tissus/cuir jusqu’au rang D"
+research_level = 2
+research_column = 2.0
+research_icon = ExtResource("1_ck66o")
+research_prerequsites = Array[ExtResource("2_e8cs1")]([ExtResource("3_n0hox")])
+research_cost = 200
+research_duration = 120

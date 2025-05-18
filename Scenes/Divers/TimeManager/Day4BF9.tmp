@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://1sl61klypsv7"]
+
+[ext_resource type="Script" path="res://Scenes/UI/TimeManager/DayManager.gd" id="1_ue14e"]
+[ext_resource type="Texture2D" uid="uid://csrc16vcfpp46" path="res://Sprites/Divers/progressbar_top.png" id="2_ivosr"]
+
+[node name="DayManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ue14e")
+hours_per_day = null
+minutes_per_hour = null
+seconds_per_minute = null
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Progress_clock" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+value = 33.0
+fill_mode = 4
+texture_under = ExtResource("2_ivosr")
+texture_progress = ExtResource("2_ivosr")
+tint_under = Color(0.243137, 0.301961, 1, 0.337255)
+tint_over = Color(0.243137, 0.301961, 1, 1)
+tint_progress = Color(0.243137, 0.301961, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -96.0
+offset_right = 59.0
+offset_bottom = -70.0
+text = "Day: "
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

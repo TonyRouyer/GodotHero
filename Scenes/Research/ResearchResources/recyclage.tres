@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=3 format=3 uid="uid://cbe4fxr2px4g0"]
+
+[ext_resource type="Texture2D" uid="uid://dy1id80d33qij" path="res://Sprites/Interface/research icon/recyclage.png" id="1_wupdc"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_qc3a5"]
+
+[resource]
+script = ExtResource("2_qc3a5")
+research_name = "Recyclage"
+serialised_name = "recyclage"
+research_description = "Permet de construire recyclé arme et armure pour récupérer une partie des ressource première. (25%)"
+research_level = 1
+research_column = 4.0
+research_icon = ExtResource("1_wupdc")
+research_prerequsites = Array[ExtResource("2_qc3a5")]([])
+research_cost = 100
+research_duration = 60

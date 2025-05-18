@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://6ybkobn7mivj"]
+
+[ext_resource type="Texture2D" uid="uid://xyflpahdhg57" path="res://Sprites/Interface/Panel/ItemBox_24x24.png" id="1_7i2ba"]
+[ext_resource type="Script" uid="uid://c8ge80cse1nfq" path="res://Scenes/Inventory/EquipementSlot/equipement_slot.gd" id="2_3aa3a"]
+
+[node name="EquipementSlot0" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("1_7i2ba")
+script = ExtResource("2_3aa3a")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)

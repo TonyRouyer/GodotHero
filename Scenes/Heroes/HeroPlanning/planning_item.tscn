@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4y7rhnq13x54"]
+
+[ext_resource type="Script" uid="uid://dqbii58jbgkka" path="res://Scenes/Heroes/HeroPlanning/planning_item.gd" id="1_8ql0y"]
+
+[node name="PlanningItem" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_8ql0y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+mouse_filter = 1
+color = Color(0.364706, 0.94902, 0.364706, 1)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://cd3r2ac2o41sl"]
+
+[ext_resource type="Texture2D" uid="uid://xwceetjybcy" path="res://Sprites/Interface/research icon/recyclage avancé.png" id="1_q2ou3"]
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_tf0v8"]
+[ext_resource type="Resource" uid="uid://dpgcwrklc238m" path="res://Scenes/Research/ResearchResources/cartographie.tres" id="3_s85s0"]
+
+[resource]
+script = ExtResource("2_tf0v8")
+research_name = "Recyclage avancé"
+serialised_name = "recyclage_avance"
+research_description = "Permet recyclé equipement/arme et récupérer une partie des ressource première (50%)"
+research_level = 5
+research_column = 5.0
+research_icon = ExtResource("1_q2ou3")
+research_prerequsites = Array[ExtResource("2_tf0v8")]([ExtResource("3_s85s0")])
+research_cost = 500
+research_duration = 300

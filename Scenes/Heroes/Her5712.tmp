@@ -1,0 +1,350 @@
+[gd_scene load_steps=21 format=3 uid="uid://nj6eu7f6821s"]
+
+[ext_resource type="Script" path="res://Scenes/Heroes/Hero.gd" id="1_kyd4t"]
+[ext_resource type="Texture2D" uid="uid://cbsaxnusysajp" path="res://Sprites/Orc.png" id="2_bncpb"]
+[ext_resource type="Texture2D" uid="uid://8vsu573cwb0o" path="res://Sprites/Soldier.png" id="3_7gicj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii88o"]
+atlas = ExtResource("2_bncpb")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmydm"]
+atlas = ExtResource("3_7gicj")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fxrsv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii88o")
+}],
+"loop": true,
+"name": &"orc_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmydm")
+}],
+"loop": true,
+"name": &"soldier_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1fpp"]
+atlas = ExtResource("2_bncpb")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhbok"]
+atlas = ExtResource("2_bncpb")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yk7p"]
+atlas = ExtResource("2_bncpb")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prpxp"]
+atlas = ExtResource("2_bncpb")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umedl"]
+atlas = ExtResource("2_bncpb")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37x8b"]
+atlas = ExtResource("2_bncpb")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dxox"]
+atlas = ExtResource("3_7gicj")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib53v"]
+atlas = ExtResource("3_7gicj")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gvds"]
+atlas = ExtResource("3_7gicj")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88ppk"]
+atlas = ExtResource("3_7gicj")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0kcn"]
+atlas = ExtResource("3_7gicj")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcxb6"]
+atlas = ExtResource("3_7gicj")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqo2t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1fpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhbok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yk7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prpxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umedl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37x8b")
+}],
+"loop": true,
+"name": &"orc_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dxox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ib53v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gvds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88ppk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0kcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcxb6")
+}],
+"loop": true,
+"name": &"soldier_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5e7o"]
+size = Vector2(36, 29)
+
+[node name="Heroes" type="Node2D"]
+script = ExtResource("1_kyd4t")
+moral = 100
+
+[node name="stats_overlay" type="Panel" parent="."]
+visible = false
+offset_left = -13.0
+offset_top = -35.0
+offset_right = 101.0
+offset_bottom = 38.0
+
+[node name="str" type="Label" parent="stats_overlay"]
+layout_mode = 0
+offset_left = 42.0
+offset_right = 74.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 10
+text = "Str"
+
+[node name="def" type="Label" parent="stats_overlay"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 14.0
+offset_right = 74.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 10
+text = "End"
+
+[node name="agi" type="Label" parent="stats_overlay"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 28.0
+offset_right = 74.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 10
+text = "Agi"
+
+[node name="mana" type="Label" parent="stats_overlay"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 42.0
+offset_right = 74.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 10
+text = "Mag"
+
+[node name="luck" type="Label" parent="stats_overlay"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 56.0
+offset_right = 74.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 10
+text = "Luck"
+
+[node name="hp" type="Label" parent="stats_overlay"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 50.0
+offset_right = 37.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 10
+text = "10/10"
+
+[node name="lvl" type="Label" parent="stats_overlay"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 27.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 10
+text = "lvl"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="statsWindow" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -200.0
+offset_right = 325.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.654902, 0.337255, 1)
+
+[node name="Title" type="Label" parent="CanvasLayer/statsWindow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.702
+anchor_top = 0.439
+anchor_right = 0.702
+anchor_bottom = 0.439
+offset_left = -426.3
+offset_top = -160.6
+offset_right = -353.3
+offset_bottom = -134.6
+text = "Hero info"
+
+[node name="Nom" type="Label" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 47.0
+offset_right = 120.0
+offset_bottom = 73.0
+text = "nom"
+
+[node name="Race" type="Label" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 60.0
+offset_right = 241.0
+offset_bottom = 86.0
+text = "race"
+
+[node name="Classe" type="Label" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 97.0
+offset_right = 247.0
+offset_bottom = 123.0
+text = "classe"
+
+[node name="Level" type="Label" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 328.0
+offset_right = 121.0
+offset_bottom = 354.0
+text = "level"
+
+[node name="Strength" type="Label" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 144.0
+offset_right = 139.0
+offset_bottom = 170.0
+text = "strength"
+
+[node name="Defense" type="Label" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 183.0
+offset_right = 139.0
+offset_bottom = 209.0
+text = "Defense"
+
+[node name="Agility" type="Label" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 222.0
+offset_right = 121.0
+offset_bottom = 248.0
+text = "agility"
+
+[node name="Mana" type="Label" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 254.0
+offset_right = 113.0
+offset_bottom = 280.0
+text = "mana"
+
+[node name="Luck" type="Label" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 288.0
+offset_right = 104.0
+offset_bottom = 314.0
+text = "luck"
+
+[node name="Hp" type="ProgressBar" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 294.0
+offset_right = 543.0
+offset_bottom = 321.0
+max_value = 10.0
+step = 1.0
+value = 5.0
+
+[node name="Sprite" type="AnimatedSprite2D" parent="CanvasLayer/statsWindow"]
+position = Vector2(466, 203)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_fxrsv")
+animation = &"soldier_idle"
+flip_h = true
+
+[node name="Button" type="Button" parent="CanvasLayer/statsWindow"]
+layout_mode = 0
+offset_left = 623.0
+offset_top = 5.0
+offset_right = 641.0
+offset_bottom = 36.0
+text = "X"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pqo2t")
+animation = &"orc_idle"
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5, 0.5)
+shape = SubResource("RectangleShape2D_k5e7o")
+
+[connection signal="pressed" from="CanvasLayer/statsWindow/Button" to="." method="_on_button_pressed"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

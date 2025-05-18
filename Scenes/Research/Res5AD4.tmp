@@ -1,0 +1,297 @@
+[gd_scene load_steps=4 format=3 uid="uid://sbkqulnwaelb"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Research/ResearchUI.gd" id="1_s420v"]
+[ext_resource type="PackedScene" uid="uid://bwceq1qv51ja0" path="res://Scenes/UI/Research/TechNode.tscn" id="2_1nxv2"]
+[ext_resource type="Texture2D" uid="uid://bycwroahnkm2h" path="res://Sprites/Interface/fond_carre.png" id="2_jiqvw"]
+
+[node name="ResearchUi" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_s420v")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 257.0
+offset_right = 1152.0
+offset_bottom = 616.0
+theme_override_constants/separation = 0
+
+[node name="InfoPanel" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(288, 0)
+layout_mode = 2
+texture = ExtResource("2_jiqvw")
+expand_mode = 1
+
+[node name="DescriptionPanel" type="MarginContainer" parent="HBoxContainer/InfoPanel"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 355.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/InfoPanel/DescriptionPanel"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/InfoPanel/DescriptionPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 191)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Permet la construction de chambres individuelles pour les aventuriers, améliorant leur moral et repos."
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
+[node name="CurrentSearchPanel" type="VBoxContainer" parent="HBoxContainer/InfoPanel/DescriptionPanel"]
+layout_mode = 2
+alignment = 2
+
+[node name="Titre" type="Label" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
+layout_mode = 2
+text = "Current search"
+
+[node name="CurrentSearchLabel" type="Label" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
+layout_mode = 2
+text = "research name"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/HBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="CancelButton" type="Button" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/HBoxContainer"]
+layout_mode = 2
+text = "Cancel
+"
+
+[node name="DisplaySearchPanel" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(864, 0)
+layout_mode = 2
+texture = ExtResource("2_jiqvw")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/DisplaySearchPanel"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 844.0
+offset_bottom = 350.0
+mouse_filter = 0
+
+[node name="LineContainer" type="Control" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer"]
+layout_mode = 2
+
+[node name="researchItem" type="Control" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer"]
+custom_minimum_size = Vector2(816, 500)
+layout_mode = 2
+
+[node name="recherche_de_forge" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 184.0
+offset_top = 533.0
+offset_right = 216.0
+offset_bottom = 565.0
+scale = Vector2(2, 2)
+btn_content = "Recherche de forge"
+tech_name = "recherche_de_forge"
+tech_icon = "recherche_de_forge.png"
+duration = 100
+cost = 60
+
+[node name="couture" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 377.0
+offset_top = 540.0
+offset_right = 409.0
+offset_bottom = 572.0
+scale = Vector2(2, 2)
+btn_content = "Couture"
+tech_name = "couture"
+tech_icon = "recherche_de_forge.png"
+duration = 100
+cost = 60
+
+[node name="acier_de_forge" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 177.0
+offset_top = 435.0
+offset_right = 209.0
+offset_bottom = 467.0
+scale = Vector2(2, 2)
+btn_content = "Acier de forge"
+tech_name = "acier_de_forge"
+tech_icon = "recherche_de_forge.png"
+parents = ["recherche_de_forge"]
+duration = 200
+cost = 120
+
+[node name="tissage_renforce" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 376.0
+offset_top = 431.0
+offset_right = 408.0
+offset_bottom = 463.0
+scale = Vector2(2, 2)
+btn_content = "Tissage renforcé"
+tech_name = "tissage_renforce"
+tech_icon = "recherche_de_forge.png"
+parents = ["couture"]
+duration = 200
+cost = 120
+
+[node name="entrainement_martial" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 177.0
+offset_top = 330.0
+offset_right = 209.0
+offset_bottom = 362.0
+scale = Vector2(2, 2)
+btn_content = "Entrainement martial"
+tech_name = "entrainement_martial"
+tech_icon = "recherche_de_forge.png"
+parents = ["acier_de_forge"]
+duration = 300
+cost = 180
+
+[node name="entrainement_magique" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 371.0
+offset_top = 322.0
+offset_right = 403.0
+offset_bottom = 354.0
+scale = Vector2(2, 2)
+btn_content = "Entrainement magique"
+tech_name = "entrainement_magique"
+tech_icon = "recherche_de_forge.png"
+parents = ["tissage_renforce"]
+duration = 300
+cost = 180
+
+[node name="forge_de_maitre_arme" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 142.0
+offset_top = 238.0
+offset_right = 174.0
+offset_bottom = 270.0
+scale = Vector2(2, 2)
+btn_content = "Forge de maitre d'arme"
+tech_name = "forge_de_maitre_arme"
+tech_icon = "recherche_de_forge.png"
+parents = ["entrainement_martial"]
+duration = 400
+cost = 240
+
+[node name="atelier_armurier_agile" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 593.0
+offset_top = 277.0
+offset_right = 625.0
+offset_bottom = 309.0
+scale = Vector2(2, 2)
+btn_content = "Atelier d'armurier agile"
+tech_name = "atelier_armurier_agile"
+tech_icon = "recherche_de_forge.png"
+parents = ["entrainement_magique"]
+duration = 400
+cost = 240
+
+[node name="enchantement_equipement" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 345.0
+offset_top = 186.0
+offset_right = 377.0
+offset_bottom = 218.0
+scale = Vector2(2, 2)
+btn_content = "Enchantement d'equipement"
+tech_name = "enchantement_equipement"
+tech_icon = "recherche_de_forge.png"
+parents = ["atelier_armurier_agile", "forge_de_maitre_arme"]
+duration = 500
+cost = 300
+
+[node name="enclume_de_forgeron" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 140.0
+offset_top = 31.0
+offset_right = 172.0
+offset_bottom = 63.0
+scale = Vector2(2, 2)
+btn_content = "Enclume de forgeron"
+tech_name = "enclume_de_forgeron"
+tech_icon = "recherche_de_forge.png"
+parents = ["enchantement_equipement"]
+duration = 600
+cost = 360
+
+[node name="technique_de_tissage_avance" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 458.0
+offset_top = 23.0
+offset_right = 490.0
+offset_bottom = 55.0
+scale = Vector2(2, 2)
+btn_content = "Technique de tissage avancée"
+tech_name = "technique_de_tissage_renforce"
+tech_icon = "recherche_de_forge.png"
+parents = ["enchantement_equipement"]
+duration = 600
+cost = 360
+
+[node name="arme_enchante_avance" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer/researchItem" instance=ExtResource("2_1nxv2")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 658.0
+offset_top = 115.0
+offset_right = 690.0
+offset_bottom = 147.0
+scale = Vector2(2, 2)
+btn_content = "Arme enchantée avancée"
+tech_name = "arme_enchante_avance"
+tech_icon = "recherche_de_forge.png"
+parents = ["enchantement_equipement"]
+duration = 600
+cost = 360
+
+[node name="ToolTip" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ToolTip"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="Name" type="Label" parent="ToolTip/MarginContainer"]
+layout_mode = 2
+text = "zerze
+"
+
+[connection signal="pressed" from="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
