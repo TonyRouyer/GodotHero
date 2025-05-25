@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=2 format=3 uid="uid://v1wvnj5h6it0"]
+
+[ext_resource type="Script" uid="uid://dyiinyoxu1i23" path="res://Scenes/Level/ConstructionLogic/Room/roomData.gd" id="1_xim27"]
+
+[resource]
+script = ExtResource("1_xim27")
+name = "Hall"
+min_size = Vector2i(5, 5)
+required_objects = Array[String](["table", "quest_table"])
+metadata/_custom_type_script = "uid://dyiinyoxu1i23"

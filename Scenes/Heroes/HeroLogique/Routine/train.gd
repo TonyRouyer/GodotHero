@@ -1,21 +1,20 @@
 extends Node2D
 
-@onready var parent = get_parent().get_parent().get_node("%HeroPanelInfo")
-
+@onready var hero: Hero = get_node("../..")
+@onready var panel_info = get_node("../../CanvasLayer/HeroPanelInfo")
+@onready var hero_routine = get_node("..")
 
 func choose_training_activity() -> Vector2:
-	return Vector2(0,0)
 	#Logique
 		#Cherche ordonne les priorité du hero en matiere d'entrainement
 		#exemple: force,agilité puis magie
 		#Pour chaque, cherche le/les objet diponible et libre et renvois la position
-	var objects  = parent.objects_node.get_children()
 	
 	# 1. Récupérer les priorités d'entraînement
-	var strength_priority = parent.strength_priority
-	var defense_priority = parent.defense_priority
-	var agility_priority = parent.agility_priority
-	var mana_priority = parent.mana_priority
+	var strength_priority = panel_info.strength_priority
+	var defense_priority = panel_info.defense_priority
+	var agility_priority = panel_info.agility_priority
+	var mana_priority = panel_info.mana_priority
 	
 	# 2. Créer une liste ordonnée des priorités avec les noms d'objets correspondants
 	var priorities = [
@@ -31,20 +30,21 @@ func choose_training_activity() -> Vector2:
 	)
 	
 	#3.5 si le hero utilisait un objet on le quitte
-	if parent.used_object != null:
-		parent.used_object.exit(parent.hero)
+	if hero_routine.used_object != null:
+		hero_routine.used_object.exit(hero)
 	
 	# 4. Parcourir les priorités et essayer de trouver un objet disponible
+	var objects = get_tree().get_root().get_node("Main/Level/Object").get_children()
 	for priority_entry in priorities:
 		# Cherche un objet non occupé du bon type
 		for object in objects:
 			if object.node_name == priority_entry.object and object.used == false:
-				parent.used_object = object
+				hero_routine.used_object = object
 				object.used = true
 				return object.global_position
 	return Vector2.ZERO
 
 
 func train(object_pos: Vector2) -> void:
-	parent.last_need = parent.Needs.TRAIN
-	parent.hero_pathfinding.set_destination(object_pos)
+	hero_routine.last_need = hero_routine.Needs.TRAIN
+	hero.get_node("HeroPathfinding").set_destination(object_pos)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cevu7bdkx2qyv"]
+
+[ext_resource type="Script" uid="uid://xlwlebfkenj2" path="res://Scenes/Level/Objects/Usables/anvil.gd" id="1_r72d5"]
+[ext_resource type="Texture2D" uid="uid://b6d2u1kbqdisb" path="res://Sprites/items/anvil.png" id="2_gqv55"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnjm0"]
+size = Vector2(16, 32)
+
+[node name="Anvil" type="Node2D"]
+script = ExtResource("1_r72d5")
+
+[node name="View" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="View"]
+unique_name_in_owner = true
+position = Vector2(8, 24)
+texture = ExtResource("2_gqv55")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="View"]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View/Area2D"]
+unique_name_in_owner = true
+position = Vector2(8, 16)
+shape = SubResource("RectangleShape2D_hnjm0")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(8, 32)

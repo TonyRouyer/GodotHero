@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var tilemap : TileMapLayer = $"../../../TileMap/Floor"
-@onready var objects_node : Node2D = $"../../../TileMap/Object"
+@onready var tilemap : TileMapLayer = $"../../../Level/Floor"
+@onready var objects_node : Node2D = $"../../../Level/Object"
 @onready var hero_planning : Control = %HeroPlanning
 @onready var hero_pathfinding = %HeroPathfinding
 @onready var hero_needs : Node2D = %HeroNeeds

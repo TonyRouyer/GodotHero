@@ -139,6 +139,6 @@ grow_vertical = 2
 texture_normal = ExtResource("2_df04y")
 stretch_mode = 0
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero1/RecruteBtn" to="." method="_on_recrute_btn_pressed" binds= [0]]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero1/RecruteBtn" to="." method="_on_recrute_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero2/RecruteBtn" to="." method="_on_recrute_btn_pressed" binds= [1]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero3/RecruteBtn" to="." method="_on_recrute_btn_pressed" binds= [2]]

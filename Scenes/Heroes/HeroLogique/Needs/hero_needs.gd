@@ -16,12 +16,14 @@ const HYGIENE_LOSS_PER_HOUR = 2.0
 
 var starving: bool = false
 var exausted: bool = false
+var quit_proba: int = 5
 #Besoin des hero : HUNGER = 0, SLEEP = 1, TOILET = 2, HYGIENE = 3, ENTERTAINMENT = 4, TRAIN = 5, WORK = 6, FREE = 7 }
 
 
 
 func _ready():
 	TimeManager.connect("hour_changed", _on_hour_changed)
+	TimeManager.connect("day_changed", _on_day_changed)
 
 
 func _on_hour_changed(_new_hour : int):
@@ -48,6 +50,16 @@ func _on_hour_changed(_new_hour : int):
 	hero.moral = 100
 	_update_moral()
 
+
+func _on_day_changed(_new_day):
+	if hero.moral <= 5:
+		if randf_range(0,100) <= quit_proba:
+			print("Le héros est démotivé et quitte la guilde !")
+			#hero.quit_guild()
+		else:
+			quit_proba =+ 5
+	else:
+		quit_proba = 5
 
 # ---------------------
 # Gestion de la Faim
@@ -185,9 +197,7 @@ func _update_moral():
 	hero.moral += total_moral_change
 	hero.moral = clamp(hero.moral, 0, 100)
 
-	if hero.moral <= 0:
-		print("Le héros est démotivé et quitte la guilde !")
-		#hero.quit_guild()
+
 
 
 #Ajout un effet de moral: nom / valeur sur le moral (positive ou negative) / durée en heure, type (ex: MoralEffectType.CONSTANT)

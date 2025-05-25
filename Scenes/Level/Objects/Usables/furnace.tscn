@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://vfq482vuvrbi"]
+
+[ext_resource type="Script" uid="uid://di4tck33i41mg" path="res://Scenes/Level/Objects/Usables/furnace.gd" id="1_7bjrl"]
+[ext_resource type="Texture2D" uid="uid://bnc2ysx2ckhd7" path="res://Sprites/items/furnace.png" id="2_3gm78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om2rh"]
+size = Vector2(16, 32)
+
+[node name="Furnace" type="Node2D"]
+script = ExtResource("1_7bjrl")
+
+[node name="View" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="View"]
+unique_name_in_owner = true
+position = Vector2(8, 8)
+texture = ExtResource("2_3gm78")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="View"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View/Area2D"]
+unique_name_in_owner = true
+position = Vector2(8, 16)
+shape = SubResource("RectangleShape2D_om2rh")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(8, 32)

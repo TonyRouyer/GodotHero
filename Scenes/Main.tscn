@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjlfs7504hewa"]
+[gd_scene load_steps=15 format=3 uid="uid://bjlfs7504hewa"]
 
 [ext_resource type="Script" uid="uid://bfqojah7afdhh" path="res://Scenes/Main.gd" id="1_ivlpv"]
 [ext_resource type="PackedScene" uid="uid://bfxhmp8vcao0l" path="res://Scenes/Heroes/HeroRecruitement/hero_recruitment_ui.tscn" id="1_kwy7a"]
@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://tht5m577dqw" path="res://Scenes/Level/ConstructionMode/ConstructionUI.tscn" id="7_wxrls"]
 [ext_resource type="PackedScene" uid="uid://cywxfe684f010" path="res://Scenes/Inventory/global_inventory.tscn" id="8_oam5w"]
 [ext_resource type="PackedScene" uid="uid://sbkqulnwaelb" path="res://Scenes/Research/research_ui.tscn" id="9_0bj76"]
-[ext_resource type="PackedScene" uid="uid://cikud7p4b827j" path="res://Scenes/Level/Room/Room.tscn" id="9_jb1iq"]
+[ext_resource type="PackedScene" uid="uid://cikud7p4b827j" path="res://Scenes/Level/ConstructionLogic/ConstructionLogic.tscn" id="9_jb1iq"]
 [ext_resource type="PackedScene" uid="uid://cpc3326l27uf4" path="res://Scenes/Heroes/HeroGestion/hero_gestion.tscn" id="11_2g5h8"]
+[ext_resource type="PackedScene" uid="uid://bc41ufu0q6ah1" path="res://Scenes/Level/ConstructionLogic/ContextualMenu/object_modal.tscn" id="11_4kpch"]
+[ext_resource type="PackedScene" uid="uid://ce3xh57ma28qf" path="res://Scenes/Level/ConstructionLogic/ContextualMenu/room_ui.tscn" id="12_grg3l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54aik"]
 bg_color = Color(0.576471, 0.466667, 0.215686, 1)
@@ -27,13 +29,12 @@ limit_right = 2200
 limit_bottom = 1100
 script = ExtResource("5_ffsep")
 
-[node name="TileMap" parent="." groups=["tilemap"] instance=ExtResource("1_nits4")]
+[node name="Level" parent="." groups=["tilemap"] instance=ExtResource("1_nits4")]
 process_mode = 3
 
 [node name="Heroes" type="Node2D" parent="."]
 
-[node name="Room" parent="." instance=ExtResource("9_jb1iq")]
-process_mode = 3
+[node name="ConstructionLogic" parent="." instance=ExtResource("9_jb1iq")]
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -94,8 +95,9 @@ grow_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UICanvasLayer/BottomMenu"]
 layout_mode = 0
+offset_top = 8.0
 offset_right = 1152.0
-offset_bottom = 40.0
+offset_bottom = 48.0
 mouse_filter = 0
 
 [node name="BottomPanel" type="Panel" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
@@ -105,21 +107,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_1rq31")
 
-[node name="ConstructionUi" parent="UICanvasLayer/BottomMenu" instance=ExtResource("7_wxrls")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_bottom = 40.0
-grow_horizontal = 1
-grow_vertical = 0
-
 [node name="HBoxContainer2" type="HBoxContainer" parent="UICanvasLayer/BottomMenu"]
 layout_mode = 0
-offset_left = 287.0
-offset_right = 1152.0
-offset_bottom = 40.0
+offset_top = 13.0
+offset_right = 414.0
+offset_bottom = 43.0
 mouse_filter = 0
+
+[node name="ConstructionBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
+layout_mode = 2
+text = "Construction"
 
 [node name="RecrutBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
 layout_mode = 2
@@ -161,6 +158,7 @@ offset_right = -289.0
 offset_bottom = -150.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="GlobalInventory" parent="UICanvasLayer/Menu" instance=ExtResource("8_oam5w")]
 visible = false
@@ -170,17 +168,42 @@ offset_top = 123.0
 offset_right = -1.0
 offset_bottom = 123.0
 size_flags_vertical = 4
+mouse_filter = 1
 
 [node name="ResearchUi" parent="UICanvasLayer/Menu" instance=ExtResource("9_0bj76")]
 visible = false
 layout_mode = 0
 offset_top = 204.0
 offset_bottom = 204.0
+mouse_filter = 1
 
 [node name="HeroGestion" parent="UICanvasLayer/Menu" instance=ExtResource("11_2g5h8")]
 visible = false
 layout_mode = 1
 
+[node name="ConstructionUi" parent="UICanvasLayer/Menu" instance=ExtResource("7_wxrls")]
+visible = false
+layout_mode = 1
+mouse_filter = 1
+
+[node name="ObjectModal" parent="UICanvasLayer/Menu" instance=ExtResource("11_4kpch")]
+visible = false
+layout_mode = 0
+
+[node name="RoomUI" parent="UICanvasLayer/Menu" instance=ExtResource("12_grg3l")]
+visible = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/ConstructionBtn" to="UICanvasLayer/Menu/ConstructionUi" method="_on_construction_btn_pressed"]
 [connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/RecrutBtn" to="UICanvasLayer/Menu/HeroRecruitmentUI" method="_on_recrut_btn_pressed"]
 [connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/OpenInvBtn" to="UICanvasLayer/Menu/GlobalInventory" method="_on_open_inv_btn_pressed"]
 [connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/SearchBtn" to="UICanvasLayer/Menu/ResearchUi" method="_open_btn_pressed"]

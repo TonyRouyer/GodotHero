@@ -28,9 +28,8 @@ func eat() -> void:
 
 		# Une fois le repas récupéré, cherche un tabouret pour s’asseoir
 		for object in parent.objects_node.get_children():
-			if object.node_name == "stool" and object.used == false:
+			if object.node_name == "table" and object.used == false:
 				object_position = object.global_position
-				object.used = true
 				break
 
 		# Si aucun tabouret disponible, reste sur place pour manger

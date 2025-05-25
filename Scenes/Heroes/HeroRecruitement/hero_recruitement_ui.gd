@@ -10,7 +10,7 @@ var selectedHeroes : Array
 func _ready() -> void:
 	add_to_group("UI")
 	%RefreshBtn.connect("pressed",_on_refresh_btn_pressed)
-	%BtnClose.connect("pressed",_on_btn_close_pressed)
+	%btnClose.connect("pressed",_on_btn_close_pressed)
 	# Sélectionne aléatoirement 3 héros au démarrage
 	for x in 3:
 		selectedHeroes.append( heroDataInstance.get_random_hero())
@@ -125,7 +125,3 @@ func _on_recrut_btn_pressed() -> void:
 		create_heros_liste(false)
 	self.visible = !self.visible
 	GameData.menu_open = !GameData.menu_open
-	
-	GameData.menu_open = !GameData.menu_open
-	## Affiche la fenêtre des détails des héros
-	#hero_recruitment_ui.show()

@@ -25,19 +25,7 @@ func free_time() -> void:
 				free_activity_timer.start()
 				return
 
-	# 2. Jouer d’un instrument
-	if last_free_activity != "play":
-		for object in parent.objects_node.get_children():
-			if object.node_name == "luth" and object.used == false:
-				object.used = true
-				parent.used_object = object
-				parent.hero_pathfinding.set_destination(object.global_position)
-				last_free_activity = "play"
-				free_activity_timer.wait_time = randi_range(5, 10)
-				free_activity_timer.start()
-				return
-
-	# 3. Se promener
+	# 2. Se promener
 	if last_free_activity != "walk":
 		var rand_offset = Vector2(randf_range(-100, 100), randf_range(-100, 100))
 		var walk_position = parent.hero.global_position + rand_offset

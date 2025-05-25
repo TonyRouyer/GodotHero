@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1toudfwavpr0"]
+
+[ext_resource type="Script" uid="uid://7xjhaa5dqjby" path="res://Scenes/Level/Objects/Usables/training_dummy.gd" id="1_vl4mo"]
+[ext_resource type="Texture2D" uid="uid://bcsteigrmij7h" path="res://Sprites/items/training_dummy.png" id="2_85t6m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6bc4"]
+size = Vector2(16, 32)
+
+[node name="TrainingDummy" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
+script = ExtResource("1_vl4mo")
+
+[node name="View" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="View"]
+unique_name_in_owner = true
+light_mask = 2
+visibility_layer = 2
+position = Vector2(8, 16)
+texture = ExtResource("2_85t6m")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 32)
+
+[node name="Area2D" type="Area2D" parent="View"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View/Area2D"]
+unique_name_in_owner = true
+position = Vector2(8, 16)
+shape = SubResource("RectangleShape2D_v6bc4")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(8, 32)

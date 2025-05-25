@@ -1,89 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://tht5m577dqw"]
+[gd_scene load_steps=2 format=3 uid="uid://tht5m577dqw"]
 
 [ext_resource type="Script" uid="uid://dl42v6eso8xw6" path="res://Scenes/Level/ConstructionMode/ConstructionUI.gd" id="1_dpso8"]
-[ext_resource type="Texture2D" uid="uid://bo0hl71pkw315" path="res://Sprites/terrain/terrain.png" id="3_fxj30"]
-[ext_resource type="Texture2D" uid="uid://d2x0vf4f3jieg" path="res://Sprites/items/object_sprite.png" id="4_f3pd8"]
-[ext_resource type="Texture2D" uid="uid://di6vcjxokpxxg" path="res://Sprites/Interface/Panel/MenusBox_34x34.png" id="6_xqe6g"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wtu25"]
-texture = ExtResource("6_xqe6g")
-texture_margin_left = 3.0
-texture_margin_top = 3.0
-texture_margin_right = 3.0
-texture_margin_bottom = 3.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rfqxi"]
-atlas = ExtResource("3_fxj30")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q75q4"]
-atlas = ExtResource("3_fxj30")
-region = Rect2(64, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_572mc"]
-atlas = ExtResource("3_fxj30")
-region = Rect2(144, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tdeoa"]
-atlas = ExtResource("3_fxj30")
-region = Rect2(144, 32, 16, 16)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rbksq"]
-texture = ExtResource("6_xqe6g")
-texture_margin_left = 3.0
-texture_margin_top = 3.0
-texture_margin_right = 3.0
-texture_margin_bottom = 3.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ty6v"]
-atlas = ExtResource("3_fxj30")
-region = Rect2(128, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t17se"]
-atlas = ExtResource("3_fxj30")
-region = Rect2(128, 16, 16, 16)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byhad"]
-texture = ExtResource("6_xqe6g")
-texture_margin_left = 3.0
-texture_margin_top = 3.0
-texture_margin_right = 3.0
-texture_margin_bottom = 3.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xw1es"]
-atlas = ExtResource("4_f3pd8")
-region = Rect2(32, 64, 16, 32)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40osl"]
-texture = ExtResource("6_xqe6g")
-texture_margin_left = 3.0
-texture_margin_top = 3.0
-texture_margin_right = 3.0
-texture_margin_bottom = 3.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gf2lw"]
-atlas = ExtResource("4_f3pd8")
-region = Rect2(0, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jnoug"]
-atlas = ExtResource("4_f3pd8")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_usvoo"]
-atlas = ExtResource("4_f3pd8")
-region = Rect2(128, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8y6u"]
-atlas = ExtResource("4_f3pd8")
-region = Rect2(96, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sm3wj"]
-atlas = ExtResource("4_f3pd8")
-region = Rect2(16, 112, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m1k4d"]
-atlas = ExtResource("4_f3pd8")
-region = Rect2(96, 64, 16, 16)
 
 [node name="ConstructionUi" type="Control"]
 layout_mode = 3
@@ -94,415 +11,109 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dpso8")
 
-[node name="Button" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -516.0
+offset_right = 234.0
+grow_vertical = 0
 
-[node name="WallAndDoor" type="Button" parent="Button"]
+[node name="Button" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-text = "Wall and Door"
+alignment = 2
 
-[node name="Floor" type="Button" parent="Button"]
+[node name="FoundationButton" type="Button" parent="HBoxContainer/Button"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Floor"
+text = "Foundation"
 
-[node name="Object" type="Button" parent="Button"]
-layout_mode = 2
-text = "Object"
-
-[node name="Action" type="Button" parent="Button"]
-layout_mode = 2
-text = "Action"
-
-[node name="GlobalPanel" type="PanelContainer" parent="."]
-visible = false
-layout_mode = 2
-offset_top = -310.0
-offset_right = 281.0
-
-[node name="MarginContainer" type="MarginContainer" parent="GlobalPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 10
-
-[node name="Menu" type="HBoxContainer" parent="GlobalPanel/MarginContainer"]
-layout_mode = 2
-
-[node name="WallsAndDoorsPanel" type="Control" parent="GlobalPanel/MarginContainer/Menu"]
-layout_mode = 2
-
-[node name="PanelSelector" type="HBoxContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector"]
-layout_mode = 2
-text = "Wall"
-
-[node name="Button2" type="Button" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector"]
+[node name="DoorButton" type="Button" parent="HBoxContainer/Button"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Door"
 
-[node name="Wall" type="GridContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel"]
-layout_mode = 0
-offset_top = 45.0
-offset_right = 250.0
-offset_bottom = 275.0
-theme_override_constants/h_separation = 15
-columns = 5
-
-[node name="PanelContainer" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall"]
-custom_minimum_size = Vector2(32, 32)
+[node name="FloorButton" type="Button" parent="HBoxContainer/Button"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
+text = "Floor"
 
-[node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer"]
+[node name="ObjectButton" type="Button" parent="HBoxContainer/Button"]
+unique_name_in_owner = true
 layout_mode = 2
-texture_normal = SubResource("AtlasTexture_rfqxi")
-stretch_mode = 3
+text = "Objects"
 
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer/TextureButton"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 28.0
-offset_right = 30.0
-offset_bottom = 55.0
-theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 12
-text = "Mur en 
-bois
-"
-
-[node name="PanelContainer2" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall"]
-custom_minimum_size = Vector2(32, 32)
+[node name="RoomButton" type="Button" parent="HBoxContainer/Button"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
+text = "Rooms"
 
-[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer2"]
+[node name="ActionButton" type="Button" parent="HBoxContainer/Button"]
+unique_name_in_owner = true
 layout_mode = 2
-texture_normal = SubResource("AtlasTexture_q75q4")
-stretch_mode = 3
+text = "Actions"
 
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer2/TextureButton2"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 28.0
-offset_right = 30.0
-offset_bottom = 55.0
-theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 12
-text = "Mur en 
-pierre
-"
-
-[node name="Door" type="GridContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel"]
+[node name="GlobalPanel" type="PanelContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
-offset_top = 45.0
-offset_right = 250.0
-offset_bottom = 275.0
+
+[node name="Foundations" type="GridContainer" parent="HBoxContainer/GlobalPanel"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_constants/h_separation = 15
-columns = 5
+columns = 14
 
-[node name="PanelContainer4" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
-
-[node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer4"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_572mc")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer4/TextureButton"]
-layout_mode = 0
-offset_left = -6.0
-offset_top = 27.0
-offset_right = 38.0
-offset_bottom = 54.0
-theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 12
-text = "Porte en 
-bois"
-
-[node name="PanelContainer3" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_wtu25")
-
-[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer3"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_tdeoa")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer3/TextureButton2"]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 28.0
-offset_right = 41.0
-offset_bottom = 55.0
-theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 12
-text = "Porte 
-Renforcé
-"
-
-[node name="FloorsPanel" type="GridContainer" parent="GlobalPanel/MarginContainer/Menu"]
+[node name="Doors" type="GridContainer" parent="HBoxContainer/GlobalPanel"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/h_separation = 15
 columns = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_rbksq")
-
-[node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_4ty6v")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer/TextureButton"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = 27.0
-offset_right = 30.0
-offset_bottom = 54.0
-theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 12
-text = "Sol en 
-bois"
-
-[node name="PanelContainer2" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_rbksq")
-
-[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer2"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_t17se")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer2/TextureButton2"]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 28.0
-offset_right = 37.0
-offset_bottom = 55.0
-theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 12
-text = "Sol en 
-pierre"
-
-[node name="ObjectsPanel" type="GridContainer" parent="GlobalPanel/MarginContainer/Menu"]
+[node name="Floors" type="GridContainer" parent="HBoxContainer/GlobalPanel"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/h_separation = 15
 columns = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
-layout_direction = 2
+[node name="Objects" type="GridContainer" parent="HBoxContainer/GlobalPanel"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_byhad")
+theme_override_constants/h_separation = 15
+columns = 5
 
-[node name="TextureButton" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer"]
+[node name="Rooms" type="GridContainer" parent="HBoxContainer/GlobalPanel"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
-texture_normal = SubResource("AtlasTexture_xw1es")
-stretch_mode = 3
+theme_override_constants/h_separation = 15
+columns = 14
 
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer/TextureButton"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 28.0
-offset_right = 35.0
-offset_bottom = 55.0
-theme_override_constants/line_spacing = -3
-theme_override_font_sizes/font_size = 12
-text = "Training
-dummy"
-
-[node name="PanelContainer2" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
-
-[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_gf2lw")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2/TextureButton2"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 28.0
-offset_right = 38.0
-offset_bottom = 43.0
-theme_override_font_sizes/font_size = 12
-text = "Enclume"
-horizontal_alignment = 1
-
-[node name="PanelContainer3" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
-
-[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer3"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_jnoug")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer3/TextureButton2"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 28.0
-offset_right = 38.0
-offset_bottom = 43.0
-theme_override_font_sizes/font_size = 12
-text = "Table"
-horizontal_alignment = 1
-
-[node name="PanelContainer4" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
-
-[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer4"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_usvoo")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer4/TextureButton2"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 28.0
-offset_right = 38.0
-offset_bottom = 43.0
-theme_override_font_sizes/font_size = 12
-text = "Tabouret"
-horizontal_alignment = 1
-
-[node name="PanelContainer5" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
-
-[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_h8y6u")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5/TextureButton2"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 28.0
-offset_right = 38.0
-offset_bottom = 43.0
-theme_override_font_sizes/font_size = 12
-text = "Lit"
-horizontal_alignment = 1
-
-[node name="PanelContainer6" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
-
-[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer6"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_sm3wj")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer6/TextureButton2"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 28.0
-offset_right = 38.0
-offset_bottom = 43.0
-theme_override_font_sizes/font_size = 12
-text = "Luth"
-horizontal_alignment = 1
-
-[node name="PanelContainer7" type="PanelContainer" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_40osl")
-
-[node name="TextureButton2" type="TextureButton" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer7"]
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_m1k4d")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer7/TextureButton2"]
-layout_mode = 2
-offset_left = -4.0
-offset_top = 28.0
-offset_right = 38.0
-offset_bottom = 43.0
-theme_override_font_sizes/font_size = 12
-text = "Furnace"
-horizontal_alignment = 1
-
-[node name="ActionsPanel" type="HBoxContainer" parent="GlobalPanel/MarginContainer/Menu"]
+[node name="Actions" type="HBoxContainer" parent="HBoxContainer/GlobalPanel"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
-[node name="DestroyAll" type="Button" parent="GlobalPanel/MarginContainer/Menu/ActionsPanel"]
+[node name="DestroyAll" type="Button" parent="HBoxContainer/GlobalPanel/Actions"]
 layout_mode = 2
 text = "Destroy"
 
-[node name="DestroyWall" type="Button" parent="GlobalPanel/MarginContainer/Menu/ActionsPanel"]
+[node name="DestroyWall" type="Button" parent="HBoxContainer/GlobalPanel/Actions"]
 layout_mode = 2
 text = "Destroy Wall"
 
-[node name="DestroyFloor" type="Button" parent="GlobalPanel/MarginContainer/Menu/ActionsPanel"]
+[node name="DestroyFloor" type="Button" parent="HBoxContainer/GlobalPanel/Actions"]
 layout_mode = 2
 text = "Destroy Floor"
 
-[node name="DestroyObject" type="Button" parent="GlobalPanel/MarginContainer/Menu/ActionsPanel"]
+[node name="DestroyObject" type="Button" parent="HBoxContainer/GlobalPanel/Actions"]
 layout_mode = 2
 text = "Destroy Object"
 
-[connection signal="pressed" from="Button/WallAndDoor" to="." method="_on_wall_and_door_pressed"]
-[connection signal="pressed" from="Button/Floor" to="." method="_on_floor_pressed"]
-[connection signal="pressed" from="Button/Object" to="." method="_on_object_pressed"]
-[connection signal="pressed" from="Button/Action" to="." method="_on_action_pressed"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector/Button" to="." method="_on_show_wall_panel_pressed"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/PanelSelector/Button2" to="." method="_on_show_door_panel_pressed"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer/TextureButton" to="." method="_on_item_pressed" binds= ["wall", "wooden_wall"]]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Wall/PanelContainer2/TextureButton2" to="." method="_on_item_pressed" binds= ["wall", "stone_wall"]]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer4/TextureButton" to="." method="_on_item_pressed" binds= ["door", "wooden_door"]]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/WallsAndDoorsPanel/Door/PanelContainer3/TextureButton2" to="." method="_on_item_pressed" binds= ["door", "reinforced_door"]]
-[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/FloorsPanel" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/FloorsPanel" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer/TextureButton" to="." method="_on_item_pressed" binds= ["floor", "wooden_floor"]]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/FloorsPanel/PanelContainer2/TextureButton2" to="." method="_on_item_pressed" binds= ["floor", "stone_floor"]]
-[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer/TextureButton" to="." method="_on_item_pressed" binds= ["object", "training_dummy"]]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer2/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "anvil"]]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer3/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "table"]]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer4/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "stool"]]
-[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5/TextureButton2" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5/TextureButton2" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer5/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "bed"]]
-[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer6/TextureButton2" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer6/TextureButton2" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer6/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "luth"]]
-[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer7/TextureButton2" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer7/TextureButton2" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ObjectsPanel/PanelContainer7/TextureButton2" to="." method="_on_item_pressed" binds= ["object", "furnace"]]
-[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyAll" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyAll" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyAll" to="." method="_on_destroy_all_pressed"]
-[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyWall" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyWall" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyWall" to="." method="_on_destroy_wall_pressed"]
-[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyFloor" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyFloor" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyFloor" to="." method="_on_destroy_floor_pressed"]
-[connection signal="mouse_entered" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyObject" to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyObject" to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="GlobalPanel/MarginContainer/Menu/ActionsPanel/DestroyObject" to="." method="_on_destroy_object_pressed"]
+[connection signal="pressed" from="HBoxContainer/GlobalPanel/Actions/DestroyAll" to="." method="_on_destroy_all_pressed"]
+[connection signal="pressed" from="HBoxContainer/GlobalPanel/Actions/DestroyWall" to="." method="_on_destroy_wall_pressed"]
+[connection signal="pressed" from="HBoxContainer/GlobalPanel/Actions/DestroyFloor" to="." method="_on_destroy_floor_pressed"]
+[connection signal="pressed" from="HBoxContainer/GlobalPanel/Actions/DestroyObject" to="." method="_on_destroy_object_pressed"]
