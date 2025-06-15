@@ -132,10 +132,13 @@ func save_current_research() -> void:
 
 #Affiche ou maque l'interface de recherches
 func _open_btn_pressed() -> void:
-	if !self.visible:
+	if self.visible:
+		self.visible = false
+		GameData.menu_open = false
+	else:
 		GameData.hide_ui()
-	self.visible = !self.visible
-	GameData.menu_open = !GameData.menu_open
+		self.visible = true
+		GameData.menu_open = true
 
 
 #Affiche les data d'une recherche quand on la selectione

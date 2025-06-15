@@ -135,19 +135,16 @@ func swap_item(from_slot : String, to_slot : String) -> void:
 
 #Ouvre et ferme l'inventaire principal
 func _on_open_inv_btn_pressed() -> void:
-	if !self.visible:
+	if self.visible:
+		self.visible = false
+		GameData.menu_open = false
+	else:
 		GameData.hide_ui()
 		load_inventory()
-	self.visible = !self.visible
-	GameData.menu_open = !GameData.menu_open
-
-
-#func find_first_empty_slot() -> String:
-	#for slot in GameData.inventory.keys():
-		#if GameData.inventory[slot].is_empty():
-			#return slot
-	#return ""
-
+		self.visible = true
+		GameData.menu_open = true
+		
+	print(GameData.menu_open )
 
 # Find the first empty slot of the given type
 func find_first_empty_slot():

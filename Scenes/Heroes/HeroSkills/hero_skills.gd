@@ -5,7 +5,6 @@ signal close_skills()
 
 func _ready() -> void:
 	add_to_group("UI")
-	
 	%CloseButton.connect("pressed", _on_close_pressed)
 
 

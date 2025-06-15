@@ -13,6 +13,25 @@ func _on_free_activity_timer_timeout():
 func free_time() -> void:
 	parent.last_need = parent.Needs.FREE
 	
+	#0. on check si il y a des chose a construire
+	var construction_logic = get_tree().get_root().get_node("Main/ConstructionLogic")
+	var construction_task = construction_logic.get_available_task()
+	if construction_task :
+		
+		# Réserver la tâche pour éviter qu’un autre héros ne la prenne
+		construction_task["assigned"] = true
+		parent.current_construction_task = construction_task
+
+		# Définir une destination vers la position d’origine de la tâche
+		var destination = parent.hero_pathfinding.get_adjacent_reachable_position(construction_task["origin"])
+		
+		print("destination de base: ", construction_task["origin"])
+		print("destination adjacente: ", destination)
+		
+		parent.hero_pathfinding.set_destination(destination)
+		
+		return
+	
 	# 1. Parler avec un autre héros
 	if last_free_activity != "talk":
 		var all_heroes = parent.hero.get_parent().get_children()

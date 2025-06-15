@@ -57,7 +57,6 @@ func _ready() -> void:
 	# Si il y une animation de hero, lance l'animation
 	if skin != "":
 		animatedSprite.play("idle_down")
-	hero_panel_info.connect("close_info", _on_close_info_pressed)
 	hero_planning.connect("close_planning", _on_close_planning_pressed)
 	hero_skills.connect("close_skills", _on_close_skills_pressed)
 
@@ -65,7 +64,7 @@ func _ready() -> void:
 func _input(event : InputEvent) -> void:
 	if mouse_in and event.is_action_pressed("click_cancel"):
 		GameData.hide_ui()
-		GameData.menu_open = !GameData.menu_open
+		GameData.menu_open = true
 		GameData.set_active_hero(self)
 		hero_panel_info.show_stats_overlay()
 		hero_panel_info.show()
@@ -131,13 +130,14 @@ func level_up():
 	mana += randi_range(1,5)
 	luck += randi_range(1,5)
 
+
 func _on_close_planning_pressed() -> void:
 	hero_panel_info.show()
 	hero_planning.hide()
+	GameData.menu_open = true
 
-func _on_close_info_pressed() -> void:
-	hero_panel_info.hide()
 	
 func _on_close_skills_pressed() -> void:
 	hero_panel_info.show()
 	hero_skills.hide()
+	GameData.menu_open = true		

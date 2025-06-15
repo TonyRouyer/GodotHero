@@ -1,6 +1,5 @@
 extends Control
 
-signal close_info()
 
 @onready var hero : Hero = $"../.."
 @onready var global_inventory : Control = %GlobalInventory
@@ -27,13 +26,13 @@ func _ready() -> void:
 	%CompetenceButton.connect("pressed", _on_competence_button_pressed)
 	%PlanningButton.connect("pressed", _on_planning_button_pressed)
 	
-	%CloseButton.connect("pressed", _on_button_pressed)
+	%CloseButton.connect("pressed", _on_close_button_pressed)
 
 
 func _process(_delta):
-	#S'assure de bien reset les data si on ferme le hero detail via un autre moyen que le btn close
-	if self.visible == false and GameData.active_hero == hero:
-		_on_button_pressed()
+	##S'assure de bien reset les data si on ferme le hero detail via un autre moyen que le btn close
+	#if self.visible == false and GameData.active_hero == hero:
+		#_on_close_button_pressed()
 		
 	%Hunger.value = hero.hunger
 	%Energy.value = hero.energy
@@ -77,18 +76,16 @@ func update_stats() -> void:
 
 
 #Quand on ferme le menu detail du hero
-func _on_button_pressed() -> void:
-	#Masque des panneau
-	close_info.emit()
-	
+func _on_close_button_pressed() -> void:
 	#Reset du champ nameInput
 	if nameInput.visible:
 		nameInput.visible = false
 		nameLabel.visible = true
 		
 	#deselection du hero actif + autorise le mouvement dans le tileset
+	self.visible = false
 	GameData.active_hero = null
-	GameData.menu_open = !GameData.menu_open
+	GameData.menu_open = false
 
 
 func _on_priority_slider_changed(value : int, stats : String):
@@ -130,15 +127,19 @@ func _on_center_view_button_pressed():
 	get_tree().get_root().get_node("Main/GameCamera").position = Vector2(hero.global_position)
 	
 func _on_competence_button_pressed():
-	self.hide()
-	hero.get_node("CanvasLayer/HeroSkills").show()
+	hero.get_node("CanvasLayer/HeroSkills").visible = true
+	
+	self.visible = false
 
+	GameData.menu_open = true
 	
 	
 func _on_planning_button_pressed():
 	self.hide()
 	hero.get_node("CanvasLayer/HeroPlanning").show()
 	hero.get_node("CanvasLayer/HeroPlanning").update_visual_by_planning()
+	GameData.menu_open = true
+
 
 
 #Charge les objet de la variabla inventory dans l'inventaire

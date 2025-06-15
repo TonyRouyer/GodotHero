@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func _process(delta) -> void:
-	if not GameData.menu_open:
+	if GameData.menu_open == false:
 		Zoom(delta)
 		SimplePan(delta)
 		ClickAndDrag()

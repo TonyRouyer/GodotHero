@@ -74,8 +74,8 @@ func get_present_objects(tiles: Array) -> Array:
 	var object_layer = get_tree().get_root().get_node("Main/Level/Object")
 
 	for t in tiles:
-		if construction_logic.occupied_objects.has(t):
-			var origin = construction_logic.occupied_objects[t]["origin"]
+		if construction_logic.occupied_position.has(t):
+			var origin = construction_logic.occupied_position[t]["origin"]
 			for obj in object_layer.get_children():
 				if obj is Node2D and floor(obj.global_position / construction_logic.grid_size) == origin:
 					found.append(obj.node_name)

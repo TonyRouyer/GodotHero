@@ -26,11 +26,14 @@ func _ready() -> void:
 
 #Affiche/Masque et met a jour le contenue de la fenetre de gestion des hero
 func _on_hero_gestion_btn_pressed() -> void:
-	if !self.visible:
+	if self.visible:
+		self.visible = false
+		GameData.menu_open = false
+	else:
 		GameData.hide_ui()
 		populate()
-	self.visible = !self.visible
-	GameData.menu_open = !GameData.menu_open
+		self.visible = true
+		GameData.menu_open = true
 
 
 #Confirmation de licenciment d'un hero, le supprime et met a jour l'interface 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://deiclps377nb0"]
+[gd_scene load_steps=24 format=4 uid="uid://deiclps377nb0"]
 
 [ext_resource type="Texture2D" uid="uid://byqhl8np4qhjq" path="res://Sprites/terrain/stone_wall.png" id="1_8gphe"]
 [ext_resource type="Texture2D" uid="uid://c1if4py5rmvui" path="res://Sprites/terrain/wooden_wall.png" id="2_t3e81"]
@@ -8,24 +8,22 @@
 [ext_resource type="Texture2D" uid="uid://cx4bbbyl1uxvn" path="res://Sprites/items/reinforced_door.png" id="6_gyjo4"]
 [ext_resource type="Texture2D" uid="uid://2iqtirn0awc8" path="res://Sprites/terrain/stone.png" id="6_t3e81"]
 [ext_resource type="Texture2D" uid="uid://bed2unon02ojy" path="res://Sprites/items/wooden_door.png" id="7_pocpv"]
-[ext_resource type="Texture2D" uid="uid://b6d2u1kbqdisb" path="res://Sprites/items/anvil.png" id="9_jugp0"]
-[ext_resource type="Texture2D" uid="uid://oi1dr1ijnbuu" path="res://Sprites/items/bed_bottom.png" id="10_nimtr"]
-[ext_resource type="Texture2D" uid="uid://cmfa5xar3jpur" path="res://Sprites/items/bed_top.png" id="11_6xrp6"]
-[ext_resource type="Texture2D" uid="uid://bnc2ysx2ckhd7" path="res://Sprites/items/furnace.png" id="12_5p1yx"]
-[ext_resource type="Texture2D" uid="uid://dcdowpfyx3dby" path="res://Sprites/items/luth.png" id="15_pcihn"]
-[ext_resource type="Texture2D" uid="uid://sjq2qnsd8xur" path="res://Sprites/items/table.png" id="16_uncmr"]
-[ext_resource type="Texture2D" uid="uid://bcsteigrmij7h" path="res://Sprites/items/training_dummy.png" id="17_nn5gx"]
+[ext_resource type="Texture2D" uid="uid://eg1ow1fxr1li" path="res://Sprites/terrain/construction_placeholder.png" id="9_lvwdj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q23xf"]
 texture = ExtResource("2_t3e81")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/custom_data_0 = "wall"
+0:0/0/custom_data_2 = "wooden_wall"
 0:0/0/metadata/_better_terrain = {
 4: [0, 1],
 &"type": 0
 }
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/custom_data_0 = "wall"
+1:0/0/custom_data_2 = "wooden_wall"
 1:0/0/metadata/_better_terrain = {
 0: [0, 1],
 4: [0, 1],
@@ -33,6 +31,8 @@ texture = ExtResource("2_t3e81")
 }
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/custom_data_0 = "wall"
+2:0/0/custom_data_2 = "wooden_wall"
 2:0/0/metadata/_better_terrain = {
 0: [0, 1],
 4: [0, 1],
@@ -41,6 +41,8 @@ texture = ExtResource("2_t3e81")
 }
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0/custom_data_0 = "wall"
+3:0/0/custom_data_2 = "wooden_wall"
 3:0/0/metadata/_better_terrain = {
 4: [0, 1],
 8: [0, 1],
@@ -48,6 +50,8 @@ texture = ExtResource("2_t3e81")
 }
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0/custom_data_0 = "wall"
+0:1/0/custom_data_2 = "wooden_wall"
 0:1/0/metadata/_better_terrain = {
 4: [0, 1],
 12: [0, 1],
@@ -55,6 +59,8 @@ texture = ExtResource("2_t3e81")
 }
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0/custom_data_0 = "wall"
+1:1/0/custom_data_2 = "wooden_wall"
 1:1/0/metadata/_better_terrain = {
 0: [0, 1],
 4: [0, 1],
@@ -63,6 +69,8 @@ texture = ExtResource("2_t3e81")
 }
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0/custom_data_0 = "wall"
+2:1/0/custom_data_2 = "wooden_wall"
 2:1/0/metadata/_better_terrain = {
 0: [0, 1],
 4: [0, 1],
@@ -72,6 +80,8 @@ texture = ExtResource("2_t3e81")
 }
 3:1/0 = 0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0/custom_data_0 = "wall"
+3:1/0/custom_data_2 = "wooden_wall"
 3:1/0/metadata/_better_terrain = {
 4: [0, 1],
 8: [0, 1],
@@ -80,12 +90,16 @@ texture = ExtResource("2_t3e81")
 }
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0/custom_data_0 = "wall"
+0:2/0/custom_data_2 = "wooden_wall"
 0:2/0/metadata/_better_terrain = {
 12: [0, 1],
 &"type": 0
 }
 1:2/0 = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0/custom_data_0 = "wall"
+1:2/0/custom_data_2 = "wooden_wall"
 1:2/0/metadata/_better_terrain = {
 0: [0, 1],
 12: [0, 1],
@@ -93,6 +107,8 @@ texture = ExtResource("2_t3e81")
 }
 2:2/0 = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0/custom_data_0 = "wall"
+2:2/0/custom_data_2 = "wooden_wall"
 2:2/0/metadata/_better_terrain = {
 0: [0, 1],
 8: [0, 1],
@@ -101,6 +117,8 @@ texture = ExtResource("2_t3e81")
 }
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0/custom_data_0 = "wall"
+3:2/0/custom_data_2 = "wooden_wall"
 3:2/0/metadata/_better_terrain = {
 8: [0, 1],
 12: [0, 1],
@@ -108,17 +126,23 @@ texture = ExtResource("2_t3e81")
 }
 0:3/0 = 0
 0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0/custom_data_0 = "wall"
+0:3/0/custom_data_2 = "wooden_wall"
 0:3/0/metadata/_better_terrain = {
 &"type": 0
 }
 1:3/0 = 0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0/custom_data_0 = "wall"
+1:3/0/custom_data_2 = "wooden_wall"
 1:3/0/metadata/_better_terrain = {
 0: [0, 1],
 &"type": 0
 }
 2:3/0 = 0
 2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0/custom_data_0 = "wall"
+2:3/0/custom_data_2 = "wooden_wall"
 2:3/0/metadata/_better_terrain = {
 0: [0, 1],
 8: [0, 1],
@@ -126,6 +150,8 @@ texture = ExtResource("2_t3e81")
 }
 3:3/0 = 0
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0/custom_data_0 = "wall"
+3:3/0/custom_data_2 = "wooden_wall"
 3:3/0/metadata/_better_terrain = {
 8: [0, 1],
 &"type": 0
@@ -135,12 +161,16 @@ texture = ExtResource("2_t3e81")
 texture = ExtResource("1_8gphe")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/custom_data_0 = "wall"
+0:0/0/custom_data_2 = "stone_wall"
 0:0/0/metadata/_better_terrain = {
 4: [1, 0],
 &"type": 1
 }
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/custom_data_0 = "wall"
+1:0/0/custom_data_2 = "stone_wall"
 1:0/0/metadata/_better_terrain = {
 0: [1, 0],
 4: [1, 0],
@@ -148,6 +178,8 @@ texture = ExtResource("1_8gphe")
 }
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/custom_data_0 = "wall"
+2:0/0/custom_data_2 = "stone_wall"
 2:0/0/metadata/_better_terrain = {
 0: [1, 0],
 4: [1, 0],
@@ -156,6 +188,8 @@ texture = ExtResource("1_8gphe")
 }
 3:0/0 = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0/custom_data_0 = "wall"
+3:0/0/custom_data_2 = "stone_wall"
 3:0/0/metadata/_better_terrain = {
 4: [1, 0],
 8: [1, 0],
@@ -163,6 +197,8 @@ texture = ExtResource("1_8gphe")
 }
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0/custom_data_0 = "wall"
+0:1/0/custom_data_2 = "stone_wall"
 0:1/0/metadata/_better_terrain = {
 4: [1, 0],
 12: [1, 0],
@@ -170,6 +206,8 @@ texture = ExtResource("1_8gphe")
 }
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0/custom_data_0 = "wall"
+1:1/0/custom_data_2 = "stone_wall"
 1:1/0/metadata/_better_terrain = {
 0: [1],
 4: [1, 0],
@@ -178,6 +216,8 @@ texture = ExtResource("1_8gphe")
 }
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0/custom_data_0 = "wall"
+2:1/0/custom_data_2 = "stone_wall"
 2:1/0/metadata/_better_terrain = {
 0: [1],
 4: [1, 0],
@@ -187,6 +227,8 @@ texture = ExtResource("1_8gphe")
 }
 3:1/0 = 0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0/custom_data_0 = "wall"
+3:1/0/custom_data_2 = "stone_wall"
 3:1/0/metadata/_better_terrain = {
 4: [1, 0],
 8: [1],
@@ -195,12 +237,16 @@ texture = ExtResource("1_8gphe")
 }
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0/custom_data_0 = "wall"
+0:2/0/custom_data_2 = "stone_wall"
 0:2/0/metadata/_better_terrain = {
 12: [1, 0],
 &"type": 1
 }
 1:2/0 = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0/custom_data_0 = "wall"
+1:2/0/custom_data_2 = "stone_wall"
 1:2/0/metadata/_better_terrain = {
 0: [1, 0],
 12: [1, 0],
@@ -208,6 +254,8 @@ texture = ExtResource("1_8gphe")
 }
 2:2/0 = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0/custom_data_0 = "wall"
+2:2/0/custom_data_2 = "stone_wall"
 2:2/0/metadata/_better_terrain = {
 0: [1, 0],
 8: [1, 0],
@@ -216,6 +264,8 @@ texture = ExtResource("1_8gphe")
 }
 3:2/0 = 0
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0/custom_data_0 = "wall"
+3:2/0/custom_data_2 = "stone_wall"
 3:2/0/metadata/_better_terrain = {
 8: [1, 0],
 12: [1, 0],
@@ -223,17 +273,23 @@ texture = ExtResource("1_8gphe")
 }
 0:3/0 = 0
 0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0/custom_data_0 = "wall"
+0:3/0/custom_data_2 = "stone_wall"
 0:3/0/metadata/_better_terrain = {
 &"type": 1
 }
 1:3/0 = 0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0/custom_data_0 = "wall"
+1:3/0/custom_data_2 = "stone_wall"
 1:3/0/metadata/_better_terrain = {
 0: [1, 0],
 &"type": 1
 }
 2:3/0 = 0
 2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0/custom_data_0 = "wall"
+2:3/0/custom_data_2 = "stone_wall"
 2:3/0/metadata/_better_terrain = {
 0: [1, 0],
 8: [1, 0],
@@ -241,6 +297,8 @@ texture = ExtResource("1_8gphe")
 }
 3:3/0 = 0
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0/custom_data_0 = "wall"
+3:3/0/custom_data_2 = "stone_wall"
 3:3/0/metadata/_better_terrain = {
 8: [1, 0],
 &"type": 1
@@ -249,10 +307,12 @@ texture = ExtResource("1_8gphe")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcihn"]
 texture = ExtResource("7_pocpv")
 0:0/0 = 0
+0:0/0/custom_data_0 = "door"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n63bf"]
 texture = ExtResource("6_gyjo4")
 0:0/0 = 0
+0:0/0/custom_data_0 = "door"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5p1yx"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -264,10 +324,13 @@ agent_radius = 0.0
 texture = ExtResource("5_s0x6l")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_5p1yx")
+0:0/0/custom_data_0 = "Floor"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lvwdj"]
 texture = ExtResource("6_t3e81")
 0:0/0 = 0
+0:0/0/custom_data_0 = "floor"
+0:0/0/custom_data_3 = "stone"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_acdvp"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -279,6 +342,8 @@ agent_radius = 0.0
 texture = ExtResource("3_lvwdj")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_acdvp")
+0:0/0/custom_data_0 = "floor"
+0:0/0/custom_data_3 = "dirt"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nimtr"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -290,6 +355,11 @@ agent_radius = 0.0
 texture = ExtResource("4_aei0q")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_nimtr")
+0:0/0/custom_data_3 = "grass"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aei0q"]
+texture = ExtResource("9_lvwdj")
+0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_gbf5o"]
 physics_layer_0/collision_layer = 2
@@ -299,6 +369,10 @@ custom_data_layer_0/name = "Type"
 custom_data_layer_0/type = 4
 custom_data_layer_1/name = "Is_inside"
 custom_data_layer_1/type = 1
+custom_data_layer_2/name = "Wall_type"
+custom_data_layer_2/type = 4
+custom_data_layer_3/name = "Floor_type"
+custom_data_layer_3/type = 4
 sources/1 = SubResource("TileSetAtlasSource_0o5jl")
 sources/0 = SubResource("TileSetAtlasSource_q23xf")
 sources/20 = SubResource("TileSetAtlasSource_pcihn")
@@ -307,6 +381,7 @@ sources/31 = SubResource("TileSetAtlasSource_lg2lb")
 sources/33 = SubResource("TileSetAtlasSource_jugp0")
 sources/34 = SubResource("TileSetAtlasSource_6xrp6")
 sources/32 = SubResource("TileSetAtlasSource_lvwdj")
+sources/40 = SubResource("TileSetAtlasSource_aei0q")
 metadata/_better_terrain = {
 "decoration": ["Decoration", Color(0.411765, 0.411765, 0.411765, 1), 3, [], {
 "path": "res://addons/better-terrain/icons/Decoration.svg"
@@ -318,85 +393,6 @@ metadata/_better_terrain = {
 }]],
 "version": "0.2"
 }
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ax57u"]
-texture = ExtResource("9_jugp0")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-2:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7xp7"]
-texture = ExtResource("10_nimtr")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fh2l2"]
-texture = ExtResource("7_pocpv")
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gd6lo"]
-texture = ExtResource("11_6xrp6")
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ce188"]
-texture = ExtResource("12_5p1yx")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxrcp"]
-texture = ExtResource("15_pcihn")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5c5q5"]
-texture = ExtResource("6_gyjo4")
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0w64"]
-texture = ExtResource("16_uncmr")
-0:0/size_in_atlas = Vector2i(4, 2)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(-24, -8)
-4:0/size_in_atlas = Vector2i(2, 4)
-4:0/0 = 0
-4:0/0/texture_origin = Vector2i(-8, -24)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ayfgb"]
-texture = ExtResource("17_nn5gx")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_w7md3"]
-custom_data_layer_0/name = "object_name"
-custom_data_layer_0/type = 4
-sources/0 = SubResource("TileSetAtlasSource_ax57u")
-sources/1 = SubResource("TileSetAtlasSource_w7xp7")
-sources/2 = SubResource("TileSetAtlasSource_gd6lo")
-sources/3 = SubResource("TileSetAtlasSource_ce188")
-sources/6 = SubResource("TileSetAtlasSource_sxrcp")
-sources/7 = SubResource("TileSetAtlasSource_5c5q5")
-sources/8 = SubResource("TileSetAtlasSource_p0w64")
-sources/9 = SubResource("TileSetAtlasSource_ayfgb")
-sources/10 = SubResource("TileSetAtlasSource_fh2l2")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x8jtd"]
 vertices = PackedVector2Array(1182, 677, 50, 677, 50, 49, 1182, 49)
@@ -413,18 +409,26 @@ tile_set = SubResource("TileSet_gbf5o")
 
 [node name="Wall" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAcABEAAQABAAMAAAAdABEAAQACAAMAAAAeABEAAQACAAMAAAAfABEAAQACAAMAAAAgABEAAQADAAMAAAAiABEAAQABAAMAAAAjABEAAQACAAMAAAAkABEAAQACAAMAAAAlABEAAQADAAMAAAA=")
+tile_map_data = PackedByteArray("AAAcABEAAQABAAMAAAAdABEAAQACAAMAAAAeABEAAQACAAMAAAAfABEAAQACAAMAAAAgABEAAQADAAMAAAAiABEAAQABAAMAAAAjABEAAQACAAMAAAAkABEAAQACAAMAAAAlABEAAQADAAMAAAAhABEAFQAAAAAAAAA=")
 tile_set = SubResource("TileSet_gbf5o")
 
 [node name="Preview" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAhABEAFQAAAAAAAAA=")
 tile_set = SubResource("TileSet_gbf5o")
 y_sort_origin = 1
 navigation_enabled = false
 
-[node name="Objects" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_w7md3")
+[node name="Construction" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = SubResource("TileSet_gbf5o")
+y_sort_origin = 1
+navigation_enabled = false
+
+[node name="Planification" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = SubResource("TileSet_gbf5o")
+y_sort_origin = 1
+navigation_enabled = false
 
 [node name="Object" type="Node2D" parent="."]
 

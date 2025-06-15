@@ -5,9 +5,10 @@ extends Node2D
 @onready var routine : Node2D = get_parent().get_node("HeroRoutine")
 @onready var navigation_agent : NavigationAgent2D = $NavigationAgent2D
 
+var destination: Vector2
+
 func _ready():
 	%NavigationAgent2D.connect("navigation_finished", _on_hero_navigation_finished)
-
 
 
 func _physics_process(_delta: float) -> void:	
@@ -44,12 +45,86 @@ func set_destination(pos: Vector2):
 	navigation_agent.target_position = pos
 	navigation_agent.set_velocity(Vector2.ZERO)  # Optionnel pour être clean
 	navigation_agent.get_next_path_position()  #  FORCE le calcul du chemin
+	
+	destination = pos
+
+
+#func _on_hero_navigation_finished():
+	#var object = routine.used_object
+	#if object:
+		#object.use(hero)
+		#routine.used_object = null  # Réinitialiser
+#
+	#var construction_task = routine.current_construction_task
+	#if construction_task:
+		#var task_type = construction_task.get("type")
+		#var origin = construction_task.get("origin")
+		#
+		#print(origin)
+		#
+		#match task_type:
+			#"object":
+				#var object_logic = get_tree().get_root().get_node("Main/ConstructionLogic/ObjectsLogic")
+				#object_logic.finalize_construction(origin)
+#
+			#"wall", "floor", "door":
+				#var build_logic = get_tree().get_root().get_node("Main/ConstructionLogic/BuildLogic")
+				#build_logic.finalize_construction(origin)
+#
+			#_:
+				#push_warning("Type de construction inconnu : %s" % task_type)
+#
+		#routine.current_construction_task = {}
 
 
 func _on_hero_navigation_finished():
 	var object = routine.used_object
-	if object:
+	if object != null:
 		object.use(hero)
+		routine.used_object = null
+
+	var construction_task = routine.current_construction_task
+	if construction_task:
+		var task_type = construction_task.get("type")
+		var origin = construction_task.get("origin")
+
+		if hero.global_position.distance_to(origin) > 40:
+			return  # Trop loin pour construire
+
+		match task_type:
+			"object":
+				var object_logic = get_tree().get_root().get_node("Main/ConstructionLogic/ObjectsLogic")
+				object_logic.finalize_construction(origin)
+
+			"wall", "floor", "door":
+				var build_logic = get_tree().get_root().get_node("Main/ConstructionLogic/BuildLogic")
+				build_logic.finalize_construction(origin)
+
+			_:
+				push_warning("Type de construction inconnu : %s" % task_type)
+
+		routine.current_construction_task = {}
+
+
+
+func get_adjacent_reachable_position(target_pos: Vector2) -> Vector2:
+	var offsets = [
+		Vector2(1, 0), Vector2(-1, 0),
+		Vector2(0, 1), Vector2(0, -1),
+		Vector2(1, 1), Vector2(-1, -1),
+		Vector2(1, -1), Vector2(-1, 1),
+	]
+
+	var cell_size = 20  # adapte à ton grid_size
+	for offset in offsets:
+		var check_pos = target_pos + offset * cell_size
+		if navigation_agent.is_target_reachable():
+			return check_pos
+
+	return get_random_nearby_position()
+
+
+
 
 
 func get_random_nearby_position() -> Vector2:

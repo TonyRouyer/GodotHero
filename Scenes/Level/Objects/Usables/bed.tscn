@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cmfa5xar3jpur" path="res://Sprites/items/bed_top.png" id="3_bhfcc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fugfa"]
-size = Vector2(16, 32)
+size = Vector2(32, 16)
 
 [node name="Bed" type="Node2D"]
 script = ExtResource("1_yd4sg")
@@ -14,18 +14,20 @@ script = ExtResource("1_yd4sg")
 
 [node name="SpriteUnder" type="Sprite2D" parent="View"]
 unique_name_in_owner = true
-position = Vector2(8, 16)
+position = Vector2(16, 0)
 texture = ExtResource("2_jeh01")
+flip_h = true
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 32)
+region_rect = Rect2(32, 0, 32, 32)
 
 [node name="SpriteUpper" type="Sprite2D" parent="View"]
 unique_name_in_owner = true
 z_index = 2
-position = Vector2(8, 16)
+position = Vector2(16, 0)
 texture = ExtResource("3_bhfcc")
+flip_h = true
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 32)
+region_rect = Rect2(32, 0, 32, 32)
 
 [node name="Area2D" type="Area2D" parent="View"]
 collision_layer = 2
@@ -33,11 +35,8 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="View/Area2D"]
 unique_name_in_owner = true
-position = Vector2(8, 16)
+position = Vector2(16, 8)
 shape = SubResource("RectangleShape2D_fugfa")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(8, 8)
-
-[connection signal="body_entered" from="View/Area2D" to="." method="_on_Hero_body_entered"]
-[connection signal="body_exited" from="View/Area2D" to="." method="_on_area_2d_body_exited"]
+position = Vector2(32, 8)

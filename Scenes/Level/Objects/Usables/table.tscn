@@ -17,6 +17,7 @@ script = ExtResource("1_bf7f7")
 unique_name_in_owner = true
 light_mask = 2
 visibility_layer = 2
+z_index = 1
 position = Vector2(32, 16)
 texture = ExtResource("2_qu3c6")
 region_enabled = true
@@ -37,11 +38,11 @@ position = Vector2(8, 16)
 
 [node name="Marker2" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(8, 32)
+position = Vector2(56, 16)
 
 [node name="Marker3" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(56, 16)
+position = Vector2(8, 32)
 
 [node name="Marker4" type="Marker2D" parent="."]
 unique_name_in_owner = true

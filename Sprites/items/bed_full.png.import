@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8rtxdhst7ihn"
-path="res://.godot/imported/luth.png-d4f11e5d6c856a6db7f95111621fc367.ctex"
+uid="uid://ynd050tow61t"
+path="res://.godot/imported/bed_full.png-402b5eb3cbb39601666d5dda1c6ca4c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/items/icon/luth.png"
-dest_files=["res://.godot/imported/luth.png-d4f11e5d6c856a6db7f95111621fc367.ctex"]
+source_file="res://Sprites/items/bed_full.png"
+dest_files=["res://.godot/imported/bed_full.png-402b5eb3cbb39601666d5dda1c6ca4c3.ctex"]
 
 [params]
 

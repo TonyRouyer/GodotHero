@@ -8,14 +8,12 @@ signal construct_signal
 @onready var floors_container : GridContainer = %Floors
 @onready var objects_container: GridContainer = %Objects
 @onready var actions_container : HBoxContainer = %Actions
-@onready var rooms_container : GridContainer = %Rooms
 
 
 const WALL_LIST = preload("res://Ressources/tile_positions.gd").WALLS
 const DOOR_LIST = preload("res://Ressources/tile_positions.gd").DOORS
 const FLOORS_LIST = preload("res://Ressources/tile_positions.gd").FLOORS
-const OBJECT_LIST = preload("res://Ressources/tile_positions.gd").OBJECTS
-const ROOMS_LIST = preload("res://Ressources/tile_positions.gd").ROOMS
+const OBJECT_LIST = preload("res://Ressources/tile_positions.gd").USABLE_OBJECTS
 
 
 
@@ -28,91 +26,90 @@ func _ready() -> void:
 	%FloorButton.connect("pressed", _on_floor_pressed)
 	%ObjectButton.connect("pressed", _on_object_pressed)
 	%ActionButton.connect("pressed", _on_action_pressed)
-	%RoomButton.connect("pressed", _on_room_pressed)
 	
 	#chargement des mur/fondations
 	for wall_item in WALL_LIST:
-		var panel_container = PanelContainer.new()
+		var wall_data = WALL_LIST.get(wall_item)
+		var panel_container = VBoxContainer.new()
 		var texture_button = TextureButton.new()
-		var button_image = load("res://Sprites/terrain/icon/" + str(wall_item) + ".png")
-		var label = Label.new()
 		
-		texture_button.texture_normal = button_image
-		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
+		var atlas_texture = AtlasTexture.new()
+		atlas_texture.atlas = wall_data.texture
+		atlas_texture.region = wall_data.region
+		
+		texture_button.custom_minimum_size = Vector2(32, 32)
+		texture_button.texture_normal = atlas_texture
+		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
 		texture_button.connect("pressed", _on_item_pressed.bind("wall", wall_item))
+		
+		
+		var label = Label.new()
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.text = wall_item
 		
-		#texture_button.add_child(label)
 		panel_container.add_child(texture_button)
+		panel_container.add_child(label)
 		foundation_container.add_child(panel_container)
 	
 	#Chargement des portes
 	for door_item in DOOR_LIST:
-		var panel_container = PanelContainer.new()
+		var panel_container = VBoxContainer.new()
 		var texture_button = TextureButton.new()
 		var button_image = load("res://Sprites/items/" + str(door_item) + ".png")
-		var label = Label.new()
 		
+		texture_button.custom_minimum_size = Vector2(32, 32)
 		texture_button.texture_normal = button_image
-		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
+		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
 		texture_button.connect("pressed", _on_item_pressed.bind("door", door_item))
+		
+		var label = Label.new()
 		label.text = door_item
 		
-		#texture_button.add_child(label)
 		panel_container.add_child(texture_button)
-		door_container.add_child(panel_container)	
+		panel_container.add_child(label)
+
+		door_container.add_child(panel_container)
 	
 	#Chargement des portes
 	for floor_item in FLOORS_LIST:
-		var panel_container = PanelContainer.new()
+		var panel_container = VBoxContainer.new()
 		var texture_button = TextureButton.new()
 		var button_image = load("res://Sprites/terrain/" + str(floor_item) + ".png")
-		var label = Label.new()
 		
+		texture_button.custom_minimum_size = Vector2(32, 32)
 		texture_button.texture_normal = button_image
-		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
+		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
 		texture_button.connect("pressed", _on_item_pressed.bind("floor", floor_item))
+		
+		var label = Label.new()
 		label.text = floor_item
 		
-		#texture_button.add_child(label)
 		panel_container.add_child(texture_button)
+		panel_container.add_child(label)
 		floors_container.add_child(panel_container)	
 	
 	#Chargement des objets
 	for object_item in OBJECT_LIST:
-		var panel_container = PanelContainer.new()
+		var object_data = OBJECT_LIST.get(object_item)
+		var panel_container = VBoxContainer.new()
 		var texture_button = TextureButton.new()
-		var button_image = load("res://Sprites/items/icon/" + str(object_item) + ".png")
-		var label = Label.new()
 		
-		texture_button.texture_normal = button_image
-		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
+		var atlas_texture = AtlasTexture.new()
+		atlas_texture.atlas = object_data.texture
+		atlas_texture.region = object_data.region
+
+		texture_button.custom_minimum_size = Vector2(32, 32)
+		texture_button.texture_normal = atlas_texture
+		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
 		texture_button.connect("pressed", _on_item_pressed.bind("object", object_item))
+		
+		var label = Label.new()
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.text = object_item
 		
-		#texture_button.add_child(label)
 		panel_container.add_child(texture_button)
+		panel_container.add_child(label)
 		objects_container.add_child(panel_container)
-
-	#Chargement des zone
-	for room_item in ROOMS_LIST:
-		var container = VBoxContainer.new()
-		var texture_button = TextureButton.new()
-		#var button_image = load("res://Sprites/items/icon/" + str(object_item) + ".png")
-		var button_image = load("res://Sprites/items/icon/anvil.png")
-		var label = Label.new()
-		
-		container.name = room_item
-		texture_button.texture_normal = button_image
-		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
-		texture_button.connect("pressed", _on_item_pressed.bind("room", room_item))
-		label.text = room_item
-		
-		#texture_button.add_child(label)
-		container.add_child(texture_button)
-		container.add_child(label)
-		
-		rooms_container.add_child(container)
 
 
 func _on_foundation_pressed() -> void:
@@ -137,11 +134,6 @@ func _on_object_pressed() -> void:
 	hide_all_panels()
 	%GlobalPanel.show()
 	%Objects.show()
-
-func _on_room_pressed() -> void:
-	hide_all_panels()
-	%GlobalPanel.show()
-	%Rooms.show()
 
 
 func _on_action_pressed() -> void:
@@ -186,5 +178,4 @@ func _on_construction_btn_pressed() -> void:
 	if !self.visible:
 		GameData.hide_ui()
 	self.visible = !self.visible
-	GameData.menu_open = !GameData.menu_open
-	
+	GameData.menu_open = false	

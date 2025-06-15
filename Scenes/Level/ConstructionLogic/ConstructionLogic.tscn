@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cikud7p4b827j"]
+[gd_scene load_steps=8 format=3 uid="uid://cikud7p4b827j"]
 
 [ext_resource type="Script" uid="uid://dt4h8k1rd0715" path="res://Scenes/Level/ConstructionLogic/ConstructionLogic.gd" id="1_hhtpd"]
 [ext_resource type="Script" uid="uid://dknebqpdhwhev" path="res://Scenes/Level/ConstructionLogic/Grid/Grid.gd" id="3_m3ulv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cyn8n0ykaj5xm" path="res://Scenes/Level/ConstructionLogic/Build/build_logic.gd" id="5_yp14n"]
 [ext_resource type="Script" uid="uid://3yc8y14slfa4" path="res://Scenes/Level/ConstructionLogic/Room/room_logic.gd" id="6_8gsrm"]
 [ext_resource type="Script" uid="uid://cwklclorn8geg" path="res://Scenes/Level/ConstructionLogic/Object/objects_logic.gd" id="7_71qsd"]
+[ext_resource type="AudioStream" uid="uid://didlx1xywlv8e" path="res://Sprites/sounds/clothes-drop.mp3" id="7_m3ulv"]
 
 [node name="ConstructionLogic" type="Node2D"]
 script = ExtResource("1_hhtpd")
@@ -31,3 +32,7 @@ unique_name_in_owner = true
 script = ExtResource("7_71qsd")
 
 [node name="Overlay" type="Node2D" parent="."]
+
+[node name="ConstructionSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_m3ulv")

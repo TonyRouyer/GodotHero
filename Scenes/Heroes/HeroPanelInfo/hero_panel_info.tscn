@@ -650,6 +650,7 @@ text = "Planning"
 
 [node name="GlobalInventory" parent="StatsWindow/HeroDetailContainer" instance=ExtResource("3_4ybj6")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [connection signal="gui_input" from="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Nom" to="." method="_on_name_label_gui_input"]

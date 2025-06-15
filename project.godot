@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameData="*res://Scenes/Divers/game_data.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 TimeManager="*res://Scenes/Divers/TimeManager/time_manager.gd"
+TilePositions="*res://Ressources/tile_positions.gd"
 
 [debug]
 

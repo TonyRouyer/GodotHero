@@ -1,7 +1,6 @@
 extends Control
 
 @onready var heroesNode : Node2D = $"../../../Heroes"
-@onready var hero_recruitment_ui : Control = $"."
 #const HeroDataScript : Script = preload("res://Scenes/Heroes/hero_data.gd")
 var heroDataInstance : HeroData = preload("res://Scenes/Heroes/hero_data.gd").new()
 var selectedHeroes : Array
@@ -21,7 +20,7 @@ func _ready() -> void:
 func _on_btn_close_pressed() -> void:
 	GameData.menu_open = false
 	# Ferme la fenêtre des détails des héros
-	hero_recruitment_ui.hide()
+	self.visible = false
 
 
 # refresh la liste des hero a recruter
@@ -120,8 +119,11 @@ func create_hero_instance(heroInfo : Dictionary) -> Node2D:
 
 
 func _on_recrut_btn_pressed() -> void:
-	if !self.visible:
+	if self.visible:
+		self.visible = false
+		GameData.menu_open = false
+	else:
 		GameData.hide_ui()
 		create_heros_liste(false)
-	self.visible = !self.visible
-	GameData.menu_open = !GameData.menu_open
+		self.visible = true
+		GameData.menu_open = true

@@ -26,7 +26,7 @@ func create_room(room_name: String) -> void:
 			# Si une tuile est manquante ou n'est pas "inside", on annule
 			if not tile_data or tile_data.get_custom_data("Is_inside") != true:
 				print("Zone invalide : une tuile est à l'extérieur.")
-				parent.previsu.reset_previsualisation()
+				parent.previsu.reset_preview()
 				return
 
 			new_tiles.append(tile)
@@ -61,7 +61,7 @@ func create_room(room_name: String) -> void:
 
 		zones.append({ "name": room_name, "tiles": new_tiles, "label": label })
 
-	parent.previsu.reset_previsualisation()
+	parent.previsu.reset_preview()
 
 
 func get_hovered_zone(tile: Vector2):

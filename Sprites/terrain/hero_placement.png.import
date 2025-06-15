@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds1fvyqkgxeqk"
-path="res://.godot/imported/furnace.png-71f6f21aae08ee64856bf46364d9e407.ctex"
+uid="uid://de41jurfpsi0d"
+path="res://.godot/imported/hero_placement.png-503032b31623885a12636a2310c75e66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/items/icon/furnace.png"
-dest_files=["res://.godot/imported/furnace.png-71f6f21aae08ee64856bf46364d9e407.ctex"]
+source_file="res://Sprites/terrain/hero_placement.png"
+dest_files=["res://.godot/imported/hero_placement.png-503032b31623885a12636a2310c75e66.ctex"]
 
 [params]
 

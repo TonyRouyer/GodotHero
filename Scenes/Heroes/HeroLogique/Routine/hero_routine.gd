@@ -12,6 +12,8 @@ enum Needs { HUNGER, SLEEP, TOILET, HYGIENE, ENTERTAINMENT, TRAIN, WORK, FREE }
 
 var last_need : Needs = Needs.FREE
 var used_object : Node2D
+var current_construction_task: Dictionary
+
 
 var energy_limit : float = 30  
 var hunger_limit : float = 40 
@@ -100,7 +102,6 @@ func get_immediate_needs() -> Needs:
 		return Needs.ENTERTAINMENT
 	
 	#Si le hero n'a rien a faire il est libre
-	print("hero libre")
 	return Needs.FREE
 
 

@@ -56,54 +56,49 @@ func _update_used_status() -> void:
 
 
 func rotate_item(side):
+		# S'assurer que le shape est unique à cette instance
+	%CollisionShape2D.shape = %CollisionShape2D.shape.duplicate()
+	
 	match side:
 		"front":
 			#choix de la taille et du placement du coolision shape
-			%CollisionShape2D.shape.size = Vector2(32,64)
-			%CollisionShape2D.position = Vector2(16,32)
+			%CollisionShape2D.shape.size = Vector2(64,32)
+			%CollisionShape2D.position = Vector2(32,16)
 			#choix et mise en place du sprite
-			%Sprite.set_region_rect(Rect2(64,0,32,64))
-			%Sprite.position = Vector2(16,32)
+			%Sprite.set_region_rect(Rect2(0,0,64,32))
+			%Sprite.position = Vector2(32,16)
 			#Placement du marker
 			$Marker1.position = Vector2(8,16)
-			$Marker2.position = Vector2(24,16)
-			$Marker3.position = Vector2(8,64)
-			$Marker4.position = Vector2(24,64)
-		"right_side":
-			%CollisionShape2D.shape.size = Vector2(64,32)
-			%CollisionShape2D.position = Vector2(32,16)
-
-			%Sprite.set_region_rect(Rect2(0,0,64,32))
-			%Sprite.flip_h = false
-			%Sprite.position = Vector2(32,16)
-
-			$Marker1.position = Vector2(8,16)
 			$Marker2.position = Vector2(8,32)
 			$Marker3.position = Vector2(56,16)
 			$Marker4.position = Vector2(56,32)
-		"back":
+		"right_side":
 			%CollisionShape2D.shape.size = Vector2(32,64)
 			%CollisionShape2D.position = Vector2(16,32)
-
 			%Sprite.set_region_rect(Rect2(64,0,32,64))
 			%Sprite.position = Vector2(16,32)
-
 			$Marker1.position = Vector2(8,16)
 			$Marker2.position = Vector2(24,16)
 			$Marker3.position = Vector2(8,64)
 			$Marker4.position = Vector2(24,64)
-		"left_side":
+		"back":
 			%CollisionShape2D.shape.size = Vector2(64,32)
 			%CollisionShape2D.position = Vector2(32,16)
-
 			%Sprite.set_region_rect(Rect2(0,0,64,32))
-			%Sprite.flip_h = false
 			%Sprite.position = Vector2(32,16)
-
 			$Marker1.position = Vector2(8,16)
 			$Marker2.position = Vector2(8,32)
 			$Marker3.position = Vector2(56,16)
 			$Marker4.position = Vector2(56,32)
-			
+		"left_side":
+			%CollisionShape2D.shape.size = Vector2(32,64)
+			%CollisionShape2D.position = Vector2(16,32)
+			%Sprite.set_region_rect(Rect2(64,0,32,64))
+			%Sprite.position = Vector2(16,32)
+			$Marker1.position = Vector2(8,16)
+			$Marker2.position = Vector2(24,16)
+			$Marker3.position = Vector2(8,64)
+			$Marker4.position = Vector2(24,64)
+
 	x_size = %CollisionShape2D.shape.size.x
 	y_size = %CollisionShape2D.shape.size.y

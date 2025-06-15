@@ -56,11 +56,11 @@ theme_override_constants/separation = 5
 
 [node name="PlanningItem" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
 layout_mode = 2
-type = "free"
+type = "train"
 
 [node name="PlanningItem2" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]
 layout_mode = 2
-type = "free"
+type = "train"
 hour = 1
 
 [node name="PlanningItem3" parent="PanelContainer/VBoxContainer/MarginContainer2/TimeBlock" instance=ExtResource("3_0kkex")]

@@ -1,59 +1,77 @@
 extends Node
 
-# Définition des positions des tuiles pour les murs, les portes, les sols et les objets
-
-#Id du terrain (autotile)
-const WALL_TILES = {
-	"wooden_wall" : {"index": 0, "cost": 10},
-	"stone_wall" : {"index": 1, "cost": 15}
-}
-
-const DOOR_TILES = {
-	"wooden_door": {"index": 20, "cost": 20},
-	"reinforced_door": {"index": 21, "cost": 25}
-}
-
-const FLOOR_TILES = {
-	"wood":  {"index": 31, "cost": 10},
-	"stone": {"index": 32, "cost": 15},
-	"dirt": {"index": 33, "cost": 8},
-	"grass": {"index": 34, "cost": 1},
-}
-
-
-
 const WALLS = {
-	"wooden_wall" = preload("res://Sprites/terrain/wooden_wall.png"),
-	"stone_wall" = preload("res://Sprites/terrain/stone_wall.png"),
+	"wooden_wall" = {
+		"index": 0, 
+		"cost": 10, 
+		"region": Rect2(0,48,16,16), 
+		"texture": preload("res://Sprites/terrain/wooden_wall.png") },
+	"stone_wall" = {
+		"index": 1, 
+		"cost": 15, 
+		"region": Rect2(0,48,16,16), 
+		"texture": preload("res://Sprites/terrain/stone_wall.png") },
 }
+
 const FLOORS = {
-	"dirt" = preload("res://Sprites/terrain/dirt.png"),
-	"grass" = preload("res://Sprites/terrain/grass.png"),
-	"wood" = preload("res://Sprites/terrain/wood.png"),
-	"stone" = preload("res://Sprites/terrain/stone.png"),
+	"dirt" = {
+		"index": 33, 
+		"cost": 8,
+		"texture": preload("res://Sprites/terrain/dirt.png") },
+	"grass" = {
+		"index": 34, 
+		"cost": 1, 
+		"texture": preload("res://Sprites/terrain/grass.png") },
+	"wood" = {
+		"index": 31, 
+		"cost": 10, 
+		"texture": preload("res://Sprites/terrain/wood.png") },
+	"stone" = {
+		"index": 32, 
+		"cost": 15, 
+		"texture": preload("res://Sprites/terrain/stone.png") },
 }
 
 const DOORS = {
-	"wooden_door" = preload("res://Sprites/items/wooden_door.png"),
-	"reinforced_door" = preload("res://Sprites/items/reinforced_door.png"),
-	
+	"wooden_door" = {"index": 20, "cost": 20, "texture": preload("res://Sprites/items/wooden_door.png")},
+	"reinforced_door" = {"index": 21, "cost": 25, "texture": preload("res://Sprites/items/reinforced_door.png")},
 }
 
-#const USABLE_OBJECTS = {
-	#"bed": preload("res://Scenes/Level/Items/Usables/bed.tscn"),
-	#"anvil": preload("res://Scenes/Level/Items/Usables/anvil.tscn"),
-	#"training_dummy": preload("res://Scenes/Level/Items/Usables/training_dummy.tscn"),
-	#"luth": preload("res://Scenes/Level/Items/Usables/luth.tscn"),
-	#"furnace": preload("res://Scenes/Level/Items/Usables/furnace.tscn"),
-	#"table": preload("res://Scenes/Level/Items/Usables/table.tscn"),
-#}
-
-const OBJECTS = {
-	"table": preload("res://Scenes/Level/Objects/table.tres")
-}
-
-
-const ROOMS = {
-	"hall": preload("res://Scenes/Level/ConstructionLogic/Room/Rooms/hall.tres"),
-	"kitchen": preload("res://Scenes/Level/ConstructionLogic/Room/Rooms/kitchen.tres")
+const USABLE_OBJECTS = {
+	"bed": {
+		"name": "bed", 
+		"category": "furniture", 
+		"texture": preload("res://Sprites/items/bed_full.png"), 
+		"region": Rect2(0,0,16,32), 
+		"scene": preload("res://Scenes/Level/Objects/Usables/bed.tscn") },
+	"anvil": {
+		"name": "anvil", 
+		"category": "craft", 
+		"texture": preload("res://Sprites/items/anvil.png"),
+		"region": Rect2(0,0,16,16) , 
+		"scene": preload("res://Scenes/Level/Objects/Usables/anvil.tscn") },
+	"training_dummy": {
+		"name": "training_dummy", 
+		"train": "furniture", 
+		"texture": preload("res://Sprites/items/training_dummy.png"),
+		"region": Rect2(0,0,16,21), 
+		"scene": preload("res://Scenes/Level/Objects/Usables/training_dummy.tscn") },
+	"luth": {
+		"name": "luth", 
+		"category": "divertisement", 
+		"texture": preload("res://Sprites/items/luth.png"),
+		"region": Rect2(0,0,16,32), 
+		"scene": preload("res://Scenes/Level/Objects/Usables/luth.tscn") },
+	"furnace": {
+		"name": "furnace", 
+		"category": "craft", 
+		"texture": preload("res://Sprites/items/furnace.png"),
+		"region": Rect2(0,0,16,16), 
+		"scene": preload("res://Scenes/Level/Objects/Usables/furnace.tscn") },
+	"table": {
+		"name": "table", 
+		"category": "furniture", 
+		"texture": preload("res://Sprites/items/table.png"),
+		"region": Rect2(0,0,64,32), 
+		"scene": preload("res://Scenes/Level/Objects/Usables/table.tscn") },
 }

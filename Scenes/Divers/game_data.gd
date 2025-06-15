@@ -3,17 +3,20 @@ extends Node
 signal gold_changed(new_gold)
 
 var active_hero : Hero = null  # Référence au héros actif
+
 var menu_open : bool = false
+var game_paused : bool = false
+var inventory_first_load : bool = true
+
 var construction_type : String = ""
 var construction_item : String = ""
-var game_paused : bool = false
+
 var gold : int = 10000
+var reputation : int = 0
+
 var research_finished : Array = []
 var inventory : Dictionary = {}
-var reputation : int = 0
-var inventory_first_load : bool = true
 var planning_copy: Dictionary = {}
-
 
 
 func set_active_hero(hero : Hero) -> void:
@@ -22,6 +25,7 @@ func set_active_hero(hero : Hero) -> void:
 
 func get_active_hero() -> Hero:
 	return active_hero
+
 
 func set_gold(value : int) -> void:
 	gold = gold + value
