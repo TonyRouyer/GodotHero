@@ -1,48 +1,134 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo5m64d4cvano"]
+[gd_scene load_steps=9 format=3 uid="uid://bo5m64d4cvano"]
 
 [ext_resource type="Script" uid="uid://bhqbx2a0diltw" path="res://Scenes/Heroes/HeroGestion/hero_gestion_item.gd" id="1_24gwc"]
+[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/btn_normal_texture.tres" id="2_ohy14"]
+[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/btn_hover_texture.tres" id="3_56u0h"]
+[ext_resource type="Texture2D" uid="uid://c7rqkxafbpo6l" path="res://Sprites/Interface/Panel/1x1select.png" id="3_dt1ho"]
+[ext_resource type="Texture2D" uid="uid://b6epcu6ky7ram" path="res://Sprites/Interface/Panel/1x1.png" id="4_v4tl6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0hviq"]
+texture = ExtResource("3_dt1ho")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5h51n"]
+texture = ExtResource("3_dt1ho")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bypgi"]
+texture = ExtResource("4_v4tl6")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
 
 [node name="HeroGestionItem" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 mouse_filter = 1
 script = ExtResource("1_24gwc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 470.0
-offset_bottom = 30.0
-theme_override_constants/separation = 8
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("2_ohy14")
 
-[node name="Nom" type="Label" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_right = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Regis"
+vertical_alignment = 1
 
-[node name="Classe" type="Label" parent="HBoxContainer"]
+[node name="Classe" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Mage"
+vertical_alignment = 1
 
-[node name="Level" type="Label" parent="HBoxContainer"]
+[node name="Level" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Lvl 12"
+vertical_alignment = 1
 
-[node name="Spacer" type="Control" parent="HBoxContainer"]
+[node name="Hp" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Hp: 34/1200"
+vertical_alignment = 1
+
+[node name="Moral" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Moral : 78/100"
+vertical_alignment = 1
+
+[node name="DetailBtn" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
-
-[node name="DetailBtn" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 1
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_0hviq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5h51n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bypgi")
 text = "Detail"
 
-[node name="FireBtn" type="Button" parent="HBoxContainer"]
+[node name="FireBtn" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 1
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = ExtResource("3_56u0h")
+theme_override_styles/hover = ExtResource("3_56u0h")
+theme_override_styles/pressed = ExtResource("3_56u0h")
+theme_override_styles/normal = ExtResource("2_ohy14")
 text = "Fire"

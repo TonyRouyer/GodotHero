@@ -1,23 +1,72 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjlfs7504hewa"]
+[gd_scene load_steps=28 format=3 uid="uid://bjlfs7504hewa"]
 
 [ext_resource type="Script" uid="uid://bfqojah7afdhh" path="res://Scenes/Main.gd" id="1_ivlpv"]
 [ext_resource type="PackedScene" uid="uid://bfxhmp8vcao0l" path="res://Scenes/Heroes/HeroRecruitement/hero_recruitment_ui.tscn" id="1_kwy7a"]
 [ext_resource type="PackedScene" uid="uid://deiclps377nb0" path="res://Scenes/Level/Level.tscn" id="1_nits4"]
 [ext_resource type="PackedScene" uid="uid://1sl61klypsv7" path="res://Scenes/Divers/TimeManager/time_manager_ui.tscn" id="4_f3dba"]
 [ext_resource type="Script" uid="uid://c7misdf3mbyru" path="res://Scenes/Divers/game_camera.gd" id="5_ffsep"]
+[ext_resource type="Texture2D" uid="uid://b6epcu6ky7ram" path="res://Sprites/Interface/Panel/1x1.png" id="6_h1m7h"]
+[ext_resource type="Texture2D" uid="uid://die8nrkepqrum" path="res://Sprites/Interface/UI_Icon/inventory_icon.png" id="7_0sclb"]
+[ext_resource type="Texture2D" uid="uid://c7rqkxafbpo6l" path="res://Sprites/Interface/Panel/1x1select.png" id="7_erwvk"]
 [ext_resource type="PackedScene" uid="uid://tht5m577dqw" path="res://Scenes/Level/ConstructionMode/ConstructionUI.tscn" id="7_wxrls"]
+[ext_resource type="Texture2D" uid="uid://jmtxw67vp85q" path="res://Sprites/Interface/UI_Icon/hammer_icon.png" id="8_2w5on"]
+[ext_resource type="Texture2D" uid="uid://ciple6sj1xlwi" path="res://Sprites/Interface/UI_Icon/reseach_icon.png" id="8_346fj"]
 [ext_resource type="PackedScene" uid="uid://cywxfe684f010" path="res://Scenes/Inventory/global_inventory.tscn" id="8_oam5w"]
 [ext_resource type="PackedScene" uid="uid://sbkqulnwaelb" path="res://Scenes/Research/research_ui.tscn" id="9_0bj76"]
+[ext_resource type="Texture2D" uid="uid://cbaoat0lj3akq" path="res://Sprites/Interface/UI_Icon/quest_icon.png" id="9_0sclb"]
 [ext_resource type="PackedScene" uid="uid://cikud7p4b827j" path="res://Scenes/Level/ConstructionLogic/ConstructionLogic.tscn" id="9_jb1iq"]
+[ext_resource type="Texture2D" uid="uid://bi23iqhsm65ye" path="res://Sprites/Interface/UI_Icon/hero_icon.png" id="10_sxkr1"]
 [ext_resource type="PackedScene" uid="uid://cpc3326l27uf4" path="res://Scenes/Heroes/HeroGestion/hero_gestion.tscn" id="11_2g5h8"]
 [ext_resource type="PackedScene" uid="uid://bc41ufu0q6ah1" path="res://Scenes/Level/ConstructionLogic/ContextualMenu/object_modal.tscn" id="11_4kpch"]
+[ext_resource type="Texture2D" uid="uid://crrm1qeipdsu2" path="res://Sprites/Interface/UI_Icon/map_icon.png" id="11_jyqft"]
+[ext_resource type="Texture2D" uid="uid://d22kqhqmhrvgg" path="res://Sprites/Interface/UI_Icon/hammer-icon.png" id="12_3tgeq"]
 [ext_resource type="PackedScene" uid="uid://ce3xh57ma28qf" path="res://Scenes/Level/ConstructionLogic/ContextualMenu/room_ui.tscn" id="12_grg3l"]
+[ext_resource type="PackedScene" uid="uid://c38rymymo0kd0" path="res://Scenes/PauseMenu/pause_menu.tscn" id="13_sxkr1"]
+[ext_resource type="PackedScene" uid="uid://yhyb8esd4w2w" path="res://Scenes/Craft/craft_ui.tscn" id="23_c4ay3"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54aik"]
-bg_color = Color(0.576471, 0.466667, 0.215686, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_346fj"]
+texture = ExtResource("7_erwvk")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rq31"]
-bg_color = Color(0.576471, 0.466667, 0.215686, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0sclb"]
+texture = ExtResource("7_erwvk")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxkr1"]
+texture = ExtResource("6_h1m7h")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fq0cl"]
+texture = ExtResource("6_h1m7h")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+expand_margin_left = 8.0
+expand_margin_top = 5.0
+expand_margin_right = 8.0
+expand_margin_bottom = 5.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ivlpv")
@@ -25,8 +74,8 @@ script = ExtResource("1_ivlpv")
 [node name="GameCamera" type="Camera2D" parent="."]
 limit_left = -150
 limit_top = -150
-limit_right = 2200
-limit_bottom = 1100
+limit_right = 1920
+limit_bottom = 1080
 script = ExtResource("5_ffsep")
 
 [node name="Level" parent="." groups=["tilemap"] instance=ExtResource("1_nits4")]
@@ -41,108 +90,347 @@ process_mode = 3
 
 [node name="TopMenu" type="Control" parent="UICanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UICanvasLayer/TopMenu"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 30.0
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/TopMenu"]
+layout_mode = 1
+offset_right = 76.0
+offset_bottom = 52.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
 
-[node name="TopPanel" type="Panel" parent="UICanvasLayer/TopMenu/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 30)
+[node name="MenuBtn" type="Button" parent="UICanvasLayer/TopMenu/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_54aik")
-metadata/_edit_use_anchors_ = true
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="UICanvasLayer/TopMenu"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 30.0
-
-[node name="MenuBtn" type="Button" parent="UICanvasLayer/TopMenu/HBoxContainer2"]
-layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = SubResource("StyleBoxTexture_346fj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0sclb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_sxkr1")
 text = "Menu"
 
-[node name="GoldLabel" type="Label" parent="UICanvasLayer/TopMenu/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/TopMenu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -89.0
+offset_bottom = 89.0
+grow_horizontal = 0
+
+[node name="Inv_Button" type="MarginContainer" parent="UICanvasLayer/TopMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="OpenInvBtn" type="TextureButton" parent="UICanvasLayer/TopMenu/VBoxContainer/Inv_Button"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_h1m7h")
+texture_pressed = ExtResource("7_erwvk")
+texture_hover = ExtResource("7_erwvk")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/TopMenu/VBoxContainer/Inv_Button/OpenInvBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/TopMenu/VBoxContainer/Inv_Button/OpenInvBtn/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_0sclb")
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/TopMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 25
+
+[node name="GoldLabel" type="Label" parent="UICanvasLayer/TopMenu/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_fq0cl")
 text = "Gold : 0"
-
-[node name="TimeManager" parent="UICanvasLayer/TopMenu" groups=["time_manager"] instance=ExtResource("4_f3dba")]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 35.0
-offset_bottom = 35.0
-grow_horizontal = 2
-scale = Vector2(0.5, 0.5)
-size_flags_horizontal = 4
+horizontal_alignment = 1
 
 [node name="BottomMenu" type="Control" parent="UICanvasLayer"]
 layout_mode = 3
-anchors_preset = 2
+anchors_preset = 12
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 1152.0
-offset_bottom = -40.0
+grow_horizontal = 2
 grow_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UICanvasLayer/BottomMenu"]
-layout_mode = 0
-offset_top = 8.0
-offset_right = 1152.0
-offset_bottom = 48.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
 mouse_filter = 0
 
-[node name="BottomPanel" type="Panel" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 30)
+[node name="ButtonConstruction" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_1rq31")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="ConstructionBtn" type="TextureButton" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonConstruction"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_h1m7h")
+texture_pressed = ExtResource("7_erwvk")
+texture_hover = ExtResource("7_erwvk")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonConstruction/ConstructionBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonConstruction/ConstructionBtn/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("8_2w5on")
+
+[node name="ButtonGestionHero" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="GestionHeroBtn" type="TextureButton" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonGestionHero"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_h1m7h")
+texture_pressed = ExtResource("7_erwvk")
+texture_hover = ExtResource("7_erwvk")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonGestionHero/GestionHeroBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonGestionHero/GestionHeroBtn/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("10_sxkr1")
+
+[node name="ButtonResearch" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="SearchBtn" type="TextureButton" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonResearch"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_h1m7h")
+texture_pressed = ExtResource("7_erwvk")
+texture_hover = ExtResource("7_erwvk")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonResearch/SearchBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonResearch/SearchBtn/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("8_346fj")
+
+[node name="ButtonQuest" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="QuestBtn" type="TextureButton" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonQuest"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_h1m7h")
+texture_pressed = ExtResource("7_erwvk")
+texture_hover = ExtResource("7_erwvk")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonQuest/QuestBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonQuest/QuestBtn/MarginContainer"]
+layout_mode = 2
+
+[node name="ButtonMap" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="MapBtn" type="TextureButton" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonMap"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_h1m7h")
+texture_pressed = ExtResource("7_erwvk")
+texture_hover = ExtResource("7_erwvk")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonMap/MapBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonMap/MapBtn/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("11_jyqft")
+
+[node name="ButtonCraft" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="CraftBtn" type="TextureButton" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonCraft"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_h1m7h")
+texture_pressed = ExtResource("7_erwvk")
+texture_hover = ExtResource("7_erwvk")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonCraft/CraftBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonCraft/CraftBtn/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("12_3tgeq")
+
+[node name="ButtonRecrute" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="RecrutBtn" type="TextureButton" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonRecrute"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_h1m7h")
+texture_pressed = ExtResource("7_erwvk")
+texture_hover = ExtResource("7_erwvk")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonRecrute/RecrutBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="UICanvasLayer/BottomMenu/HBoxContainer/ButtonRecrute/RecrutBtn/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("9_0sclb")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UICanvasLayer/BottomMenu"]
-layout_mode = 0
-offset_top = 13.0
-offset_right = 414.0
-offset_bottom = 43.0
-mouse_filter = 0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
 
-[node name="ConstructionBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
 layout_mode = 2
-text = "Construction"
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 
-[node name="RecrutBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
+[node name="TimeManager" parent="UICanvasLayer/BottomMenu/HBoxContainer2/MarginContainer" groups=["time_manager"] instance=ExtResource("4_f3dba")]
 layout_mode = 2
-text = "Recrute"
-
-[node name="OpenInvBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
-layout_mode = 2
-text = "Inventory"
-
-[node name="SearchBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
-layout_mode = 2
-text = "Research"
-
-[node name="GestionHeroBtn" type="Button" parent="UICanvasLayer/BottomMenu/HBoxContainer2"]
-layout_mode = 2
-text = "Gestion heros"
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="Menu" type="Control" parent="UICanvasLayer"]
 layout_mode = 3
-anchor_top = 0.0462963
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.939815
+anchor_bottom = 1.0
+offset_bottom = -103.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" parent="UICanvasLayer/Menu" instance=ExtResource("13_sxkr1")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HeroRecruitmentUI" parent="UICanvasLayer/Menu" instance=ExtResource("1_kwy7a")]
 visible = false
@@ -163,18 +451,27 @@ mouse_filter = 1
 [node name="GlobalInventory" parent="UICanvasLayer/Menu" instance=ExtResource("8_oam5w")]
 visible = false
 layout_mode = 1
-offset_left = -1.0
-offset_top = 123.0
-offset_right = -1.0
-offset_bottom = 123.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 4
 mouse_filter = 1
 
 [node name="ResearchUi" parent="UICanvasLayer/Menu" instance=ExtResource("9_0bj76")]
 visible = false
-layout_mode = 0
-offset_top = 204.0
-offset_bottom = 204.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -300.0
+offset_right = 3.0
+offset_bottom = -300.0
+grow_vertical = 0
 mouse_filter = 1
 
 [node name="HeroGestion" parent="UICanvasLayer/Menu" instance=ExtResource("11_2g5h8")]
@@ -184,6 +481,10 @@ layout_mode = 1
 [node name="ConstructionUi" parent="UICanvasLayer/Menu" instance=ExtResource("7_wxrls")]
 visible = false
 layout_mode = 1
+offset_left = 24.0
+offset_top = 686.0
+offset_right = 24.0
+offset_bottom = 686.0
 mouse_filter = 1
 
 [node name="ObjectModal" parent="UICanvasLayer/Menu" instance=ExtResource("11_4kpch")]
@@ -203,8 +504,19 @@ offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/ConstructionBtn" to="UICanvasLayer/Menu/ConstructionUi" method="_on_construction_btn_pressed"]
-[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/RecrutBtn" to="UICanvasLayer/Menu/HeroRecruitmentUI" method="_on_recrut_btn_pressed"]
-[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/OpenInvBtn" to="UICanvasLayer/Menu/GlobalInventory" method="_on_open_inv_btn_pressed"]
-[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/SearchBtn" to="UICanvasLayer/Menu/ResearchUi" method="_open_btn_pressed"]
-[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer2/GestionHeroBtn" to="UICanvasLayer/Menu/HeroGestion" method="_on_hero_gestion_btn_pressed"]
+[node name="CraftUi" parent="UICanvasLayer/Menu" instance=ExtResource("23_c4ay3")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[connection signal="pressed" from="UICanvasLayer/TopMenu/MarginContainer/MenuBtn" to="UICanvasLayer/Menu/PauseMenu" method="_on_menu_btn_pressed"]
+[connection signal="pressed" from="UICanvasLayer/TopMenu/VBoxContainer/Inv_Button/OpenInvBtn" to="UICanvasLayer/Menu/GlobalInventory" method="_on_open_inv_btn_pressed"]
+[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer/ButtonConstruction/ConstructionBtn" to="UICanvasLayer/Menu/ConstructionUi" method="_on_construction_btn_pressed"]
+[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer/ButtonGestionHero/GestionHeroBtn" to="UICanvasLayer/Menu/HeroGestion" method="_on_hero_gestion_btn_pressed"]
+[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer/ButtonResearch/SearchBtn" to="UICanvasLayer/Menu/ResearchUi" method="_open_btn_pressed"]
+[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer/ButtonCraft/CraftBtn" to="UICanvasLayer/Menu/CraftUi" method="_on_craft_btn_pressed"]
+[connection signal="pressed" from="UICanvasLayer/BottomMenu/HBoxContainer/ButtonRecrute/RecrutBtn" to="UICanvasLayer/Menu/HeroRecruitmentUI" method="_on_recrut_btn_pressed"]

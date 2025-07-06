@@ -1,110 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://sbkqulnwaelb"]
+[gd_scene load_steps=14 format=3 uid="uid://sbkqulnwaelb"]
 
 [ext_resource type="Script" uid="uid://dcjmhwagxu4pk" path="res://Scenes/Research/research_ui.gd" id="1_s420v"]
+[ext_resource type="Texture2D" uid="uid://dyqiquq64bed2" path="res://Sprites/Interface/Panel/BGbox_03A.png" id="2_ahgmo"]
+[ext_resource type="Texture2D" uid="uid://b8klcqvx0c1qf" path="res://Sprites/Interface/ProgressBar/Slider03_Box.png" id="3_65ca0"]
+[ext_resource type="Texture2D" uid="uid://b4s6copc24fky" path="res://Sprites/Interface/ProgressBar/Slider02_Bar03.png" id="4_4xm56"]
+[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/btn_hover_texture.tres" id="5_6djh8"]
+[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/btn_normal_texture.tres" id="6_y0osi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ty748"]
+texture = ExtResource("2_ahgmo")
+texture_margin_left = 13.0
+texture_margin_top = 13.0
+texture_margin_right = 13.0
+texture_margin_bottom = 13.0
+modulate_color = Color(0.941493, 0.815288, 0.790024, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rwks2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6xw2p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bf14a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qswrg"]
+texture = ExtResource("3_65ca0")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpw46"]
+texture = ExtResource("4_4xm56")
+texture_margin_left = 6.0
+texture_margin_top = 7.0
+texture_margin_right = 6.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_30s0g"]
+texture = ExtResource("2_ahgmo")
+texture_margin_left = 13.0
+texture_margin_top = 13.0
+texture_margin_right = 13.0
+texture_margin_bottom = 13.0
 
 [node name="ResearchUi" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 script = ExtResource("1_s420v")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 1151.0
-offset_bottom = 374.0
-theme_override_constants/separation = 0
-
-[node name="InfoPanel" type="PanelContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DescriptionPanel" type="MarginContainer" parent="HBoxContainer/InfoPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="CurrentSearchPanel" type="VBoxContainer" parent="HBoxContainer/InfoPanel/DescriptionPanel"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Titre" type="Label" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
-layout_mode = 2
-text = "Current search"
-
-[node name="Separator" type="HSeparator" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
-layout_mode = 2
-
-[node name="CurrentSearchLabel" type="Label" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-text = "research name"
-horizontal_alignment = 1
-
-[node name="CurrentSearchDescription" type="TextEdit" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Permet la construction de chambres individuelles pour les aventuriers, améliorant leur moral et repos."
-editable = false
-context_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-wrap_mode = 1
-
-[node name="CurrentSearchProgressBar" type="ProgressBar" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-
-[node name="ButtonContainer" type="HBoxContainer" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="Spacer" type="Control" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="StartButton" type="Button" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Start"
-
-[node name="PauseButton" type="Button" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Pause
-"
-
-[node name="Spacer2" type="Control" parent="HBoxContainer/InfoPanel/DescriptionPanel/CurrentSearchPanel/ButtonContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DisplaySearchPanel" type="PanelContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/DisplaySearchPanel"]
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="ResearchItems" type="Control" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(816, 650)
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="ToolTip" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -122,6 +65,7 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 
 [node name="ToolTipName" type="Label" parent="ToolTip/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "zerze
 "
@@ -133,5 +77,134 @@ color = Color(0.38, 0.38, 0.38, 0.756863)
 [node name="ResearchTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 autostart = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 206.0
+grow_horizontal = 2
+
+[node name="InfoPanel" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_ty748")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/InfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 5
+
+[node name="CurrentSearchPanel" type="VBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CurrentSearchLabel" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/CurrentSearchPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Current search"
+horizontal_alignment = 1
+
+[node name="Cost" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/CurrentSearchPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Cost : 1000 or"
+
+[node name="CurrentSearchDescription" type="TextEdit" parent="HBoxContainer/InfoPanel/MarginContainer/CurrentSearchPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/search_result_border_color = Color(0, 0, 0, 1)
+theme_override_colors/search_result_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rwks2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6xw2p")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_bf14a")
+text = "Permet la construction de chambres individuelles pour les aventuriers, améliorant leur moral et repos."
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
+[node name="CurrentSearchProgressBar" type="ProgressBar" parent="HBoxContainer/InfoPanel/MarginContainer/CurrentSearchPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_qswrg")
+theme_override_styles/fill = SubResource("StyleBoxTexture_tpw46")
+value = 50.0
+show_percentage = false
+
+[node name="ButtonContainer" type="HBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer/CurrentSearchPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/InfoPanel/MarginContainer/CurrentSearchPanel/ButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="StartButton" type="Button" parent="HBoxContainer/InfoPanel/MarginContainer/CurrentSearchPanel/ButtonContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(129, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = ExtResource("5_6djh8")
+theme_override_styles/pressed = ExtResource("5_6djh8")
+theme_override_styles/normal = ExtResource("6_y0osi")
+text = "Start"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/InfoPanel/MarginContainer/CurrentSearchPanel/ButtonContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="PauseButton" type="Button" parent="HBoxContainer/InfoPanel/MarginContainer/CurrentSearchPanel/ButtonContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(129, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/hover = ExtResource("5_6djh8")
+theme_override_styles/pressed = ExtResource("5_6djh8")
+theme_override_styles/normal = ExtResource("6_y0osi")
+text = "Pause
+"
+
+[node name="DisplaySearchPanel" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_30s0g")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/DisplaySearchPanel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="ResearchItems" type="Control" parent="HBoxContainer/DisplaySearchPanel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 
 [connection signal="timeout" from="ResearchTimer" to="." method="_on_timer_timeout"]

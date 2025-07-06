@@ -1,9 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj7kppmqtr5dh"]
+[gd_scene load_steps=14 format=3 uid="uid://bj7kppmqtr5dh"]
 
 [ext_resource type="Script" uid="uid://ckefdw0w4rel3" path="res://Scenes/Heroes/HeroPlanning/hero_planning.gd" id="1_dtrmk"]
-[ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/Button/QuitIcon.png" id="2_quwp6"]
+[ext_resource type="Texture2D" uid="uid://b6epcu6ky7ram" path="res://Sprites/Interface/Panel/1x1.png" id="2_asii5"]
 [ext_resource type="PackedScene" uid="uid://b4y7rhnq13x54" path="res://Scenes/Heroes/HeroPlanning/planning_item.tscn" id="3_0kkex"]
-[ext_resource type="Texture2D" uid="uid://cpj3i1j2pjbc5" path="res://Sprites/Interface/clock/btnPlay.png" id="4_vt5a1"]
+[ext_resource type="Texture2D" uid="uid://c7rqkxafbpo6l" path="res://Sprites/Interface/Panel/1x1select.png" id="4_lqa8t"]
+[ext_resource type="Texture2D" uid="uid://c60pbqj8se3vo" path="res://Sprites/Interface/UI_Icon/clock-icon.png" id="5_4ffdr"]
+[ext_resource type="Texture2D" uid="uid://tg32ybu1p6na" path="res://Sprites/Interface/UI_Icon/sword-icon.png" id="6_4jnkb"]
+[ext_resource type="Texture2D" uid="uid://d22kqhqmhrvgg" path="res://Sprites/Interface/UI_Icon/hammer-icon.png" id="7_63lhi"]
+[ext_resource type="Texture2D" uid="uid://pqt2l11gjvu3" path="res://Sprites/Interface/UI_Icon/free-icon.png" id="8_21r8a"]
+[ext_resource type="Texture2D" uid="uid://da2h7vvmrhw7s" path="res://Sprites/Interface/UI_Icon/morning_icon.png" id="9_epfau"]
+[ext_resource type="Texture2D" uid="uid://cpwfnf7gwdpv2" path="res://Sprites/Interface/UI_Icon/day_icon.png" id="10_0mbww"]
+[ext_resource type="Texture2D" uid="uid://c3e3ed74fhgcc" path="res://Sprites/Interface/UI_Icon/night_icon.png" id="11_qru0n"]
+[ext_resource type="Texture2D" uid="uid://d2ft615hl2jwy" path="res://Sprites/Interface/UI_Icon/evening_icon.png" id="12_3w1uu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f8ybx"]
+texture = ExtResource("2_asii5")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
 
 [node name="HeroPlanning" type="Control"]
 layout_mode = 3
@@ -17,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_f8ybx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -41,7 +57,6 @@ text = "Planning"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("2_quwp6")
 stretch_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
@@ -357,138 +372,196 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4"]
 layout_mode = 2
 
-[node name="Options" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+[node name="Options" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 15
-
-[node name="Sleep" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+[node name="Sleep" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("4_vt5a1")
+texture_normal = ExtResource("2_asii5")
+texture_pressed = ExtResource("4_lqa8t")
+texture_hover = ExtResource("4_lqa8t")
+stretch_mode = 0
 
-[node name="Train" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options/Sleep"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options/Sleep/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_4ffdr")
+
+[node name="Train" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("4_vt5a1")
+texture_normal = ExtResource("2_asii5")
+texture_pressed = ExtResource("4_lqa8t")
+texture_hover = ExtResource("4_lqa8t")
+stretch_mode = 0
 
-[node name="Work" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options/Train"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options/Train/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_4jnkb")
+
+[node name="Work" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("4_vt5a1")
+texture_normal = ExtResource("2_asii5")
+texture_pressed = ExtResource("4_lqa8t")
+texture_hover = ExtResource("4_lqa8t")
+stretch_mode = 0
 
-[node name="Free" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options/Work"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options/Work/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_63lhi")
+
+[node name="Free" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("4_vt5a1")
+texture_normal = ExtResource("2_asii5")
+texture_pressed = ExtResource("4_lqa8t")
+texture_hover = ExtResource("4_lqa8t")
+stretch_mode = 0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options/Free"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Options/Free/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 15
-alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_21r8a")
 
-[node name="Copy" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer2"]
+[node name="Preset" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Morning" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("4_vt5a1")
+texture_normal = ExtResource("2_asii5")
+stretch_mode = 0
 
-[node name="Past" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset/Morning"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset/Morning/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_epfau")
+stretch_mode = 2
+
+[node name="Day" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("4_vt5a1")
+texture_normal = ExtResource("2_asii5")
+stretch_mode = 0
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset/Day"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset/Day/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 35
-alignment = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_0mbww")
+stretch_mode = 2
 
-[node name="NightLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
+[node name="Night" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("4_vt5a1")
+texture_normal = ExtResource("2_asii5")
+stretch_mode = 0
 
-[node name="MorningLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset/Night"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset/Night/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_qru0n")
+stretch_mode = 2
+
+[node name="Evening" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("4_vt5a1")
+texture_normal = ExtResource("2_asii5")
+stretch_mode = 0
 
-[node name="AfternoonLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
-unique_name_in_owner = true
-layout_mode = 2
-texture_normal = ExtResource("4_vt5a1")
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset/Evening"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="JourneyLayout" type="TextureButton" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/Options/HBoxContainer3"]
-unique_name_in_owner = true
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer4/HBoxContainer/Preset/Evening/MarginContainer"]
 layout_mode = 2
-texture_normal = ExtResource("4_vt5a1")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 5
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Sleep"
-
-[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Train"
-
-[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Work"
-
-[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Free"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Copy"
-
-[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Past"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 5
-alignment = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "Night"
-
-[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "Morning"
-
-[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "Afternoon"
-
-[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer4/VBoxContainer/HBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "All day"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_3w1uu")
+stretch_mode = 2
 
 [node name="HourTracker" type="Control" parent="."]
 unique_name_in_owner = true

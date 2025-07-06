@@ -2,8 +2,8 @@ extends Control
 
 signal updated()
 
-@onready var item_grid : GridContainer = $ScrollContainer/ItemGrid
-@export var slots_count : int = 25
+@onready var item_grid : GridContainer = %ItemGrid
+@export var slots_count : int = GameData.inventory_size
 
 
 func _ready() -> void:
@@ -42,16 +42,27 @@ func create_inventory_slots(nb_slots : int) -> void:
 		var slot = slot_instance.instantiate()
 		slot.name = "Slot" + str(i)
 		slot.custom_minimum_size = Vector2(64, 64)
+		slot.global_inventory = self
 		item_grid.add_child(slot)
 		if not GameData.inventory.has("Slot" + str(i)):
 			GameData.inventory["Slot" + str(i)] = {}
+		
+		slot.connect("slot_click", _on_slot_click)
 
+
+func _on_slot_click(item_data) -> void:
+	var type = ["Default","Usable","Weapon","Jewelery","Head","Chest","Pant"]
+	
+	%ItemName.text = item_data.item.item_name
+	%ItemCategory.text = type[item_data.item.item_type]
+	%ItemDescription.text = item_data.item.item_description
 
 #Charge les objet de la variabla inventory dans l'inventaire
 func load_inventory() -> void:
 	for child in item_grid.get_children():
 		var data = GameData.inventory[child.name]
 		child.set_slot(data)
+	
 		
 
 #AJoute un objet dans le slot selectionné
@@ -144,7 +155,6 @@ func _on_open_inv_btn_pressed() -> void:
 		self.visible = true
 		GameData.menu_open = true
 		
-	print(GameData.menu_open )
 
 # Find the first empty slot of the given type
 func find_first_empty_slot():

@@ -1,15 +1,15 @@
 extends Control
 
 @onready var heroesNode : Node2D = $"../../../Heroes"
-#const HeroDataScript : Script = preload("res://Scenes/Heroes/hero_data.gd")
 var heroDataInstance : HeroData = preload("res://Scenes/Heroes/hero_data.gd").new()
 var selectedHeroes : Array
+var last_hero_info: Dictionary = {}
 
 
 func _ready() -> void:
 	add_to_group("UI")
 	%RefreshBtn.connect("pressed",_on_refresh_btn_pressed)
-	%btnClose.connect("pressed",_on_btn_close_pressed)
+	%CloseButton.connect("pressed",_on_btn_close_pressed)
 	# Sélectionne aléatoirement 3 héros au démarrage
 	for x in 3:
 		selectedHeroes.append( heroDataInstance.get_random_hero())
@@ -46,7 +46,27 @@ func create_new_hero(hero_index : int) -> void:
 	
 		heroInstance.position = Vector2(500,475)
 		heroesNode.add_child(heroInstance)
+		
+		
 	
+		
+		#Instantie une 2nd fois le sprite pour l'afficher dans les detail du hero
+		var animation_node = load("res://Scenes/Heroes/SpriteAnimations/"+ str(heroInstance.skin) +".tscn")
+		var animation_ui = animation_node.instantiate()
+		animation_ui.name = "Sprite"
+		
+		
+		heroInstance.hero_panel_info.hero_texture.add_child(animation_ui)
+		animation_ui.position = Vector2(40,120)
+		animation_ui.scale = Vector2(5,5)
+		
+		animation_ui.get_node("Hair").texture = load("res://Sprites/hero/hair/" + str(last_hero_info.hair) + ".png")
+		animation_ui.get_node("Chest").texture = load("res://Sprites/hero/chest/" + str(last_hero_info.chest) + ".png")
+		animation_ui.get_node("Pant").texture = load("res://Sprites/hero/pant/" + str(last_hero_info.pant) + ".png")
+			
+			
+			
+			
 		var heroContainers = [$PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero1, $PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero2, $PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero3]
 		heroContainers[hero_index].get_node("RecruteBtn").disabled = true
 
@@ -80,6 +100,7 @@ func create_heros_liste(refresh : bool) -> void:
 func create_hero_instance(heroInfo : Dictionary) -> Node2D:
 	var heroScene = preload("res://Scenes/Heroes/Hero.tscn") 
 	var heroInstance = heroScene.instantiate() as Node2D
+	last_hero_info = heroInfo
 	
 	# Configurez les propriétés du héros ici
 	heroInstance.set("name", heroInfo.name)
@@ -98,23 +119,14 @@ func create_hero_instance(heroInfo : Dictionary) -> Node2D:
 	var animation_node = load("res://Scenes/Heroes/SpriteAnimations/"+ str(heroInfo.skin) +".tscn")
 	var animation = animation_node.instantiate()
 	animation.name = "AnimatedSprite2D"
-	
+
 	animation.get_node("Hair").texture = load("res://Sprites/hero/hair/" + str(heroInfo.hair) + ".png")
 	animation.get_node("Chest").texture = load("res://Sprites/hero/chest/" + str(heroInfo.chest) + ".png")
 	animation.get_node("Pant").texture = load("res://Sprites/hero/pant/" + str(heroInfo.pant) + ".png")
-	
+
 	heroInstance.add_child(animation)
 	
-	#Instantie une 2nf fois le sprite pour l'afficher dans les detail du hero
-	var animation_ui = animation_node.instantiate()
-	animation_ui.name = "Sprite"
-	heroInstance.get_node("CanvasLayer/HeroPanelInfo/StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/HeroEquipementUi").add_child(animation_ui)
-	animation_ui.position = Vector2(105,107)
-	animation_ui.scale = Vector2(5,5)
-	animation_ui.get_node("Hair").texture = load("res://Sprites/hero/hair/" + str(heroInfo.hair) + ".png")
-	animation_ui.get_node("Chest").texture = load("res://Sprites/hero/chest/" + str(heroInfo.chest) + ".png")
-	animation_ui.get_node("Pant").texture = load("res://Sprites/hero/pant/" + str(heroInfo.pant) + ".png")
-
+	
 	return heroInstance
 
 

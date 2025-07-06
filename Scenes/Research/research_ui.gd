@@ -8,6 +8,7 @@ signal gold_changed
 @onready var description : TextEdit = %CurrentSearchDescription
 @onready var button_container : HBoxContainer = %ButtonContainer
 @onready var tool_tip : PanelContainer = $ToolTip
+@onready var cost : Label = %Cost
 @onready var research_timer : Timer = %ResearchTimer
 
 var start_research : bool = false
@@ -28,8 +29,8 @@ func _ready() -> void:
 	for research in research_items:
 		var research_data = load(research) # recupere la ressource  ResearchData
 		var research_node = ResearchNode.new() # crée le node (textureButton)
-		research_node.init(research_data, Vector2(64,64)) # puis initie les data du node avec la ressource precedement chargé
-		research_node.size = Vector2(64,64)
+		research_node.init(research_data, Vector2(112,112)) # puis initie les data du node avec la ressource precedement chargé
+		research_node.size = Vector2(112,112)
 		research_container.add_child(research_node)
 		var level = research_node.data.research_level
 		var research_column = research_node.data.research_column
@@ -108,7 +109,7 @@ func draw_tech_ligne() -> void:
 		for parent_resource in parents:
 			var parent = research_container.get_node(parent_resource.serialised_name)
 			var line = Line2D.new()
-			line.width = 3
+			line.width = 6
 			line.default_color  = Color(0,0,0,0.5)
 			line.add_point(node.position + (node.size / 2))
 			line.add_point( parent.position  + (parent.size / 2))
@@ -149,6 +150,7 @@ func _on_research_button_pressed(research) -> void:
 		current_project_label.text = research.research_name
 		description.text = research.research_description
 		progress_bar.max_value = research.research_duration
+		cost.text = "cost: " + str(research.research_cost)
 		
 		# Si cette recherche avait déjà été lancée, affiche sa progression sauvegardée,
 		if not_finished_research.has(selected_research):
@@ -199,7 +201,7 @@ func _on_pause_button_pressed():
 
 func _on_research_button_hovered(research_name) -> void:
 	tool_tip.show()
-	tool_tip.get_node("MarginContainer/ToolTipName").text = str(research_name)
+	%ToolTipName.text = str(research_name)
 
 
 

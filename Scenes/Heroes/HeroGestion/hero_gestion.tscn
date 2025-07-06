@@ -1,7 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpc3326l27uf4"]
+[gd_scene load_steps=19 format=3 uid="uid://cpc3326l27uf4"]
 
 [ext_resource type="Script" uid="uid://boi0gl8cstyxx" path="res://Scenes/Heroes/HeroGestion/hero_gestion.gd" id="1_dh787"]
-[ext_resource type="Texture2D" uid="uid://cpj3i1j2pjbc5" path="res://Sprites/Interface/clock/btnPlay.png" id="2_3glvs"]
+[ext_resource type="StyleBox" uid="uid://ccmgdqt3vq7t4" path="res://Ressources/panelContainer.tres" id="2_rdblv"]
+[ext_resource type="Texture2D" uid="uid://c7rqkxafbpo6l" path="res://Sprites/Interface/Panel/1x1select.png" id="3_rdblv"]
+[ext_resource type="Texture2D" uid="uid://b6epcu6ky7ram" path="res://Sprites/Interface/Panel/1x1.png" id="4_g21e3"]
+[ext_resource type="Texture2D" uid="uid://c60pbqj8se3vo" path="res://Sprites/Interface/UI_Icon/clock-icon.png" id="6_8m2lf"]
+[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/btn_hover_texture.tres" id="6_35cwu"]
+[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/btn_normal_texture.tres" id="7_757u3"]
+[ext_resource type="Texture2D" uid="uid://tg32ybu1p6na" path="res://Sprites/Interface/UI_Icon/sword-icon.png" id="7_mq056"]
+[ext_resource type="Texture2D" uid="uid://d22kqhqmhrvgg" path="res://Sprites/Interface/UI_Icon/hammer-icon.png" id="8_2aoej"]
+[ext_resource type="Texture2D" uid="uid://pqt2l11gjvu3" path="res://Sprites/Interface/UI_Icon/free-icon.png" id="9_8gqa1"]
+[ext_resource type="Texture2D" uid="uid://da2h7vvmrhw7s" path="res://Sprites/Interface/UI_Icon/morning_icon.png" id="10_ppse7"]
+[ext_resource type="Texture2D" uid="uid://cpwfnf7gwdpv2" path="res://Sprites/Interface/UI_Icon/day_icon.png" id="11_3fat0"]
+[ext_resource type="Texture2D" uid="uid://c3e3ed74fhgcc" path="res://Sprites/Interface/UI_Icon/night_icon.png" id="12_pb2qf"]
+[ext_resource type="Texture2D" uid="uid://d2ft615hl2jwy" path="res://Sprites/Interface/UI_Icon/evening_icon.png" id="13_5lyb6"]
+[ext_resource type="Texture2D" uid="uid://cbuip560ujfr1" path="res://Sprites/Interface/Panel/BGbox_04B.png" id="13_8m2lf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_35cwu"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 15.0
+texture = ExtResource("3_rdblv")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_757u3"]
+bg_color = Color(0.760784, 0.533333, 0.47451, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_757u3"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 15.0
+texture = ExtResource("4_g21e3")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_bottom = 10.0
 
 [node name="HeroGestion" type="Control"]
 layout_mode = 3
@@ -21,20 +59,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -325.0
-offset_top = -125.0
-offset_right = 325.0
-offset_bottom = 125.0
+offset_left = -580.0
+offset_top = -242.0
+offset_right = 580.0
+offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/panel = ExtResource("2_rdblv")
 
 [node name="TabContainer" type="TabContainer" parent="PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 0
+theme_override_colors/font_unselected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hovered_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_constants/side_margin = 25
+theme_override_font_sizes/font_size = 12
+theme_override_styles/tab_focus = SubResource("StyleBoxTexture_35cwu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_757u3")
+theme_override_styles/tab_selected = SubResource("StyleBoxTexture_35cwu")
+theme_override_styles/tab_hovered = SubResource("StyleBoxTexture_35cwu")
+theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_757u3")
+current_tab = 1
 
 [node name="Infos" type="TabBar" parent="PanelContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -46,7 +96,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
@@ -57,99 +107,265 @@ horizontal_scroll_mode = 0
 [node name="HeroStatContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Infos/MarginContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
 
 [node name="Planning" type="TabBar" parent="PanelContainer/TabContainer"]
-visible = false
 layout_mode = 2
+tab_alignment = 1
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Planning"]
-layout_mode = 0
-offset_right = 1010.0
-offset_bottom = 202.0
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HeroPlanningContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="HeroPlanningContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_constants/separation = 37
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(980, 0)
-layout_mode = 2
-alignment = 1
-
-[node name="Options" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Options"]
+[node name="Options" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 15
+size_flags_horizontal = 2
 
-[node name="Sleep" type="TextureButton" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Options/HBoxContainer"]
+[node name="Sleep" type="TextureButton" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("2_3glvs")
+texture_normal = ExtResource("4_g21e3")
+texture_pressed = ExtResource("3_rdblv")
+texture_hover = ExtResource("3_rdblv")
+stretch_mode = 0
 
-[node name="Train" type="TextureButton" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Options/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options/Sleep"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options/Sleep/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_8m2lf")
+
+[node name="Train" type="TextureButton" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("2_3glvs")
+texture_normal = ExtResource("4_g21e3")
+texture_pressed = ExtResource("3_rdblv")
+texture_hover = ExtResource("3_rdblv")
+stretch_mode = 0
 
-[node name="Work" type="TextureButton" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Options/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options/Train"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options/Train/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_mq056")
+
+[node name="Work" type="TextureButton" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("2_3glvs")
+texture_normal = ExtResource("4_g21e3")
+texture_pressed = ExtResource("3_rdblv")
+texture_hover = ExtResource("3_rdblv")
+stretch_mode = 0
 
-[node name="Free" type="TextureButton" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/Options/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options/Work"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options/Work/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_2aoej")
+
+[node name="Free" type="TextureButton" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("2_3glvs")
+texture_normal = ExtResource("4_g21e3")
+texture_pressed = ExtResource("3_rdblv")
+texture_hover = ExtResource("3_rdblv")
+stretch_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options/Free"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Options/Free/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 5
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_8gqa1")
 
-[node name="Label" type="Label" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="Preset" type="HBoxContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "Sleep"
+size_flags_horizontal = 10
 
-[node name="Label2" type="Label" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="Morning" type="TextureButton" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-text = "Train"
+texture_normal = ExtResource("4_g21e3")
+stretch_mode = 0
 
-[node name="Label3" type="Label" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Work"
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset/Morning"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label4" type="Label" parent="PanelContainer/TabContainer/Planning/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset/Morning/MarginContainer"]
 layout_mode = 2
-text = "Free"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_ppse7")
+stretch_mode = 2
+
+[node name="Day" type="TextureButton" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("4_g21e3")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset/Day"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset/Day/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_3fat0")
+stretch_mode = 2
+
+[node name="Night" type="TextureButton" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("4_g21e3")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset/Night"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset/Night/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_pb2qf")
+stretch_mode = 2
+
+[node name="Evening" type="TextureButton" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("4_g21e3")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset/Evening"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/TabContainer/Planning/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Preset/Evening/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_5lyb6")
+stretch_mode = 2
+
+[node name="CloseButton" type="TextureButton" parent="PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("13_8m2lf")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="PanelContainer/CloseButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -17.0
+offset_right = 20.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ConfirmationPanel" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -166,6 +382,7 @@ offset_right = 62.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_rdblv")
 
 [node name="MarginContainer" type="MarginContainer" parent="ConfirmationPanel"]
 layout_mode = 2
@@ -180,9 +397,31 @@ layout_mode = 2
 [node name="ConfirmFire" type="Button" parent="ConfirmationPanel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = ExtResource("6_35cwu")
+theme_override_styles/pressed = ExtResource("6_35cwu")
+theme_override_styles/normal = ExtResource("7_757u3")
 text = "Yes"
 
 [node name="CancelFire" type="Button" parent="ConfirmationPanel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = ExtResource("6_35cwu")
+theme_override_styles/pressed = ExtResource("6_35cwu")
+theme_override_styles/normal = ExtResource("7_757u3")
 text = "No"
+
+[connection signal="pressed" from="PanelContainer/CloseButton" to="." method="_on_hero_gestion_btn_pressed"]

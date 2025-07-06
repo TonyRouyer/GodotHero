@@ -2,8 +2,7 @@ extends Control
 
 @onready var timer = %Timer
 @onready var time = %Time
-@onready var day = %Day
-@onready var selector = %Selector
+#@onready var day = %Day
 
 var is_daytime : bool = true
 
@@ -15,7 +14,7 @@ func _ready():
 	%PlayVeryFast.connect("pressed", _on_play_very_fast_pressed)
 	
 	timer.wait_time = TimeManager.seconds_per_hour
-	day.text = "Day: " + str(TimeManager.current_day)
+	#day.text = "Day: " + str(TimeManager.current_day)
 	time.text = "%02dh%02d" % [TimeManager.current_hour, TimeManager.current_minute]
 
 	# Déterminer si c'est le jour ou la nuit au démarrage
@@ -24,6 +23,9 @@ func _ready():
 		#On pourra par la suite ajouter un fond selon le jour ou la nuit
 	else:
 		is_daytime = false
+		
+	update_speed_ui(1)
+
 
 
 func _timer_timeout():
@@ -37,20 +39,18 @@ func _timer_timeout():
 		is_daytime = false
 		
 	time.text = "%02dh%02d" % [TimeManager.current_hour, TimeManager.current_minute]
-	day.text = "Day: " + str(TimeManager.current_day)
+	#day.text = "Day: " + str(TimeManager.current_day)
 
 
 func _on_pause_pressed():
-	selector.size = Vector2(35,35)
-	selector.position = Vector2(-32,47)
+	update_speed_ui(0)
 	$Timer.paused = true
 	GameData.game_paused = true
 	get_tree().paused = true
 
 
 func _on_play_pressed():
-	selector.size = Vector2(35,35)
-	selector.position = Vector2(5,47)
+	update_speed_ui(1)
 	$Timer.paused = false
 	GameData.game_paused = false
 	get_tree().paused = false
@@ -58,8 +58,7 @@ func _on_play_pressed():
 
 
 func _on_play_fast_pressed():
-	selector.size = Vector2(35,35)
-	selector.position = Vector2(40,47)
+	update_speed_ui(2)
 	$Timer.paused = false
 	GameData.game_paused = false
 	get_tree().paused = false
@@ -67,9 +66,26 @@ func _on_play_fast_pressed():
 
 
 func _on_play_very_fast_pressed():
-	selector.size = Vector2(48,35)
-	selector.position = Vector2(76,47)
+	update_speed_ui(3)
 	$Timer.paused = false
 	GameData.game_paused = false
 	get_tree().paused = false
 	timer.wait_time = 1
+
+
+
+
+
+func update_speed_ui(speed: int) -> void:
+	_reset_modulate()
+
+	match speed:
+		0: %Pause.modulate = Color(0.5, 0.5, 0.5, 1) # blanc = actif
+		1: %Play.modulate = Color(0.5, 0.5, 0.5, 1)
+		2: %PlayFast.modulate = Color(0.5, 0.5, 0.5, 1)
+		3: %PlayVeryFast.modulate = Color(0.5, 0.5, 0.5, 1)
+
+func _reset_modulate():
+	var buttons = [%Pause, %Play, %PlayFast, %PlayVeryFast]
+	for b in buttons:
+		b.modulate = Color(1, 1, 1, 1) 

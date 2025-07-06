@@ -1,29 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://1sl61klypsv7"]
+[gd_scene load_steps=5 format=3 uid="uid://1sl61klypsv7"]
 
 [ext_resource type="Script" uid="uid://dnwedli3tgpp6" path="res://Scenes/Divers/TimeManager/time_manager_ui.gd" id="1_gjvf7"]
-[ext_resource type="Texture2D" uid="uid://dmft2mobpy8wt" path="res://Sprites/Interface/clock/pause.png" id="17_8qboa"]
-[ext_resource type="Texture2D" uid="uid://lwpw7n8eqw77" path="res://Sprites/Interface/clock/play.png" id="18_hpjv0"]
-[ext_resource type="Texture2D" uid="uid://iggisvqxqrua" path="res://Sprites/Interface/clock/speedx2.png" id="19_k8mui"]
-[ext_resource type="Texture2D" uid="uid://cpd3ais0m4em6" path="res://Sprites/Interface/clock/speedx3.png" id="20_lotxr"]
+[ext_resource type="Texture2D" uid="uid://b6epcu6ky7ram" path="res://Sprites/Interface/Panel/1x1.png" id="2_a1itc"]
+[ext_resource type="Texture2D" uid="uid://c7rqkxafbpo6l" path="res://Sprites/Interface/Panel/1x1select.png" id="3_61uvj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7agt2"]
-bg_color = Color(0.155, 0.155, 0.155, 0.249)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbei4"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_de4c6"]
+texture = ExtResource("2_a1itc")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
 
 [node name="TimeManagerUI" type="Control"]
 layout_mode = 3
@@ -36,77 +22,121 @@ wait_time = 3.0
 autostart = true
 ignore_time_scale = true
 
-[node name="Panel" type="Panel" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -56.0
-offset_right = 82.0
-offset_bottom = 56.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7agt2")
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -78.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
-offset_right = 164.0
-offset_bottom = 112.0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_styles/panel = SubResource("StyleBoxTexture_de4c6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
-layout_mode = 2
-
-[node name="Time" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Time" type="Label" parent="VBoxContainer/PanelContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "10h20"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Day" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Day 1"
+
+[node name="Pause" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture_normal = ExtResource("2_a1itc")
+texture_pressed = ExtResource("3_61uvj")
+texture_hover = ExtResource("3_61uvj")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "II"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Pause" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Play" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
-texture_normal = ExtResource("17_8qboa")
+texture_normal = ExtResource("2_a1itc")
+texture_pressed = ExtResource("3_61uvj")
+texture_hover = ExtResource("3_61uvj")
+stretch_mode = 0
 
-[node name="Play" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-texture_normal = ExtResource("18_hpjv0")
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "X1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlayFast" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PlayFast" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
-texture_normal = ExtResource("19_k8mui")
+texture_normal = ExtResource("2_a1itc")
+texture_pressed = ExtResource("3_61uvj")
+texture_hover = ExtResource("3_61uvj")
+stretch_mode = 0
 
-[node name="PlayVeryFast" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-texture_normal = ExtResource("20_lotxr")
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PlayFast"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "X2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Selector" type="Panel" parent="."]
+[node name="PlayVeryFast" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
-offset_left = -44.0
-offset_top = 19.0
-offset_right = -9.0
-offset_bottom = 54.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_hbei4")
+texture_normal = ExtResource("2_a1itc")
+texture_pressed = ExtResource("3_61uvj")
+texture_hover = ExtResource("3_61uvj")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PlayVeryFast"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "X3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_timer_timeout"]

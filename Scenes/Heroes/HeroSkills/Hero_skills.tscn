@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b88qh6673e7cq"]
+[gd_scene load_steps=2 format=3 uid="uid://b88qh6673e7cq"]
 
 [ext_resource type="Script" uid="uid://bxt3doq6738gq" path="res://Scenes/Heroes/HeroSkills/hero_skills.gd" id="1_o6fcj"]
-[ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/Button/QuitIcon.png" id="2_b2136"]
 
 [node name="HeroSkills" type="Control"]
 layout_mode = 3
@@ -34,7 +33,6 @@ text = "Competence
 [node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture_normal = ExtResource("2_b2136")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

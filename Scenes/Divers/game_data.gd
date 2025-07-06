@@ -13,6 +13,7 @@ var construction_item : String = ""
 
 var gold : int = 10000
 var reputation : int = 0
+var inventory_size = 25
 
 var research_finished : Array = []
 var inventory : Dictionary = {}

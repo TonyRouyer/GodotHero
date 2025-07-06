@@ -43,12 +43,12 @@ func _ready() -> void:
 	%Train.connect("pressed", _on_train_pressed.bind("train"))
 	%Work.connect("pressed", _on_work_pressed.bind("work"))
 	%Free.connect("pressed", _on_free_pressed.bind("free"))
-	%Copy.connect("pressed", _on_copy_pressed)
-	%Past.connect("pressed", _on_past_pressed)
-	%NightLayout.connect("pressed", _on_night_layout_pressed)
-	%MorningLayout.connect("pressed", _on_morning_layout_pressed)
-	%AfternoonLayout.connect("pressed", _on_afternoon_layout_pressed)
-	%JourneyLayout.connect("pressed", _on_journey_layout_pressed)
+	#%Copy.connect("pressed", _on_copy_pressed)
+	#%Past.connect("pressed", _on_past_pressed)
+	%Night.connect("pressed", _on_night_layout_pressed)
+	%Morning.connect("pressed", _on_morning_layout_pressed)
+	%Day.connect("pressed", _on_afternoon_layout_pressed)
+	%Evening.connect("pressed", _on_journey_layout_pressed)
 	
 	var actual_hour = TimeManager.current_hour
 	hour_tracker.position.y = -46

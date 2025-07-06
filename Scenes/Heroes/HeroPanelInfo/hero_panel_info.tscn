@@ -1,18 +1,104 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci3tq7hejom4l"]
+[gd_scene load_steps=33 format=3 uid="uid://ci3tq7hejom4l"]
 
 [ext_resource type="Script" uid="uid://dmr1y5ih6de55" path="res://Scenes/Heroes/HeroPanelInfo/hero_panel_info.gd" id="1_iwm31"]
-[ext_resource type="PackedScene" uid="uid://d36fl7160ynpf" path="res://Scenes/Heroes/HeroPanelInfo/hero_equipement_ui.tscn" id="3_1pljo"]
-[ext_resource type="PackedScene" uid="uid://cywxfe684f010" path="res://Scenes/Inventory/global_inventory.tscn" id="3_4ybj6"]
-[ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/Button/QuitIcon.png" id="4_1b0xy"]
-[ext_resource type="PackedScene" uid="uid://de4ohkcbh7bq6" path="res://Scenes/Inventory/InventorySlot/slot.tscn" id="4_ww2u5"]
+[ext_resource type="Texture2D" uid="uid://f3wmx3mqbmb" path="res://Sprites/Interface/Book/Spellbook.png" id="2_8o6to"]
+[ext_resource type="Texture2D" uid="uid://jo6flvhnjbub" path="res://Sprites/Interface/Book/Tab01_Left_Normal.png" id="3_iwm31"]
+[ext_resource type="Texture2D" uid="uid://wkg1ntxblbrn" path="res://Sprites/Interface/ProgressBar/Slider02_Box.png" id="4_geu6j"]
+[ext_resource type="Texture2D" uid="uid://b4s6copc24fky" path="res://Sprites/Interface/ProgressBar/Slider02_Bar03.png" id="5_evnl2"]
+[ext_resource type="Texture2D" uid="uid://d3g5u1rsqwm00" path="res://Sprites/Interface/Divider/Divider_01.png" id="6_s4rek"]
+[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/btn_hover_texture.tres" id="7_j6p5i"]
+[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/btn_normal_texture.tres" id="8_688qt"]
+[ext_resource type="PackedScene" uid="uid://6ybkobn7mivj" path="res://Scenes/Inventory/EquipementSlot/equipement_slot.tscn" id="9_tva8k"]
+[ext_resource type="Texture2D" uid="uid://dgwka2nfyplnc" path="res://Sprites/Interface/Item_Slot/Slot_01_Potion.png" id="10_lgibc"]
+[ext_resource type="Texture2D" uid="uid://mu37h5d1diaj" path="res://Sprites/Interface/ProgressBar/Slider02_Button.png" id="10_s4rek"]
+[ext_resource type="Texture2D" uid="uid://b8klcqvx0c1qf" path="res://Sprites/Interface/ProgressBar/Slider03_Box.png" id="11_j6p5i"]
+[ext_resource type="Texture2D" uid="uid://csuxwpg7vhjn4" path="res://Sprites/Interface/Item_Slot/Slot_01_Headgear.png" id="11_xarsa"]
+[ext_resource type="Texture2D" uid="uid://blkdstp6iowyv" path="res://Sprites/Interface/Item_Slot/Slot_01_Ring.png" id="12_jjw26"]
+[ext_resource type="Texture2D" uid="uid://bsmrxdjlphbq" path="res://Sprites/Interface/Item_Slot/Slot_01_Weapon.png" id="13_jmn5j"]
+[ext_resource type="Texture2D" uid="uid://o4n66fb284ja" path="res://Sprites/Interface/Item_Slot/Slot_01_Armor.png" id="14_xv6jv"]
+[ext_resource type="Texture2D" uid="uid://cpseuuc5cib0c" path="res://Sprites/Interface/Item_Slot/Slot_01_Footwear.png" id="15_f27bj"]
+[ext_resource type="Texture2D" uid="uid://ce7fdd743kmhs" path="res://Sprites/Interface/Item_Slot/Slot_01_Empty.png" id="16_stdlk"]
+[ext_resource type="Texture2D" uid="uid://cbuip560ujfr1" path="res://Sprites/Interface/Panel/BGbox_04B.png" id="17_geu6j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jk40m"]
+texture = ExtResource("2_8o6to")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ufpxp"]
+content_margin_left = 25.0
+content_margin_right = 25.0
+texture = ExtResource("3_iwm31")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 9.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hql4n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jhpp8"]
+texture = ExtResource("4_geu6j")
+texture_margin_left = 3.0
+texture_margin_top = 7.0
+texture_margin_right = 3.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yoq3p"]
+texture = ExtResource("5_evnl2")
+texture_margin_left = 5.0
+texture_margin_top = 7.0
+texture_margin_right = 5.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_okm6c"]
+texture = ExtResource("6_s4rek")
+texture_margin_left = 7.0
+texture_margin_top = 8.0
+texture_margin_right = 7.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2dodm"]
+texture = ExtResource("4_geu6j")
+texture_margin_left = 3.0
+texture_margin_top = 7.0
+texture_margin_right = 3.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ct4xd"]
+texture = ExtResource("5_evnl2")
+texture_margin_left = 5.0
+texture_margin_top = 7.0
+texture_margin_right = 5.0
+texture_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_688qt"]
+texture = ExtResource("5_evnl2")
+texture_margin_left = 5.0
+texture_margin_top = 8.0
+texture_margin_right = 5.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4rek"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j6p5i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xarsa"]
+texture = ExtResource("11_j6p5i")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jjw26"]
+texture = ExtResource("5_evnl2")
+texture_margin_left = 5.0
+texture_margin_top = 7.0
+texture_margin_right = 5.0
+texture_margin_bottom = 8.0
 
 [node name="HeroPanelInfo" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -21,59 +107,128 @@ script = ExtResource("1_iwm31")
 [node name="StatsWindow" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -647.5
+offset_top = -405.0
+offset_right = 647.5
+offset_bottom = 405.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jk40m")
 
-[node name="HeroDetailContainer" type="HBoxContainer" parent="StatsWindow"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/HeroDetailContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 90
 
-[node name="Header" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_stretch_ratio = 0.1
-
-[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Header"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="HeroInfoTitle" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Header/MarginContainer"]
-layout_mode = 2
-text = "Heros Info"
-
-[node name="CloseButton" type="TextureButton" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Header"]
+[node name="CloseButton" type="TextureButton" parent="StatsWindow/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-texture_normal = ExtResource("4_1b0xy")
+size_flags_horizontal = 8
+texture_normal = ExtResource("17_geu6j")
 stretch_mode = 0
 
-[node name="Content" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.8
+[node name="Label" type="Label" parent="StatsWindow/VBoxContainer/MarginContainer/CloseButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -17.0
+offset_right = 20.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TabContainer" type="TabContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content"]
-custom_minimum_size = Vector2(450, 400)
+[node name="HeroDetailContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LeftPage" type="MarginContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 55
+theme_override_constants/margin_bottom = 170
 
-[node name="Resume" type="TabBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TabButton" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="InfoBtn" type="Button" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/TabButton"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_ufpxp")
+text = "Info"
+
+[node name="StatsBtn" type="Button" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/TabButton"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_ufpxp")
+text = "Stats
+"
+
+[node name="Moral Btn" type="Button" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/TabButton"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_ufpxp")
+text = "Moral"
+
+[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 0
+
+[node name="TabStack" type="TabContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(450, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hql4n")
+current_tab = 2
+tabs_visible = false
+
+[node name="Resume" type="TabBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume"]
+[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,26 +240,25 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_constants/separation = 13
 
-[node name="HBoxContainer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="NameContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Nom" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Nom" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/NameContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 mouse_filter = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "Nom"
 
-[node name="NameInput" type="LineEdit" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="NameInput" type="LineEdit" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/NameContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -113,112 +267,248 @@ size_flags_stretch_ratio = 3.0
 text = "Conan"
 max_length = 15
 
-[node name="Level" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Classe" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "class
+"
+
+[node name="Level" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "level"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HpContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Classe" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-text = "classe"
-
-[node name="Race" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "race"
-
-[node name="Hp" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-max_value = 10.0
-step = 1.0
-value = 5.0
-
-[node name="Moral" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-max_value = 10.0
-step = 1.0
-value = 5.0
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HungerLabel" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="Hp_label" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/HpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-text = "Hunger: "
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Hp : "
 
-[node name="Hunger" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+[node name="Hp" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/HpContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxTexture_jhpp8")
+theme_override_styles/fill = SubResource("StyleBoxTexture_yoq3p")
 step = 1.0
-value = 100.0
+value = 75.0
+show_percentage = false
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="MoralContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="EnergyLabel" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="Moral_label" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/MoralContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Moral :"
+
+[node name="Moral" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/MoralContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxTexture_jhpp8")
+theme_override_styles/fill = SubResource("StyleBoxTexture_yoq3p")
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="HSeparator" type="HSeparator" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxTexture_okm6c")
+
+[node name="EnergyContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EnergyLabel" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/EnergyContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Energy :"
 
-[node name="Energy" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+[node name="Energy" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/EnergyContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxTexture_2dodm")
+theme_override_styles/fill = SubResource("StyleBoxTexture_ct4xd")
 step = 1.0
 value = 100.0
+show_percentage = false
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HungerContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ToiletLabel" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="HungerLabel" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/HungerContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Hunger: "
+
+[node name="Hunger" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/HungerContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxTexture_2dodm")
+theme_override_styles/fill = SubResource("StyleBoxTexture_ct4xd")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="ToiletContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ToiletLabel" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/ToiletContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Toilet :"
 
-[node name="Toilet" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer5"]
+[node name="Toilet" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/ToiletContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxTexture_2dodm")
+theme_override_styles/fill = SubResource("StyleBoxTexture_ct4xd")
 step = 1.0
 value = 100.0
+show_percentage = false
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HygieneContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HygieneLabel" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer6"]
+[node name="HygieneLabel" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/HygieneContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Hygiene :"
 
-[node name="Hygiene" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer6"]
+[node name="Hygiene" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/HygieneContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxTexture_2dodm")
+theme_override_styles/fill = SubResource("StyleBoxTexture_ct4xd")
 step = 1.0
 value = 100.0
+show_percentage = false
 
-[node name="BaseStats" type="TabBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer"]
+[node name="Divertisemen tContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DivertisementLabel" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/Divertisemen tContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Divertisement :"
+
+[node name="Divertisement" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/Divertisemen tContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxTexture_2dodm")
+theme_override_styles/fill = SubResource("StyleBoxTexture_ct4xd")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Footer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.1
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="CenterViewButton" type="Button" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/MarginContainer/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = ExtResource("7_j6p5i")
+theme_override_styles/pressed = ExtResource("7_j6p5i")
+theme_override_styles/normal = ExtResource("8_688qt")
+text = "Voir"
+
+[node name="CompetenceButton" type="Button" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/MarginContainer/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = ExtResource("7_j6p5i")
+theme_override_styles/pressed = ExtResource("7_j6p5i")
+theme_override_styles/normal = ExtResource("8_688qt")
+text = "Competence"
+
+[node name="PlanningButton" type="Button" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/MarginContainer/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = ExtResource("7_j6p5i")
+theme_override_styles/pressed = ExtResource("7_j6p5i")
+theme_override_styles/normal = ExtResource("8_688qt")
+text = "Planning"
+
+[node name="BaseStats" type="TabBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats"]
+[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -226,111 +516,124 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="HBoxContainer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Stats"
-
-[node name="Label2" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Priority"
-
-[node name="StrengthContainer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="Strength" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer/StrengthContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "strength : 10"
-
-[node name="HSlider" type="HSlider" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer/StrengthContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="DefenseContainer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="Defense" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer/DefenseContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Defense : 10"
-
-[node name="HSlider" type="HSlider" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer/DefenseContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="AgilityContainer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="Agility" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer/AgilityContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "agility : 10"
-
-[node name="HSlider" type="HSlider" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer/AgilityContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ManaContainer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="Mana" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer/ManaContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "mana : 10"
-
-[node name="HSlider" type="HSlider" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer/ManaContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Luck" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/BaseStats/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "luck : 10"
-
-[node name="Job" type="TabBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="OptionButton" type="OptionButton" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Combat"
+
+[node name="StrengthContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Strength" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer/StrengthContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Strength : 10"
+
+[node name="HSlider" type="HSlider" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer/StrengthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/grabber = ExtResource("10_s4rek")
+theme_override_styles/slider = SubResource("StyleBoxTexture_688qt")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_s4rek")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_j6p5i")
+
+[node name="DefenseContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Defense" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer/DefenseContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Defense : 10"
+
+[node name="HSlider" type="HSlider" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer/DefenseContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/grabber = ExtResource("10_s4rek")
+theme_override_styles/slider = SubResource("StyleBoxTexture_688qt")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_s4rek")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_j6p5i")
+
+[node name="AgilityContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Agility" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer/AgilityContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "agility : 10"
+
+[node name="HSlider" type="HSlider" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer/AgilityContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/grabber = ExtResource("10_s4rek")
+theme_override_styles/slider = SubResource("StyleBoxTexture_688qt")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_s4rek")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_j6p5i")
+
+[node name="ManaContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Mana" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer/ManaContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "mana : 10"
+
+[node name="HSlider" type="HSlider" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer/ManaContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/grabber = ExtResource("10_s4rek")
+theme_override_styles/slider = SubResource("StyleBoxTexture_688qt")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_s4rek")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_j6p5i")
+
+[node name="Luck" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "luck : 10"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Work"
+
+[node name="OptionButton" type="OptionButton" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2"]
 layout_mode = 2
 selected = 0
 item_count = 6
@@ -347,91 +650,111 @@ popup/item_4/id = 4
 popup/item_5/text = "Cuisinier"
 popup/item_5/id = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer"]
+[node name="SocialContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-text = "Social : 0"
-
-[node name="SocialProgress" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
+[node name="Social" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/SocialContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-step = 0.1
-value = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Social : 10"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-text = "Manual work : 0"
-
-[node name="ManualWorkProgress" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/HBoxContainer2"]
-unique_name_in_owner = true
+[node name="ProgressBar" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/SocialContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 3
-step = 0.1
-value = 50.0
+theme_override_styles/background = SubResource("StyleBoxTexture_xarsa")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jjw26")
+value = 75.0
+show_percentage = false
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer"]
+[node name="ManualWorkContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-text = "Magic work : 0"
-
-[node name="MagicWorkProgress" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/HBoxContainer3"]
-unique_name_in_owner = true
+[node name="ManualWork" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/ManualWorkContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-step = 0.1
-value = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Manual work : 10"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-text = "Cook  : 0"
-
-[node name="CookProgress" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/HBoxContainer4"]
-unique_name_in_owner = true
+[node name="ProgressBar" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/ManualWorkContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 3
-step = 0.1
-value = 50.0
+theme_override_styles/background = SubResource("StyleBoxTexture_xarsa")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jjw26")
+value = 75.0
+show_percentage = false
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer"]
+[node name="MagicWorkContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/HBoxContainer5"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-text = "Research : 0"
-
-[node name="ResearchProgress" type="ProgressBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/HBoxContainer5"]
-unique_name_in_owner = true
+[node name="MagicWork" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/MagicWorkContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-step = 0.1
-value = 50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Magic work : 10"
 
-[node name="Moral" type="TabBar" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/MagicWorkContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-metadata/_tab_index = 3
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxTexture_xarsa")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jjw26")
+value = 75.0
+show_percentage = false
 
-[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral"]
+[node name="CookingContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="MagicWork" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/CookingContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Cooking : 10"
+
+[node name="ProgressBar" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/CookingContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxTexture_xarsa")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jjw26")
+value = 75.0
+show_percentage = false
+
+[node name="ResearchContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="MagicWork" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/ResearchContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Research : 10"
+
+[node name="ProgressBar" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/ResearchContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxTexture_xarsa")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jjw26")
+value = 75.0
+show_percentage = false
+
+[node name="Moral" type="TabBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -439,220 +762,255 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer"]
+[node name="SocialContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Social" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/SocialContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "Moral"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="ProgressBar" type="ProgressBar" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/SocialContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Positif"
+theme_override_styles/background = SubResource("StyleBoxTexture_xarsa")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jjw26")
+value = 75.0
+show_percentage = false
 
-[node name="Label2" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Negatif"
+theme_override_constants/separation = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Positif test  : +10"
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Positif test  : +10"
+horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Positif test  : +10 (48h)"
+horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Positif test  : +10"
+horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Negative test  : -5 (3h)"
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label2" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Negative test  : -5"
+horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label3" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Negative test  : -5"
+horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label4" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Negative test  : -5"
+horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label5" type="Label" parent="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Moral/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 text = "Negative test  : -5"
+horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content"]
+[node name="RightPage" type="MarginContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 143
+theme_override_constants/margin_bottom = 170
 
-[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="HeroEquipementUi" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer" instance=ExtResource("3_1pljo")]
-custom_minimum_size = Vector2(212, 184)
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="InvContainer" type="GridContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="Equip_slot_container" type="CenterContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-columns = 3
 
-[node name="Slot0" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+[node name="VBoxContainer" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TopLine" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/TopLine"]
 layout_mode = 2
 
-[node name="Slot1" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+[node name="EquipementSlot0" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/TopLine/CenterContainer" instance=ExtResource("9_tva8k")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("10_lgibc")
+slot_type = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/TopLine"]
 layout_mode = 2
 
-[node name="Slot2" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
+[node name="EquipementSlot1" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/TopLine/CenterContainer2" instance=ExtResource("9_tva8k")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("10_lgibc")
+slot_type = 1
+
+[node name="MidLine" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftSlot" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/MidLine"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="EquipementSlot5" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/MidLine/LeftSlot" instance=ExtResource("9_tva8k")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("12_jjw26")
+slot_type = 3
+
+[node name="EquipementSlot6" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/MidLine/LeftSlot" instance=ExtResource("9_tva8k")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("12_jjw26")
+slot_type = 3
+
+[node name="EquipementSlot7" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/MidLine/LeftSlot" instance=ExtResource("9_tva8k")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("13_jmn5j")
+slot_type = 2
+
+[node name="HeroTexture" type="PanelContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/MidLine"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("8_688qt")
+
+[node name="RightSlot" type="VBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/MidLine"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="EquipementSlot2" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/MidLine/RightSlot" instance=ExtResource("9_tva8k")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_xarsa")
+slot_type = 4
+
+[node name="EquipementSlot3" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/MidLine/RightSlot" instance=ExtResource("9_tva8k")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("14_xv6jv")
+slot_type = 5
+
+[node name="EquipementSlot4" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/MidLine/RightSlot" instance=ExtResource("9_tva8k")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("15_f27bj")
+slot_type = 6
+
+[node name="DownLine" type="HBoxContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SkillSlot1" type="TextureRect" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/DownLine"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("16_stdlk")
+
+[node name="SkillSlot2" type="TextureRect" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/DownLine"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("16_stdlk")
+
+[node name="SkillSlot3" type="TextureRect" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/DownLine"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("16_stdlk")
+
+[node name="SkillSlot4" type="TextureRect" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/Equip_slot_container/VBoxContainer/DownLine"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("16_stdlk")
+
+[node name="OptionButton" type="OptionButton" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 0
+item_count = 3
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Equipement"
+popup/item_1/id = 1
+popup/item_2/text = "Consumable"
+popup/item_2/id = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 
-[node name="Slot3" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot4" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot5" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot6" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot7" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot8" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot9" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot10" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot11" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot12" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot13" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot14" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot15" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot16" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot17" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot18" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot19" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot20" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot21" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot22" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot23" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Slot24" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/ScrollContainer/InvContainer" instance=ExtResource("4_ww2u5")]
-layout_mode = 2
-
-[node name="Footer" type="HBoxContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-alignment = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Footer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="CenterViewButton" type="Button" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Footer/MarginContainer"]
+[node name="InvContainer" type="GridContainer" parent="StatsWindow/VBoxContainer/HeroDetailContainer/RightPage/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Voir"
+columns = 6
 
-[node name="MarginContainer2" type="MarginContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Footer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="CompetenceButton" type="Button" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Footer/MarginContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Competence"
-
-[node name="MarginContainer3" type="MarginContainer" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Footer"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="PlanningButton" type="Button" parent="StatsWindow/HeroDetailContainer/VBoxContainer/Footer/MarginContainer3"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Planning"
-
-[node name="GlobalInventory" parent="StatsWindow/HeroDetailContainer" instance=ExtResource("3_4ybj6")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-
-[connection signal="gui_input" from="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Nom" to="." method="_on_name_label_gui_input"]
-[connection signal="text_submitted" from="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Resume/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NameInput" to="." method="_on_name_input_text_submitted"]
-[connection signal="item_selected" from="StatsWindow/HeroDetailContainer/VBoxContainer/Content/TabContainer/Job/MarginContainer/VBoxContainer/OptionButton" to="." method="_on_metier_selected"]
+[connection signal="gui_input" from="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/NameContainer/Nom" to="." method="_on_name_label_gui_input"]
+[connection signal="text_submitted" from="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/Resume/MarginContainer/VBoxContainer/NameContainer/NameInput" to="." method="_on_name_input_text_submitted"]
+[connection signal="item_selected" from="StatsWindow/VBoxContainer/HeroDetailContainer/LeftPage/HBoxContainer/MarginContainer/TabStack/BaseStats/MarginContainer/VBoxContainer2/VBoxContainer2/OptionButton" to="." method="_on_metier_selected"]

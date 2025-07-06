@@ -14,7 +14,9 @@ enum Type{
 
 @export var slot_type:Type = Type.DEFAULT
 @onready var icon : Sprite2D = $Icon
-@onready var root_hero_node : Node2D = get_node("../../../../../../../../../../../HeroInventorySystem")
+
+var hero_inventory_node : Node2D
+
 
 
 #setup the slot data
@@ -30,7 +32,7 @@ func set_slot(data:Dictionary) -> void:
 
 #begin of a drag from this slot generate data needed
 func _get_drag_data(_at_position: Vector2) -> Variant:
-	if root_hero_node.equipment[name].is_empty():
+	if hero_inventory_node.equipment[name].is_empty():
 		return
 	var prev = Control.new()
 	var picon = Sprite2D.new()
@@ -41,7 +43,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	prev.add_child(picon)
 	set_drag_preview(prev)
 	modulate = Color(1,1,1,0.5)
-	var data = root_hero_node.equipment[name].duplicate()
+	var data = hero_inventory_node.equipment[name].duplicate()
 	data.from_slot = name
 	data.dragged = self
 	return data
@@ -58,9 +60,9 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 #drop the data on this slot
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if slot_type != data.dragged.slot_type: #depuis l'inventaire
-		root_hero_node.equip_item(data.from_slot,name,data) 
+		hero_inventory_node.equip_item(data.from_slot,name,data) 
 	else: #depuis l'equipement
-		root_hero_node.equip_item(data.from_slot,name,data, false)
+		hero_inventory_node.equip_item(data.from_slot,name,data, false)
 
 
 #end of a drag
@@ -71,13 +73,13 @@ func _notification(what: int) -> void:
 
  #Handle double click to equip item
 func _gui_input(event: InputEvent) -> void:
-	var equipedContent = root_hero_node.equipment[name]
+	var equipedContent = hero_inventory_node.equipment[name]
 	if event is InputEventMouseButton and event.double_click and not equipedContent.is_empty():
 		desequip_item_double_click()
 
 
 func desequip_item_double_click() -> void:
-	var item = root_hero_node.equipment[name]
+	var item = hero_inventory_node.equipment[name]
 	var select_hero = GameData.get_active_hero()
 
 	if select_hero != null:

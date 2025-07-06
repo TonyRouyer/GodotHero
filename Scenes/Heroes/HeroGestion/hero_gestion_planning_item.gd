@@ -7,7 +7,7 @@ var hero: Hero
 
 func _ready() -> void:
 	%Nom.text = hero.name
-	var planning = hero.get_node("CanvasLayer/HeroPlanning").planning
+	var planning = hero.hero_planning.planning
 	
 	for item in timeblock.get_children():
 		var new_type = planning[item.hour]
@@ -31,7 +31,7 @@ func _on_activity_selected(instance : Object) -> void:
 
 #Met a jours chaque slot de la variable planning
 func update_activity_list() -> void:
-	var hero_planning_node = hero.get_node("CanvasLayer/HeroPlanning")
+	var hero_planning_node = hero.hero_planning
 
 	for activity in timeblock.get_children():
 		hero_planning_node.planning[activity.hour] = activity.type

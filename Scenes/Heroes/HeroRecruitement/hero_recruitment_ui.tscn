@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfxhmp8vcao0l"]
+[gd_scene load_steps=4 format=3 uid="uid://bfxhmp8vcao0l"]
 
 [ext_resource type="Script" uid="uid://ye1sn17gu7m0" path="res://Scenes/Heroes/HeroRecruitement/hero_recruitement_ui.gd" id="1_ruqq7"]
-[ext_resource type="Texture2D" uid="uid://16mm3kgeaxwa" path="res://Sprites/Interface/Button/QuitIcon.png" id="2_df04y"]
+[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/btn_normal_texture.tres" id="2_ovq1j"]
+[ext_resource type="Texture2D" uid="uid://cbuip560ujfr1" path="res://Sprites/Interface/Panel/BGbox_04B.png" id="3_3ty33"]
 
 [node name="HeroRecruitmentUI" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ script = ExtResource("1_ruqq7")
 layout_mode = 0
 offset_right = 581.0
 offset_bottom = 334.0
+theme_override_styles/panel = ExtResource("2_ovq1j")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -37,14 +39,33 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Refresh"
 
-[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="CloseButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("3_3ty33")
+stretch_mode = 0
 
-[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer/CloseButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -17.0
+offset_right = 20.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
@@ -125,19 +146,6 @@ text = "ez"
 [node name="RecruteBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero3"]
 layout_mode = 2
 text = "rectuer"
-
-[node name="btnClose" type="TextureButton" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-offset_left = 556.0
-offset_top = -9.0
-offset_right = 586.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("2_df04y")
-stretch_mode = 0
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero1/RecruteBtn" to="." method="_on_recrute_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Hero2/RecruteBtn" to="." method="_on_recrute_btn_pressed" binds= [1]]

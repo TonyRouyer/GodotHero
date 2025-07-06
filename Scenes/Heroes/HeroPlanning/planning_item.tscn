@@ -1,16 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4y7rhnq13x54"]
+[gd_scene load_steps=3 format=3 uid="uid://b4y7rhnq13x54"]
 
 [ext_resource type="Script" uid="uid://dqbii58jbgkka" path="res://Scenes/Heroes/HeroPlanning/planning_item.gd" id="1_8ql0y"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eucap"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="PlanningItem" type="Control"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
 mouse_filter = 1
 script = ExtResource("1_8ql0y")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 17.0
+offset_bottom = 17.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eucap")
+
 [node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 0
 mouse_filter = 1
 color = Color(0.364706, 0.94902, 0.364706, 1)

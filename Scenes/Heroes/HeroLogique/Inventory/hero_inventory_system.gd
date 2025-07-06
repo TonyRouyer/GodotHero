@@ -1,17 +1,14 @@
 extends Node2D
 
-@onready var equipement_container : Control = $"../CanvasLayer/HeroPanelInfo/StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/HeroEquipementUi"
-@onready var global_inventory_node : Control = $"../CanvasLayer/HeroPanelInfo/StatsWindow/HeroDetailContainer/GlobalInventory"
-@onready var hero = get_parent()
-var equipment : Dictionary = {}
+@onready var hero: Hero = get_parent()
+@onready var global_inventory_node : Control = get_tree().get_root().get_node("Main/UICanvasLayer/Menu/GlobalInventory")
 
-func _ready() -> void:
-	for i in range(equipement_container.get_node("HeroEquipementUi").get_children().size()):
-		equipment["EquipementSlot" + str(i)] = {}
+var slots: Array = []
+var equipment : Dictionary = {}
 
 
 func load_equipment() -> void:
-	for child in equipement_container.get_children():
+	for child in slots:
 		var data = equipment[child.name]
 		child.set_slot(data)
 
@@ -64,6 +61,14 @@ func equip_item(from_slot : String, equip_slot : String, item : Dictionary, from
 			
 	load_equipment()
 	global_inventory_node.load_inventory()
+	update_hero_inventory()
+	
+	
+func update_hero_inventory() -> void:
+	var inv_container = hero.hero_panel_info.inv_container
+	for child in inv_container.get_children():
+		var data = GameData.inventory[child.name]
+		child.set_slot(data)
 
 
 # Remove item from equipment slot and put it in inventory
@@ -87,21 +92,38 @@ func unequip_item(from_slot : String, equip_slot : String, item : Dictionary):
 				
 	load_equipment()
 	global_inventory_node.load_inventory()
-
+	update_hero_inventory()
 
 # Find the first empty slot of the given type
 func find_first_empty_slot(item_type : int):
-	#Trouve le 1er slot vide du meme type
-	for slot in equipment.keys():
-		var data = equipment[slot]
-		var node = equipement_container.get_node(slot)
-		if data.is_empty() and  node.slot_type == item_type:
-			return slot
+	#Trouve le 1er slot vide du meme type	
+	for slot in slots:
+		var data = slot.get_node("Icon")
+				
+		if data.texture == null and  slot.slot_type == item_type:
+			return slot.name
+			
 			
 	#retourne le 1er slot du type demander / sinon nul
-	for slot in equipment.keys():
-		var node = equipement_container.get_node(slot)
-		if node.slot_type == item_type:
-			return slot
+	for slot in slots:
+		if slot.slot_type == item_type:
+			return slot.name
 	
 	return null
+
+
+#Cree les slots de l'inventaire
+func create_inventory_slots(inv_container: GridContainer, nb_slots : int) -> void:
+	# Check if slots are already created
+	if  inv_container.get_child_count() > 0:
+		return
+	
+	for i in range(nb_slots):
+		const slot_instance = preload("res://Scenes/Inventory/InventorySlot/slot.tscn")
+		var slot = slot_instance.instantiate()
+		slot.name = "Slot" + str(i)
+		slot.custom_minimum_size = Vector2(64, 64)
+		slot.global_inventory = global_inventory_node
+		inv_container.add_child(slot)
+		if not GameData.inventory.has("Slot" + str(i)):
+			GameData.inventory["Slot" + str(i)] = {}

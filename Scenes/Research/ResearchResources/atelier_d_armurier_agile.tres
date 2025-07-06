@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ResearchData" load_steps=4 format=3 uid="uid://bxbw3arx82ywq"]
 
-[ext_resource type="Texture2D" uid="uid://bmcl1jxrb62uk" path="res://Sprites/Interface/research icon/recherche_de_forge.png" id="1_458i0"]
+[ext_resource type="Texture2D" uid="uid://cuj0hy14q3jvj" path="res://Sprites/Interface/research icon/atelier_armurier_agile.png" id="1_ykorc"]
 [ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Research/research_data.gd" id="2_mcsee"]
 [ext_resource type="Resource" uid="uid://cq1wggrsobv5m" path="res://Scenes/Research/ResearchResources/entrainement_martial.tres" id="3_3ygkq"]
 
@@ -11,7 +11,7 @@ serialised_name = "atelier_d_armurier_agile"
 research_description = "Permet la création d'armures légères,cuir/tissus (rang C max et amélioration)"
 research_level = 4
 research_column = 1.0
-research_icon = ExtResource("1_458i0")
+research_icon = ExtResource("1_ykorc")
 research_prerequsites = Array[ExtResource("2_mcsee")]([ExtResource("3_3ygkq")])
 research_cost = 400
 research_duration = 240

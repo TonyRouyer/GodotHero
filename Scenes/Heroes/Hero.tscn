@@ -44,6 +44,8 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 visible = false
 z_index = -1
+size_flags_horizontal = 2
+size_flags_vertical = 6
 
 [node name="HeroPlanning" parent="CanvasLayer" instance=ExtResource("7_5o1xf")]
 unique_name_in_owner = true

@@ -42,24 +42,39 @@ class_name Hero
 @export var skin: String
 @export var job : int = 0 # 0.aucun / 1.Acceuil / 2.Artisant / 3.Mage / 4.Chercheur / 5.Cuisinier
 
-
-
 # Références aux nœuds
 @onready var animatedSprite : AnimationPlayer = $AnimatedSprite2D/AnimationPlayer
+@onready var hero_routine = %HeroRoutine
+@onready var hero_inventory_system = %HeroInventorySystem
+@onready var pathfinding : Node2D = %HeroPathfinding
+@onready var hero_needs = %HeroNeeds
+
 @onready var hero_panel_info : Control = %HeroPanelInfo
 @onready var hero_planning : Control = %HeroPlanning
 @onready var hero_skills : Control = %HeroSkills
-@onready var pathfinding : Node2D = %HeroPathfinding
-@onready var mouse_in : bool = false
+
+var mouse_in : bool = false
 
 
 func _ready() -> void:
 	# Si il y une animation de hero, lance l'animation
 	if skin != "":
 		animatedSprite.play("idle_down")
+	
+	#Connextion des button
 	hero_planning.connect("close_planning", _on_close_planning_pressed)
 	hero_skills.connect("close_skills", _on_close_skills_pressed)
+	
+	#Init variable heriInventorySystem
+	hero_inventory_system.slots = hero_panel_info.equip_slots
+	hero_inventory_system.create_inventory_slots(hero_panel_info.inv_container, GameData.inventory_size)
+	for i in hero_panel_info.equip_slots:
+		hero_inventory_system.equipment[str(i.name)] = {}
 
+
+	#Init variable HeroPanelInfo
+	for slot in hero_panel_info.equip_slots:
+		slot.hero_inventory_node = hero_inventory_system
 
 func _input(event : InputEvent) -> void:
 	if mouse_in and event.is_action_pressed("click_cancel"):

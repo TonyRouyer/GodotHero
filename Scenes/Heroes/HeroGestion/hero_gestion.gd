@@ -11,8 +11,8 @@ var selected_type: String = ""
 
 func _ready() -> void:
 	add_to_group("UI")
-	
-	%TabContainer.connect("tab_clicked", _on_tab_container_tab_clicked)
+#	
+	#%TabContainer.connect("tab_clicked", _on_tab_container_tab_clicked)
 	
 	%Sleep.connect("pressed", _on_sleep_pressed.bind("sleep"))
 	%Train.connect("pressed", _on_train_pressed.bind("train"))
@@ -83,15 +83,15 @@ func fire_hero(selected_hero : Hero) -> void:
  
 
 
-func _on_tab_container_tab_clicked(tab):
-	match tab:
-		0:
-			panel_container.size.x = 560
-		1:
-			panel_container.size.x = 1030
-			
-
-	panel_container.position.x = (panel_container.get_parent().size.x / 2 - panel_container.size.x / 2)
+#func _on_tab_container_tab_clicked(tab):
+	#match tab:
+		#0:
+			#panel_container.size.x = 560
+		#1:
+			#panel_container.size.x = 1030
+			#
+#
+	#panel_container.position.x = (panel_container.get_parent().size.x / 2 - panel_container.size.x / 2)
 
 
 func _on_sleep_pressed(activity: String):

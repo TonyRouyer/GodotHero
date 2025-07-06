@@ -2,12 +2,13 @@ extends Control
 
 signal construct_signal
 
-@onready var global_panel : PanelContainer= %GlobalPanel
 @onready var foundation_container : GridContainer = %Foundations
 @onready var door_container : GridContainer= %Doors
 @onready var floors_container : GridContainer = %Floors
 @onready var objects_container: GridContainer = %Objects
 @onready var actions_container : HBoxContainer = %Actions
+@onready var right_panel : VBoxContainer = %RightPanel
+@onready var global_panel : PanelContainer = %GlobalPanel
 
 
 const WALL_LIST = preload("res://Ressources/tile_positions.gd").WALLS
@@ -114,31 +115,31 @@ func _ready() -> void:
 
 func _on_foundation_pressed() -> void:
 	hide_all_panels()
-	%GlobalPanel.show()
+	right_panel.show()
 	%Foundations.show()
 
 
 func _on_door_pressed() -> void:
 	hide_all_panels()
-	%GlobalPanel.show()
+	right_panel.show()
 	%Doors.show()
 
 
 func _on_floor_pressed() -> void:
 	hide_all_panels()
-	%GlobalPanel.show()
+	right_panel.show()
 	%Floors.show()
 
 
 func _on_object_pressed() -> void:
 	hide_all_panels()
-	%GlobalPanel.show()
+	right_panel.show()
 	%Objects.show()
 
 
 func _on_action_pressed() -> void:
 	hide_all_panels()
-	%GlobalPanel.show()
+	right_panel.show()
 	%Actions.show()
 
 
@@ -170,9 +171,9 @@ func _on_destroy_object_pressed() -> void:
 
 
 func hide_all_panels() -> void:
-	for panel in %GlobalPanel.get_children():
+	for panel in global_panel.get_children():
 		panel.hide()
-	%GlobalPanel.hide()
+	right_panel.hide()
 
 func _on_construction_btn_pressed() -> void:
 	if !self.visible:

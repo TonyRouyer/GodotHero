@@ -1,6 +1,8 @@
 class_name InventorySlot
 extends TextureRect
 
+signal slot_click(item_data)
+
 enum Type{
 	DEFAULT,
 	USABLE,
@@ -15,7 +17,8 @@ enum Type{
 @export var slot_type : Type = Type.DEFAULT
 @onready var icon : Sprite2D = $Icon
 @onready var quantity : Label = $Quantity
-@onready var global_inventory : Control = get_node("../../..")
+
+var global_inventory : Control
 
 
 #setup the slot data
@@ -73,6 +76,7 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if data.dragged.slot_type == 0: 
 		#si drop dans l'inventaire
 		global_inventory.move_item(data,to_node) 
+		update_hero_inventory_slot()
 	else: 
 		#si drop dans un slot equipement
 		var hero_node = GameData.get_active_hero().get_node("HeroInventorySystem")
@@ -89,6 +93,10 @@ func _notification(what: int) -> void:
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.double_click  and not GameData.inventory[name].is_empty():
 		equip_item_double_click()
+		
+	if event is InputEventMouseButton and event.pressed  and not GameData.inventory[name].is_empty():
+		emit_signal("slot_click", GameData.inventory[name])
+	
 
 
 func equip_item_double_click() -> void:
@@ -101,3 +109,11 @@ func equip_item_double_click() -> void:
 		var equip_slot = hero_node.find_first_empty_slot(item_type)
 		if equip_slot:
 			hero_node.equip_item(name, equip_slot, item, true)
+
+func update_hero_inventory_slot() -> void:
+	var select_hero = GameData.get_active_hero()
+	if select_hero != null:
+		var hero_node = select_hero.get_node("HeroInventorySystem")
+		hero_node.update_hero_inventory()
+
+	

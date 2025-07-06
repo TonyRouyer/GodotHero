@@ -2,9 +2,16 @@ extends Control
 
 
 @onready var hero : Hero = $"../.."
-@onready var global_inventory : Control = %GlobalInventory
 @onready var nameLabel : Label = %Nom
 @onready var nameInput : LineEdit = %NameInput
+@onready var inv_container = %InvContainer
+@onready var right_page = %RightPage
+
+@onready var hero_texture =  %HeroTexture
+@onready var global_inventory : Control
+
+@onready var tab_stack = %TabStack
+@onready var tab_buttons = %TabButton.get_children()
 
 var strength_priority : float = 0
 var defense_priority : float = 0
@@ -17,16 +24,40 @@ var magic_work_skill_progress: float = 0
 var cook_skill_progress: float = 0
 var research_skill_progress: float = 0
 
+var equip_slots: Array = []
 
 
 func _ready() -> void:
 	add_to_group("UI")
 	
+	global_inventory = get_tree().get_root().get_node("Main/UICanvasLayer/Menu/GlobalInventory")
+	for node in inv_container.get_children():
+		node.global_inventory = global_inventory
+
+	equip_slots = get_all_equipement_slots(%Equip_slot_container)
+
+
+	#Connexion Button
 	%CenterViewButton .connect("pressed", _on_center_view_button_pressed)
 	%CompetenceButton.connect("pressed", _on_competence_button_pressed)
 	%PlanningButton.connect("pressed", _on_planning_button_pressed)
-	
 	%CloseButton.connect("pressed", _on_close_button_pressed)
+	for i in tab_buttons.size():
+		tab_buttons[i].connect("pressed", _on_tab_pressed.bind(i))
+	
+	_on_tab_pressed(0) # Affiche le premier onglet
+	
+
+
+
+func get_hero_texture():
+	return hero_texture
+
+func _on_tab_pressed(index):
+	print(index)
+	tab_stack.current_tab = index
+
+
 
 
 func _process(_delta):
@@ -47,9 +78,9 @@ func _process(_delta):
 func show_stats_overlay() -> void:
 	# Remplit les informations du héros dans l'UI
 	%Nom.text = hero.name
-	%Race.text = hero.race
 	%Classe.text = "Class: " + str(hero.classe)
 	%Level.text = "Lvl: " + str(hero.level)
+	
 	%Strength.text = "Strength: " + str(hero.strength)
 	%Defense.text = "Defense: " + str(hero.defense)
 	%Agility.text = "Agility: " + str(hero.agility)
@@ -58,9 +89,10 @@ func show_stats_overlay() -> void:
 	# Mise à jour de la barre de progression HP
 	%Hp.max_value = float(hero.hp_max)
 	%Hp.value = float(hero.hp)
+	%Moral.value = float(hero.moral)
 
 	# Charge lE sprite du héros dans l'UI
-	self.get_node("StatsWindow/HeroDetailContainer/VBoxContainer/Content/MarginContainer/VBoxContainer/HeroEquipementUi/Sprite/AnimationPlayer").play("idle_down")
+	#hero_texture.get_node("Sprite/AnimationPlayer").play("idle_down")
 	global_inventory.load_inventory()
 	load_inventory()
 
@@ -136,8 +168,8 @@ func _on_competence_button_pressed():
 	
 func _on_planning_button_pressed():
 	self.hide()
-	hero.get_node("CanvasLayer/HeroPlanning").show()
-	hero.get_node("CanvasLayer/HeroPlanning").update_visual_by_planning()
+	hero.hero_planning.show()
+	hero.hero_planning.update_visual_by_planning()
 	GameData.menu_open = true
 
 
@@ -147,3 +179,12 @@ func load_inventory() -> void:
 	for child in %InvContainer.get_children():
 		var data = GameData.inventory[child.name]
 		child.set_slot(data)
+
+
+func get_all_equipement_slots(root_node) -> Array:
+	var result := []
+	if root_node is EquipementSlot:
+		result.append(root_node)
+	for child in root_node.get_children():
+		result += get_all_equipement_slots(child)
+	return result
