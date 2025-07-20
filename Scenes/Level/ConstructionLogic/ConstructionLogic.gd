@@ -24,7 +24,7 @@ var end_pos : Vector2 = Vector2.ZERO
 var selected_object_position : Vector2 =  Vector2.ZERO
 
 var rotation_name: Array = ["front", "left", "back", "right"]
-var current_rotation : int = 1
+var current_rotation : int = 0
 
 var construction_tasks: Array = []
 var occupied_position :Dictionary = {}

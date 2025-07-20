@@ -20,13 +20,13 @@ func _ready() -> void:
 
 #cree un inventaire par defaut
 func create_sample_inventory() -> void:	
-	add_item(GameData.get_item("red_hat"), 1, "Slot0")
-	add_item(GameData.get_item("wooden_sword"), 1, "Slot1")
+	#add_item(GameData.get_item("red_hat"), 1, "Slot0")
+	#add_item(GameData.get_item("wooden_sword"), 1, "Slot1")
 	add_item(GameData.get_item("iron_sword"), 1, "Slot2")
 	#add_item(GameData.get_item("iron_sword"), 3, "Slot2")
 	add_item(GameData.get_item("life_potion"), 10, "Slot3")
 	add_item(GameData.get_item("life_potion"), 14, "Slot4")
-	add_item(GameData.get_item("mana_potion"), 7, "Slot5")
+	#add_item(GameData.get_item("mana_potion"), 7, "Slot5")
 	
 	GameData.inventory_first_load = false
 

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb03g752h4pb6"]
+
+[ext_resource type="Script" uid="uid://dot8mrs6g5fpg" path="res://Scenes/Level/Objects/torch.gd" id="1_p62x6"]
+[ext_resource type="Texture2D" uid="uid://bbnbgwbk5ymds" path="res://Sprites/objects/torch.png" id="2_4w1n2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om2rh"]
+size = Vector2(16, 16)
+
+[node name="Torch" type="Node2D"]
+script = ExtResource("1_p62x6")
+
+[node name="View" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="View"]
+unique_name_in_owner = true
+position = Vector2(8, 8)
+texture = ExtResource("2_4w1n2")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="View"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View/Area2D"]
+unique_name_in_owner = true
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_om2rh")

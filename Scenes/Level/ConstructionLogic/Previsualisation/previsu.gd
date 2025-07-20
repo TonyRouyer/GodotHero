@@ -152,7 +152,6 @@ func set_preview_sprite(type: String) -> void:
 				add_child(preview_instance)
 				return
 		
-
 	match type:
 		"wall":
 			obj_data = TilePositions.WALLS.get(object_name)
@@ -173,7 +172,7 @@ func set_preview_sprite(type: String) -> void:
 	preview_sprite.texture = texture
 	preview_sprite.modulate = Color(1, 1, 1, 0.5)
 	
-	if type == "wall":
+	if type == "wall" or type == "floor":
 		var region_rect = obj_data.region 
 
 		preview_sprite.region_enabled = true
@@ -181,6 +180,9 @@ func set_preview_sprite(type: String) -> void:
 		preview_sprite.centered = false
 		preview_sprite.offset = Vector2.ZERO
 	
+	if type == "floor":
+		preview_sprite.centered = true
+
 	add_child(preview_sprite)
 
 

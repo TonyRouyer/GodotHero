@@ -56,7 +56,7 @@ func _ready() -> void:
 	for door_item in DOOR_LIST:
 		var panel_container = VBoxContainer.new()
 		var texture_button = TextureButton.new()
-		var button_image = load("res://Sprites/items/" + str(door_item) + ".png")
+		var button_image = load("res://Sprites/objects/" + str(door_item) + ".png")
 		
 		texture_button.custom_minimum_size = Vector2(32, 32)
 		texture_button.texture_normal = button_image
@@ -73,12 +73,16 @@ func _ready() -> void:
 	
 	#Chargement des portes
 	for floor_item in FLOORS_LIST:
+		var floor_data = FLOORS_LIST.get(floor_item)
 		var panel_container = VBoxContainer.new()
 		var texture_button = TextureButton.new()
-		var button_image = load("res://Sprites/terrain/" + str(floor_item) + ".png")
+		
+		var atlas_texture = AtlasTexture.new()
+		atlas_texture.atlas = floor_data.texture
+		atlas_texture.region = floor_data.region
 		
 		texture_button.custom_minimum_size = Vector2(32, 32)
-		texture_button.texture_normal = button_image
+		texture_button.texture_normal = atlas_texture
 		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
 		texture_button.connect("pressed", _on_item_pressed.bind("floor", floor_item))
 		

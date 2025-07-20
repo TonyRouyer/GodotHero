@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5g7t56dnlh0y"]
+
+[ext_resource type="Script" uid="uid://bx7h31sx8rirr" path="res://Scenes/Level/Objects/furnace.gd" id="1_05dvc"]
+[ext_resource type="Texture2D" uid="uid://chlp1cyb5fspx" path="res://Sprites/objects/furnace.png" id="2_6ttcq"]
+[ext_resource type="Texture2D" uid="uid://de41jurfpsi0d" path="res://Sprites/terrain/hero_placement.png" id="3_cc7pn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om2rh"]
+size = Vector2(32, 32)
+
+[node name="Furnace" type="Node2D"]
+script = ExtResource("1_05dvc")
+
+[node name="View" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="View"]
+unique_name_in_owner = true
+position = Vector2(24, 8)
+texture = ExtResource("2_6ttcq")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 48)
+
+[node name="HeroPlacement" type="Sprite2D" parent="View"]
+unique_name_in_owner = true
+position = Vector2(8, 24)
+texture = ExtResource("3_cc7pn")
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="View"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View/Area2D"]
+unique_name_in_owner = true
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_om2rh")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(8, 32)

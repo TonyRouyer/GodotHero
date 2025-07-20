@@ -1,12 +1,8 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://behhp6gkbcidi"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://behhp6gkbcidi"]
 
 [ext_resource type="Script" uid="uid://dc52sgm0trhg3" path="res://Scenes/Inventory/ItemScript/potions_effects.gd" id="1_u2pen"]
-[ext_resource type="Texture2D" uid="uid://n72k5e675sbc" path="res://Sprites/items/items_transparent_drop_shadow.png" id="1_vgowf"]
 [ext_resource type="Script" uid="uid://d06d18kbkcavh" path="res://Scenes/Inventory/item_data.gd" id="2_1tclo"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j08bu"]
-atlas = ExtResource("1_vgowf")
-region = Rect2(0, 288, 32, 32)
+[ext_resource type="Texture2D" uid="uid://dpuupb55y20ji" path="res://Sprites/ItemsIcon/Red Potion.png" id="2_xcnev"]
 
 [resource]
 script = ExtResource("2_1tclo")
@@ -16,7 +12,7 @@ item_name_serialised = "life_potion"
 item_description = "Une potion qui remet le facteur sur son vélo"
 item_stackable = true
 item_max_stack = 16
-item_icon = SubResource("AtlasTexture_j08bu")
+item_icon = ExtResource("2_xcnev")
 item_effect = ExtResource("1_u2pen")
 item_attack = 0
 item_defense = 0

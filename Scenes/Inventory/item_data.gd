@@ -18,7 +18,7 @@ enum Type{
 @export_multiline var item_description: String
 @export var item_stackable: bool
 @export var item_max_stack: int
-@export var item_icon: AtlasTexture
+@export var item_icon: CompressedTexture2D
 
 @export var item_effect: Script
 @export var item_attack: int

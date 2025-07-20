@@ -25,8 +25,8 @@ func free_time() -> void:
 		# Définir une destination vers la position d’origine de la tâche
 		var destination = parent.hero_pathfinding.get_adjacent_reachable_position(construction_task["origin"])
 		
-		print("destination de base: ", construction_task["origin"])
-		print("destination adjacente: ", destination)
+		#print("destination de base: ", construction_task["origin"])
+		#print("destination adjacente: ", destination)
 		
 		parent.hero_pathfinding.set_destination(destination)
 		
