@@ -3,8 +3,8 @@ extends Node2D
 @onready var parent : Node2D = get_parent()
 
 @export var tile_size : int = 16
-@export var grid_width : int = 72
-@export var grid_height : int = 41
+@export var grid_width : int = 99
+@export var grid_height : int = 72
 @export var grid_color : Color = Color(1, 1, 1, 0.3)
 
 

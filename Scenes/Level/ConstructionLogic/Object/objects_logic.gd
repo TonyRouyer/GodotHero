@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var parent = get_parent()
 @onready var construction_layer: TileMapLayer = $"../../Level".get_node("Construction")
+@onready var object_container: Node2D = $"../../Level".get_node("Object")
 
 
 # Fonction pour créer un objet utilisable en fonction du type spécifié
@@ -32,23 +33,21 @@ func create_object(_usable_object_type: String) -> void:
 				occupied_positions.clear()
 				return
 
-
+	
 	# 3. Placer la texture "construction_placeholder.png" sur chaque cellule
 	for pos in occupied_positions:
 		construction_layer.set_cell(pos,-1, Vector2(0,0)) # efface ancienne
 		construction_layer.set_cell(pos, 40, Vector2(0,0))
 
+
 	# 4. Marquer les positions comme occupées dans `occupied_position`
 	for pos in occupied_positions:
-		parent.occupied_position[pos] = {
-			"origin": origin,
+		parent.occupied_position[Vector2(pos)] = {
+			"origin": Vector2(origin),
 			"object_type": _usable_object_type,
 			"rotation": current_rotation,
-			#"under_construction": true
 		}
-	#parent.mark_occupied_cells(origin, object_size)  
-
-
+		
 	# 5. Ajouter une tâche de construction à la file
 	parent.add_construction_task({
 		"type": "object",
@@ -68,11 +67,7 @@ func finalize_construction(global_origin: Vector2) -> void:
 		return
 #
 	var data = parent.occupied_position[origin]
-	#if not data.get("under_construction", false):
-		#push_warning("L’objet à cette position est déjà construit.")
-		#return
-		
-
+	
 	var object_type = data["object_type"]
 	var obj_rotation = data.get("rotation")
 #
@@ -89,7 +84,7 @@ func finalize_construction(global_origin: Vector2) -> void:
 	var object_size = Vector2(instance.x_size, instance.y_size) / parent.grid_size
 	
 	instance.position = origin * parent.grid_size
-	parent.add_child(instance)
+	object_container.add_child(instance)
 
 	#Suprime les placeholder de construction
 	for x in range(int(object_size.x)):

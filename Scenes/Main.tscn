@@ -72,10 +72,13 @@ expand_margin_bottom = 5.0
 script = ExtResource("1_ivlpv")
 
 [node name="GameCamera" type="Camera2D" parent="."]
+z_index = 5
+position = Vector2(477, 995)
+zoom = Vector2(2, 2)
 limit_left = -150
 limit_top = -150
-limit_right = 1920
-limit_bottom = 1080
+limit_right = 1720
+limit_bottom = 1330
 script = ExtResource("5_ffsep")
 
 [node name="Level" parent="." groups=["tilemap"] instance=ExtResource("1_nits4")]

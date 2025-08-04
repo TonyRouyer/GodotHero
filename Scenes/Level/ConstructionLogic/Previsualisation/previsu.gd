@@ -67,49 +67,62 @@ func _on_selecting_signal(state: bool, start: Vector2):
 
 
 func _draw_preview_area():
-	if is_selecting: 
-		var type = GameData.construction_type
-		var tile_id = null
-		match type:
-			"wall":
-				tile_id = TilePositions.WALLS[GameData.construction_item].index
-			"floor":
-				tile_id = TilePositions.FLOORS[GameData.construction_item].index
+	if not is_selecting:
+		return
 
-		if type == "wall":
-			var min_x = min(start_pos.x, end_pos.x)
-			var max_x = max(start_pos.x, end_pos.x)
-			var min_y = min(start_pos.y, end_pos.y)
-			var max_y = max(start_pos.y, end_pos.y)
-			
-			var wall_cells = []
-			for x in range(min_x, max_x + 1):
-				for y in range(min_y, max_y + 1):
-					if x == min_x or x == max_x or y == min_y or y == max_y:
-						var pos = Vector2i(x, y)
-						BetterTerrain.set_cell(preview_layer, pos, tile_id)
-						wall_cells.append(pos)
-						
-						#TODO faire en sorte que quand selection survole mur du meme type ou objet -> tile invalide
-						#var is_valid = construction_logic.check_object_under(pos)
-						#if is_valid:
-							#preview_instance.modulate = valid_color
-						#else:
-							#preview_instance.modulate = invalid_color
-
-			preview_layer.modulate = valid_color
-			BetterTerrain.update_terrain_cells(preview_layer, wall_cells)
-		elif type == "floor":
-			for x in range(min(start_pos.x, end_pos.x), max(start_pos.x, end_pos.x) + 1):
-				for y in range(min(start_pos.y, end_pos.y), max(start_pos.y, end_pos.y) + 1):
-					var pos = Vector2(x, y)
-					#on (rem)place le sol si il n'y a pas de mur
-					if not construction_logic.check_wall_under(pos):
-						preview_layer.set_cell(pos, tile_id, Vector2(0,0))
-						preview_layer.modulate = valid_color
-		elif type == "door":
+	var type = GameData.construction_type
+	var tile_id = null
+	match type:
+		"wall":
+			tile_id = TilePositions.WALLS[GameData.construction_item].index
+		"floor":
+			tile_id = TilePositions.FLOORS[GameData.construction_item].index
+		"door":
 			tile_id = TilePositions.DOORS[GameData.construction_item].index
-			BetterTerrain.set_cell(preview_layer, end_pos, tile_id)
+
+	var invalid = false
+	var preview_cells = []
+
+	var min_x = min(start_pos.x, end_pos.x)
+	var max_x = max(start_pos.x, end_pos.x)
+	var min_y = min(start_pos.y, end_pos.y)
+	var max_y = max(start_pos.y, end_pos.y)
+
+	if type == "wall":
+		for x in range(min_x, max_x + 1):
+			for y in range(min_y, max_y + 1):
+				if x == min_x or x == max_x or y == min_y or y == max_y:
+					var pos = Vector2i(x, y)
+
+					# Vérification : hors zone ou sur un objet/mur
+					if not GameData.is_in_build_zone(pos) or construction_logic.check_object_under(pos) or construction_logic.check_wall_under(pos):
+						invalid = true
+
+					BetterTerrain.set_cell(preview_layer, pos, tile_id)
+					preview_cells.append(pos)
+
+	elif type == "floor":
+		for x in range(min_x, max_x + 1):
+			for y in range(min_y, max_y + 1):
+				var pos = Vector2i(x, y)
+
+				# Vérifie si dans les limites
+				if not GameData.is_in_build_zone(pos):
+					invalid = true
+				elif not construction_logic.check_wall_under(pos):  # Ne place pas de sol sous un mur
+					preview_layer.set_cell(pos, tile_id, Vector2i.ZERO)
+					preview_cells.append(pos)
+
+	elif type == "door":
+		var pos = end_pos
+		BetterTerrain.set_cell(preview_layer, pos, tile_id)
+		preview_cells.append(pos)
+
+	# Appliquer modulate (vert si tout est bon, rouge sinon)
+	preview_layer.modulate = invalid_color if invalid else valid_color
+
+	if type in ["wall", "floor"]:
+		BetterTerrain.update_terrain_cells(preview_layer, preview_cells)
 
 
 
@@ -126,6 +139,7 @@ func check_placement_valid(world_pos: Vector2, object_size: Vector2) -> bool:
 	for x in int(obj_size_in_tile.x):
 		for y in int(obj_size_in_tile.y):
 			var check_pos = world_pos_in_tile + Vector2(x, y)
+			
 			if construction_logic.check_wall_under(check_pos):
 				return false
 			if construction_logic.check_object_under(check_pos):

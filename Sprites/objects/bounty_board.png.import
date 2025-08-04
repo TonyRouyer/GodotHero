@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cds17dg6eab8v"
-path="res://.godot/imported/bountyBoard.png-f26929d2488c79c696f4f548920a5137.ctex"
+path="res://.godot/imported/bounty_board.png-c119fc6b845491ef0ea7cd6e29de11f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/objects/bountyBoard.png"
-dest_files=["res://.godot/imported/bountyBoard.png-f26929d2488c79c696f4f548920a5137.ctex"]
+source_file="res://Sprites/objects/bounty_board.png"
+dest_files=["res://.godot/imported/bounty_board.png-c119fc6b845491ef0ea7cd6e29de11f6.ctex"]
 
 [params]
 

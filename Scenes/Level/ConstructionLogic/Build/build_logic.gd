@@ -7,63 +7,78 @@ extends Node2D
 
 
 func create_wall_construction(wall_type: String) -> void:
+	parent.previsu.reset_preview()
 	var start_pos = parent.start_pos
 	var end_pos = parent.end_pos
-	
+	var positions = []
+
 	for x in range(min(start_pos.x, end_pos.x), max(start_pos.x, end_pos.x) + 1):
 		for y in range(min(start_pos.y, end_pos.y), max(start_pos.y, end_pos.y) + 1):
-			if x == min(start_pos.x, end_pos.x) or x == max(start_pos.x, end_pos.x) or y == min(start_pos.y, end_pos.y) or y == max(start_pos.y, end_pos.y):
-				var pos = Vector2(x, y)
+			if x == start_pos.x or x == end_pos.x or y == start_pos.y or y == end_pos.y:
+				var pos = Vector2i(x, y)
+				
+				# Vérifier validité
+				if not GameData.is_in_build_zone(pos):
+					return
 				if parent.check_object_under(pos):
-					continue
-				# Placeholder visuel
-				construction_layer.set_cell(pos, 40, Vector2(0,0))
-				
-				# Marquer la case comme occupée
-				parent.occupied_position[pos] = {
-					"type": "wall",
-					"wall_type": wall_type,
-				}
-				
-				# Ajouter une tâche de construction
-				parent.add_construction_task({
-					"type": "wall",
-					"wall_type": wall_type,
-					"origin": pos * parent.grid_size,
-					"assigned": false,
-				})
+					return
+					
+				positions.append(pos)
 
-	parent.previsu.reset_preview()
+	# Si tout est valide, on construit
+	for pos in positions:
+		construction_layer.set_cell(pos, 40, Vector2(0, 0))
+		parent.occupied_position[pos] = {
+			"type": "wall",
+			"wall_type": wall_type,
+		}
+		parent.add_construction_task({
+			"type": "wall",
+			"wall_type": wall_type,
+			"origin": pos * parent.grid_size,
+			"assigned": false,
+		})
+
 	parent.audio_player.play()
 
 
 func create_floor_construction(floor_type: String) -> void:
 	var start_pos = parent.start_pos
 	var end_pos = parent.end_pos
+	var positions = []
 
 	for x in range(min(start_pos.x, end_pos.x), max(start_pos.x, end_pos.x) + 1):
 		for y in range(min(start_pos.y, end_pos.y), max(start_pos.y, end_pos.y) + 1):
 			var pos = Vector2(x, y)
 			
-			if parent.check_object_under(pos):
-				continue
-			
-			construction_layer.set_cell(pos, 40, Vector2(0,0))
+			# Vérifier validité
+			if not GameData.is_in_build_zone(pos):
+				return
+			if parent.check_wall_under(pos):
+				continue  # On ignore, mais ne bloque pas
 
-			parent.occupied_position[pos] = {
-				"type": "floor",
-				"floor_type": floor_type,
-			}
-			
-			parent.add_construction_task({
-				"type": "floor",
-				"floor_type": floor_type,
-				"origin": pos * parent.grid_size,
-				"assigned": false,
-			})
-	
+			positions.append(pos)
+
+	# Si une seule case au sol est construisible, on construit
+	if positions.is_empty():
+		return
+
+	for pos in positions:
+		construction_layer.set_cell(pos, 40, Vector2(0, 0))
+		parent.occupied_position[pos] = {
+			"type": "floor",
+			"floor_type": floor_type,
+		}
+		parent.add_construction_task({
+			"type": "floor",
+			"floor_type": floor_type,
+			"origin": pos * parent.grid_size,
+			"assigned": false,
+		})
+
 	parent.previsu.reset_preview()
 	parent.audio_player.play()
+
 
 
 func create_door_construction(door_type: String) -> void:
@@ -92,6 +107,10 @@ func create_door_construction(door_type: String) -> void:
 
 func finalize_construction(global_origin: Vector2) -> void:
 	var origin = global_origin / parent.grid_size
+	
+	print("origin: ", origin)
+	print("occupied: ", parent.occupied_position)
+	print(parent.occupied_position.has(origin))
 
 	if not parent.occupied_position.has(origin):
 		push_error("Aucune construction en attente à cette position.")
@@ -111,12 +130,11 @@ func finalize_construction(global_origin: Vector2) -> void:
 			GameData.set_gold(-cost)
 
 		"floor":
+			print(data["floor_type"])
 			var floor_type = data["floor_type"]
 			var tile_id = TilePositions.FLOORS[floor_type].index
 			var cost = TilePositions.FLOORS[floor_type].cost
 			
-
-
 			floor_layer.set_cell(origin, tile_id, Vector2(0,0))
 			BetterTerrain.update_terrain_cell(floor_layer, origin)
 			GameData.set_gold(-cost)

@@ -14,7 +14,7 @@ func _ready() -> void:
 	zoom =  Vector2(2, 2)
 	zoomTarget = zoom
 	# Centrer la caméra au démarrage
-	global_position = Vector2(550, 350)
+	global_position = Vector2(480, 990)
 
 
 func _process(delta) -> void:

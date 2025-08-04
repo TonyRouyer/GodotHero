@@ -88,7 +88,7 @@ func _on_hero_navigation_finished():
 		var task_type = construction_task.get("type")
 		var origin = construction_task.get("origin")
 
-		if hero.global_position.distance_to(origin) > 40:
+		if hero.global_position.distance_to(origin) > 32:
 			return  # Trop loin pour construire
 
 		match task_type:
@@ -115,18 +115,10 @@ func get_adjacent_reachable_position(target_pos: Vector2) -> Vector2:
 		Vector2(1, -1), Vector2(-1, 1),
 	]
 
-	var cell_size = 20  # adapte à ton grid_size
+	var cell_size = 16  # adapte à ton grid_size
 	for offset in offsets:
-		var check_pos = target_pos + offset * cell_size
+		var check_pos = target_pos + (offset * cell_size) *2
 		if navigation_agent.is_target_reachable():
 			return check_pos
 
-	return get_random_nearby_position()
-
-
-
-
-
-func get_random_nearby_position() -> Vector2:
-	# Génère une position proche au cas où le héros est complètement bloqué
-	return hero.global_position + Vector2(randf_range(-16, 16), randf_range(-16, 16))
+	return target_pos

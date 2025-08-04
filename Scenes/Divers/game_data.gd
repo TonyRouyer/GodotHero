@@ -19,6 +19,9 @@ var research_finished : Array = []
 var inventory : Dictionary = {}
 var planning_copy: Dictionary = {}
 
+var build_zone_max: Vector2i = Vector2i(99, 72)  # À ajuster selon ta carte
+
+
 
 func set_active_hero(hero : Hero) -> void:
 	active_hero = hero
@@ -74,3 +77,13 @@ func get_item(item_name : String) -> ItemData:
 	else:
 		push_error("La ressource n'existe pas : " + resource_path)
 		return null
+
+
+
+func is_in_build_zone(cell: Vector2i) -> bool:
+	var build_zone_min: Vector2i = Vector2i(0, 0)
+
+	return (
+		cell.x >= build_zone_min.x and cell.x <= build_zone_max.x and
+		cell.y >= build_zone_min.y and cell.y <= build_zone_max.y
+	)

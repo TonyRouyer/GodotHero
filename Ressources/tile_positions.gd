@@ -138,4 +138,10 @@ const USABLE_OBJECTS = {
 		"texture": preload("res://Sprites/objects/recycling_workshop.png"),
 		"region": Rect2(0,0,16,32), 
 		"scene": preload("res://Scenes/Level/Objects/recycling_workshop.tscn") },
+	"bounty_board": {
+		"name": "bounty_board", 
+		"category": "furniture", 
+		"texture": preload("res://Sprites/objects/bounty_board.png"),
+		"region": Rect2(0,0,48,32), 
+		"scene": preload("res://Scenes/Level/Objects/bounty_board.tscn") },
 }

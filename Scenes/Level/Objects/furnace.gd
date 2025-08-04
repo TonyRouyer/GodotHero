@@ -52,7 +52,7 @@ func rotate_item(side):
 			%Sprite.position = Vector2(16,8)
 			%HeroPlacement.position = Vector2(16,40)
 			#Placement du marker
-			$Marker2D.position = Vector2(24,16)
+			$Marker2D.position = Vector2(16,48)
 		"right_side":
 			%CollisionShape2D.shape.size = Vector2(32,32)
 			%CollisionShape2D.position = Vector2(16,16)
