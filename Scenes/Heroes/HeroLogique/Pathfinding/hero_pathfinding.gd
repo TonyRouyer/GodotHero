@@ -11,7 +11,7 @@ func _ready():
 	%NavigationAgent2D.connect("navigation_finished", _on_hero_navigation_finished)
 
 
-func _physics_process(_delta: float) -> void:	
+func _physics_process(delta: float) -> void:	
 	if navigation_agent.is_navigation_finished():
 		# Stop animation et reset vitesse
 		hero.velocity = Vector2.ZERO
@@ -19,8 +19,10 @@ func _physics_process(_delta: float) -> void:
 
 	var next_position = navigation_agent.get_next_path_position()
 	var direction = (next_position - hero.global_position).normalized()
-	hero.velocity = direction * hero.speed
-
+	var speed = hero.speed * GameData.time_speed
+	hero.velocity = direction * speed	
+	
+	
 	# Gérer l’animation directionnelle
 	if direction.length() > 0.1:
 		if abs(direction.x) > abs(direction.y):
@@ -43,82 +45,105 @@ func _physics_process(_delta: float) -> void:
 
 func set_destination(pos: Vector2):
 	navigation_agent.target_position = pos
-	navigation_agent.set_velocity(Vector2.ZERO)  # Optionnel pour être clean
-	navigation_agent.get_next_path_position()  #  FORCE le calcul du chemin
-	
 	destination = pos
 
-
-#func _on_hero_navigation_finished():
-	#var object = routine.used_object
-	#if object:
-		#object.use(hero)
-		#routine.used_object = null  # Réinitialiser
-#
-	#var construction_task = routine.current_construction_task
-	#if construction_task:
-		#var task_type = construction_task.get("type")
-		#var origin = construction_task.get("origin")
-		#
-		#print(origin)
-		#
-		#match task_type:
-			#"object":
-				#var object_logic = get_tree().get_root().get_node("Main/ConstructionLogic/ObjectsLogic")
-				#object_logic.finalize_construction(origin)
-#
-			#"wall", "floor", "door":
-				#var build_logic = get_tree().get_root().get_node("Main/ConstructionLogic/BuildLogic")
-				#build_logic.finalize_construction(origin)
-#
-			#_:
-				#push_warning("Type de construction inconnu : %s" % task_type)
-#
-		#routine.current_construction_task = {}
+	# Vérification immédiate de la reachabilité
+	if not navigation_agent.is_target_reachable():
+		print("⚠️ Destination non atteignable :", pos)
+		_on_path_failed()
+	else:
+		# Force un calcul immédiat
+		navigation_agent.get_next_path_position()
 
 
 func _on_hero_navigation_finished():
-	var object = routine.used_object
+	#TODO : si on annule une construction -> reset routine.current_construction du hero liée
+	
+	var object = routine.get_node("Activity").used_object
+	#Si le hero utilise un objet
 	if object != null:
 		object.use(hero)
-		routine.used_object = null
+		routine.get_node("Activity").used_object = null
+		return
+	
+	var construction_task = routine.current_construction
+	#Si il n'y a pas de tache de construction en cours
+	if not construction_task:
+		return
 
-	var construction_task = routine.current_construction_task
-	if construction_task:
-		var task_type = construction_task.get("type")
-		var origin = construction_task.get("origin")
+	var origin: Vector2 = construction_task.get("origin", Vector2.ZERO)
+	var task_type: String = construction_task.get("type", "")
+	
+	
+	# --- Vérif 3 : Le héros doit se placer sur une case adjacente libre
+	var stand_positions := [
+		origin + Vector2(8, 0),
+		origin + Vector2(-8, 0),
+		origin + Vector2(0, 8),
+		origin + Vector2(0, -8)
+	]
+	
+	var can_build :bool = false
+	for pos in stand_positions:
+		if hero.global_position.distance_to(pos) <= 16.0:
+			can_build = true
+			break
 
-		if hero.global_position.distance_to(origin) > 32:
-			return  # Trop loin pour construire
+	if not can_build:
+		print("⚠️ Le héros n'est pas sur une case valide pour construire.")
+		return
+	
+	# --- Si tout est bon : finaliser la construction
+	match task_type:
+		"object":
+			var object_logic = get_tree().get_root().get_node("Main/ConstructionLogic/ObjectsLogic")
+			object_logic.finalize_construction(origin)
+		"wall", "floor", "door":
+			var build_logic = get_tree().get_root().get_node("Main/ConstructionLogic/BuildLogic")
+			build_logic.finalize_construction(construction_task)
+		_:
+			push_warning("Type de construction inconnu : %s" % task_type)
 
-		match task_type:
-			"object":
-				var object_logic = get_tree().get_root().get_node("Main/ConstructionLogic/ObjectsLogic")
-				object_logic.finalize_construction(origin)
-
-			"wall", "floor", "door":
-				var build_logic = get_tree().get_root().get_node("Main/ConstructionLogic/BuildLogic")
-				build_logic.finalize_construction(origin)
-
-			_:
-				push_warning("Type de construction inconnu : %s" % task_type)
-
-		routine.current_construction_task = {}
+	# --- Libérer la tâche pour que le héros en prenne une nouvelle
+	routine.current_construction = {}
 
 
+func _on_path_failed():
+	print("⚠️ Aucun chemin trouvé, annulation de la tâche.")
+	var construction_logic = get_tree().get_root().get_node("Main/ConstructionLogic")
+	var construction_task = routine.current_construction
+
+	if construction_task and construction_task.has("origin"):
+		var origin: Vector2i = construction_task["origin"]
+
+		# Remet la tâche dispo pour un autre héros
+		for task in construction_logic.construction_tasks:
+			if task["origin"] == origin:
+				task["assigned"] = false
+				break
+	
+	routine.current_construction = {}
+
+
+
+#TODO : quand on place un mur , le nav agent doit prendre en compte ce placement avant de refaire un chemin
 
 func get_adjacent_reachable_position(target_pos: Vector2) -> Vector2:
 	var offsets = [
-		Vector2(1, 0), Vector2(-1, 0),
-		Vector2(0, 1), Vector2(0, -1),
-		Vector2(1, 1), Vector2(-1, -1),
-		Vector2(1, -1), Vector2(-1, 1),
+		Vector2(16, 0), Vector2(-16, 0),
+		Vector2(0, 16), Vector2(0, -16),
+		Vector2(16, 16), Vector2(-16, -16),
+		Vector2(16, -16), Vector2(-16, 16),
 	]
+	print("target_pos ", target_pos)
 
-	var cell_size = 16  # adapte à ton grid_size
+
 	for offset in offsets:
-		var check_pos = target_pos + (offset * cell_size) *2
+		var check_pos = target_pos + offset
+		navigation_agent.target_position = check_pos
 		if navigation_agent.is_target_reachable():
-			return check_pos
+			print("✅ case atteignable : ", check_pos)
+			return check_pos  # on retourne direct la première valide
 
+	print("target_pos2 ", target_pos)
 	return target_pos

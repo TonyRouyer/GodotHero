@@ -27,43 +27,43 @@ var rotation_name: Array = ["front", "left", "back", "right"]
 var current_rotation : int = 0
 
 var construction_tasks: Array = []
-#var occupied_position :Dictionary = {
-  #Vector2(19.0, 67.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
-  #Vector2(19.0, 68.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
-  #Vector2(20.0, 67.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
-  #Vector2(20.0, 68.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
-  #Vector2(21.0, 67.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
-  #Vector2(21.0, 68.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
-  #Vector2(22.0, 67.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
-  #Vector2(22.0, 68.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
-  #Vector2(23.0, 67.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
-  #Vector2(23.0, 68.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
-  #Vector2(24.0, 66.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
-  #Vector2(24.0, 67.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
-  #Vector2(24.0, 68.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
-  #Vector2(25.0, 66.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
-  #Vector2(25.0, 67.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
-  #Vector2(25.0, 68.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
-  #Vector2(19.0, 61.0): { "origin": Vector2(19.0, 61.0), "object_type": "bed", "rotation": 0 },
-  #Vector2(20.0, 61.0): { "origin": Vector2(19.0, 61.0), "object_type": "bed", "rotation": 0 },
-  #Vector2(23.0, 60.0): { "origin": Vector2(23.0, 60.0), "object_type": "sink", "rotation": 0 },
-  #Vector2(23.0, 61.0): { "origin": Vector2(23.0, 60.0), "object_type": "sink", "rotation": 0 },
-  #Vector2(26.0, 62.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
-  #Vector2(26.0, 63.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
-  #Vector2(27.0, 62.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
-  #Vector2(27.0, 63.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
-  #Vector2(28.0, 62.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
-  #Vector2(28.0, 63.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
-  #Vector2(29.0, 62.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
-  #Vector2(29.0, 63.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
-  #Vector2(32.0, 60.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 },
-  #Vector2(32.0, 61.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 },
-  #Vector2(33.0, 60.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 },
-  #Vector2(33.0, 61.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 },
-  #Vector2(34.0, 60.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 },
-  #Vector2(34.0, 61.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 }
-#}
-var occupied_position :Dictionary = {}
+var occupied_position :Dictionary = { #liste de toute les position ocuper (tileset pos) avec detail mur/port/objet
+  Vector2(19.0, 67.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
+  Vector2(19.0, 68.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
+  Vector2(20.0, 67.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
+  Vector2(20.0, 68.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
+  Vector2(21.0, 67.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
+  Vector2(21.0, 68.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
+  Vector2(22.0, 67.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
+  Vector2(22.0, 68.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
+  Vector2(23.0, 67.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
+  Vector2(23.0, 68.0): { "origin": Vector2(19.0, 67.0), "object_type": "serving_table", "rotation": 0 },
+  Vector2(24.0, 66.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
+  Vector2(24.0, 67.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
+  Vector2(24.0, 68.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
+  Vector2(25.0, 66.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
+  Vector2(25.0, 67.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
+  Vector2(25.0, 68.0): { "origin": Vector2(24.0, 66.0), "object_type": "furnace", "rotation": 0 },
+  Vector2(19.0, 61.0): { "origin": Vector2(19.0, 61.0), "object_type": "bed", "rotation": 0 },
+  Vector2(20.0, 61.0): { "origin": Vector2(19.0, 61.0), "object_type": "bed", "rotation": 0 },
+  Vector2(23.0, 60.0): { "origin": Vector2(23.0, 60.0), "object_type": "sink", "rotation": 0 },
+  Vector2(23.0, 61.0): { "origin": Vector2(23.0, 60.0), "object_type": "sink", "rotation": 0 },
+  Vector2(26.0, 62.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
+  Vector2(26.0, 63.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
+  Vector2(27.0, 62.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
+  Vector2(27.0, 63.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
+  Vector2(28.0, 62.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
+  Vector2(28.0, 63.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
+  Vector2(29.0, 62.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
+  Vector2(29.0, 63.0): { "origin": Vector2(26.0, 62.0), "object_type": "reception_desk", "rotation": 0 },
+  Vector2(32.0, 60.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 },
+  Vector2(32.0, 61.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 },
+  Vector2(33.0, 60.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 },
+  Vector2(33.0, 61.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 },
+  Vector2(34.0, 60.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 },
+  Vector2(34.0, 61.0): { "origin": Vector2(32.0, 60.0), "object_type": "bounty_board", "rotation": 0 }
+}
+
 
 
 # Fonction appelée lorsque le nœud est prêt (initialisé)
@@ -209,9 +209,20 @@ func add_construction_task(task_data: Dictionary) -> void:
 	# Tu peux ici déclencher la recherche d’un héros disponible, etc.
 
 
-func get_available_task() -> Dictionary:
+func get_available_task() -> Array:
+	var tasks: Array = []
 	for task in construction_tasks:
 		if not task.assigned:
-			task.assigned = true
-			return task
-	return {}
+			tasks.append(task)
+			
+	#On trie les construction par ordre de priorité
+	tasks.sort_custom(func(a, b):
+		return a["priority"] > b["priority"]
+	)
+	
+	return tasks
+
+
+func prioritize_task(task: Dictionary) -> void:
+	if task.has("priority"):
+		task["priority"] += 100

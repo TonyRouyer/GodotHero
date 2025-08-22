@@ -51,6 +51,7 @@ func create_object(_usable_object_type: String) -> void:
 	# 5. Ajouter une tâche de construction à la file
 	parent.add_construction_task({
 		"type": "object",
+		"priority": 5,
 		"object_type": _usable_object_type,
 		"origin": origin * parent.grid_size,
 		"assigned": false,

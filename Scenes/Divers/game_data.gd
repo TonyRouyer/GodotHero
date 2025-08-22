@@ -14,6 +14,8 @@ var construction_item : String = ""
 var gold : int = 10000
 var reputation : int = 0
 var inventory_size = 25
+var food_stock : int = 0
+var time_speed: int = 1
 
 var research_finished : Array = []
 var inventory : Dictionary = {}

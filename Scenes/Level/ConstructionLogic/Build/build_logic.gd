@@ -28,14 +28,12 @@ func create_wall_construction(wall_type: String) -> void:
 	# Si tout est valide, on construit
 	for pos in positions:
 		construction_layer.set_cell(pos, 40, Vector2(0, 0))
-		parent.occupied_position[pos] = {
-			"type": "wall",
-			"wall_type": wall_type,
-		}
+
 		parent.add_construction_task({
 			"type": "wall",
+			"priority": 10,
 			"wall_type": wall_type,
-			"origin": pos * parent.grid_size,
+			"origin": pos * parent.grid_size + Vector2i(8,8), #position sur le tileset * taille grille pour pos absolue + 8 pour centrée
 			"assigned": false,
 		})
 
@@ -65,12 +63,9 @@ func create_floor_construction(floor_type: String) -> void:
 
 	for pos in positions:
 		construction_layer.set_cell(pos, 40, Vector2(0, 0))
-		parent.occupied_position[pos] = {
-			"type": "floor",
-			"floor_type": floor_type,
-		}
 		parent.add_construction_task({
 			"type": "floor",
+			"priority": 8,
 			"floor_type": floor_type,
 			"origin": pos * parent.grid_size,
 			"assigned": false,
@@ -88,14 +83,10 @@ func create_door_construction(door_type: String) -> void:
 		return
 
 	construction_layer.set_cell(pos, 40, Vector2(0,0))
-	
-	parent.occupied_position[pos] = {
-		"type": "door",
-		"door_type": door_type,
-	}
-	
+		
 	parent.add_construction_task({
 		"type": "door",
+		"priority": 9,
 		"door_type": door_type,
 		"origin": pos * parent.grid_size,
 		"assigned": false,
@@ -105,23 +96,13 @@ func create_door_construction(door_type: String) -> void:
 	parent.audio_player.play()
 
 
-func finalize_construction(global_origin: Vector2) -> void:
-	var origin = global_origin / parent.grid_size
-	
-	print("origin: ", origin)
-	print("occupied: ", parent.occupied_position)
-	print(parent.occupied_position.has(origin))
-
-	if not parent.occupied_position.has(origin):
-		push_error("Aucune construction en attente à cette position.")
-		return
-
-	var data = parent.occupied_position[origin]
-	var task_type = data["type"]
+func finalize_construction(construction_task: Dictionary) -> void:
+	var origin: Vector2 = construction_task.get("origin", Vector2.ZERO) / parent.grid_size
+	var task_type: String = construction_task.get("type", "")
 
 	match task_type:
 		"wall":
-			var wall_type = data["wall_type"]
+			var wall_type = construction_task.get("wall_type", "")
 			var tile_id = TilePositions.WALLS[wall_type].index
 			var cost = TilePositions.WALLS[wall_type].cost
 
@@ -130,8 +111,7 @@ func finalize_construction(global_origin: Vector2) -> void:
 			GameData.set_gold(-cost)
 
 		"floor":
-			print(data["floor_type"])
-			var floor_type = data["floor_type"]
+			var floor_type =  construction_task.get("floor_type", "")
 			var tile_id = TilePositions.FLOORS[floor_type].index
 			var cost = TilePositions.FLOORS[floor_type].cost
 			
@@ -140,7 +120,7 @@ func finalize_construction(global_origin: Vector2) -> void:
 			GameData.set_gold(-cost)
 
 		"door":
-			var door_type = data["door_type"]
+			var door_type =  construction_task.get("door_type", "")
 			var tile_id = TilePositions.DOORS[door_type].index
 			var cost = TilePositions.DOORS[door_type].cost
 			var floor_id = TilePositions.FLOORS["wood"].index
@@ -149,7 +129,6 @@ func finalize_construction(global_origin: Vector2) -> void:
 			wall_layer.set_cell(origin, tile_id, Vector2(0,0))
 			BetterTerrain.update_terrain_cell(wall_layer, origin)
 			GameData.set_gold(-cost)
-
 		_:
 			push_warning("Type de tâche inconnu : " + task_type)
 			return
@@ -162,9 +141,10 @@ func finalize_construction(global_origin: Vector2) -> void:
 
 	# Supprimer la tâche de la liste
 	for task in parent.construction_tasks:
-		if task.origin == global_origin:
+		if task.origin == construction_task.get("origin", ""):
 			parent.construction_tasks.erase(task)
 			break
+	
 
 
 

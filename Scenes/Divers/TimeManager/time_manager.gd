@@ -36,13 +36,3 @@ func timer_finished():
 			emit_signal("day_changed", current_day)
 
 	emit_signal("time_tick", current_hour, current_minute)
-	
-	
-	
-	#current_hour += 1
-	#emit_signal("hour_changed", TimeManager.current_hour)
-	#
-	#if current_hour >= hours_per_day:
-		#current_hour = 0
-		#current_day += 1
-		#emit_signal("day_changed", TimeManager.current_day)

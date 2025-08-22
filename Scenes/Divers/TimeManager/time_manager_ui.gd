@@ -46,6 +46,7 @@ func _on_pause_pressed():
 	update_speed_ui(0)
 	$Timer.paused = true
 	GameData.game_paused = true
+	GameData.time_speed = 0
 	get_tree().paused = true
 
 
@@ -53,6 +54,7 @@ func _on_play_pressed():
 	update_speed_ui(1)
 	$Timer.paused = false
 	GameData.game_paused = false
+	GameData.time_speed = 1
 	get_tree().paused = false
 	timer.wait_time = 3
 
@@ -61,6 +63,7 @@ func _on_play_fast_pressed():
 	update_speed_ui(2)
 	$Timer.paused = false
 	GameData.game_paused = false
+	GameData.time_speed = 2
 	get_tree().paused = false
 	timer.wait_time = 2
 
@@ -69,6 +72,7 @@ func _on_play_very_fast_pressed():
 	update_speed_ui(3)
 	$Timer.paused = false
 	GameData.game_paused = false
+	GameData.time_speed = 3
 	get_tree().paused = false
 	timer.wait_time = 1
 

@@ -38,6 +38,16 @@ unique_name_in_owner = true
 [node name="HeroNeeds" parent="." instance=ExtResource("5_3cr8a")]
 unique_name_in_owner = true
 
+[node name="CurrentActivity" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -28.0
+offset_top = -27.0
+offset_right = 28.0
+offset_bottom = -13.0
+theme_override_font_sizes/font_size = 10
+text = "Activity"
+horizontal_alignment = 1
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HeroPanelInfo" parent="CanvasLayer" instance=ExtResource("3_rawoh")]

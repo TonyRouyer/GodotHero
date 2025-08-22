@@ -67,7 +67,7 @@ func _on_day_changed(_new_day):
 func _update_hunger():
 	# Entraînement ou travail peuvent augmenter le taux
 	var modifier = 1.0
-	if  routineNode.last_need == 5 or routineNode.last_need == 6:
+	if  routineNode.current_task["type"] == "work" or routineNode.current_task["type"] == "train":
 		modifier = 1.5
 	var hunger_per_tick = -HUNGER_LOSS_PER_HOUR * modifier
 	
@@ -85,9 +85,9 @@ func _update_hunger():
 func _update_energy():
 	var energy_change = 0.0
 
-	if routineNode.last_need == 1:
+	if routineNode.current_task["type"] == "sleep":
 		# Dépend du lit
-		if routineNode.get_node("Sleep").is_ground_sleeping:
+		if routineNode.get_node("activity").is_ground_sleeping:
 			var energy_restore_ground = 8.3
 			energy_change = energy_restore_ground
 		else:
@@ -97,7 +97,7 @@ func _update_energy():
 	else:
 		# Entraînement ou travail peuvent augmenter le taux
 		var modifier = 1.0
-		if  routineNode.last_need == 5 or routineNode.last_need == 6:
+		if  routineNode.current_task["type"] == "train" or routineNode.current_task["type"] == "work":
 			modifier = 1.5
 		energy_change = -ENERGY_LOSS_PER_HOUR * modifier
 
@@ -149,7 +149,7 @@ func _update_toilet():
 # ---------------------
 func _update_hygiene():
 	var modifier = 1.0
-	if routineNode.last_need == 5 or routineNode.last_need == 6:
+	if routineNode.current_task["type"] == "train" or routineNode.current_task["type"] == "work":
 		modifier = 2
 	var hygiene_per_tick = -HYGIENE_LOSS_PER_HOUR * modifier
 

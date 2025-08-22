@@ -41,6 +41,7 @@ class_name Hero
 @export var classe: String
 @export var skin: String
 @export var job : int = 0 # 0.aucun / 1.Acceuil / 2.Artisant / 3.Mage / 4.Chercheur / 5.Cuisinier
+@export var control_by_player : bool = false
 
 # Références aux nœuds
 @onready var animatedSprite : AnimationPlayer = $AnimatedSprite2D/AnimationPlayer
@@ -155,4 +156,8 @@ func _on_close_planning_pressed() -> void:
 func _on_close_skills_pressed() -> void:
 	hero_panel_info.show()
 	hero_skills.hide()
-	GameData.menu_open = true		
+	GameData.menu_open = true
+	
+
+func change_activity_label(text:String) -> void:
+	%CurrentActivity.text = text

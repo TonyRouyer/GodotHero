@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://deiclps377nb0"]
+[gd_scene load_steps=50 format=4 uid="uid://deiclps377nb0"]
 
 [ext_resource type="Texture2D" uid="uid://byqhl8np4qhjq" path="res://Sprites/terrain/stone_wall.png" id="1_8gphe"]
 [ext_resource type="Texture2D" uid="uid://c1if4py5rmvui" path="res://Sprites/terrain/wooden_wall.png" id="2_t3e81"]
@@ -311,14 +311,28 @@ texture = ExtResource("1_8gphe")
 &"type": 1
 }
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ce188"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcihn"]
 texture = ExtResource("7_pocpv")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ce188")
 0:0/0/custom_data_0 = "door"
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ahb13"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n63bf"]
 texture = ExtResource("6_gyjo4")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ahb13")
 0:0/0/custom_data_0 = "door"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5p1yx"]
@@ -1873,6 +1887,7 @@ tile_set = SubResource("TileSet_gbf5o")
 use_parent_material = true
 tile_map_data = PackedByteArray("AAASAEYAAAABAAIAAAATAEYAAAACAAMAAAAUAEYAAAACAAMAAAAVAEYAAAACAAMAAAAWAEYAAAACAAMAAAAXAEYAAAACAAMAAAAYAEYAAAACAAMAAAAZAEYAAAACAAMAAAAaAEYAAAACAAMAAAAbAEYAAAADAAMAAAAdAEYAAAABAAMAAAAeAEYAAAACAAMAAAAfAEYAAAACAAMAAAAgAEYAAAACAAMAAAAhAEYAAAACAAMAAAAiAEYAAAACAAMAAAAjAEYAAAACAAMAAAAkAEYAAAACAAMAAAAlAEYAAAACAAMAAAAmAEYAAAACAAMAAAAnAEYAAAADAAIAAAASAEAAAAAAAAEAAAASAEEAAAAAAAEAAAASAEIAAAAAAAEAAAASAEMAAAAAAAEAAAASAEQAAAAAAAEAAAASAEUAAAAAAAEAAAAnAEAAAAAAAAEAAAAnAEEAAAAAAAEAAAAnAEIAAAAAAAEAAAAnAEMAAAAAAAEAAAAnAEQAAAAAAAEAAAAnAEUAAAAAAAEAAAASADsAAAABAAAAAAASADwAAAAAAAEAAAASAD0AAAAAAAEAAAASAD4AAAAAAAEAAAASAD8AAAAAAAEAAAAnADsAAAADAAAAAAAnADwAAAAAAAEAAAAnAD0AAAAAAAEAAAAnAD4AAAAAAAEAAAAnAD8AAAAAAAEAAAATADsAAAACAAMAAAAUADsAAAACAAMAAAAVADsAAAACAAMAAAAWADsAAAACAAMAAAAXADsAAAACAAMAAAAYADsAAAACAAMAAAAZADsAAAACAAMAAAAaADsAAAACAAMAAAAbADsAAAACAAMAAAAcADsAAAACAAMAAAAdADsAAAACAAMAAAAeADsAAAACAAMAAAAfADsAAAACAAMAAAAgADsAAAACAAMAAAAhADsAAAACAAMAAAAiADsAAAACAAMAAAAjADsAAAACAAMAAAAkADsAAAACAAMAAAAlADsAAAACAAMAAAAmADsAAAACAAMAAAA=")
 tile_set = SubResource("TileSet_gbf5o")
+collision_visibility_mode = 1
 
 [node name="Preview" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -1920,7 +1935,6 @@ visible = false
 position = Vector2(-321, 215)
 navigation_polygon = SubResource("NavigationPolygon_x8jtd")
 use_edge_connections = false
-navigation_layers = 3
 
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(460, 1245)
