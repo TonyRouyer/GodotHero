@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dyqiquq64bed2" path="res://Sprites/Interface/Panel/BGbox_03A.png" id="2_ahgmo"]
 [ext_resource type="Texture2D" uid="uid://b8klcqvx0c1qf" path="res://Sprites/Interface/ProgressBar/Slider03_Box.png" id="3_65ca0"]
 [ext_resource type="Texture2D" uid="uid://b4s6copc24fky" path="res://Sprites/Interface/ProgressBar/Slider02_Bar03.png" id="4_4xm56"]
-[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/btn_hover_texture.tres" id="5_6djh8"]
-[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/btn_normal_texture.tres" id="6_y0osi"]
+[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/Materials/btn_hover_texture.tres" id="5_6djh8"]
+[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/Materials/btn_normal_texture.tres" id="6_y0osi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ty748"]
 texture = ExtResource("2_ahgmo")

@@ -115,16 +115,6 @@ rotate={
 ]
 }
 
-[layer_names]
-
-2d_render/layer_1="Floor"
-2d_render/layer_2="Wall&Object"
-2d_render/layer_3="Heros"
-2d_physics/layer_1="Floor"
-2d_navigation/layer_1="Floor"
-2d_physics/layer_2="Wall  object"
-2d_physics/layer_3="Heros"
-
 [navigation]
 
 2d/use_edge_connections=false

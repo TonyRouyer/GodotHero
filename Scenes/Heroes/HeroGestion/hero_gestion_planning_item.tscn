@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ewjly66dq7rn" path="res://Scenes/Heroes/HeroGestion/hero_gestion_planning_item.gd" id="1_5rca7"]
 [ext_resource type="PackedScene" uid="uid://b4y7rhnq13x54" path="res://Scenes/Heroes/HeroPlanning/planning_item.tscn" id="2_5rca7"]
-[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/btn_normal_texture.tres" id="2_nkp4g"]
+[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/Materials/btn_normal_texture.tres" id="2_nkp4g"]
 
 [node name="HeroGestionPlanningItem" type="Control"]
 layout_mode = 3

@@ -27,12 +27,12 @@ func _ready():
 func _process(_delta):
 	end_pos = construction_logic.grid.check_cell()
 
-	if GameData.construction_type in ["floor", "wall", "door"]:
+	if GameData.construction_type in ["floor", "wall"]:
 		preview_sprite.position = (construction_logic.grid.check_cell()  * grid_size) 
-		if GameData.construction_type in  ["floor", "door"]: preview_sprite.position += Vector2(8,8)
+		if GameData.construction_type == "floor": 
+			preview_sprite.position += Vector2(8,8)
 		preview_layer.clear()
 		_draw_preview_area()
-	
 
 
 	if GameData.construction_type in ["object", "move"]:
@@ -77,12 +77,10 @@ func _draw_preview_area():
 			tile_id = TilePositions.WALLS[GameData.construction_item].index
 		"floor":
 			tile_id = TilePositions.FLOORS[GameData.construction_item].index
-		"door":
-			tile_id = TilePositions.DOORS[GameData.construction_item].index
 
 	var invalid = false
 	var preview_cells = []
-
+	
 	var min_x = min(start_pos.x, end_pos.x)
 	var max_x = max(start_pos.x, end_pos.x)
 	var min_y = min(start_pos.y, end_pos.y)
@@ -98,7 +96,7 @@ func _draw_preview_area():
 					if not GameData.is_in_build_zone(pos) or construction_logic.check_object_under(pos) or construction_logic.check_wall_under(pos):
 						invalid = true
 
-					BetterTerrain.set_cell(preview_layer, pos, tile_id)
+					preview_layer.set_cell(pos, tile_id, Vector2i.ZERO)
 					preview_cells.append(pos)
 
 	elif type == "floor":
@@ -113,11 +111,6 @@ func _draw_preview_area():
 					preview_layer.set_cell(pos, tile_id, Vector2i.ZERO)
 					preview_cells.append(pos)
 
-	elif type == "door":
-		var pos = end_pos
-		BetterTerrain.set_cell(preview_layer, pos, tile_id)
-		preview_cells.append(pos)
-
 	# Appliquer modulate (vert si tout est bon, rouge sinon)
 	preview_layer.modulate = invalid_color if invalid else valid_color
 
@@ -125,12 +118,11 @@ func _draw_preview_area():
 		BetterTerrain.update_terrain_cells(preview_layer, preview_cells)
 
 
-
-
 func _rotate_preview() -> void:
 	current_rotation = get_parent().current_rotation
 	if preview_instance: 
 		construction_logic.objects_logic.rotate_object(preview_instance, current_rotation)
+
 
 func check_placement_valid(world_pos: Vector2, object_size: Vector2) -> bool:
 	var world_pos_in_tile = world_pos / grid_size
@@ -145,7 +137,6 @@ func check_placement_valid(world_pos: Vector2, object_size: Vector2) -> bool:
 			if construction_logic.check_object_under(check_pos):
 				return false
 	return true
-
 
 
 func set_preview_sprite(type: String) -> void:
@@ -172,9 +163,6 @@ func set_preview_sprite(type: String) -> void:
 			texture = obj_data.texture
 		"floor":
 			obj_data = TilePositions.FLOORS.get(object_name)
-			texture = obj_data.texture
-		"door":
-			obj_data = TilePositions.DOORS.get(object_name)
 			texture = obj_data.texture
 			
 	if not texture:

@@ -336,3 +336,17 @@ func available_object(object_type: String) -> bool:
 #
 #func perform_activity_fallback():
 	#%Free.free_time()
+
+
+# ---------------------------------------------------------
+# recupere la tache suivante si non ateigniable
+# ---------------------------------------------------------
+func choose_next_construction_task() -> Dictionary:
+	var construction_logic = get_tree().get_root().get_node("Main/ConstructionLogic")
+	var tasks = construction_logic.get_available_task()  # toutes les tâches disponibles
+	for task in tasks:
+		var origin = task["origin"]
+		hero_pathfinding.nav.target_position = origin
+		if hero_pathfinding.nav.is_target_reachable():
+			return task  # retourne la première tâche atteignable
+	return {}  # aucune tâche atteignable

@@ -3,7 +3,6 @@ extends Control
 signal construct_signal
 
 @onready var foundation_container : GridContainer = %Foundations
-@onready var door_container : GridContainer= %Doors
 @onready var floors_container : GridContainer = %Floors
 @onready var objects_container: GridContainer = %Objects
 @onready var actions_container : HBoxContainer = %Actions
@@ -12,7 +11,6 @@ signal construct_signal
 
 
 const WALL_LIST = preload("res://Ressources/tile_positions.gd").WALLS
-const DOOR_LIST = preload("res://Ressources/tile_positions.gd").DOORS
 const FLOORS_LIST = preload("res://Ressources/tile_positions.gd").FLOORS
 const OBJECT_LIST = preload("res://Ressources/tile_positions.gd").USABLE_OBJECTS
 
@@ -23,7 +21,6 @@ func _ready() -> void:
 	hide_all_panels()
 	
 	%FoundationButton.connect("pressed", _on_foundation_pressed)
-	%DoorButton.connect("pressed", _on_door_pressed)
 	%FloorButton.connect("pressed", _on_floor_pressed)
 	%ObjectButton.connect("pressed", _on_object_pressed)
 	%ActionButton.connect("pressed", _on_action_pressed)
@@ -51,27 +48,8 @@ func _ready() -> void:
 		panel_container.add_child(texture_button)
 		panel_container.add_child(label)
 		foundation_container.add_child(panel_container)
-	
-	#Chargement des portes
-	for door_item in DOOR_LIST:
-		var panel_container = VBoxContainer.new()
-		var texture_button = TextureButton.new()
-		var button_image = load("res://Sprites/objects/" + str(door_item) + ".png")
-		
-		texture_button.custom_minimum_size = Vector2(32, 32)
-		texture_button.texture_normal = button_image
-		texture_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-		texture_button.connect("pressed", _on_item_pressed.bind("door", door_item))
-		
-		var label = Label.new()
-		label.text = door_item
-		
-		panel_container.add_child(texture_button)
-		panel_container.add_child(label)
 
-		door_container.add_child(panel_container)
-	
-	#Chargement des portes
+	#Chargement des sol
 	for floor_item in FLOORS_LIST:
 		var floor_data = FLOORS_LIST.get(floor_item)
 		var panel_container = VBoxContainer.new()
@@ -122,11 +100,6 @@ func _on_foundation_pressed() -> void:
 	right_panel.show()
 	%Foundations.show()
 
-
-func _on_door_pressed() -> void:
-	hide_all_panels()
-	right_panel.show()
-	%Doors.show()
 
 
 func _on_floor_pressed() -> void:

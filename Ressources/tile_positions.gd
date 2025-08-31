@@ -2,44 +2,40 @@ extends Node
 
 const WALLS = {
 	"wooden_wall" = {
-		"index": 0, 
+		"index": 100, 
 		"cost": 10, 
 		"region": Rect2(0,48,16,16), 
 		"texture": preload("res://Sprites/terrain/wooden_wall.png") },
 	"stone_wall" = {
-		"index": 1, 
+		"index": 101, 
 		"cost": 15, 
 		"region": Rect2(0,48,16,16), 
 		"texture": preload("res://Sprites/terrain/stone_wall.png") },
 }
 
 const FLOORS = {
-	"dirt" = {
-		"index": 33, 
-		"cost": 8,
-		"region": Rect2(16,16,16,16), 
-		"texture": preload("res://Sprites/terrain/dirt.png") },
 	"grass" = {
-		"index": 34, 
+		"index": 1, 
 		"cost": 1, 
 		"region": Rect2(0,0,16,16), 
 		"texture": preload("res://Sprites/terrain/grass.png") },
-	"wood" = {
-		"index": 31, 
-		"cost": 10, 
-		"region": Rect2(0,0,16,16), 
-		"texture": preload("res://Sprites/terrain/wood.png") },
+	"dirt" = {
+		"index": 2, 
+		"cost": 8,
+		"region": Rect2(16,16,16,16), 
+		"texture": preload("res://Sprites/terrain/dirt.png") },
 	"stone" = {
-		"index": 32, 
+		"index": 3, 
 		"cost": 15, 
 		"region": Rect2(0,0,16,16), 
 		"texture": preload("res://Sprites/terrain/stone.png") },
+	"wood" = {
+		"index": 4, 
+		"cost": 10, 
+		"region": Rect2(0,0,16,16), 
+		"texture": preload("res://Sprites/terrain/wood.png") },
 }
 
-const DOORS = {
-	"wooden_door" = {"index": 20, "cost": 20, "texture": preload("res://Sprites/objects/wooden_door.png")},
-	"reinforced_door" = {"index": 21, "cost": 25, "texture": preload("res://Sprites/objects/reinforced_door.png")},
-}
 
 const USABLE_OBJECTS = {
 	"bed": {

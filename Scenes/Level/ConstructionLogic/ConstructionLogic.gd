@@ -153,8 +153,6 @@ func create_construction() -> void:
 			build_logic.create_wall_construction(GameData.construction_item)
 		"floor":
 			build_logic.create_floor_construction(GameData.construction_item)
-		"door":
-			build_logic.create_door_construction(GameData.construction_item)
 		"object":
 			objects_logic.create_object(GameData.construction_item)
 

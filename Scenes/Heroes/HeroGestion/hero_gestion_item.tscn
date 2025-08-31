@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bo5m64d4cvano"]
 
 [ext_resource type="Script" uid="uid://bhqbx2a0diltw" path="res://Scenes/Heroes/HeroGestion/hero_gestion_item.gd" id="1_24gwc"]
-[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/btn_normal_texture.tres" id="2_ohy14"]
-[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/btn_hover_texture.tres" id="3_56u0h"]
+[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/Materials/btn_normal_texture.tres" id="2_ohy14"]
+[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/Materials/btn_hover_texture.tres" id="3_56u0h"]
 [ext_resource type="Texture2D" uid="uid://c7rqkxafbpo6l" path="res://Sprites/Interface/Panel/1x1select.png" id="3_dt1ho"]
 [ext_resource type="Texture2D" uid="uid://b6epcu6ky7ram" path="res://Sprites/Interface/Panel/1x1.png" id="4_v4tl6"]
 

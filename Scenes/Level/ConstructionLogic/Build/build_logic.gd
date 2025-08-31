@@ -3,15 +3,13 @@ extends Node2D
 @onready var parent = get_parent()
 @onready var floor_layer : TileMapLayer = $"../../Level/Floor"
 @onready var wall_layer : TileMapLayer = $"../../Level/Wall" 
-@onready var construction_layer: TileMapLayer = $"../../Level".get_node("Construction")
-
+@onready var construction_layer: TileMapLayer = $"../../Level/Placeholder"
 
 func create_wall_construction(wall_type: String) -> void:
-	parent.previsu.reset_preview()
 	var start_pos = parent.start_pos
 	var end_pos = parent.end_pos
 	var positions = []
-
+	
 	for x in range(min(start_pos.x, end_pos.x), max(start_pos.x, end_pos.x) + 1):
 		for y in range(min(start_pos.y, end_pos.y), max(start_pos.y, end_pos.y) + 1):
 			if x == start_pos.x or x == end_pos.x or y == start_pos.y or y == end_pos.y:
@@ -25,9 +23,11 @@ func create_wall_construction(wall_type: String) -> void:
 					
 				positions.append(pos)
 
+	var tile_id = TilePositions.WALLS[GameData.construction_item].index
+
 	# Si tout est valide, on construit
 	for pos in positions:
-		construction_layer.set_cell(pos, 40, Vector2(0, 0))
+		construction_layer.set_cell(pos, tile_id, Vector2i.ZERO)
 
 		parent.add_construction_task({
 			"type": "wall",
@@ -36,7 +36,10 @@ func create_wall_construction(wall_type: String) -> void:
 			"origin": pos * parent.grid_size + Vector2i(8,8), #position sur le tileset * taille grille pour pos absolue + 8 pour centrée
 			"assigned": false,
 		})
+	
+	BetterTerrain.update_terrain_cells(construction_layer, positions)
 
+	parent.previsu.reset_preview()
 	parent.audio_player.play()
 
 
@@ -60,9 +63,12 @@ func create_floor_construction(floor_type: String) -> void:
 	# Si une seule case au sol est construisible, on construit
 	if positions.is_empty():
 		return
+		
+	var tile_id = TilePositions.FLOORS[GameData.construction_item].index
 
 	for pos in positions:
-		construction_layer.set_cell(pos, 40, Vector2(0, 0))
+		construction_layer.set_cell(pos, tile_id, Vector2i.ZERO)
+
 		parent.add_construction_task({
 			"type": "floor",
 			"priority": 8,
@@ -70,30 +76,12 @@ func create_floor_construction(floor_type: String) -> void:
 			"origin": pos * parent.grid_size,
 			"assigned": false,
 		})
+	
+	BetterTerrain.update_terrain_cells(construction_layer, positions)
 
 	parent.previsu.reset_preview()
 	parent.audio_player.play()
 
-
-
-func create_door_construction(door_type: String) -> void:
-	var pos = parent.end_pos
-	
-	if parent.check_object_under(pos):
-		return
-
-	construction_layer.set_cell(pos, 40, Vector2(0,0))
-		
-	parent.add_construction_task({
-		"type": "door",
-		"priority": 9,
-		"door_type": door_type,
-		"origin": pos * parent.grid_size,
-		"assigned": false,
-	})
-	
-	parent.previsu.reset_preview()
-	parent.audio_player.play()
 
 
 func finalize_construction(construction_task: Dictionary) -> void:
@@ -107,6 +95,11 @@ func finalize_construction(construction_task: Dictionary) -> void:
 			var cost = TilePositions.WALLS[wall_type].cost
 
 			wall_layer.set_cell(origin, tile_id, Vector2(0,0))
+			var tile_data = floor_layer.get_cell_tile_data(origin)
+			if tile_data:
+				tile_data.set_navigation_polygon(0, null)
+			
+			
 			BetterTerrain.update_terrain_cell(wall_layer, origin)
 			GameData.set_gold(-cost)
 
@@ -117,17 +110,6 @@ func finalize_construction(construction_task: Dictionary) -> void:
 			
 			floor_layer.set_cell(origin, tile_id, Vector2(0,0))
 			BetterTerrain.update_terrain_cell(floor_layer, origin)
-			GameData.set_gold(-cost)
-
-		"door":
-			var door_type =  construction_task.get("door_type", "")
-			var tile_id = TilePositions.DOORS[door_type].index
-			var cost = TilePositions.DOORS[door_type].cost
-			var floor_id = TilePositions.FLOORS["wood"].index
-
-			floor_layer.set_cell(origin, floor_id, Vector2(0,0)) # Plancher sous porte
-			wall_layer.set_cell(origin, tile_id, Vector2(0,0))
-			BetterTerrain.update_terrain_cell(wall_layer, origin)
 			GameData.set_gold(-cost)
 		_:
 			push_warning("Type de tâche inconnu : " + task_type)
@@ -144,19 +126,6 @@ func finalize_construction(construction_task: Dictionary) -> void:
 		if task.origin == construction_task.get("origin", ""):
 			parent.construction_tasks.erase(task)
 			break
-	
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dl42v6eso8xw6" path="res://Scenes/Level/ConstructionMode/ConstructionUI.gd" id="1_dpso8"]
 [ext_resource type="Texture2D" uid="uid://dyqiquq64bed2" path="res://Sprites/Interface/Panel/BGbox_03A.png" id="2_m1k4d"]
-[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/btn_hover_texture.tres" id="2_y87i3"]
-[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/btn_normal_texture.tres" id="3_m1k4d"]
+[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/Materials/btn_hover_texture.tres" id="2_y87i3"]
+[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/Materials/btn_normal_texture.tres" id="3_m1k4d"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_irk72"]
 texture = ExtResource("2_m1k4d")
@@ -48,18 +48,6 @@ theme_override_styles/hover = ExtResource("2_y87i3")
 theme_override_styles/pressed = ExtResource("2_y87i3")
 theme_override_styles/normal = ExtResource("3_m1k4d")
 text = "Walls"
-
-[node name="DoorButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/LeftPanel"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 54)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-theme_override_styles/hover = ExtResource("2_y87i3")
-theme_override_styles/pressed = ExtResource("2_y87i3")
-theme_override_styles/normal = ExtResource("3_m1k4d")
-text = "Doors
-"
 
 [node name="FloorButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/LeftPanel"]
 unique_name_in_owner = true
@@ -123,14 +111,6 @@ layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 14
-
-[node name="Doors" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/RightPanel/MarginContainer/GlobalPanel"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 15
-columns = 5
 
 [node name="Floors" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/RightPanel/MarginContainer/GlobalPanel"]
 unique_name_in_owner = true

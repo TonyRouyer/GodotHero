@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://c38rymymo0kd0"]
 
 [ext_resource type="Script" uid="uid://dggh1gc8lanpf" path="res://Scenes/PauseMenu/pause_menu.gd" id="1_40me1"]
-[ext_resource type="StyleBox" uid="uid://ccmgdqt3vq7t4" path="res://Ressources/panelContainer.tres" id="2_xnjb5"]
-[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/btn_hover_texture.tres" id="3_ldxlg"]
-[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/btn_normal_texture.tres" id="4_2hb42"]
+[ext_resource type="StyleBox" uid="uid://ccmgdqt3vq7t4" path="res://Ressources/Materials/panelContainer.tres" id="2_xnjb5"]
+[ext_resource type="StyleBox" uid="uid://ng48rcwc4j61" path="res://Ressources/Materials/btn_hover_texture.tres" id="3_ldxlg"]
+[ext_resource type="StyleBox" uid="uid://k4gxhfnav8xi" path="res://Ressources/Materials/btn_normal_texture.tres" id="4_2hb42"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3

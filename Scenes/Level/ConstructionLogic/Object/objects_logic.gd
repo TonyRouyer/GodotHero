@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var parent = get_parent()
-@onready var construction_layer: TileMapLayer = $"../../Level".get_node("Construction")
-@onready var object_container: Node2D = $"../../Level".get_node("Object")
+@onready var construction_layer: TileMapLayer = $"../../Level/Placeholder"
+@onready var object_container: Node2D = $"../../Level/Object"
 
 
 # Fonction pour créer un objet utilisable en fonction du type spécifié
@@ -36,8 +36,8 @@ func create_object(_usable_object_type: String) -> void:
 	
 	# 3. Placer la texture "construction_placeholder.png" sur chaque cellule
 	for pos in occupied_positions:
-		construction_layer.set_cell(pos,-1, Vector2(0,0)) # efface ancienne
-		construction_layer.set_cell(pos, 40, Vector2(0,0))
+		#construction_layer.set_cell(pos,-1, Vector2(0,0)) # efface ancienne
+		construction_layer.set_cell(pos, 0, Vector2(0,0))
 
 
 	# 4. Marquer les positions comme occupées dans `occupied_position`
@@ -56,6 +56,8 @@ func create_object(_usable_object_type: String) -> void:
 		"origin": origin * parent.grid_size,
 		"assigned": false,
 	})
+	
+	parent.previsu.reset_preview()
 	parent.audio_player.play()
 
 

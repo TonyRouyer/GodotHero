@@ -164,7 +164,7 @@ func train() -> void:
 		used_object.exit(parent.hero)
 	
 	# 4. Parcourir les priorités et essayer de trouver un objet disponible
-	var objects = get_tree().get_root().get_node("Main/Level/Object").get_children()
+	var objects = objects_node.get_children()
 	var obj_pos: Vector2 = Vector2.ZERO
 	for priority_entry in priorities:
 		# Cherche un objet non occupé du bon type
@@ -258,59 +258,26 @@ func construct() -> void:
 
 func idle() -> void:
 	#walk random / talk / admire art ?
-	pass
-	#
-	#
-	#
-	#@onready var free_activity_timer = $"../FreeActivityTimer"
-#
-#var last_free_activity :String = ""
-#
-#func _on_free_activity_timer_timeout():
-	#if parent.hero_planning.planning[TimeManager.current_hour] == "free":
-		#free_time()
-#
-#
-#func free_time() -> void:
-	#parent.last_need = parent.Needs.FREE
-	#
-	##0. on check si il y a des chose a construire
-	#var construction_logic = get_tree().get_root().get_node("Main/ConstructionLogic")
-	#var construction_task = construction_logic.get_available_task()
-	#if construction_task :
-		#
-		## Réserver la tâche pour éviter qu’un autre héros ne la prenne
-		#construction_task["assigned"] = true
-		#parent.current_construction_task = construction_task
-#
-		## Définir une destination vers la position d’origine de la tâche
-		#var destination = parent.hero_pathfinding.get_adjacent_reachable_position(construction_task["origin"])
-		#
-		##print("destination de base: ", construction_task["origin"])
-		##print("destination adjacente: ", destination)
-		#
-		#parent.hero_pathfinding.set_destination(destination)
-		#
-		#return
-	#
-	## 1. Parler avec un autre héros
-	#if last_free_activity != "talk":
-		#var all_heroes = parent.hero.get_parent().get_children()
-		#all_heroes.shuffle()
-		#for target_hero in all_heroes:
-			#if target_hero != parent.hero and target_hero.has_node("HeroRoutine"):
-				#parent.hero_pathfinding.set_destination(target_hero.global_position)
-				#last_free_activity = "talk"
-				#free_activity_timer.wait_time = randi_range(5, 10)
-				#free_activity_timer.start()
-				#return
-#
-	## 2. Se promener
-	#if last_free_activity != "walk":
-		#var rand_offset = Vector2(randf_range(-100, 100), randf_range(-100, 100))
-		#var walk_position = parent.hero.global_position + rand_offset
-		#parent.hero_pathfinding.set_destination(walk_position)
-		#last_free_activity = "walk"
-		#free_activity_timer.wait_time = randi_range(5, 10)
-		#free_activity_timer.start()
-		#return
+	var nav = parent.hero_pathfinding.nav
+	var max_attempts = 20  # nombre d'essais avant d'abandonner
+	var tile_size = 16  # taille d'un tile en pixels
+	var origin = parent.hero.global_position
+
+	for i in range(max_attempts):
+		# Choisir un offset aléatoire dans un rayon de 10 tiles
+		var offset_x = randi() % 21 - 10  # -10 à +10
+		var offset_y = randi() % 21 - 10
+		var target_pos = origin + Vector2(offset_x * tile_size, offset_y * tile_size)
+		
+		# Vérifier si la position est atteignable
+		nav.target_position = target_pos
+		if nav.is_target_reachable():
+			print("🎯 Idle : nouvelle destination atteignable :", target_pos)
+			return  # destination assignée avec succès
+		else:
+			# réessaie avec une nouvelle position aléatoire
+			continue
+
+	# Si aucune position atteignable trouvée après max_attempts
+	print("⚠️ Idle : aucune position aléatoire atteignable trouvée, le héros reste sur place")
+	nav.target_position = origin  # reste sur place
