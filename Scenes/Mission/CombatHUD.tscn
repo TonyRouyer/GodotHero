@@ -15,7 +15,7 @@ content_margin_right = 8.0
 content_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id="SF_slot_skill"]
-bg_color = Color(0.14, 0.22, 0.42)
+bg_color = Color(0.14, 0.22, 0.42, 1.0)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -26,7 +26,7 @@ content_margin_right = 4.0
 content_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="SF_slot_obj"]
-bg_color = Color(0.10, 0.28, 0.14)
+bg_color = Color(0.10, 0.28, 0.14, 1.0)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -71,13 +71,13 @@ theme_override_constants/separation = 4
 [node name="MissionTitle" type="Label" parent="Root/TopLeft/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(0.95, 0.95, 1.0)
+theme_override_colors/font_color = Color(0.95, 0.95, 1.0, 1.0)
 text = "Mission"
 
 [node name="MissionSub" type="Label" parent="Root/TopLeft/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Ennemis restants : 0"
 
 ## ── TOP RIGHT (contrôles) ──────────────────────────────────────────────────
@@ -127,7 +127,7 @@ theme_override_constants/separation = 4
 [node name="LogHeader" type="Label" parent="Root/BottomRight/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
-theme_override_colors/font_color = Color(0.75, 0.80, 0.95)
+theme_override_colors/font_color = Color(0.75, 0.80, 0.95, 1.0)
 text = "Journal de combat"
 
 [node name="LogScroll" type="ScrollContainer" parent="Root/BottomRight/VBox"]
@@ -173,7 +173,7 @@ theme_override_constants/separation = 6
 [node name="ActionsHeader" type="Label" parent="Root/BottomCenter/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-theme_override_colors/font_color = Color(0.70, 0.75, 0.92)
+theme_override_colors/font_color = Color(0.70, 0.75, 0.92, 1.0)
 text = "Actions"
 
 [node name="ActionsRow" type="HBoxContainer" parent="Root/BottomCenter/VBox"]
@@ -213,7 +213,7 @@ visible = false
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30, 1.0)
 text = "0s"
 
 [node name="KeyNum" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp1/Box/Inner"]
@@ -227,14 +227,14 @@ offset_right = -2.0
 offset_top = 2.0
 offset_bottom = 14.0
 theme_override_font_sizes/font_size = 8
-theme_override_colors/font_color = Color(0.80, 0.85, 1.0)
+theme_override_colors/font_color = Color(0.80, 0.85, 1.0, 1.0)
 text = "1"
 
 [node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp1"]
 layout_mode = 2
 horizontal_alignment = 1
 theme_override_font_sizes/font_size = 9
-theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Comp. 1"
 
 ## Slot Comp 2
@@ -270,7 +270,7 @@ visible = false
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30, 1.0)
 text = "0s"
 
 [node name="KeyNum" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp2/Box/Inner"]
@@ -284,14 +284,14 @@ offset_right = -2.0
 offset_top = 2.0
 offset_bottom = 14.0
 theme_override_font_sizes/font_size = 8
-theme_override_colors/font_color = Color(0.80, 0.85, 1.0)
+theme_override_colors/font_color = Color(0.80, 0.85, 1.0, 1.0)
 text = "2"
 
 [node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp2"]
 layout_mode = 2
 horizontal_alignment = 1
 theme_override_font_sizes/font_size = 9
-theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Comp. 2"
 
 ## Slot Comp 3
@@ -327,7 +327,7 @@ visible = false
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30, 1.0)
 text = "0s"
 
 [node name="KeyNum" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp3/Box/Inner"]
@@ -341,14 +341,14 @@ offset_right = -2.0
 offset_top = 2.0
 offset_bottom = 14.0
 theme_override_font_sizes/font_size = 8
-theme_override_colors/font_color = Color(0.80, 0.85, 1.0)
+theme_override_colors/font_color = Color(0.80, 0.85, 1.0, 1.0)
 text = "3"
 
 [node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp3"]
 layout_mode = 2
 horizontal_alignment = 1
 theme_override_font_sizes/font_size = 9
-theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Comp. 3"
 
 ## Slot Comp 4
@@ -384,7 +384,7 @@ visible = false
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30, 1.0)
 text = "0s"
 
 [node name="KeyNum" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp4/Box/Inner"]
@@ -398,14 +398,14 @@ offset_right = -2.0
 offset_top = 2.0
 offset_bottom = 14.0
 theme_override_font_sizes/font_size = 8
-theme_override_colors/font_color = Color(0.80, 0.85, 1.0)
+theme_override_colors/font_color = Color(0.80, 0.85, 1.0, 1.0)
 text = "4"
 
 [node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp4"]
 layout_mode = 2
 horizontal_alignment = 1
 theme_override_font_sizes/font_size = 9
-theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Comp. 4"
 
 ## Séparateur visuel
@@ -446,7 +446,7 @@ visible = false
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30, 1.0)
 text = "0s"
 
 [node name="CountBadge" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj1/Box/Inner"]
@@ -460,14 +460,14 @@ offset_top = -14.0
 offset_right = 28.0
 offset_bottom = -2.0
 theme_override_font_sizes/font_size = 9
-theme_override_colors/font_color = Color(0.85, 1.0, 0.85)
+theme_override_colors/font_color = Color(0.85, 1.0, 0.85, 1.0)
 text = "×0"
 
 [node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj1"]
 layout_mode = 2
 horizontal_alignment = 1
 theme_override_font_sizes/font_size = 9
-theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Objet 1"
 
 ## Slot Objet 2
@@ -503,7 +503,7 @@ visible = false
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30, 1.0)
 text = "0s"
 
 [node name="CountBadge" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj2/Box/Inner"]
@@ -517,14 +517,14 @@ offset_top = -14.0
 offset_right = 28.0
 offset_bottom = -2.0
 theme_override_font_sizes/font_size = 9
-theme_override_colors/font_color = Color(0.85, 1.0, 0.85)
+theme_override_colors/font_color = Color(0.85, 1.0, 0.85, 1.0)
 text = "×0"
 
 [node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj2"]
 layout_mode = 2
 horizontal_alignment = 1
 theme_override_font_sizes/font_size = 9
-theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Objet 2"
 
 ## ── END PANEL (caché) ──────────────────────────────────────────────────────
