@@ -1,0 +1,537 @@
+[gd_scene load_steps=14 format=3 uid="uid://combathud_main01"]
+
+[ext_resource type="Script" path="res://Scenes/Mission/CombatHUD.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://herocard_hud01" path="res://Scenes/Mission/HeroCard.tscn" id="2_herocard"]
+
+[sub_resource type="StyleBoxFlat" id="SF_panel"]
+bg_color = Color(0.06, 0.07, 0.10, 0.88)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="SF_slot_skill"]
+bg_color = Color(0.14, 0.22, 0.42)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="SF_slot_obj"]
+bg_color = Color(0.10, 0.28, 0.14)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="SF_btn"]
+bg_color = Color(0.14, 0.16, 0.22, 0.9)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CombatHUD" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_script")
+
+[node name="Root" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+## ── TOP LEFT (info mission, full-AI only) ──────────────────────────────────
+[node name="TopLeft" type="PanelContainer" parent="Root"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 360.0
+offset_bottom = 82.0
+theme_override_styles/panel = SubResource("SF_panel")
+
+[node name="VBox" type="VBoxContainer" parent="Root/TopLeft"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MissionTitle" type="Label" parent="Root/TopLeft/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.95, 0.95, 1.0)
+text = "Mission"
+
+[node name="MissionSub" type="Label" parent="Root/TopLeft/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+text = "Ennemis restants : 0"
+
+## ── TOP RIGHT (contrôles) ──────────────────────────────────────────────────
+[node name="TopRight" type="HBoxContainer" parent="Root"]
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -196.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 56.0
+theme_override_constants/separation = 4
+
+[node name="BtnPause" type="Button" parent="Root/TopRight"]
+layout_mode = 2
+custom_minimum_size = Vector2(44, 44)
+text = "⏸"
+theme_override_font_sizes/font_size = 16
+
+[node name="BtnPlay" type="Button" parent="Root/TopRight"]
+layout_mode = 2
+custom_minimum_size = Vector2(44, 44)
+text = "▶"
+theme_override_font_sizes/font_size = 16
+
+[node name="BtnFast" type="Button" parent="Root/TopRight"]
+layout_mode = 2
+custom_minimum_size = Vector2(44, 44)
+text = "⏩"
+theme_override_font_sizes/font_size = 16
+
+## ── BOTTOM RIGHT (journal de combat) ──────────────────────────────────────
+[node name="BottomRight" type="PanelContainer" parent="Root"]
+anchor_left = 0.72
+anchor_top = 0.08
+anchor_right = 1.0
+anchor_bottom = 0.88
+offset_right = -8.0
+offset_bottom = 0.0
+theme_override_styles/panel = SubResource("SF_panel")
+
+[node name="VBox" type="VBoxContainer" parent="Root/BottomRight"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="LogHeader" type="Label" parent="Root/BottomRight/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.75, 0.80, 0.95)
+text = "Journal de combat"
+
+[node name="LogScroll" type="ScrollContainer" parent="Root/BottomRight/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LogContainer" type="VBoxContainer" parent="Root/BottomRight/VBox/LogScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+## ── BOTTOM LEFT (cartes héros) ────────────────────────────────────────────
+[node name="BottomLeft" type="PanelContainer" parent="Root"]
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -138.0
+offset_right = 624.0
+offset_bottom = -8.0
+theme_override_styles/panel = SubResource("SF_panel")
+
+[node name="HeroCards" type="HBoxContainer" parent="Root/BottomLeft"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+## ── BOTTOM CENTER (barre d'actions) ──────────────────────────────────────
+[node name="BottomCenter" type="PanelContainer" parent="Root"]
+visible = false
+anchor_left = 0.25
+anchor_top = 1.0
+anchor_right = 0.75
+anchor_bottom = 1.0
+offset_top = -118.0
+offset_bottom = -8.0
+theme_override_styles/panel = SubResource("SF_panel")
+
+[node name="VBox" type="VBoxContainer" parent="Root/BottomCenter"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ActionsHeader" type="Label" parent="Root/BottomCenter/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.70, 0.75, 0.92)
+text = "Actions"
+
+[node name="ActionsRow" type="HBoxContainer" parent="Root/BottomCenter/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+## Slot Comp 1
+[node name="SlotComp1" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="Box" type="PanelContainer" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp1"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 60)
+theme_override_styles/panel = SubResource("SF_slot_skill")
+
+[node name="Inner" type="Control" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp1/Box"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Overlay" type="ColorRect" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp1/Box/Inner"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+color = Color(0.0, 0.0, 0.0, 0.72)
+
+[node name="CdLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp1/Box/Inner"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+text = "0s"
+
+[node name="KeyNum" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp1/Box/Inner"]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -14.0
+offset_right = -2.0
+offset_top = 2.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(0.80, 0.85, 1.0)
+text = "1"
+
+[node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp1"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+text = "Comp. 1"
+
+## Slot Comp 2
+[node name="SlotComp2" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="Box" type="PanelContainer" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp2"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 60)
+theme_override_styles/panel = SubResource("SF_slot_skill")
+
+[node name="Inner" type="Control" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp2/Box"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Overlay" type="ColorRect" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp2/Box/Inner"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+color = Color(0.0, 0.0, 0.0, 0.72)
+
+[node name="CdLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp2/Box/Inner"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+text = "0s"
+
+[node name="KeyNum" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp2/Box/Inner"]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -14.0
+offset_right = -2.0
+offset_top = 2.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(0.80, 0.85, 1.0)
+text = "2"
+
+[node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp2"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+text = "Comp. 2"
+
+## Slot Comp 3
+[node name="SlotComp3" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="Box" type="PanelContainer" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp3"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 60)
+theme_override_styles/panel = SubResource("SF_slot_skill")
+
+[node name="Inner" type="Control" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp3/Box"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Overlay" type="ColorRect" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp3/Box/Inner"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+color = Color(0.0, 0.0, 0.0, 0.72)
+
+[node name="CdLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp3/Box/Inner"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+text = "0s"
+
+[node name="KeyNum" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp3/Box/Inner"]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -14.0
+offset_right = -2.0
+offset_top = 2.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(0.80, 0.85, 1.0)
+text = "3"
+
+[node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp3"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+text = "Comp. 3"
+
+## Slot Comp 4
+[node name="SlotComp4" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="Box" type="PanelContainer" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp4"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 60)
+theme_override_styles/panel = SubResource("SF_slot_skill")
+
+[node name="Inner" type="Control" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp4/Box"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Overlay" type="ColorRect" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp4/Box/Inner"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+color = Color(0.0, 0.0, 0.0, 0.72)
+
+[node name="CdLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp4/Box/Inner"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+text = "0s"
+
+[node name="KeyNum" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp4/Box/Inner"]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -14.0
+offset_right = -2.0
+offset_top = 2.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(0.80, 0.85, 1.0)
+text = "4"
+
+[node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotComp4"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+text = "Comp. 4"
+
+## Séparateur visuel
+[node name="Separator" type="Control" parent="Root/BottomCenter/VBox/ActionsRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(8, 0)
+
+## Slot Objet 1
+[node name="SlotObj1" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="Box" type="PanelContainer" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj1"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 60)
+theme_override_styles/panel = SubResource("SF_slot_obj")
+
+[node name="Inner" type="Control" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj1/Box"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Overlay" type="ColorRect" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj1/Box/Inner"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+color = Color(0.0, 0.0, 0.0, 0.72)
+
+[node name="CdLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj1/Box/Inner"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+text = "0s"
+
+[node name="CountBadge" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj1/Box/Inner"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -14.0
+offset_right = 28.0
+offset_bottom = -2.0
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.85, 1.0, 0.85)
+text = "×0"
+
+[node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj1"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+text = "Objet 1"
+
+## Slot Objet 2
+[node name="SlotObj2" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="Box" type="PanelContainer" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj2"]
+layout_mode = 2
+custom_minimum_size = Vector2(60, 60)
+theme_override_styles/panel = SubResource("SF_slot_obj")
+
+[node name="Inner" type="Control" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj2/Box"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Overlay" type="ColorRect" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj2/Box/Inner"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+color = Color(0.0, 0.0, 0.0, 0.72)
+
+[node name="CdLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj2/Box/Inner"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0, 0.88, 0.30)
+text = "0s"
+
+[node name="CountBadge" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj2/Box/Inner"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -14.0
+offset_right = 28.0
+offset_bottom = -2.0
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.85, 1.0, 0.85)
+text = "×0"
+
+[node name="SlotLabel" type="Label" parent="Root/BottomCenter/VBox/ActionsRow/SlotObj2"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.62, 0.68, 0.80)
+text = "Objet 2"
+
+## ── END PANEL (caché) ──────────────────────────────────────────────────────
+[node name="EndPanel" type="PanelContainer" parent="Root"]
+visible = false
+anchor_left = 0.25
+anchor_top = 0.20
+anchor_right = 0.75
+anchor_bottom = 0.80
+theme_override_styles/panel = SubResource("SF_panel")

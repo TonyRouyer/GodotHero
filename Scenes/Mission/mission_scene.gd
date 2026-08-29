@@ -6,6 +6,7 @@ extends Node2D
 
 const WOOD1_SCENE : String = "res://Scenes/Mission/Environments/Wood1/Wood1Scene.tscn"
 const GUILD_SCENE : String = "res://Scenes/Guild/GuildScene.tscn"
+const HUD_SCENE   : String = "res://Scenes/Mission/CombatHUD.tscn"
 
 var _mission_data    : Dictionary = {}
 var _hero_ids        : Array      = []
@@ -30,7 +31,8 @@ func _ready() -> void:
 	_player_hero_id = pending.get("player_hero_id", -1)
 
 	## HUD
-	_hud = CombatHUD.new()
+	var hud_packed : PackedScene = load(HUD_SCENE)
+	_hud = hud_packed.instantiate() as CombatHUD
 	_hud.name = "CombatHUD"
 	add_child(_hud)
 	_hud.return_pressed.connect(_on_return_pressed)
@@ -81,11 +83,15 @@ func _ready() -> void:
 			func(node: Node2D, sid: String, cd: float) -> void:
 				_hud.update_skill_cooldown(node, sid, cd)
 		)
-		_hud.add_hero_bar(hero_node, hero_data)
+		_hud.add_hero_card(hero_node, hero_data, is_player)
 		_heroes_alive += 1
 		offset_x      += 22.0
 		if is_player:
 			player_node = hero_node
+
+	## Mode full-IA : affiche les infos mission dans le HUD
+	if _player_hero_id == -1:
+		_hud.show_mission_info(_mission_data.get("name", "Mission"))
 
 	## Caméra — suit le joueur ou se centre sur le spawn pour l'IA
 	_camera = Camera2D.new()
