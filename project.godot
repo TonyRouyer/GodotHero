@@ -8,19 +8,51 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Hero"
-run/main_scene="res://Scenes/Main.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+run/main_scene="uid://h5m2qm03f5nx"
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameData="*res://Scenes/Divers/game_data.gd"
+GameConfig="*res://Autoloads/GameConfig.gd"
+EventBus="*res://Autoloads/EventBus.gd"
+GameData="*res://Autoloads/GameData.gd"
+UIState="*res://Autoloads/UIState.gd"
+WorldContext="*res://Autoloads/WorldContext.gd"
+ObjectFinder="*res://Autoloads/ObjectFinder.gd"
+TimeManager="*res://Autoloads/TimeManager.gd"
+SaveManager="*res://Autoloads/Manager/SaveManager.gd"
+SceneManager="*res://Autoloads/Manager/SceneManager.gd"
+SettingsManager="*res://Autoloads/Manager/SettingsManager.gd"
+AudioManager="*res://Autoloads/Manager/AudioManager.gd"
+HeroManager="*res://Autoloads/Manager/HeroManager.gd"
+ItemRegistry="*res://Autoloads/Registry/ItemRegistery.gd"
+EquipmentLibrary="*res://Autoloads/Registry/EquipmentLibrary.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
-TimeManager="*res://Scenes/Divers/TimeManager/time_manager.gd"
-TilePositions="*res://Ressources/tile_positions.gd"
+ConstructionManager="*res://Autoloads/Manager/ConstructionManager.gd"
+RoomManager="*res://Autoloads/Manager/RoomManager.gd"
+HeroClassRegistry="*res://Autoloads/Registry/HeroClassRegistry.gd"
+SkillLibrary="*res://Autoloads/Registry/SkillLibrary.gd"
+MobLibrary="*res://Autoloads/Registry/MobLibrary.gd"
+TraitLibrary="*res://Autoloads/Registry/TraitLibrary.gd"
+MaterialLibrary="*res://Autoloads/Registry/MaterialLibrary.gd"
+HeroGenerator="*res://Autoloads/Generator/HeroGenerator.gd"
+RecruitManager="*res://Autoloads/Manager/RecruitManager.gd"
+MissionManager="*res://Autoloads/Manager/MissionManager.gd"
+GuildInventoryManager="*res://Autoloads/Manager/GuildInventoryManager.gd"
+ResearchManager="*res://Autoloads/Manager/ResearchManager.gd"
+CraftManager="*res://Autoloads/Manager/CraftManager.gd"
+EnchantmentLibrary="*res://Autoloads/Registry/EnchantmentLibrary.gd"
+DishLibrary="*res://Autoloads/Registry/DishLibrary.gd"
+CropLibrary="*res://Autoloads/Registry/CropLibrary.gd"
+FarmingManager="*res://Autoloads/Manager/FarmingManager.gd"
 
 [debug]
 
@@ -36,7 +68,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/modular_sprite_animation_factory/plugin.cfg")
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
 [filesystem]
 
@@ -92,11 +124,13 @@ camera_move_right={
 camera_zoom_out={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(245, 20),"global_position":Vector2(249, 61),"factor":1.0,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194322,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 camera_zoom_in={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(102, 18),"global_position":Vector2(106, 59),"factor":1.0,"button_index":4,"canceled":false,"pressed":true,"double_click":false,"script":null)
+, null, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194320,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 camera_pan={
@@ -114,6 +148,30 @@ rotate={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
 ]
 }
+space={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+one={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":38,"location":0,"echo":false,"script":null)
+]
+}
+two={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":50,"key_label":0,"unicode":233,"location":0,"echo":false,"script":null)
+]
+}
+three={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":34,"location":0,"echo":false,"script":null)
+]
+}
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://Locales/translations.en.translation", "res://Locales/translations.fr.translation")
 
 [navigation]
 
