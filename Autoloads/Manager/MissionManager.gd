@@ -394,7 +394,7 @@ func resolve_playable_mission(hero_ids: Array, success: bool, gold: int, rep: in
 		hdata.mission_return_hour = -1
 
 		var hnode : Node = HeroManager.get_hero_node(hid)
-		if hnode:
+		if is_instance_valid(hnode):
 			hnode.visible = true
 			if hnode.has_method("unfreeze_movement"):
 				hnode.unfreeze_movement()

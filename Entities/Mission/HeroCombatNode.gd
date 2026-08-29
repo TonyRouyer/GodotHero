@@ -36,6 +36,7 @@ var _skill_cooldowns : Dictionary = {}
 var _skill_index : int = 0
 ## Buffs de stat actifs en combat [{ "stat", "value", "timer" }]
 var _combat_buffs : Array = []
+var _mouse_arrow : Polygon2D = null
 ## Potion de résurrection : déclenche une fois si equipped
 var _res_potion_ready : bool = false
 
@@ -101,6 +102,16 @@ func setup(p_hero_data: HeroData, enemies_container: Node2D, player_controlled: 
 	vis.add_theme_font_size_override("font_size", 11)
 	vis.add_theme_color_override("font_color", Color(0.5, 0.85, 1.0))
 	add_child(vis)
+
+	## Flèche directionnelle souris (joueur uniquement)
+	if player_controlled:
+		_mouse_arrow = Polygon2D.new()
+		_mouse_arrow.polygon = PackedVector2Array([
+			Vector2(20, 0), Vector2(13, -4), Vector2(13, 4)
+		])
+		_mouse_arrow.color = Color(1.0, 0.95, 0.1, 0.85)
+		_mouse_arrow.z_index = 10
+		add_child(_mouse_arrow)
 
 
 func get_hp()     -> float: return _hp
@@ -177,12 +188,18 @@ func _physics_process(delta: float) -> void:
 
 func _process_player() -> void:
 	var dir := Vector2.ZERO
-	if Input.is_action_pressed("ui_right"): dir.x += 1
-	if Input.is_action_pressed("ui_left"):  dir.x -= 1
-	if Input.is_action_pressed("ui_down"):  dir.y += 1
-	if Input.is_action_pressed("ui_up"):    dir.y -= 1
+	if Input.is_action_pressed("camera_move_right"): dir.x += 1
+	if Input.is_action_pressed("camera_move_left"):  dir.x -= 1
+	if Input.is_action_pressed("camera_move_down"):  dir.y += 1
+	if Input.is_action_pressed("camera_move_up"):    dir.y -= 1
 	velocity = dir.normalized() * CHASE_SPEED
 	move_and_slide()
+
+	## Flèche souris
+	if _mouse_arrow != null:
+		var mouse_dir := get_global_mouse_position() - global_position
+		if mouse_dir.length_squared() > 1.0:
+			_mouse_arrow.rotation = mouse_dir.angle()
 
 	if _target == null:
 		return
@@ -306,7 +323,7 @@ func _execute_skill(sdata: Dictionary) -> void:
 	elif moral > 20.0: moral_mult = 0.80
 	else:              moral_mult = 0.75
 
-	var label : String = sdata.get("label", "Compétence")
+	var _label : String = sdata.get("label", "Compétence")
 	var class_id : String = sdata.get("class_id", "")
 
 	## Logique par classe / nom de skill
@@ -462,3 +479,35 @@ func _tick_status_effects(delta: float) -> void:
 			to_remove.append(eff)
 	for eff in to_remove:
 		_status_effects.erase(eff)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not is_player_controlled or _dead:
+		return
+	if event is InputEventMouseButton \
+			and event.button_index == MOUSE_BUTTON_LEFT \
+			and event.pressed:
+		_player_click_attack()
+
+
+func _player_click_attack() -> void:
+	if _enemies_container == null:
+		return
+	## Cible l'ennemi le plus proche du curseur souris
+	var mouse_pos := get_global_mouse_position()
+	var nearest   : Node2D = null
+	var best_dist : float  = INF
+	for enemy in _enemies_container.get_children():
+		if not enemy.has_method("is_dead") or enemy.is_dead():
+			continue
+		var d := mouse_pos.distance_to(enemy.global_position)
+		if d < best_dist:
+			best_dist = d
+			nearest   = enemy
+	if nearest == null:
+		return
+	_target = nearest
+	var dist := global_position.distance_to(nearest.global_position)
+	if dist <= ATTACK_RANGE and _atk_timer <= 0.0:
+		_do_attack()
+		_atk_timer = ATTACK_CD

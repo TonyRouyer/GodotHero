@@ -90,11 +90,16 @@ func _ready() -> void:
 	## Caméra — suit le joueur ou se centre sur le spawn pour l'IA
 	_camera = Camera2D.new()
 	_camera.zoom = Vector2(2.0, 2.0)
+	## Limites : empêche la caméra de sortir de la carte Wood1 (40×30 tiles × 16 px)
+	_camera.limit_left   = 0
+	_camera.limit_top    = 0
+	_camera.limit_right  = 640
+	_camera.limit_bottom = 480
 	if player_node != null:
 		player_node.add_child(_camera)
 	else:
-		_camera.global_position = spawn_pos
 		add_child(_camera)
+		_camera.global_position = spawn_pos
 
 	## Connecter les signaux des mobs (placés par setup_for_mission)
 	_mob_count = 0
