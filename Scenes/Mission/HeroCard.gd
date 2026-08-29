@@ -14,7 +14,7 @@ extends PanelContainer
 
 func setup(hero_data: HeroData, is_player: bool) -> void:
 	_name_lbl.text  = hero_data.hero_name
-	var cls : Dictionary = HeroClassRegistry.get_class(hero_data.hero_class)
+	var cls : Dictionary = HeroClassRegistry.get_class_by_id(hero_data.hero_class)
 	var cls_label : String = cls.get("label", hero_data.hero_class)
 	_class_lbl.text      = "%s · Lv %d" % [cls_label, hero_data.level]
 	_ai_badge.visible    = not is_player
