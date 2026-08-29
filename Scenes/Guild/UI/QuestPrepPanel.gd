@@ -537,12 +537,8 @@ func _on_start_pressed() -> void:
 	if _party.is_empty() or _mission.is_empty():
 		return
 
-	if _player_hero_id >= 0:
-		## Mode jouable : prépare la mission jouable avec toute la party
-		MissionManager.start_playable_mission(_mission, _party, _player_hero_id)
-	else:
-		## Mode auto-resolve : assigne chaque héros
-		MissionManager.start_party_auto(_mission, _party)
+	## Toujours charger la scène de combat (jouable ou spectateur full-AI)
+	MissionManager.start_playable_mission(_mission, _party, _player_hero_id)
 
 	_close()
 

@@ -228,6 +228,34 @@ func _process_ai() -> void:
 				_atk_timer = ATTACK_CD
 
 
+func show_hit_flash() -> void:
+	var tw := create_tween()
+	tw.tween_property(self, "modulate", Color(2.0, 0.30, 0.30), 0.06)
+	tw.tween_property(self, "modulate", Color.WHITE, 0.14)
+
+
+func _show_attack_flash() -> void:
+	var tw := create_tween()
+	tw.tween_property(self, "modulate", Color(2.0, 2.0, 0.40), 0.05)
+	tw.tween_property(self, "modulate", Color.WHITE, 0.10)
+
+
+func _spawn_damage_number(amount: float, is_crit: bool) -> void:
+	var lbl := Label.new()
+	lbl.text = ("★%d" if is_crit else "-%d") % int(amount)
+	lbl.add_theme_font_size_override("font_size", is_crit ? 14 : 11)
+	lbl.add_theme_color_override("font_color",
+		Color(1.0, 0.85, 0.05) if is_crit else Color(1.0, 0.35, 0.15)
+	)
+	lbl.position = Vector2(randf_range(-6.0, 6.0), -24.0)
+	lbl.z_index  = 20
+	add_child(lbl)
+	var tw := create_tween().set_parallel(true)
+	tw.tween_property(lbl, "position", lbl.position + Vector2(0, -20), 0.75)
+	tw.tween_property(lbl, "modulate:a", 0.0, 0.75)
+	tw.chain().tween_callback(lbl.queue_free)
+
+
 func _do_attack() -> void:
 	if _target == null or not _target.has_method("take_damage"):
 		return
@@ -251,8 +279,14 @@ func _do_attack() -> void:
 	var crit_chance : float = (hero_data.luck + _get_buff_bonus("luck")) * 0.005 + (hero_data.get_equipment_bonus("crit") + _get_combat_stat_buff("crit")) * 0.01 + _passive_crit_bonus
 	var crit_mult   : float = 2.0 if randf() < crit_chance else 1.0
 
-	var dmg : float = maxf(1.0, d_base * _passive_atk_mult * moral_mult * crit_mult)
+	var is_crit : bool  = crit_mult > 1.0
+	var dmg     : float = maxf(1.0, d_base * _passive_atk_mult * moral_mult * crit_mult)
+	_show_attack_flash()
 	_target.take_damage(dmg)
+	if _target.has_method("show_hit_flash"):
+		_target.show_hit_flash()
+	if _target.has_method("_spawn_damage_number"):
+		_target._spawn_damage_number(dmg, is_crit)
 
 
 ## Applique les bonus des compétences passives apprises.

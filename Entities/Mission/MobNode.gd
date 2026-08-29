@@ -87,6 +87,28 @@ func take_damage(amount: float, effect: Variant = null) -> void:
 		_die()
 
 
+func show_hit_flash() -> void:
+	var tw := create_tween()
+	tw.tween_property(self, "modulate", Color(2.0, 0.30, 0.30), 0.06)
+	tw.tween_property(self, "modulate", Color.WHITE, 0.14)
+
+
+func _spawn_damage_number(amount: float, is_crit: bool) -> void:
+	var lbl := Label.new()
+	lbl.text = ("★%d" if is_crit else "-%d") % int(amount)
+	lbl.add_theme_font_size_override("font_size", is_crit ? 14 : 11)
+	lbl.add_theme_color_override("font_color",
+		Color(1.0, 0.85, 0.05) if is_crit else Color(1.0, 0.40, 0.20)
+	)
+	lbl.position = Vector2(randf_range(-6.0, 6.0), -24.0)
+	lbl.z_index  = 20
+	add_child(lbl)
+	var tw := create_tween().set_parallel(true)
+	tw.tween_property(lbl, "position", lbl.position + Vector2(0, -20), 0.75)
+	tw.tween_property(lbl, "modulate:a", 0.0, 0.75)
+	tw.chain().tween_callback(lbl.queue_free)
+
+
 func _die() -> void:
 	_state   = State.DEAD
 	velocity = Vector2.ZERO
@@ -160,9 +182,13 @@ func _do_attack() -> void:
 	var power    : float      = atk_data.get("power", 5.0)
 	var stats    : Dictionary = mob_data.get("stats", {})
 	var str_val  : float      = stats.get("strength", 5.0)
-	var dmg      : float      = sqrt(str_val) + power
-	var effect   : Variant    = atk_data.get("effect", null)
+	var dmg    : float   = sqrt(str_val) + power
+	var effect : Variant = atk_data.get("effect", null)
 	_target.take_damage(dmg, effect)
+	if _target.has_method("show_hit_flash"):
+		_target.show_hit_flash()
+	if _target.has_method("_spawn_damage_number"):
+		_target._spawn_damage_number(dmg, false)
 
 
 func _apply_separation(delta: float) -> void:
