@@ -243,7 +243,7 @@ func _show_attack_flash() -> void:
 func _spawn_damage_number(amount: float, is_crit: bool) -> void:
 	var lbl := Label.new()
 	lbl.text = ("★%d" if is_crit else "-%d") % int(amount)
-	lbl.add_theme_font_size_override("font_size", is_crit ? 14 : 11)
+	lbl.add_theme_font_size_override("font_size", 14 if is_crit else 11)
 	lbl.add_theme_color_override("font_color",
 		Color(1.0, 0.85, 0.05) if is_crit else Color(1.0, 0.35, 0.15)
 	)
