@@ -22,7 +22,7 @@ var _player_node : Node = null
 @onready var _bottom_center : PanelContainer  = $Root/BottomCenter
 @onready var _actions_hdr   : Label           = $Root/BottomCenter/VBox/ActionsHeader
 @onready var _log_scroll    : ScrollContainer = $Root/BottomRight/VBox/LogScroll
-@onready var _log_container : VBoxContainer   = $Root/BottomRight/VBox/LogContainer
+@onready var _log_container : VBoxContainer   = $Root/BottomRight/VBox/LogScroll/LogContainer
 @onready var _end_panel     : PanelContainer  = $Root/EndPanel
 
 ## Slots d'action indexés
