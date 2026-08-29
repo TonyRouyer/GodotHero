@@ -51,7 +51,6 @@ script = ExtResource("1_script")
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-## ── TOP LEFT (info mission, full-AI only) ──────────────────────────────────
 [node name="TopLeft" type="PanelContainer" parent="Root"]
 visible = false
 anchor_left = 0.0
@@ -80,7 +79,6 @@ theme_override_font_sizes/font_size = 10
 theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Ennemis restants : 0"
 
-## ── TOP RIGHT (contrôles) ──────────────────────────────────────────────────
 [node name="TopRight" type="HBoxContainer" parent="Root"]
 anchor_left = 1.0
 anchor_top = 0.0
@@ -110,7 +108,6 @@ custom_minimum_size = Vector2(44, 44)
 text = "⏩"
 theme_override_font_sizes/font_size = 16
 
-## ── BOTTOM RIGHT (journal de combat) ──────────────────────────────────────
 [node name="BottomRight" type="PanelContainer" parent="Root"]
 anchor_left = 0.72
 anchor_top = 0.08
@@ -139,7 +136,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
-## ── BOTTOM LEFT (cartes héros) ────────────────────────────────────────────
 [node name="BottomLeft" type="PanelContainer" parent="Root"]
 anchor_left = 0.0
 anchor_top = 1.0
@@ -155,7 +151,6 @@ theme_override_styles/panel = SubResource("SF_panel")
 layout_mode = 2
 theme_override_constants/separation = 8
 
-## ── BOTTOM CENTER (barre d'actions) ──────────────────────────────────────
 [node name="BottomCenter" type="PanelContainer" parent="Root"]
 visible = false
 anchor_left = 0.25
@@ -180,7 +175,6 @@ text = "Actions"
 layout_mode = 2
 theme_override_constants/separation = 6
 
-## Slot Comp 1
 [node name="SlotComp1" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -237,7 +231,6 @@ theme_override_font_sizes/font_size = 9
 theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Comp. 1"
 
-## Slot Comp 2
 [node name="SlotComp2" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -294,7 +287,6 @@ theme_override_font_sizes/font_size = 9
 theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Comp. 2"
 
-## Slot Comp 3
 [node name="SlotComp3" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -351,7 +343,6 @@ theme_override_font_sizes/font_size = 9
 theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Comp. 3"
 
-## Slot Comp 4
 [node name="SlotComp4" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -408,12 +399,10 @@ theme_override_font_sizes/font_size = 9
 theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Comp. 4"
 
-## Séparateur visuel
 [node name="Separator" type="Control" parent="Root/BottomCenter/VBox/ActionsRow"]
 layout_mode = 2
 custom_minimum_size = Vector2(8, 0)
 
-## Slot Objet 1
 [node name="SlotObj1" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -470,7 +459,6 @@ theme_override_font_sizes/font_size = 9
 theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Objet 1"
 
-## Slot Objet 2
 [node name="SlotObj2" type="VBoxContainer" parent="Root/BottomCenter/VBox/ActionsRow"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -527,7 +515,6 @@ theme_override_font_sizes/font_size = 9
 theme_override_colors/font_color = Color(0.62, 0.68, 0.80, 1.0)
 text = "Objet 2"
 
-## ── END PANEL (caché) ──────────────────────────────────────────────────────
 [node name="EndPanel" type="PanelContainer" parent="Root"]
 visible = false
 anchor_left = 0.25
