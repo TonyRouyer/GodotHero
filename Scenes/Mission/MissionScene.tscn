@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dv24351mu350w"]
+
+[ext_resource type="Script" uid="uid://cci0er21lclf1" path="res://Scenes/Mission/mission_scene.gd" id="1_m8l77"]
+
+[node name="MissionScene" type="Node2D" unique_id=1977058448]
+script = ExtResource("1_m8l77")
+
+[node name="Heroes" type="Node2D" parent="." unique_id=1063391422]
+
+[node name="MissionMap" type="Node2D" parent="." unique_id=75964189]
+
+[node name="UI_mission" type="Control" parent="." unique_id=689669880]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI_mission" unique_id=530655984]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Mission
+"

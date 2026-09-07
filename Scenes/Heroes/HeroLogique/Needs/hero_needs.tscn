@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpq1qshlavpl1"]
-
-[ext_resource type="Script" uid="uid://ciojepiesysmp" path="res://Scenes/Heroes/HeroLogique/Needs/hero_needs.gd" id="1_5njsb"]
-
-[node name="HeroNeeds" type="Node2D"]
-script = ExtResource("1_5njsb")

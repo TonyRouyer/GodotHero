@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cbdayi0lplsxs"]
+
+[ext_resource type="Script" uid="uid://d0saxb7ae5odm" path="res://Scenes/Mission/Environments/Wood1/wood1_scene.gd" id="1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ZoneA"]
+size = Vector2(256, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ZoneB"]
+size = Vector2(128, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ZoneC"]
+size = Vector2(128, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_Loot"]
+size = Vector2(80, 80)
+
+[node name="Wood1Scene" type="Node2D" unique_id=1317129298]
+script = ExtResource("1")
+
+[node name="MissionMap" type="Node2D" parent="." unique_id=440839330]
+
+[node name="Heroes" type="Node2D" parent="." unique_id=850333388]
+
+[node name="Enemies" type="Node2D" parent="." unique_id=101114588]
+
+[node name="Loot" type="Node2D" parent="." unique_id=322287054]
+
+[node name="TeamSpawn" type="Marker2D" parent="." unique_id=1731544731]
+position = Vector2(320, 448)
+
+[node name="MobZones" type="Node2D" parent="." unique_id=2106320891]
+
+[node name="ZoneA" type="Area2D" parent="MobZones" unique_id=855668755]
+position = Vector2(320, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobZones/ZoneA" unique_id=972458510]
+shape = SubResource("RectangleShape2D_ZoneA")
+
+[node name="ZoneB" type="Area2D" parent="MobZones" unique_id=137881118]
+position = Vector2(96, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobZones/ZoneB" unique_id=1017217323]
+shape = SubResource("RectangleShape2D_ZoneB")
+
+[node name="ZoneC" type="Area2D" parent="MobZones" unique_id=635106240]
+position = Vector2(528, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobZones/ZoneC" unique_id=90511279]
+shape = SubResource("RectangleShape2D_ZoneC")
+
+[node name="LootZones" type="Node2D" parent="." unique_id=1480173410]
+
+[node name="ZoneLoot" type="Area2D" parent="LootZones" unique_id=452131520]
+position = Vector2(320, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LootZones/ZoneLoot" unique_id=127367134]
+shape = SubResource("RectangleShape2D_Loot")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2014383822]
+
+[node name="MissionLabel" type="Label" parent="UI" unique_id=693679989]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 300.0
+offset_bottom = 32.0
+text = "Mission"

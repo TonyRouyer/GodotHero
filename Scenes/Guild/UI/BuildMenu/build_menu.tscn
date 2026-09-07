@@ -1,0 +1,154 @@
+[gd_scene load_steps=2 format=3 uid="uid://nodr3j54w2el"]
+
+[ext_resource type="Script" uid="uid://mm4l08bg3ken" path="res://Scenes/Guild/UI/BuildMenu/build_menu.gd" id="1"]
+
+[node name="BuildMenu" type="PanelContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -215.0
+offset_right = -8.0
+offset_bottom = -55.0
+grow_vertical = 0
+script = ExtResource("1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LeftTabs" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(75, 0)
+theme_override_constants/separation = 4
+
+[node name="WallTabBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "Murs"
+
+[node name="FloorTabBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "Sols"
+
+[node name="ObjectTabBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "Objets"
+
+[node name="SupprTabBtn" type="Button" parent="MarginContainer/HBoxContainer/LeftTabs"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "Suppr."
+
+[node name="TabSpacer" type="Control" parent="MarginContainer/HBoxContainer/LeftTabs"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RightArea" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="HeaderRow" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightArea"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FilterLabel" type="Label" parent="MarginContainer/HBoxContainer/RightArea/HeaderRow"]
+layout_mode = 2
+vertical_alignment = 1
+text = "Filtre :"
+theme_override_font_sizes/font_size = 11
+
+[node name="FilterOption" type="OptionButton" parent="MarginContainer/HBoxContainer/RightArea/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+
+[node name="CloseBtn" type="Button" parent="MarginContainer/HBoxContainer/RightArea/HeaderRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(28, 0)
+text = "✕"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/RightArea"]
+layout_mode = 2
+
+[node name="ItemScroll" type="ScrollContainer" parent="MarginContainer/HBoxContainer/RightArea"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 1
+vertical_scroll_mode = 0
+
+[node name="ItemGrid" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightArea/ItemScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ActionsContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightArea"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ActionsLabel" type="Label" parent="MarginContainer/HBoxContainer/RightArea/ActionsContainer"]
+layout_mode = 2
+text = "Sélectionner le mode de suppression :"
+theme_override_font_sizes/font_size = 11
+
+[node name="DestroyAllBtn" type="Button" parent="MarginContainer/HBoxContainer/RightArea/ActionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tout supprimer"
+
+[node name="DestroyWallBtn" type="Button" parent="MarginContainer/HBoxContainer/RightArea/ActionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Supprimer murs"
+
+[node name="DestroyFloorBtn" type="Button" parent="MarginContainer/HBoxContainer/RightArea/ActionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Supprimer sols"
+
+[node name="DestroyObjectBtn" type="Button" parent="MarginContainer/HBoxContainer/RightArea/ActionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Supprimer objets"
+
+[node name="ActionsSpacer" type="Control" parent="MarginContainer/HBoxContainer/RightArea/ActionsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftTabs/WallTabBtn" to="." method="_on_walls_tab_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftTabs/FloorTabBtn" to="." method="_on_floors_tab_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftTabs/ObjectTabBtn" to="." method="_on_objects_tab_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftTabs/SupprTabBtn" to="." method="_on_actions_tab_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightArea/HeaderRow/CloseBtn" to="." method="_on_close_pressed"]
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/RightArea/HeaderRow/FilterOption" to="." method="_on_filter_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightArea/ActionsContainer/DestroyAllBtn" to="." method="_on_destroy_all_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightArea/ActionsContainer/DestroyWallBtn" to="." method="_on_destroy_wall_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightArea/ActionsContainer/DestroyFloorBtn" to="." method="_on_destroy_floor_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightArea/ActionsContainer/DestroyObjectBtn" to="." method="_on_destroy_object_pressed"]

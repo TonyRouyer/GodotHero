@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://obj_spinning_wheel_1"]
+
+[ext_resource type="Script" uid="uid://db7x8ap6l5pmh" path="res://Systems/Construction/ObjectScene/GuildObject.gd" id="1"]
+
+[sub_resource type="RectangleShape2D" id="col_shape"]
+size = Vector2(16, 32)
+
+[node name="spinning_wheel" type="Node2D"]
+script = ExtResource("1")
+object_id = "spinning_wheel"
+max_users = 1
+effect = "none"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 16)
+shape = SubResource("col_shape")
+
+[node name="Rotations" type="Node2D" parent="."]
+
+[node name="Rot0" type="Node2D" parent="Rotations"]
+metadata/col_size = Vector2(16, 32)
+metadata/col_offset = Vector2(8, 16)
+
+[node name="UsePos0" type="Marker2D" parent="Rotations/Rot0"]
+position = Vector2(8, 24)
+
+[node name="Rot1" type="Node2D" parent="Rotations"]
+visible = false
+metadata/col_size = Vector2(16, 32)
+metadata/col_offset = Vector2(8, 16)
+
+[node name="UsePos0" type="Marker2D" parent="Rotations/Rot1"]
+position = Vector2(8, 24)
+
+[node name="Rot2" type="Node2D" parent="Rotations"]
+visible = false
+metadata/col_size = Vector2(16, 32)
+metadata/col_offset = Vector2(8, 16)
+
+[node name="UsePos0" type="Marker2D" parent="Rotations/Rot2"]
+position = Vector2(8, 8)
+
+[node name="Rot3" type="Node2D" parent="Rotations"]
+visible = false
+metadata/col_size = Vector2(16, 32)
+metadata/col_offset = Vector2(8, 16)
+
+[node name="UsePos0" type="Marker2D" parent="Rotations/Rot3"]
+position = Vector2(8, 8)

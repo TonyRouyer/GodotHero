@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ResearchData" load_steps=2 format=3 uid="uid://de6htepf05mlb"]
+
+[ext_resource type="Script" uid="uid://c56o0wpkqao85" path="res://Scenes/Old/Research/research_data.gd" id="1_l1k2c"]
+
+[resource]
+script = ExtResource("1_l1k2c")
+research_name = ""
+serialised_name = ""
+research_description = ""
+research_level = 0
+research_column = 0.0
+research_prerequsites = Array[ExtResource("1_l1k2c")]([])
+research_cost = 0
+research_duration = 0
+metadata/_custom_type_script = "uid://c56o0wpkqao85"

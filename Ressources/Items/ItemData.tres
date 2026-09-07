@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b477i8hi7vfb1"]
+
+[ext_resource type="Script" uid="uid://d06d18kbkcavh" path="res://Scenes/Old/Inventory/item_data.gd" id="1_30jj5"]
+
+[resource]
+script = ExtResource("1_30jj5")
+item_type = 0
+item_name = ""
+item_name_serialised = ""
+item_description = ""
+item_stackable = false
+item_max_stack = 0
+item_attack = 0
+item_defense = 0
+metadata/_custom_type_script = "uid://d06d18kbkcavh"

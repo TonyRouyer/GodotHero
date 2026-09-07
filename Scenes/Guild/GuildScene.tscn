@@ -1,0 +1,1055 @@
+[gd_scene load_steps=33 format=4 uid="uid://chgte1x0qfukx"]
+
+[ext_resource type="Script" uid="uid://ctflght8iotiq" path="res://Scenes/Guild/guild_scene.gd" id="1"]
+[ext_resource type="Script" uid="uid://bqfvbeo4gfn3t" path="res://Scenes/Guild/guild_camera.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://c2nv24dbh81xb" path="res://Assets/Tiles/dirt_floor.png" id="2_u7u3w"]
+[ext_resource type="Script" uid="uid://ejbbku3a02m6" path="res://Scenes/Guild/UI/guild_hud.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://vmu8hasppen4" path="res://Assets/Tiles/grass_floor.png" id="3_1lff4"]
+[ext_resource type="PackedScene" uid="uid://cud4e7lfkbml6" path="res://Scenes/Menus/PauseMenu/PauseMenu.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://2iqtirn0awc8" path="res://Assets/Tiles/stone_floor.png" id="4_jv31k"]
+[ext_resource type="PackedScene" uid="uid://db7ny45fc286p" path="res://Scenes/Guild/UI/HeroPanel/hero_panel.tscn" id="5"]
+[ext_resource type="Texture2D" uid="uid://bpxwpb8b2aetn" path="res://Assets/Tiles/wood_floor.png" id="5_vj8mf"]
+[ext_resource type="PackedScene" uid="uid://nodr3j54w2el" path="res://Scenes/Guild/UI/BuildMenu/build_menu.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://c1if4py5rmvui" path="res://Assets/Tiles/wooden_wall.png" id="6_7aaa0"]
+[ext_resource type="Texture2D" uid="uid://byqhl8np4qhjq" path="res://Assets/Tiles/stone_wall.png" id="7_4356y"]
+[ext_resource type="Texture2D" uid="uid://bed2unon02ojy" path="res://Assets/Tiles/wooden_door.png" id="8_jv31k"]
+[ext_resource type="PackedScene" uid="uid://cjp0b0j8jjh1p" path="res://Systems/Construction/Construction.tscn" id="9_1lff4"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_puhqe"]
+vertices = PackedVector2Array(1892.96, 30.9688, 1889.03, 1059.01, 31.9766, 1060.98, 30.0078, 26.0234)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(20, 16, 1903, 21, 1899, 1069, 22, 1071)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1lff4"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kv7mg"]
+texture = ExtResource("2_u7u3w")
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+1:0/0 = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+2:0/0 = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+3:0/0 = 0
+3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+4:0/0 = 0
+4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+0:1/0 = 0
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+1:1/0 = 0
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+2:1/0 = 0
+2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+3:1/0 = 0
+3:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+4:1/0 = 0
+4:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+0:2/0 = 0
+0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+1:2/0 = 0
+1:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+2:2/0 = 0
+2:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+3:2/0 = 0
+3:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+4:2/0 = 0
+4:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1lff4")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jv31k"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vj8mf"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_naeom"]
+texture = ExtResource("3_1lff4")
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+1:0/0 = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+2:0/0 = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+3:0/0 = 0
+3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+4:0/0 = 0
+4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+5:0/0 = 0
+5:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+6:0/0 = 0
+6:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+7:0/0 = 0
+7:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+8:0/0 = 0
+8:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+9:0/0 = 0
+9:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+10:0/0 = 0
+10:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+11:0/0 = 0
+11:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+12:0/0 = 0
+12:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+13:0/0 = 0
+13:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+14:0/0 = 0
+14:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+15:0/0 = 0
+15:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+0:1/0 = 0
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+1:1/0 = 0
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+2:1/0 = 0
+2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+3:1/0 = 0
+3:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+4:1/0 = 0
+4:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+5:1/0 = 0
+5:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+6:1/0 = 0
+6:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+7:1/0 = 0
+7:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+8:1/0 = 0
+8:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+9:1/0 = 0
+9:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+10:1/0 = 0
+10:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+11:1/0 = 0
+11:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+12:1/0 = 0
+12:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+13:1/0 = 0
+13:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+14:1/0 = 0
+14:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+15:1/0 = 0
+15:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+0:2/0 = 0
+0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+1:2/0 = 0
+1:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+2:2/0 = 0
+2:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+3:2/0 = 0
+3:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+4:2/0 = 0
+4:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+5:2/0 = 0
+5:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+6:2/0 = 0
+6:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+7:2/0 = 0
+7:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+8:2/0 = 0
+8:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+9:2/0 = 0
+9:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+10:2/0 = 0
+10:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+11:2/0 = 0
+11:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+12:2/0 = 0
+12:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+13:2/0 = 0
+13:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+14:2/0 = 0
+14:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+15:2/0 = 0
+15:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+0:3/0 = 0
+0:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+1:3/0 = 0
+1:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+2:3/0 = 0
+2:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+3:3/0 = 0
+3:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+4:3/0 = 0
+4:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+5:3/0 = 0
+5:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+6:3/0 = 0
+6:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+7:3/0 = 0
+7:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+8:3/0 = 0
+8:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+9:3/0 = 0
+9:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+10:3/0 = 0
+10:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+11:3/0 = 0
+11:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+12:3/0 = 0
+12:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+13:3/0 = 0
+13:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+14:3/0 = 0
+14:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+15:3/0 = 0
+15:3/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+0:4/0 = 0
+0:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+1:4/0 = 0
+1:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+2:4/0 = 0
+2:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+3:4/0 = 0
+3:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+4:4/0 = 0
+4:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+5:4/0 = 0
+5:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+6:4/0 = 0
+6:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+7:4/0 = 0
+7:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+8:4/0 = 0
+8:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+9:4/0 = 0
+9:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+10:4/0 = 0
+10:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+11:4/0 = 0
+11:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+12:4/0 = 0
+12:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+13:4/0 = 0
+13:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+14:4/0 = 0
+14:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+15:4/0 = 0
+15:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+0:5/0 = 0
+0:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+1:5/0 = 0
+1:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+2:5/0 = 0
+2:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+3:5/0 = 0
+3:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+4:5/0 = 0
+4:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+5:5/0 = 0
+5:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+6:5/0 = 0
+6:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+7:5/0 = 0
+7:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+8:5/0 = 0
+8:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+9:5/0 = 0
+9:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+10:5/0 = 0
+10:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+11:5/0 = 0
+11:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+12:5/0 = 0
+12:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+13:5/0 = 0
+13:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+14:5/0 = 0
+14:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+15:5/0 = 0
+15:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+0:6/0 = 0
+0:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+1:6/0 = 0
+1:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+2:6/0 = 0
+2:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+3:6/0 = 0
+3:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+4:6/0 = 0
+4:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+5:6/0 = 0
+5:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+6:6/0 = 0
+6:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+7:6/0 = 0
+7:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+8:6/0 = 0
+8:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+9:6/0 = 0
+9:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+10:6/0 = 0
+10:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+11:6/0 = 0
+11:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+12:6/0 = 0
+12:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+13:6/0 = 0
+13:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+14:6/0 = 0
+14:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+15:6/0 = 0
+15:6/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+0:7/0 = 0
+0:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+1:7/0 = 0
+1:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+2:7/0 = 0
+2:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+3:7/0 = 0
+3:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+4:7/0 = 0
+4:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+5:7/0 = 0
+5:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+6:7/0 = 0
+6:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+7:7/0 = 0
+7:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+8:7/0 = 0
+8:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+9:7/0 = 0
+9:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+10:7/0 = 0
+10:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+11:7/0 = 0
+11:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+12:7/0 = 0
+12:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jv31k")
+13:7/0 = 0
+13:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+14:7/0 = 0
+14:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+15:7/0 = 0
+15:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj8mf")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7aaa0"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_txpu5"]
+texture = ExtResource("4_jv31k")
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7aaa0")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4356y"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0fx0w"]
+texture = ExtResource("5_vj8mf")
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4356y")
+1:0/0 = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4356y")
+2:0/0 = 0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4356y")
+
+[sub_resource type="TileSet" id="TileSet_umkae"]
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_kv7mg")
+sources/1 = SubResource("TileSetAtlasSource_naeom")
+sources/2 = SubResource("TileSetAtlasSource_txpu5")
+sources/3 = SubResource("TileSetAtlasSource_0fx0w")
+metadata/_better_terrain = {
+&"decoration": ["Decoration", Color(0.411765, 0.411765, 0.411765, 1), 3, [], {
+&"path": "res://addons/better-terrain/icons/Decoration.svg"
+}],
+&"terrains": [],
+&"version": "0.2"
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t87j1"]
+texture = ExtResource("7_4356y")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/metadata/_better_terrain = {
+4: [0, 1],
+&"type": 0
+}
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/metadata/_better_terrain = {
+0: [0, 1],
+4: [0, 1],
+&"type": 0
+}
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/metadata/_better_terrain = {
+0: [0, 1],
+4: [0, 1],
+8: [0, 1],
+&"type": 0
+}
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0/metadata/_better_terrain = {
+4: [0, 1],
+8: [0, 1],
+&"type": 0
+}
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0/metadata/_better_terrain = {
+4: [0, 1],
+12: [0, 1],
+&"type": 0
+}
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0/metadata/_better_terrain = {
+0: [0],
+4: [0, 1],
+12: [0, 1],
+&"type": 0
+}
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0/metadata/_better_terrain = {
+0: [0],
+4: [0, 1],
+8: [0],
+12: [0, 1],
+&"type": 0
+}
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0/metadata/_better_terrain = {
+4: [0, 1],
+8: [0],
+12: [0, 1],
+&"type": 0
+}
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0/metadata/_better_terrain = {
+12: [0, 1],
+&"type": 0
+}
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0/metadata/_better_terrain = {
+0: [0, 1],
+12: [0, 1],
+&"type": 0
+}
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0/metadata/_better_terrain = {
+0: [0, 1],
+8: [0, 1],
+12: [0, 1],
+&"type": 0
+}
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0/metadata/_better_terrain = {
+8: [0, 1],
+12: [0, 1],
+&"type": 0
+}
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0/metadata/_better_terrain = {
+&"type": 0
+}
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0/metadata/_better_terrain = {
+0: [0, 1],
+&"type": 0
+}
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0/metadata/_better_terrain = {
+0: [0, 1],
+8: [0, 1],
+&"type": 0
+}
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0/metadata/_better_terrain = {
+8: [0, 1],
+&"type": 0
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_saj76"]
+texture = ExtResource("6_7aaa0")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/metadata/_better_terrain = {
+4: [1, 0],
+&"type": 1
+}
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/metadata/_better_terrain = {
+0: [1, 0],
+4: [1, 0],
+&"type": 1
+}
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/metadata/_better_terrain = {
+0: [1, 0],
+4: [1, 0],
+8: [1, 0],
+&"type": 1
+}
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0/metadata/_better_terrain = {
+4: [1, 0],
+8: [1, 0],
+&"type": 1
+}
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0/metadata/_better_terrain = {
+4: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0/metadata/_better_terrain = {
+0: [0, 1],
+4: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0/metadata/_better_terrain = {
+0: [0, 1],
+4: [1, 0],
+8: [0, 1],
+12: [1, 0],
+&"type": 1
+}
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0/metadata/_better_terrain = {
+4: [1, 0],
+8: [0, 1],
+12: [1, 0],
+&"type": 1
+}
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0/metadata/_better_terrain = {
+12: [1, 0],
+&"type": 1
+}
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0/metadata/_better_terrain = {
+0: [1, 0],
+12: [0, 1],
+&"type": 1
+}
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0/metadata/_better_terrain = {
+0: [1, 0],
+8: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0/metadata/_better_terrain = {
+8: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0/metadata/_better_terrain = {
+&"type": 1
+}
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0/metadata/_better_terrain = {
+0: [1, 0],
+&"type": 1
+}
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0/metadata/_better_terrain = {
+0: [1, 0],
+8: [1, 0],
+&"type": 1
+}
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0/metadata/_better_terrain = {
+8: [1, 0],
+&"type": 1
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vj8mf"]
+texture = ExtResource("8_jv31k")
+0:0/0 = 0
+0:0/0/metadata/_better_terrain = {
+&"type": 2
+}
+
+[sub_resource type="TileSet" id="TileSet_lxujo"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
+sources/2 = SubResource("TileSetAtlasSource_vj8mf")
+sources/0 = SubResource("TileSetAtlasSource_t87j1")
+sources/1 = SubResource("TileSetAtlasSource_saj76")
+metadata/_better_terrain = {
+&"decoration": ["Decoration", Color(0.411765, 0.411765, 0.411765, 1), 3, [], {
+&"path": "res://addons/better-terrain/icons/Decoration.svg"
+}],
+&"terrains": [["stone_wall", Color(0.94107, 0.279506, 0.289937, 1), 0, [], {
+&"path": ""
+}], ["wood_wall", Color(0.0436794, 0.378605, 0.64445, 1), 0, [], {
+&"path": ""
+}], ["door", Color(0.397885, 0.717884, 0.0116807, 1), 0, [], {
+&"path": ""
+}]],
+&"version": "0.2"
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv31k"]
+texture = ExtResource("7_4356y")
+0:0/0 = 0
+0:0/0/metadata/_better_terrain = {
+4: [0, 1],
+&"type": 0
+}
+1:0/0 = 0
+1:0/0/metadata/_better_terrain = {
+0: [0, 1],
+4: [0, 1],
+&"type": 0
+}
+2:0/0 = 0
+2:0/0/metadata/_better_terrain = {
+0: [0, 1],
+4: [0, 1],
+8: [0, 1],
+&"type": 0
+}
+3:0/0 = 0
+3:0/0/metadata/_better_terrain = {
+4: [0, 1],
+8: [0, 1],
+&"type": 0
+}
+0:1/0 = 0
+0:1/0/metadata/_better_terrain = {
+4: [0, 1],
+12: [0, 1],
+&"type": 0
+}
+1:1/0 = 0
+1:1/0/metadata/_better_terrain = {
+0: [0],
+4: [0, 1],
+12: [0, 1],
+&"type": 0
+}
+2:1/0 = 0
+2:1/0/metadata/_better_terrain = {
+0: [0],
+4: [0, 1],
+8: [0],
+12: [0, 1],
+&"type": 0
+}
+3:1/0 = 0
+3:1/0/metadata/_better_terrain = {
+4: [0, 1],
+8: [0],
+12: [0, 1],
+&"type": 0
+}
+0:2/0 = 0
+0:2/0/metadata/_better_terrain = {
+12: [0, 1],
+&"type": 0
+}
+1:2/0 = 0
+1:2/0/metadata/_better_terrain = {
+0: [0, 1],
+12: [0, 1],
+&"type": 0
+}
+2:2/0 = 0
+2:2/0/metadata/_better_terrain = {
+0: [0, 1],
+8: [0, 1],
+12: [0, 1],
+&"type": 0
+}
+3:2/0 = 0
+3:2/0/metadata/_better_terrain = {
+8: [0, 1],
+12: [0, 1],
+&"type": 0
+}
+0:3/0 = 0
+0:3/0/metadata/_better_terrain = {
+&"type": 0
+}
+1:3/0 = 0
+1:3/0/metadata/_better_terrain = {
+0: [0, 1],
+&"type": 0
+}
+2:3/0 = 0
+2:3/0/metadata/_better_terrain = {
+0: [0, 1],
+8: [0, 1],
+&"type": 0
+}
+3:3/0 = 0
+3:3/0/metadata/_better_terrain = {
+8: [0, 1],
+&"type": 0
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7aaa0"]
+texture = ExtResource("6_7aaa0")
+0:0/0 = 0
+0:0/0/metadata/_better_terrain = {
+4: [1, 0],
+&"type": 1
+}
+1:0/0 = 0
+1:0/0/metadata/_better_terrain = {
+0: [1, 0],
+4: [1, 0],
+&"type": 1
+}
+2:0/0 = 0
+2:0/0/metadata/_better_terrain = {
+0: [1, 0],
+4: [1, 0],
+8: [1, 0],
+&"type": 1
+}
+3:0/0 = 0
+3:0/0/metadata/_better_terrain = {
+4: [1, 0],
+8: [1, 0],
+&"type": 1
+}
+0:1/0 = 0
+0:1/0/metadata/_better_terrain = {
+4: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+1:1/0 = 0
+1:1/0/metadata/_better_terrain = {
+0: [1, 0],
+4: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+2:1/0 = 0
+2:1/0/metadata/_better_terrain = {
+0: [1, 0],
+4: [1, 0],
+8: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+3:1/0 = 0
+3:1/0/metadata/_better_terrain = {
+4: [1, 0],
+8: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+0:2/0 = 0
+0:2/0/metadata/_better_terrain = {
+12: [1, 0],
+&"type": 1
+}
+1:2/0 = 0
+1:2/0/metadata/_better_terrain = {
+0: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+2:2/0 = 0
+2:2/0/metadata/_better_terrain = {
+0: [1, 0],
+8: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+3:2/0 = 0
+3:2/0/metadata/_better_terrain = {
+8: [1, 0],
+12: [1, 0],
+&"type": 1
+}
+0:3/0 = 0
+0:3/0/metadata/_better_terrain = {
+&"type": 1
+}
+1:3/0 = 0
+1:3/0/metadata/_better_terrain = {
+0: [1, 0],
+&"type": 1
+}
+2:3/0 = 0
+2:3/0/metadata/_better_terrain = {
+0: [1, 0],
+8: [1, 0],
+&"type": 1
+}
+3:3/0 = 0
+3:3/0/metadata/_better_terrain = {
+8: [1, 0],
+&"type": 1
+}
+
+[sub_resource type="TileSet" id="TileSet_4356y"]
+sources/0 = SubResource("TileSetAtlasSource_jv31k")
+sources/1 = SubResource("TileSetAtlasSource_7aaa0")
+metadata/_better_terrain = {
+&"decoration": ["Decoration", Color(0.411765, 0.411765, 0.411765, 1), 3, [], {
+&"path": "res://addons/better-terrain/icons/Decoration.svg"
+}],
+&"terrains": [["stone_wall", Color(0.659996, 0.353795, 0.636109, 1), 0, [], {
+&"path": ""
+}], ["wood_wall", Color(0.33255, 0.655264, 0.0522358, 1), 0, [], {
+&"path": ""
+}]],
+&"version": "0.2"
+}
+
+[node name="GuildScene" type="Node2D"]
+script = ExtResource("1")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="World"]
+navigation_polygon = SubResource("NavigationPolygon_puhqe")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="World"]
+
+[node name="Level" type="Node2D" parent="World"]
+
+[node name="Floor" type="TileMapLayer" parent="World/Level"]
+position = Vector2(1, 0)
+tile_map_data = PackedByteArray("AAATAAcAAQACAAMAAAATAAgAAQACAAMAAAATAAkAAQACAAMAAAATAAoAAQACAAMAAAATAAsAAQACAAMAAAATAAwAAQACAAMAAAATAA0AAQACAAMAAAATAA4AAQACAAMAAAATAA8AAQACAAMAAAATABAAAQACAAMAAAATABEAAQACAAMAAAATABIAAQACAAMAAAATABMAAQACAAMAAAATABQAAQACAAMAAAATABUAAQACAAMAAAATABYAAQACAAMAAAATABcAAQACAAMAAAATABgAAQACAAMAAAATABkAAQACAAMAAAATABoAAQACAAMAAAATABsAAQACAAMAAAATABwAAQACAAMAAAATAB0AAQACAAMAAAATAB4AAQACAAMAAAATAB8AAQACAAMAAAATACAAAQACAAMAAAATACEAAQACAAMAAAATACIAAQACAAMAAAATACMAAQACAAMAAAATACQAAQACAAMAAAATACUAAQACAAMAAAATACYAAQACAAMAAAATACcAAQACAAMAAAATACgAAQACAAMAAAATACkAAQACAAMAAAATACoAAQACAAMAAAATACsAAQACAAMAAAATACwAAQACAAMAAAATAC0AAQACAAMAAAATAC4AAQACAAMAAAATAC8AAQACAAMAAAATADAAAQACAAMAAAATADEAAQACAAMAAAATADIAAQACAAMAAAATADMAAQACAAMAAAATADQAAQACAAMAAAATADUAAQACAAMAAAATADYAAQACAAMAAAATADcAAQACAAMAAAAUAAcAAQACAAMAAAAUAAgAAQACAAMAAAAUAAkAAQACAAMAAAAUAAoAAQACAAMAAAAUAAsAAQACAAMAAAAUAAwAAQACAAMAAAAUAA0AAQACAAMAAAAUAA4AAQACAAMAAAAUAA8AAQACAAMAAAAUABAAAQACAAMAAAAUABEAAQACAAMAAAAUABIAAQACAAMAAAAUABMAAQACAAMAAAAUABQAAQACAAMAAAAUABUAAQACAAMAAAAUABYAAQACAAMAAAAUABcAAQACAAMAAAAUABgAAQACAAMAAAAUABkAAQACAAMAAAAUABoAAQACAAMAAAAUABsAAQACAAMAAAAUABwAAQACAAMAAAAUAB0AAQACAAMAAAAUAB4AAQACAAMAAAAUAB8AAQACAAMAAAAUACAAAQACAAMAAAAUACEAAQACAAMAAAAUACIAAQACAAMAAAAUACMAAQACAAMAAAAUACQAAQACAAMAAAAUACUAAQACAAMAAAAUACYAAQACAAMAAAAUACcAAQACAAMAAAAUACgAAQACAAMAAAAUACkAAQACAAMAAAAUACoAAQACAAMAAAAUACsAAQACAAMAAAAUACwAAQACAAMAAAAUAC0AAQACAAMAAAAUAC4AAQACAAMAAAAUAC8AAQACAAMAAAAUADAAAQACAAMAAAAUADEAAQACAAMAAAAUADIAAQACAAMAAAAUADMAAQACAAMAAAAUADQAAQACAAMAAAAUADUAAQACAAMAAAAUADYAAQACAAMAAAAUADcAAQACAAMAAAAVAAcAAQACAAMAAAAVAAgAAQACAAMAAAAVAAkAAQACAAMAAAAVAAoAAQACAAMAAAAVAAsAAQACAAMAAAAVAAwAAQACAAMAAAAVAA0AAQACAAMAAAAVAA4AAQACAAMAAAAVAA8AAQACAAMAAAAVABAAAQACAAMAAAAVABEAAQACAAMAAAAVABIAAQACAAMAAAAVABMAAQACAAMAAAAVABQAAQACAAMAAAAVABUAAQACAAMAAAAVABYAAQACAAMAAAAVABcAAQACAAMAAAAVABgAAQACAAMAAAAVABkAAQACAAMAAAAVABoAAQACAAMAAAAVABsAAQACAAMAAAAVABwAAQACAAMAAAAVAB0AAQACAAMAAAAVAB4AAQACAAMAAAAVAB8AAQACAAMAAAAVACAAAQACAAMAAAAVACEAAQACAAMAAAAVACIAAQACAAMAAAAVACMAAQACAAMAAAAVACQAAQACAAMAAAAVACUAAQACAAMAAAAVACYAAQACAAMAAAAVACcAAQACAAMAAAAVACgAAQACAAMAAAAVACkAAQACAAMAAAAVACoAAQACAAMAAAAVACsAAQACAAMAAAAVACwAAQACAAMAAAAVAC0AAQACAAMAAAAVAC4AAQACAAMAAAAVAC8AAQACAAMAAAAVADAAAQACAAMAAAAVADEAAQACAAMAAAAVADIAAQACAAMAAAAVADMAAQACAAMAAAAVADQAAQACAAMAAAAVADUAAQACAAMAAAAVADYAAQACAAMAAAAVADcAAQACAAMAAAAWAAcAAQACAAMAAAAWAAgAAQACAAMAAAAWAAkAAQACAAMAAAAWAAoAAQACAAMAAAAWAAsAAQACAAMAAAAWAAwAAQACAAMAAAAWAA0AAQACAAMAAAAWAA4AAQACAAMAAAAWAA8AAQACAAMAAAAWABAAAQACAAMAAAAWABEAAQACAAMAAAAWABIAAQACAAMAAAAWABMAAQACAAMAAAAWABQAAQACAAMAAAAWABUAAQACAAMAAAAWABYAAQACAAMAAAAWABcAAQACAAMAAAAWABgAAQACAAMAAAAWABkAAQACAAMAAAAWABoAAQACAAMAAAAWABsAAQACAAMAAAAWABwAAQACAAMAAAAWAB0AAQACAAMAAAAWAB4AAQACAAMAAAAWAB8AAQACAAMAAAAWACAAAQACAAMAAAAWACEAAQACAAMAAAAWACIAAQACAAMAAAAWACMAAQACAAMAAAAWACQAAQACAAMAAAAWACUAAQACAAMAAAAWACYAAQACAAMAAAAWACcAAQACAAMAAAAWACgAAQACAAMAAAAWACkAAQACAAMAAAAWACoAAQACAAMAAAAWACsAAQACAAMAAAAWACwAAQACAAMAAAAWAC0AAQACAAMAAAAWAC4AAQACAAMAAAAWAC8AAQACAAMAAAAWADAAAQACAAMAAAAWADEAAQACAAMAAAAWADIAAQACAAMAAAAWADMAAQACAAMAAAAWADQAAQACAAMAAAAWADUAAQACAAMAAAAWADYAAQACAAMAAAAWADcAAQACAAMAAAAXAAcAAQACAAMAAAAXAAgAAQACAAMAAAAXAAkAAQACAAMAAAAXAAoAAQACAAMAAAAXAAsAAQACAAMAAAAXAAwAAQACAAMAAAAXAA0AAQACAAMAAAAXAA4AAQACAAMAAAAXAA8AAQACAAMAAAAXABAAAQACAAMAAAAXABEAAQACAAMAAAAXABIAAQACAAMAAAAXABMAAQACAAMAAAAXABQAAQACAAMAAAAXABUAAQACAAMAAAAXABYAAQACAAMAAAAXABcAAQACAAMAAAAXABgAAQACAAMAAAAXABkAAQACAAMAAAAXABoAAQACAAMAAAAXABsAAQACAAMAAAAXABwAAQACAAMAAAAXAB0AAQACAAMAAAAXAB4AAQACAAMAAAAXAB8AAQACAAMAAAAXACAAAQACAAMAAAAXACEAAQACAAMAAAAXACIAAQACAAMAAAAXACMAAQACAAMAAAAXACQAAQACAAMAAAAXACUAAQACAAMAAAAXACYAAQACAAMAAAAXACcAAQACAAMAAAAXACgAAQACAAMAAAAXACkAAQACAAMAAAAXACoAAQACAAMAAAAXACsAAQACAAMAAAAXACwAAQACAAMAAAAXAC0AAQACAAMAAAAXAC4AAQACAAMAAAAXAC8AAQACAAMAAAAXADAAAQACAAMAAAAXADEAAQACAAMAAAAXADIAAQACAAMAAAAXADMAAQACAAMAAAAXADQAAQACAAMAAAAXADUAAQACAAMAAAAXADYAAQACAAMAAAAXADcAAQACAAMAAAAYAAcAAQACAAMAAAAYAAgAAQACAAMAAAAYAAkAAQACAAMAAAAYAAoAAQACAAMAAAAYAAsAAQACAAMAAAAYAAwAAQACAAMAAAAYAA0AAQACAAMAAAAYAA4AAQACAAMAAAAYAA8AAQACAAMAAAAYABAAAQACAAMAAAAYABEAAQACAAMAAAAYABIAAQACAAMAAAAYABMAAQACAAMAAAAYABQAAQACAAMAAAAYABUAAQACAAMAAAAYABYAAQACAAMAAAAYABcAAQACAAMAAAAYABgAAQACAAMAAAAYABkAAQACAAMAAAAYABoAAQACAAMAAAAYABsAAQACAAMAAAAYABwAAQACAAMAAAAYAB0AAQACAAMAAAAYAB4AAQACAAMAAAAYAB8AAQACAAMAAAAYACAAAQACAAMAAAAYACEAAQACAAMAAAAYACIAAQACAAMAAAAYACMAAQACAAMAAAAYACQAAQACAAMAAAAYACUAAQACAAMAAAAYACYAAQACAAMAAAAYACcAAQACAAMAAAAYACgAAQACAAMAAAAYACkAAQACAAMAAAAYACoAAQACAAMAAAAYACsAAQACAAMAAAAYACwAAQACAAMAAAAYAC0AAQACAAMAAAAYAC4AAQACAAMAAAAYAC8AAQACAAMAAAAYADAAAQACAAMAAAAYADEAAQACAAMAAAAYADIAAQACAAMAAAAYADMAAQACAAMAAAAYADQAAQACAAMAAAAYADUAAQACAAMAAAAYADYAAQACAAMAAAAYADcAAQACAAMAAAAZAAcAAQACAAMAAAAZAAgAAQACAAMAAAAZAAkAAQACAAMAAAAZAAoAAQACAAMAAAAZAAsAAQACAAMAAAAZAAwAAQACAAMAAAAZAA0AAQACAAMAAAAZAA4AAQACAAMAAAAZAA8AAQACAAMAAAAZABAAAQACAAMAAAAZABEAAQACAAMAAAAZABIAAQACAAMAAAAZABMAAQACAAMAAAAZABQAAQACAAMAAAAZABUAAQACAAMAAAAZABYAAQACAAMAAAAZABcAAQACAAMAAAAZABgAAQACAAMAAAAZABkAAQACAAMAAAAZABoAAQACAAMAAAAZABsAAQACAAMAAAAZABwAAQACAAMAAAAZAB0AAQACAAMAAAAZAB4AAQACAAMAAAAZAB8AAQACAAMAAAAZACAAAQACAAMAAAAZACEAAQACAAMAAAAZACIAAQACAAMAAAAZACMAAQACAAMAAAAZACQAAQACAAMAAAAZACUAAQACAAMAAAAZACYAAQACAAMAAAAZACcAAQACAAMAAAAZACgAAQACAAMAAAAZACkAAQACAAMAAAAZACoAAQACAAMAAAAZACsAAQACAAMAAAAZACwAAQACAAMAAAAZAC0AAQACAAMAAAAZAC4AAQACAAMAAAAZAC8AAQACAAMAAAAZADAAAQACAAMAAAAZADEAAQACAAMAAAAZADIAAQACAAMAAAAZADMAAQACAAMAAAAZADQAAQACAAMAAAAZADUAAQACAAMAAAAZADYAAQACAAMAAAAZADcAAQACAAMAAAAaAAcAAQACAAMAAAAaAAgAAQACAAMAAAAaAAkAAQACAAMAAAAaAAoAAQACAAMAAAAaAAsAAQACAAMAAAAaAAwAAQACAAMAAAAaAA0AAQACAAMAAAAaAA4AAQAIAAMAAAAaAA8AAQAIAAMAAAAaABAAAQAIAAMAAAAaABEAAQAIAAMAAAAaABIAAQAIAAMAAAAaABMAAQAIAAMAAAAaABQAAQAIAAMAAAAaABUAAQAIAAMAAAAaABYAAQAIAAMAAAAaABcAAQAIAAMAAAAaABgAAQAIAAMAAAAaABkAAQAIAAMAAAAaABoAAQAIAAMAAAAaABsAAQAIAAMAAAAaABwAAQAIAAMAAAAaAB0AAQAIAAMAAAAaAB4AAQAIAAMAAAAaAB8AAQAIAAMAAAAaACAAAQAIAAMAAAAaACEAAQAIAAMAAAAaACIAAQAIAAMAAAAaACMAAQAIAAMAAAAaACQAAQAIAAMAAAAaACUAAQAIAAMAAAAaACYAAQAIAAMAAAAaACcAAQAIAAMAAAAaACgAAQAIAAMAAAAaACkAAQAIAAMAAAAaACoAAQAIAAMAAAAaACsAAQAIAAMAAAAaACwAAQAIAAMAAAAaAC0AAQAIAAMAAAAaAC4AAQAIAAMAAAAaAC8AAQAIAAMAAAAaADAAAQAIAAMAAAAaADEAAQAIAAMAAAAaADIAAQAIAAMAAAAaADMAAQAIAAMAAAAaADQAAQAIAAMAAAAaADUAAQAIAAMAAAAaADYAAQAIAAMAAAAaADcAAQAIAAMAAAAbAAcAAQACAAMAAAAbAAgAAQACAAMAAAAbAAkAAQACAAMAAAAbAAoAAQACAAMAAAAbAAsAAQACAAMAAAAbAAwAAQACAAMAAAAbAA0AAQACAAMAAAAbAA4AAQACAAMAAAAbAA8AAQACAAMAAAAbABAAAQACAAMAAAAbABEAAQACAAMAAAAbABIAAQACAAMAAAAbABMAAQACAAMAAAAbABQAAQACAAMAAAAbABUAAQACAAMAAAAbABYAAQACAAMAAAAbABcAAQACAAMAAAAbABgAAQACAAMAAAAbABkAAQACAAMAAAAbABoAAQACAAMAAAAbABsAAQACAAMAAAAbABwAAQACAAMAAAAbAB0AAQACAAMAAAAbAB4AAQACAAMAAAAbAB8AAQACAAMAAAAbACAAAQACAAMAAAAbACEAAQACAAMAAAAbACIAAQACAAMAAAAbACMAAQACAAMAAAAbACQAAQACAAMAAAAbACUAAQACAAMAAAAbACYAAQACAAMAAAAbACcAAQACAAMAAAAbACgAAQACAAMAAAAbACkAAQACAAMAAAAbACoAAQACAAMAAAAbACsAAQACAAMAAAAbACwAAQACAAMAAAAbAC0AAQACAAMAAAAbAC4AAQACAAMAAAAbAC8AAQACAAMAAAAbADAAAQACAAMAAAAbADEAAQACAAMAAAAbADIAAQACAAMAAAAbADMAAQACAAMAAAAbADQAAQACAAMAAAAbADUAAQACAAMAAAAbADYAAQACAAMAAAAbADcAAQACAAMAAAAcAAcAAQACAAMAAAAcAAgAAQACAAMAAAAcAAkAAQACAAMAAAAcAAoAAQACAAMAAAAcAAsAAQACAAMAAAAcAAwAAQACAAMAAAAcAA0AAQACAAMAAAAcAA4AAQACAAMAAAAcAA8AAQACAAMAAAAcABAAAQACAAMAAAAcABEAAQACAAMAAAAcABIAAQACAAMAAAAcABMAAQACAAMAAAAcABQAAQACAAMAAAAcABUAAQACAAMAAAAcABYAAQACAAMAAAAcABcAAQACAAMAAAAcABgAAQACAAMAAAAcABkAAQACAAMAAAAcABoAAQACAAMAAAAcABsAAQACAAMAAAAcABwAAQACAAMAAAAcAB0AAQACAAMAAAAcAB4AAQACAAMAAAAcAB8AAQACAAMAAAAcACAAAQACAAMAAAAcACEAAQACAAMAAAAcACIAAQACAAMAAAAcACMAAQACAAMAAAAcACQAAQACAAMAAAAcACUAAQACAAMAAAAcACYAAQACAAMAAAAcACcAAQACAAMAAAAcACgAAQACAAMAAAAcACkAAQACAAMAAAAcACoAAQACAAMAAAAcACsAAQACAAMAAAAcACwAAQACAAMAAAAcAC0AAQACAAMAAAAcAC4AAQACAAMAAAAcAC8AAQACAAMAAAAcADAAAQACAAMAAAAcADEAAQACAAMAAAAcADIAAQACAAMAAAAcADMAAQACAAMAAAAcADQAAQACAAMAAAAcADUAAQACAAMAAAAcADYAAQACAAMAAAAcADcAAQACAAMAAAAdAAcAAQACAAMAAAAdAAgAAQACAAMAAAAdAAkAAQACAAMAAAAdAAoAAQACAAMAAAAdAAsAAQACAAMAAAAdAAwAAQACAAMAAAAdAA0AAQACAAMAAAAdAA4AAQACAAMAAAAdAA8AAQACAAMAAAAdABAAAQACAAMAAAAdABEAAQACAAMAAAAdABIAAQACAAMAAAAdABMAAQACAAMAAAAdABQAAQACAAMAAAAdABUAAQACAAMAAAAdABYAAQACAAMAAAAdABcAAQACAAMAAAAdABgAAQACAAMAAAAdABkAAQACAAMAAAAdABoAAQACAAMAAAAdABsAAQACAAMAAAAdABwAAQACAAMAAAAdAB0AAQACAAMAAAAdAB4AAQACAAMAAAAdAB8AAQACAAMAAAAdACAAAQACAAMAAAAdACEAAQACAAMAAAAdACIAAQACAAMAAAAdACMAAQACAAMAAAAdACQAAQACAAMAAAAdACUAAQACAAMAAAAdACYAAQACAAMAAAAdACcAAQACAAMAAAAdACgAAQACAAMAAAAdACkAAQACAAMAAAAdACoAAQACAAMAAAAdACsAAQACAAMAAAAdACwAAQACAAMAAAAdAC0AAQACAAMAAAAdAC4AAQACAAMAAAAdAC8AAQACAAMAAAAdADAAAQACAAMAAAAdADEAAQACAAMAAAAdADIAAQACAAMAAAAdADMAAQACAAMAAAAdADQAAQACAAMAAAAdADUAAQACAAMAAAAdADYAAQACAAMAAAAdADcAAQACAAMAAAAeAAcAAQACAAMAAAAeAAgAAQACAAMAAAAeAAkAAQACAAMAAAAeAAoAAQACAAMAAAAeAAsAAQACAAMAAAAeAAwAAQACAAMAAAAeAA0AAQACAAMAAAAeAA4AAQACAAMAAAAeAA8AAQACAAMAAAAeABAAAQACAAMAAAAeABEAAQACAAMAAAAeABIAAQACAAMAAAAeABMAAQACAAMAAAAeABQAAQACAAMAAAAeABUAAQACAAMAAAAeABYAAQACAAMAAAAeABcAAQACAAMAAAAeABgAAQACAAMAAAAeABkAAQACAAMAAAAeABoAAQACAAMAAAAeABsAAQACAAMAAAAeABwAAQACAAMAAAAeAB0AAQACAAMAAAAeAB4AAQACAAMAAAAeAB8AAQACAAMAAAAeACAAAQACAAMAAAAeACEAAQACAAMAAAAeACIAAQACAAMAAAAeACMAAQACAAMAAAAeACQAAQACAAMAAAAeACUAAQACAAMAAAAeACYAAQACAAMAAAAeACcAAQACAAMAAAAeACgAAQACAAMAAAAeACkAAQACAAMAAAAeACoAAQACAAMAAAAeACsAAQACAAMAAAAeACwAAQACAAMAAAAeAC0AAQACAAMAAAAeAC4AAQACAAMAAAAeAC8AAQACAAMAAAAeADAAAQACAAMAAAAeADEAAQACAAMAAAAeADIAAQACAAMAAAAeADMAAQACAAMAAAAeADQAAQACAAMAAAAeADUAAQACAAMAAAAeADYAAQACAAMAAAAeADcAAQACAAMAAAAfAAcAAQACAAMAAAAfAAgAAQACAAMAAAAfAAkAAQACAAMAAAAfAAoAAQACAAMAAAAfAAsAAQACAAMAAAAfAAwAAQACAAMAAAAfAA0AAQACAAMAAAAfAA4AAQACAAMAAAAfAA8AAQACAAMAAAAfABAAAQACAAMAAAAfABEAAQACAAMAAAAfABIAAQACAAMAAAAfABMAAQACAAMAAAAfABQAAQACAAMAAAAfABUAAQACAAMAAAAfABYAAQACAAMAAAAfABcAAQACAAMAAAAfABgAAQACAAMAAAAfABkAAQACAAMAAAAfABoAAQACAAMAAAAfABsAAQACAAMAAAAfABwAAQACAAMAAAAfAB0AAQACAAMAAAAfAB4AAQACAAMAAAAfAB8AAQACAAMAAAAfACAAAQACAAMAAAAfACEAAQACAAMAAAAfACIAAQACAAMAAAAfACMAAQACAAMAAAAfACQAAQACAAMAAAAfACUAAQACAAMAAAAfACYAAQACAAMAAAAfACcAAQACAAMAAAAfACgAAQACAAMAAAAfACkAAQACAAMAAAAfACoAAQACAAMAAAAfACsAAQACAAMAAAAfACwAAQACAAMAAAAfAC0AAQACAAMAAAAfAC4AAQACAAMAAAAfAC8AAQACAAMAAAAfADAAAQACAAMAAAAfADEAAQACAAMAAAAfADIAAQACAAMAAAAfADMAAQACAAMAAAAfADQAAQACAAMAAAAfADUAAQACAAMAAAAfADYAAQACAAMAAAAfADcAAQACAAMAAAAgAAcAAQACAAMAAAAgAAgAAQACAAMAAAAgAAkAAQACAAMAAAAgAAoAAQACAAMAAAAgAAsAAQACAAMAAAAgAAwAAQACAAMAAAAgAA0AAQACAAMAAAAgAA4AAQACAAMAAAAgAA8AAQACAAMAAAAgABAAAQACAAMAAAAgABEAAQACAAMAAAAgABIAAQACAAMAAAAgABMAAQACAAMAAAAgABQAAQACAAMAAAAgABUAAQACAAMAAAAgABYAAQACAAMAAAAgABcAAQACAAMAAAAgABgAAQACAAMAAAAgABkAAQACAAMAAAAgABoAAQACAAMAAAAgABsAAQACAAMAAAAgABwAAQACAAMAAAAgAB0AAQACAAMAAAAgAB4AAQACAAMAAAAgAB8AAQACAAMAAAAgACAAAQACAAMAAAAgACEAAQACAAMAAAAgACIAAQACAAMAAAAgACMAAQACAAMAAAAgACQAAQACAAMAAAAgACUAAQACAAMAAAAgACYAAQACAAMAAAAgACcAAQACAAMAAAAgACgAAQACAAMAAAAgACkAAQACAAMAAAAgACoAAQACAAMAAAAgACsAAQACAAMAAAAgACwAAQACAAMAAAAgAC0AAQACAAMAAAAgAC4AAQACAAMAAAAgAC8AAQACAAMAAAAgADAAAQACAAMAAAAgADEAAQACAAMAAAAgADIAAQACAAMAAAAgADMAAQACAAMAAAAgADQAAQACAAMAAAAgADUAAQACAAMAAAAgADYAAQACAAMAAAAgADcAAQACAAMAAAAhAAcAAQACAAMAAAAhAAgAAQACAAMAAAAhAAkAAQACAAMAAAAhAAoAAQACAAMAAAAhAAsAAQACAAMAAAAhAAwAAQACAAMAAAAhAA0AAQACAAMAAAAhAA4AAQACAAMAAAAhAA8AAQACAAMAAAAhABAAAQACAAMAAAAhABEAAQACAAMAAAAhABIAAQACAAMAAAAhABMAAQACAAMAAAAhABQAAQACAAMAAAAhABUAAQACAAMAAAAhABYAAQACAAMAAAAhABcAAQACAAMAAAAhABgAAQACAAMAAAAhABkAAQACAAMAAAAhABoAAQACAAMAAAAhABsAAQACAAMAAAAhABwAAQACAAMAAAAhAB0AAQACAAMAAAAhAB4AAQACAAMAAAAhAB8AAQACAAMAAAAhACAAAQACAAMAAAAhACEAAQACAAMAAAAhACIAAQACAAMAAAAhACMAAQACAAMAAAAhACQAAQACAAMAAAAhACUAAQACAAMAAAAhACYAAQACAAMAAAAhACcAAQACAAMAAAAhACgAAQACAAMAAAAhACkAAQACAAMAAAAhACoAAQACAAMAAAAhACsAAQACAAMAAAAhACwAAQACAAMAAAAhAC0AAQACAAMAAAAhAC4AAQACAAMAAAAhAC8AAQACAAMAAAAhADAAAQACAAMAAAAhADEAAQACAAMAAAAhADIAAQACAAMAAAAhADMAAQACAAMAAAAhADQAAQACAAMAAAAhADUAAQACAAMAAAAhADYAAQACAAMAAAAhADcAAQACAAMAAAAiAAcAAQACAAMAAAAiAAgAAQACAAMAAAAiAAkAAQACAAMAAAAiAAoAAQACAAMAAAAiAAsAAQACAAMAAAAiAAwAAQACAAMAAAAiAA0AAQACAAMAAAAiAA4AAQACAAMAAAAiAA8AAQACAAMAAAAiABAAAQACAAMAAAAiABEAAQACAAMAAAAiABIAAQACAAMAAAAiABMAAQACAAMAAAAiABQAAQACAAMAAAAiABUAAQACAAMAAAAiABYAAQACAAMAAAAiABcAAQACAAMAAAAiABgAAQACAAMAAAAiABkAAQACAAMAAAAiABoAAQACAAMAAAAiABsAAQACAAMAAAAiABwAAQACAAMAAAAiAB0AAQACAAMAAAAiAB4AAQACAAMAAAAiAB8AAQACAAMAAAAiACAAAQACAAMAAAAiACEAAQACAAMAAAAiACIAAQACAAMAAAAiACMAAQACAAMAAAAiACQAAQACAAMAAAAiACUAAQACAAMAAAAiACYAAQACAAMAAAAiACcAAQACAAMAAAAiACgAAQACAAMAAAAiACkAAQACAAMAAAAiACoAAQACAAMAAAAiACsAAQACAAMAAAAiACwAAQACAAMAAAAiAC0AAQACAAMAAAAiAC4AAQACAAMAAAAiAC8AAQACAAMAAAAiADAAAQACAAMAAAAiADEAAQACAAMAAAAiADIAAQACAAMAAAAiADMAAQACAAMAAAAiADQAAQACAAMAAAAiADUAAQACAAMAAAAiADYAAQACAAMAAAAiADcAAQACAAMAAAAjAAcAAQACAAMAAAAjAAgAAQACAAMAAAAjAAkAAQACAAMAAAAjAAoAAQACAAMAAAAjAAsAAQACAAMAAAAjAAwAAQACAAMAAAAjAA0AAQACAAMAAAAjAA4AAQACAAMAAAAjAA8AAQACAAMAAAAjABAAAQACAAMAAAAjABEAAQACAAMAAAAjABIAAQACAAMAAAAjABMAAQACAAMAAAAjABQAAQACAAMAAAAjABUAAQACAAMAAAAjABYAAQACAAMAAAAjABcAAQACAAMAAAAjABgAAQACAAMAAAAjABkAAQACAAMAAAAjABoAAQACAAMAAAAjABsAAQACAAMAAAAjABwAAQACAAMAAAAjAB0AAQACAAMAAAAjAB4AAQACAAMAAAAjAB8AAQACAAMAAAAjACAAAQACAAMAAAAjACEAAQACAAMAAAAjACIAAQACAAMAAAAjACMAAQACAAMAAAAjACQAAQACAAMAAAAjACUAAQACAAMAAAAjACYAAQACAAMAAAAjACcAAQACAAMAAAAjACgAAQACAAMAAAAjACkAAQACAAMAAAAjACoAAQACAAMAAAAjACsAAQACAAMAAAAjACwAAQACAAMAAAAjAC0AAQACAAMAAAAjAC4AAQACAAMAAAAjAC8AAQACAAMAAAAjADAAAQACAAMAAAAjADEAAQACAAMAAAAjADIAAQACAAMAAAAjADMAAQACAAMAAAAjADQAAQACAAMAAAAjADUAAQACAAMAAAAjADYAAQACAAMAAAAjADcAAQACAAMAAAAkAAcAAQACAAMAAAAkAAgAAQACAAMAAAAkAAkAAQACAAMAAAAkAAoAAQACAAMAAAAkAAsAAQACAAMAAAAkAAwAAQACAAMAAAAkAA0AAQACAAMAAAAkAA4AAQACAAMAAAAkAA8AAQACAAMAAAAkABAAAQACAAMAAAAkABEAAQACAAMAAAAkABIAAQACAAMAAAAkABMAAQACAAMAAAAkABQAAQACAAMAAAAkABUAAQACAAMAAAAkABYAAQACAAMAAAAkABcAAQACAAMAAAAkABgAAQACAAMAAAAkABkAAQACAAMAAAAkABoAAQACAAMAAAAkABsAAQACAAMAAAAkABwAAQACAAMAAAAkAB0AAQACAAMAAAAkAB4AAQACAAMAAAAkAB8AAQACAAMAAAAkACAAAQACAAMAAAAkACEAAQACAAMAAAAkACIAAQACAAMAAAAkACMAAQACAAMAAAAkACQAAQACAAMAAAAkACUAAQACAAMAAAAkACYAAQACAAMAAAAkACcAAQACAAMAAAAkACgAAQACAAMAAAAkACkAAQACAAMAAAAkACoAAQACAAMAAAAkACsAAQACAAMAAAAkACwAAQACAAMAAAAkAC0AAQACAAMAAAAkAC4AAQACAAMAAAAkAC8AAQACAAMAAAAkADAAAQACAAMAAAAkADEAAQACAAMAAAAkADIAAQACAAMAAAAkADMAAQACAAMAAAAkADQAAQACAAMAAAAkADUAAQACAAMAAAAkADYAAQACAAMAAAAkADcAAQACAAMAAAAlAAcAAQACAAMAAAAlAAgAAQACAAMAAAAlAAkAAQACAAMAAAAlAAoAAQACAAMAAAAlAAsAAQACAAMAAAAlAAwAAQACAAMAAAAlAA0AAQACAAMAAAAlAA4AAQACAAMAAAAlAA8AAQACAAMAAAAlABAAAQACAAMAAAAlABEAAQACAAMAAAAlABIAAQACAAMAAAAlABMAAQACAAMAAAAlABQAAQACAAMAAAAlABUAAQACAAMAAAAlABYAAQACAAMAAAAlABcAAQACAAMAAAAlABgAAQACAAMAAAAlABkAAQACAAMAAAAlABoAAQACAAMAAAAlABsAAQACAAMAAAAlABwAAQACAAMAAAAlAB0AAQACAAMAAAAlAB4AAQACAAMAAAAlAB8AAQACAAMAAAAlACAAAQACAAMAAAAlACEAAQACAAMAAAAlACIAAQACAAMAAAAlACMAAQACAAMAAAAlACQAAQACAAMAAAAlACUAAQACAAMAAAAlACYAAQACAAMAAAAlACcAAQACAAMAAAAlACgAAQACAAMAAAAlACkAAQACAAMAAAAlACoAAQACAAMAAAAlACsAAQACAAMAAAAlACwAAQACAAMAAAAlAC0AAQACAAMAAAAlAC4AAQACAAMAAAAlAC8AAQACAAMAAAAlADAAAQACAAMAAAAlADEAAQACAAMAAAAlADIAAQACAAMAAAAlADMAAQACAAMAAAAlADQAAQACAAMAAAAlADUAAQACAAMAAAAlADYAAQACAAMAAAAlADcAAQACAAMAAAAmAAcAAQACAAMAAAAmAAgAAQACAAMAAAAmAAkAAQACAAMAAAAmAAoAAQACAAMAAAAmAAsAAQACAAMAAAAmAAwAAQACAAMAAAAmAA0AAQACAAMAAAAmAA4AAQACAAMAAAAmAA8AAQACAAMAAAAmABAAAQACAAMAAAAmABEAAQACAAMAAAAmABIAAQACAAMAAAAmABMAAQACAAMAAAAmABQAAQACAAMAAAAmABUAAQACAAMAAAAmABYAAQACAAMAAAAmABcAAQACAAMAAAAmABgAAQACAAMAAAAmABkAAQACAAMAAAAmABoAAQACAAMAAAAmABsAAQACAAMAAAAmABwAAQACAAMAAAAmAB0AAQACAAMAAAAmAB4AAQACAAMAAAAmAB8AAQACAAMAAAAmACAAAQACAAMAAAAmACEAAQACAAMAAAAmACIAAQACAAMAAAAmACMAAQACAAMAAAAmACQAAQACAAMAAAAmACUAAQACAAMAAAAmACYAAQACAAMAAAAmACcAAQACAAMAAAAmACgAAQACAAMAAAAmACkAAQACAAMAAAAmACoAAQACAAMAAAAmACsAAQACAAMAAAAmACwAAQACAAMAAAAmAC0AAQACAAMAAAAmAC4AAQACAAMAAAAmAC8AAQACAAMAAAAmADAAAQACAAMAAAAmADEAAQACAAMAAAAmADIAAQACAAMAAAAmADMAAQACAAMAAAAmADQAAQACAAMAAAAmADUAAQACAAMAAAAmADYAAQACAAMAAAAmADcAAQACAAMAAAAnAAcAAQACAAMAAAAnAAgAAQACAAMAAAAnAAkAAQACAAMAAAAnAAoAAQACAAMAAAAnAAsAAQACAAMAAAAnAAwAAQACAAMAAAAnAA0AAQACAAMAAAAnAA4AAQACAAMAAAAnAA8AAQACAAMAAAAnABAAAQACAAMAAAAnABEAAQACAAMAAAAnABIAAQACAAMAAAAnABMAAQACAAMAAAAnABQAAQACAAMAAAAnABUAAQACAAMAAAAnABYAAQACAAMAAAAnABcAAQACAAMAAAAnABgAAQACAAMAAAAnABkAAQACAAMAAAAnABoAAQACAAMAAAAnABsAAQACAAMAAAAnABwAAQACAAMAAAAnAB0AAQACAAMAAAAnAB4AAQACAAMAAAAnAB8AAQACAAMAAAAnACAAAQACAAMAAAAnACEAAQACAAMAAAAnACIAAQACAAMAAAAnACMAAQACAAMAAAAnACQAAQACAAMAAAAnACUAAQACAAMAAAAnACYAAQACAAMAAAAnACcAAQACAAMAAAAnACgAAQACAAMAAAAnACkAAQACAAMAAAAnACoAAQACAAMAAAAnACsAAQACAAMAAAAnACwAAQACAAMAAAAnAC0AAQACAAMAAAAnAC4AAQACAAMAAAAnAC8AAQACAAMAAAAnADAAAQACAAMAAAAnADEAAQACAAMAAAAnADIAAQACAAMAAAAnADMAAQACAAMAAAAnADQAAQACAAMAAAAnADUAAQACAAMAAAAnADYAAQACAAMAAAAnADcAAQACAAMAAAAoAAcAAQACAAMAAAAoAAgAAQACAAMAAAAoAAkAAQACAAMAAAAoAAoAAQACAAMAAAAoAAsAAQACAAMAAAAoAAwAAQACAAMAAAAoAA0AAQACAAMAAAAoAA4AAQACAAMAAAAoAA8AAQACAAMAAAAoABAAAQACAAMAAAAoABEAAQACAAMAAAAoABIAAQACAAMAAAAoABMAAQACAAMAAAAoABQAAQACAAMAAAAoABUAAQACAAMAAAAoABYAAQACAAMAAAAoABcAAQACAAMAAAAoABgAAQACAAMAAAAoABkAAQACAAMAAAAoABoAAQACAAMAAAAoABsAAQACAAMAAAAoABwAAQACAAMAAAAoAB0AAQACAAMAAAAoAB4AAQACAAMAAAAoAB8AAQACAAMAAAAoACAAAQACAAMAAAAoACEAAQACAAMAAAAoACIAAQACAAMAAAAoACMAAQACAAMAAAAoACQAAQACAAMAAAAoACUAAQACAAMAAAAoACYAAQACAAMAAAAoACcAAQACAAMAAAAoACgAAQACAAMAAAAoACkAAQACAAMAAAAoACoAAQACAAMAAAAoACsAAQACAAMAAAAoACwAAQACAAMAAAAoAC0AAQACAAMAAAAoAC4AAQACAAMAAAAoAC8AAQACAAMAAAAoADAAAQACAAMAAAAoADEAAQACAAMAAAAoADIAAQACAAMAAAAoADMAAQACAAMAAAAoADQAAQACAAMAAAAoADUAAQACAAMAAAAoADYAAQACAAMAAAAoADcAAQACAAMAAAApAAcAAQACAAMAAAApAAgAAQACAAMAAAApAAkAAQACAAMAAAApAAoAAQACAAMAAAApAAsAAQACAAMAAAApAAwAAQACAAMAAAApAA0AAQACAAMAAAApAA4AAQACAAMAAAApAA8AAQACAAMAAAApABAAAQACAAMAAAApABEAAQACAAMAAAApABIAAQACAAMAAAApABMAAQACAAMAAAApABQAAQACAAMAAAApABUAAQACAAMAAAApABYAAQACAAMAAAApABcAAQACAAMAAAApABgAAQACAAMAAAApABkAAQACAAMAAAApABoAAQACAAMAAAApABsAAQACAAMAAAApABwAAQACAAMAAAApAB0AAQACAAMAAAApAB4AAQACAAMAAAApAB8AAQACAAMAAAApACAAAQACAAMAAAApACEAAQACAAMAAAApACIAAQACAAMAAAApACMAAQACAAMAAAApACQAAQACAAMAAAApACUAAQACAAMAAAApACYAAQACAAMAAAApACcAAQACAAMAAAApACgAAQACAAMAAAApACkAAQACAAMAAAApACoAAQACAAMAAAApACsAAQACAAMAAAApACwAAQACAAMAAAApAC0AAQACAAMAAAApAC4AAQACAAMAAAApAC8AAQACAAMAAAApADAAAQACAAMAAAApADEAAQACAAMAAAApADIAAQACAAMAAAApADMAAQACAAMAAAApADQAAQACAAMAAAApADUAAQACAAMAAAApADYAAQACAAMAAAApADcAAQACAAMAAAAqAAcAAQACAAMAAAAqAAgAAQACAAMAAAAqAAkAAQACAAMAAAAqAAoAAQACAAMAAAAqAAsAAQACAAMAAAAqAAwAAQACAAMAAAAqAA0AAQACAAMAAAAqAA4AAQACAAMAAAAqAA8AAQACAAMAAAAqABAAAQACAAMAAAAqABEAAQACAAMAAAAqABIAAQACAAMAAAAqABMAAQACAAMAAAAqABQAAQACAAMAAAAqABUAAQACAAMAAAAqABYAAQACAAMAAAAqABcAAQACAAMAAAAqABgAAQACAAMAAAAqABkAAQACAAMAAAAqABoAAQACAAMAAAAqABsAAQACAAMAAAAqABwAAQACAAMAAAAqAB0AAQACAAMAAAAqAB4AAQACAAMAAAAqAB8AAQACAAMAAAAqACAAAQACAAMAAAAqACEAAQACAAMAAAAqACIAAQACAAMAAAAqACMAAQACAAMAAAAqACQAAQACAAMAAAAqACUAAQACAAMAAAAqACYAAQACAAMAAAAqACcAAQACAAMAAAAqACgAAQACAAMAAAAqACkAAQACAAMAAAAqACoAAQACAAMAAAAqACsAAQACAAMAAAAqACwAAQACAAMAAAAqAC0AAQACAAMAAAAqAC4AAQACAAMAAAAqAC8AAQACAAMAAAAqADAAAQACAAMAAAAqADEAAQACAAMAAAAqADIAAQACAAMAAAAqADMAAQACAAMAAAAqADQAAQACAAMAAAAqADUAAQACAAMAAAAqADYAAQACAAMAAAAqADcAAQACAAMAAAArAAcAAQACAAMAAAArAAgAAQACAAMAAAArAAkAAQACAAMAAAArAAoAAQACAAMAAAArAAsAAQACAAMAAAArAAwAAQACAAMAAAArAA0AAQACAAMAAAArAA4AAQACAAMAAAArAA8AAQACAAMAAAArABAAAQACAAMAAAArABEAAQACAAMAAAArABIAAQACAAMAAAArABMAAQACAAMAAAArABQAAQACAAMAAAArABUAAQACAAMAAAArABYAAQACAAMAAAArABcAAQACAAMAAAArABgAAQACAAMAAAArABkAAQACAAMAAAArABoAAQACAAMAAAArABsAAQACAAMAAAArABwAAQACAAMAAAArAB0AAQACAAMAAAArAB4AAQACAAMAAAArAB8AAQACAAMAAAArACAAAQACAAMAAAArACEAAQACAAMAAAArACIAAQACAAMAAAArACMAAQACAAMAAAArACQAAQACAAMAAAArACUAAQACAAMAAAArACYAAQACAAMAAAArACcAAQACAAMAAAArACgAAQACAAMAAAArACkAAQACAAMAAAArACoAAQACAAMAAAArACsAAQACAAMAAAArACwAAQACAAMAAAArAC0AAQACAAMAAAArAC4AAQACAAMAAAArAC8AAQACAAMAAAArADAAAQACAAMAAAArADEAAQACAAMAAAArADIAAQACAAMAAAArADMAAQACAAMAAAArADQAAQACAAMAAAArADUAAQACAAMAAAArADYAAQACAAMAAAArADcAAQACAAMAAAAsAAcAAQACAAMAAAAsAAgAAQACAAMAAAAsAAkAAQACAAMAAAAsAAoAAQACAAMAAAAsAAsAAQACAAMAAAAsAAwAAQACAAMAAAAsAA0AAQACAAMAAAAsAA4AAQACAAMAAAAsAA8AAQACAAMAAAAsABAAAQACAAMAAAAsABEAAQACAAMAAAAsABIAAQACAAMAAAAsABMAAQACAAMAAAAsABQAAQACAAMAAAAsABUAAQACAAMAAAAsABYAAQACAAMAAAAsABcAAQACAAMAAAAsABgAAQACAAMAAAAsABkAAQACAAMAAAAsABoAAQACAAMAAAAsABsAAQACAAMAAAAsABwAAQACAAMAAAAsAB0AAQACAAMAAAAsAB4AAQACAAMAAAAsAB8AAQACAAMAAAAsACAAAQACAAMAAAAsACEAAQACAAMAAAAsACIAAQACAAMAAAAsACMAAQACAAMAAAAsACQAAQACAAMAAAAsACUAAQACAAMAAAAsACYAAQACAAMAAAAsACcAAQACAAMAAAAsACgAAQACAAMAAAAsACkAAQACAAMAAAAsACoAAQACAAMAAAAsACsAAQACAAMAAAAsACwAAQACAAMAAAAsAC0AAQACAAMAAAAsAC4AAQACAAMAAAAsAC8AAQACAAMAAAAsADAAAQACAAMAAAAsADEAAQACAAMAAAAsADIAAQACAAMAAAAsADMAAQACAAMAAAAsADQAAQACAAMAAAAsADUAAQACAAMAAAAsADYAAQACAAMAAAAsADcAAQACAAMAAAAtAAcAAQACAAMAAAAtAAgAAQACAAMAAAAtAAkAAQACAAMAAAAtAAoAAQACAAMAAAAtAAsAAQACAAMAAAAtAAwAAQACAAMAAAAtAA0AAQACAAMAAAAtAA4AAQACAAMAAAAtAA8AAQACAAMAAAAtABAAAQACAAMAAAAtABEAAQACAAMAAAAtABIAAQACAAMAAAAtABMAAQACAAMAAAAtABQAAQACAAMAAAAtABUAAQACAAMAAAAtABYAAQACAAMAAAAtABcAAQACAAMAAAAtABgAAQACAAMAAAAtABkAAQACAAMAAAAtABoAAQACAAMAAAAtABsAAQACAAMAAAAtABwAAQACAAMAAAAtAB0AAQACAAMAAAAtAB4AAQACAAMAAAAtAB8AAQACAAMAAAAtACAAAQACAAMAAAAtACEAAQACAAMAAAAtACIAAQACAAMAAAAtACMAAQACAAMAAAAtACQAAQACAAMAAAAtACUAAQACAAMAAAAtACYAAQACAAMAAAAtACcAAQACAAMAAAAtACgAAQACAAMAAAAtACkAAQACAAMAAAAtACoAAQACAAMAAAAtACsAAQACAAMAAAAtACwAAQACAAMAAAAtAC0AAQACAAMAAAAtAC4AAQACAAMAAAAtAC8AAQACAAMAAAAtADAAAQACAAMAAAAtADEAAQACAAMAAAAtADIAAQACAAMAAAAtADMAAQACAAMAAAAtADQAAQACAAMAAAAtADUAAQACAAMAAAAtADYAAQACAAMAAAAtADcAAQACAAMAAAAuAAcAAQACAAMAAAAuAAgAAQACAAMAAAAuAAkAAQACAAMAAAAuAAoAAQACAAMAAAAuAAsAAQACAAMAAAAuAAwAAQACAAMAAAAuAA0AAQACAAMAAAAuAA4AAQACAAMAAAAuAA8AAQACAAMAAAAuABAAAQACAAMAAAAuABEAAQACAAMAAAAuABIAAQACAAMAAAAuABMAAQACAAMAAAAuABQAAQACAAMAAAAuABUAAQACAAMAAAAuABYAAQACAAMAAAAuABcAAQACAAMAAAAuABgAAQACAAMAAAAuABkAAQACAAMAAAAuABoAAQACAAMAAAAuABsAAQACAAMAAAAuABwAAQACAAMAAAAuAB0AAQACAAMAAAAuAB4AAQACAAMAAAAuAB8AAQACAAMAAAAuACAAAQACAAMAAAAuACEAAQACAAMAAAAuACIAAQACAAMAAAAuACMAAQACAAMAAAAuACQAAQACAAMAAAAuACUAAQACAAMAAAAuACYAAQACAAMAAAAuACcAAQACAAMAAAAuACgAAQACAAMAAAAuACkAAQACAAMAAAAuACoAAQACAAMAAAAuACsAAQACAAMAAAAuACwAAQACAAMAAAAuAC0AAQACAAMAAAAuAC4AAQACAAMAAAAuAC8AAQACAAMAAAAuADAAAQACAAMAAAAuADEAAQACAAMAAAAuADIAAQACAAMAAAAuADMAAQACAAMAAAAuADQAAQACAAMAAAAuADUAAQACAAMAAAAuADYAAQACAAMAAAAuADcAAQACAAMAAAAvAAcAAQACAAMAAAAvAAgAAQACAAMAAAAvAAkAAQACAAMAAAAvAAoAAQACAAMAAAAvAAsAAQACAAMAAAAvAAwAAQACAAMAAAAvAA0AAQACAAMAAAAvAA4AAQACAAMAAAAvAA8AAQACAAMAAAAvABAAAQACAAMAAAAvABEAAQACAAMAAAAvABIAAQACAAMAAAAvABMAAQACAAMAAAAvABQAAQACAAMAAAAvABUAAQACAAMAAAAvABYAAQACAAMAAAAvABcAAQACAAMAAAAvABgAAQACAAMAAAAvABkAAQACAAMAAAAvABoAAQACAAMAAAAvABsAAQACAAMAAAAvABwAAQACAAMAAAAvAB0AAQACAAMAAAAvAB4AAQACAAMAAAAvAB8AAQACAAMAAAAvACAAAQACAAMAAAAvACEAAQACAAMAAAAvACIAAQACAAMAAAAvACMAAQACAAMAAAAvACQAAQACAAMAAAAvACUAAQACAAMAAAAvACYAAQACAAMAAAAvACcAAQACAAMAAAAvACgAAQACAAMAAAAvACkAAQACAAMAAAAvACoAAQACAAMAAAAvACsAAQACAAMAAAAvACwAAQACAAMAAAAvAC0AAQACAAMAAAAvAC4AAQACAAMAAAAvAC8AAQACAAMAAAAvADAAAQACAAMAAAAvADEAAQACAAMAAAAvADIAAQACAAMAAAAvADMAAQACAAMAAAAvADQAAQACAAMAAAAvADUAAQACAAMAAAAvADYAAQACAAMAAAAvADcAAQACAAMAAAAwAAcAAQACAAMAAAAwAAgAAQACAAMAAAAwAAkAAQACAAMAAAAwAAoAAQACAAMAAAAwAAsAAQACAAMAAAAwAAwAAQACAAMAAAAwAA0AAQACAAMAAAAwAA4AAQACAAMAAAAwAA8AAQACAAMAAAAwABAAAQACAAMAAAAwABEAAQACAAMAAAAwABIAAQACAAMAAAAwABMAAQACAAMAAAAwABQAAQACAAMAAAAwABUAAQACAAMAAAAwABYAAQACAAMAAAAwABcAAQACAAMAAAAwABgAAQACAAMAAAAwABkAAQACAAMAAAAwABoAAQACAAMAAAAwABsAAQACAAMAAAAwABwAAQACAAMAAAAwAB0AAQACAAMAAAAwAB4AAQACAAMAAAAwAB8AAQACAAMAAAAwACAAAQACAAMAAAAwACEAAQACAAMAAAAwACIAAQACAAMAAAAwACMAAQACAAMAAAAwACQAAQACAAMAAAAwACUAAQACAAMAAAAwACYAAQACAAMAAAAwACcAAQACAAMAAAAwACgAAQACAAMAAAAwACkAAQACAAMAAAAwACoAAQACAAMAAAAwACsAAQACAAMAAAAwACwAAQACAAMAAAAwAC0AAQACAAMAAAAwAC4AAQACAAMAAAAwAC8AAQACAAMAAAAwADAAAQACAAMAAAAwADEAAQACAAMAAAAwADIAAQACAAMAAAAwADMAAQACAAMAAAAwADQAAQACAAMAAAAwADUAAQACAAMAAAAwADYAAQACAAMAAAAwADcAAQACAAMAAAAxAAcAAQACAAMAAAAxAAgAAQACAAMAAAAxAAkAAQACAAMAAAAxAAoAAQACAAMAAAAxAAsAAQACAAMAAAAxAAwAAQACAAMAAAAxAA0AAQACAAMAAAAxAA4AAQACAAMAAAAxAA8AAQACAAMAAAAxABAAAQACAAMAAAAxABEAAQACAAMAAAAxABIAAQACAAMAAAAxABMAAQACAAMAAAAxABQAAQACAAMAAAAxABUAAQACAAMAAAAxABYAAQACAAMAAAAxABcAAQACAAMAAAAxABgAAQACAAMAAAAxABkAAQACAAMAAAAxABoAAQACAAMAAAAxABsAAQACAAMAAAAxABwAAQACAAMAAAAxAB0AAQACAAMAAAAxAB4AAQACAAMAAAAxAB8AAQACAAMAAAAxACAAAQACAAMAAAAxACEAAQACAAMAAAAxACIAAQACAAMAAAAxACMAAQACAAMAAAAxACQAAQACAAMAAAAxACUAAQACAAMAAAAxACYAAQACAAMAAAAxACcAAQACAAMAAAAxACgAAQACAAMAAAAxACkAAQACAAMAAAAxACoAAQACAAMAAAAxACsAAQACAAMAAAAxACwAAQACAAMAAAAxAC0AAQACAAMAAAAxAC4AAQACAAMAAAAxAC8AAQACAAMAAAAxADAAAQACAAMAAAAxADEAAQACAAMAAAAxADIAAQACAAMAAAAxADMAAQACAAMAAAAxADQAAQACAAMAAAAxADUAAQACAAMAAAAxADYAAQACAAMAAAAxADcAAQACAAMAAAAyAAcAAQACAAMAAAAyAAgAAQACAAMAAAAyAAkAAQACAAMAAAAyAAoAAQACAAMAAAAyAAsAAQACAAMAAAAyAAwAAQACAAMAAAAyAA0AAQACAAMAAAAyAA4AAQACAAMAAAAyAA8AAQACAAMAAAAyABAAAQACAAMAAAAyABEAAQACAAMAAAAyABIAAQACAAMAAAAyABMAAQACAAMAAAAyABQAAQACAAMAAAAyABUAAQACAAMAAAAyABYAAQACAAMAAAAyABcAAQACAAMAAAAyABgAAQACAAMAAAAyABkAAQACAAMAAAAyABoAAQACAAMAAAAyABsAAQACAAMAAAAyABwAAQACAAMAAAAyAB0AAQACAAMAAAAyAB4AAQACAAMAAAAyAB8AAQACAAMAAAAyACAAAQACAAMAAAAyACEAAQACAAMAAAAyACIAAQACAAMAAAAyACMAAQACAAMAAAAyACQAAQACAAMAAAAyACUAAQACAAMAAAAyACYAAQACAAMAAAAyACcAAQACAAMAAAAyACgAAQACAAMAAAAyACkAAQACAAMAAAAyACoAAQACAAMAAAAyACsAAQACAAMAAAAyACwAAQACAAMAAAAyAC0AAQACAAMAAAAyAC4AAQACAAMAAAAyAC8AAQACAAMAAAAyADAAAQACAAMAAAAyADEAAQACAAMAAAAyADIAAQACAAMAAAAyADMAAQACAAMAAAAyADQAAQACAAMAAAAyADUAAQACAAMAAAAyADYAAQACAAMAAAAyADcAAQACAAMAAAAzAAcAAQACAAMAAAAzAAgAAQACAAMAAAAzAAkAAQACAAMAAAAzAAoAAQACAAMAAAAzAAsAAQACAAMAAAAzAAwAAQACAAMAAAAzAA0AAQACAAMAAAAzAA4AAQACAAMAAAAzAA8AAQACAAMAAAAzABAAAQACAAMAAAAzABEAAQACAAMAAAAzABIAAQACAAMAAAAzABMAAQACAAMAAAAzABQAAQACAAMAAAAzABUAAQACAAMAAAAzABYAAQACAAMAAAAzABcAAQACAAMAAAAzABgAAQACAAMAAAAzABkAAQACAAMAAAAzABoAAQACAAMAAAAzABsAAQACAAMAAAAzABwAAQACAAMAAAAzAB0AAQACAAMAAAAzAB4AAQACAAMAAAAzAB8AAQACAAMAAAAzACAAAQACAAMAAAAzACEAAQACAAMAAAAzACIAAQACAAMAAAAzACMAAQACAAMAAAAzACQAAQACAAMAAAAzACUAAQACAAMAAAAzACYAAQACAAMAAAAzACcAAQACAAMAAAAzACgAAQACAAMAAAAzACkAAQACAAMAAAAzACoAAQACAAMAAAAzACsAAQACAAMAAAAzACwAAQACAAMAAAAzAC0AAQACAAMAAAAzAC4AAQACAAMAAAAzAC8AAQACAAMAAAAzADAAAQACAAMAAAAzADEAAQACAAMAAAAzADIAAQACAAMAAAAzADMAAQACAAMAAAAzADQAAQACAAMAAAAzADUAAQACAAMAAAAzADYAAQACAAMAAAAzADcAAQACAAMAAAA0AAcAAQACAAMAAAA0AAgAAQACAAMAAAA0AAkAAQACAAMAAAA0AAoAAQACAAMAAAA0AAsAAQACAAMAAAA0AAwAAQACAAMAAAA0AA0AAQACAAMAAAA0AA4AAQACAAMAAAA0AA8AAQACAAMAAAA0ABAAAQACAAMAAAA0ABEAAQACAAMAAAA0ABIAAQACAAMAAAA0ABMAAQACAAMAAAA0ABQAAQACAAMAAAA0ABUAAQACAAMAAAA0ABYAAQACAAMAAAA0ABcAAQACAAMAAAA0ABgAAQACAAMAAAA0ABkAAQACAAMAAAA0ABoAAQACAAMAAAA0ABsAAQACAAMAAAA0ABwAAQACAAMAAAA0AB0AAQACAAMAAAA0AB4AAQACAAMAAAA0AB8AAQACAAMAAAA0ACAAAQACAAMAAAA0ACEAAQACAAMAAAA0ACIAAQACAAMAAAA0ACMAAQACAAMAAAA0ACQAAQACAAMAAAA0ACUAAQACAAMAAAA0ACYAAQACAAMAAAA0ACcAAQACAAMAAAA0ACgAAQACAAMAAAA0ACkAAQACAAMAAAA0ACoAAQACAAMAAAA0ACsAAQACAAMAAAA0ACwAAQACAAMAAAA0AC0AAQACAAMAAAA0AC4AAQACAAMAAAA0AC8AAQACAAMAAAA0ADAAAQACAAMAAAA0ADEAAQACAAMAAAA0ADIAAQACAAMAAAA0ADMAAQACAAMAAAA0ADQAAQACAAMAAAA0ADUAAQACAAMAAAA0ADYAAQACAAMAAAA0ADcAAQACAAMAAAA1AAcAAQACAAMAAAA1AAgAAQACAAMAAAA1AAkAAQACAAMAAAA1AAoAAQACAAMAAAA1AAsAAQACAAMAAAA1AAwAAQACAAMAAAA1AA0AAQACAAMAAAA1AA4AAQACAAMAAAA1AA8AAQACAAMAAAA1ABAAAQACAAMAAAA1ABEAAQACAAMAAAA1ABIAAQACAAMAAAA1ABMAAQACAAMAAAA1ABQAAQACAAMAAAA1ABUAAQACAAMAAAA1ABYAAQACAAMAAAA1ABcAAQACAAMAAAA1ABgAAQACAAMAAAA1ABkAAQACAAMAAAA1ABoAAQACAAMAAAA1ABsAAQACAAMAAAA1ABwAAQACAAMAAAA1AB0AAQACAAMAAAA1AB4AAQACAAMAAAA1AB8AAQACAAMAAAA1ACAAAQACAAMAAAA1ACEAAQACAAMAAAA1ACIAAQACAAMAAAA1ACMAAQACAAMAAAA1ACQAAQACAAMAAAA1ACUAAQACAAMAAAA1ACYAAQACAAMAAAA1ACcAAQACAAMAAAA1ACgAAQACAAMAAAA1ACkAAQACAAMAAAA1ACoAAQACAAMAAAA1ACsAAQACAAMAAAA1ACwAAQACAAMAAAA1AC0AAQACAAMAAAA1AC4AAQACAAMAAAA1AC8AAQACAAMAAAA1ADAAAQACAAMAAAA2AAcAAQACAAMAAAA2AAgAAQACAAMAAAA2AAkAAQACAAMAAAA2AAoAAQACAAMAAAA2AAsAAQACAAMAAAA2AAwAAQACAAMAAAA2AA0AAQACAAMAAAA2AA4AAQAIAAMAAAA2AA8AAQAIAAMAAAA2ABAAAQAIAAMAAAA2ABEAAQAIAAMAAAA2ABIAAQAIAAMAAAA2ABMAAQAIAAMAAAA2ABQAAQAIAAMAAAA2ABUAAQAIAAMAAAA2ABYAAQAIAAMAAAA2ABcAAQAIAAMAAAA2ABgAAQAIAAMAAAA2ABkAAQAIAAMAAAA2ABoAAQAIAAMAAAA2ABsAAQAIAAMAAAA2ABwAAQAIAAMAAAA2AB0AAQAIAAMAAAA2AB4AAQAIAAMAAAA2AB8AAQAIAAMAAAA2ACAAAQAIAAMAAAA2ACEAAQAIAAMAAAA2ACIAAQAIAAMAAAA2ACMAAQAIAAMAAAA2ACQAAQAIAAMAAAA2ACUAAQAIAAMAAAA2ACYAAQAIAAMAAAA2ACcAAQAIAAMAAAA2ACgAAQAIAAMAAAA2ACkAAQAIAAMAAAA2ACoAAQAIAAMAAAA2ACsAAQAIAAMAAAA2ACwAAQAIAAMAAAA2AC0AAQAIAAMAAAA2AC4AAQAIAAMAAAA2AC8AAQAIAAMAAAA2ADAAAQAIAAMAAAA2ADIAAgAAAAAAAAA2ADMAAgAAAAAAAAA2ADQAAgAAAAAAAAA2ADUAAgAAAAAAAAA2ADYAAgAAAAAAAAA3AAcAAQACAAMAAAA3AAgAAQACAAMAAAA3AAkAAQACAAMAAAA3AAoAAQACAAMAAAA3AAsAAQACAAMAAAA3AAwAAQACAAMAAAA3AA0AAQACAAMAAAA3AA4AAQACAAMAAAA3AA8AAQACAAMAAAA3ABAAAQACAAMAAAA3ABEAAQACAAMAAAA3ABIAAQACAAMAAAA3ABMAAQACAAMAAAA3ABQAAQACAAMAAAA3ABUAAQACAAMAAAA3ABYAAQACAAMAAAA3ABcAAQACAAMAAAA3ABgAAQACAAMAAAA3ABkAAQACAAMAAAA3ABoAAQACAAMAAAA3ABsAAQACAAMAAAA3ABwAAQACAAMAAAA3AB0AAQACAAMAAAA3AB4AAQACAAMAAAA3AB8AAQACAAMAAAA3ACAAAQACAAMAAAA3ACEAAQACAAMAAAA3ACIAAQACAAMAAAA3ACMAAQACAAMAAAA3ACQAAQACAAMAAAA3ACUAAQACAAMAAAA3ACYAAQACAAMAAAA3ACcAAQACAAMAAAA3ACgAAQACAAMAAAA3ACkAAQACAAMAAAA3ACoAAQACAAMAAAA3ACsAAQACAAMAAAA3ACwAAQACAAMAAAA3AC0AAQACAAMAAAA3AC4AAQACAAMAAAA3AC8AAQACAAMAAAA3ADAAAQACAAMAAAA3ADIAAgAAAAAAAAA3ADMAAgAAAAAAAAA3ADQAAgAAAAAAAAA3ADUAAgAAAAAAAAA3ADYAAgAAAAAAAAA4AAcAAQACAAMAAAA4AAgAAQACAAMAAAA4AAkAAQACAAMAAAA4AAoAAQACAAMAAAA4AAsAAQACAAMAAAA4AAwAAQACAAMAAAA4AA0AAQACAAMAAAA4AA4AAQACAAMAAAA4AA8AAQACAAMAAAA4ABAAAQACAAMAAAA4ABEAAQACAAMAAAA4ABIAAQACAAMAAAA4ABMAAQACAAMAAAA4ABQAAQACAAMAAAA4ABUAAQACAAMAAAA4ABYAAQACAAMAAAA4ABcAAQACAAMAAAA4ABgAAQACAAMAAAA4ABkAAQACAAMAAAA4ABoAAQACAAMAAAA4ABsAAQACAAMAAAA4ABwAAQACAAMAAAA4AB0AAQACAAMAAAA4AB4AAQACAAMAAAA4AB8AAQACAAMAAAA4ACAAAQACAAMAAAA4ACEAAQACAAMAAAA4ACIAAQACAAMAAAA4ACMAAQACAAMAAAA4ACQAAQACAAMAAAA4ACUAAQACAAMAAAA4ACYAAQACAAMAAAA4ACcAAQACAAMAAAA4ACgAAQACAAMAAAA4ACkAAQACAAMAAAA4ACoAAQACAAMAAAA4ACsAAQACAAMAAAA4ACwAAQACAAMAAAA4AC0AAQACAAMAAAA4AC4AAQACAAMAAAA4AC8AAQACAAMAAAA4ADAAAQACAAMAAAA4ADIAAgAAAAAAAAA4ADMAAgAAAAAAAAA4ADQAAgAAAAAAAAA4ADUAAgAAAAAAAAA4ADYAAgAAAAAAAAA5AAcAAQACAAMAAAA5AAgAAQACAAMAAAA5AAkAAQACAAMAAAA5AAoAAQACAAMAAAA5AAsAAQACAAMAAAA5AAwAAQACAAMAAAA5AA0AAQACAAMAAAA5AA4AAQACAAMAAAA5AA8AAQACAAMAAAA5ABAAAQACAAMAAAA5ABEAAQACAAMAAAA5ABIAAQACAAMAAAA5ABMAAQACAAMAAAA5ABQAAQACAAMAAAA5ABUAAQACAAMAAAA5ABYAAQACAAMAAAA5ABcAAQACAAMAAAA5ABgAAQACAAMAAAA5ABkAAQACAAMAAAA5ABoAAQACAAMAAAA5ABsAAQACAAMAAAA5ABwAAQACAAMAAAA5AB0AAQACAAMAAAA5AB4AAQACAAMAAAA5AB8AAQACAAMAAAA5ACAAAQACAAMAAAA5ACEAAQACAAMAAAA5ACIAAQACAAMAAAA5ACMAAQACAAMAAAA5ACQAAQACAAMAAAA5ACUAAQACAAMAAAA5ACYAAQACAAMAAAA5ACcAAQACAAMAAAA5ACgAAQACAAMAAAA5ACkAAQACAAMAAAA5ACoAAQACAAMAAAA5ACsAAQACAAMAAAA5ACwAAQACAAMAAAA5AC0AAQACAAMAAAA5AC4AAQACAAMAAAA5AC8AAQACAAMAAAA5ADAAAQACAAMAAAA5ADIAAgAAAAAAAAA5ADMAAgAAAAAAAAA5ADQAAgAAAAAAAAA5ADUAAgAAAAAAAAA5ADYAAgAAAAAAAAA6AAcAAQACAAMAAAA6AAgAAQACAAMAAAA6AAkAAQACAAMAAAA6AAoAAQACAAMAAAA6AAsAAQACAAMAAAA6AAwAAQACAAMAAAA6AA0AAQACAAMAAAA6AA4AAQACAAMAAAA6AA8AAQACAAMAAAA6ABAAAQACAAMAAAA6ABEAAQACAAMAAAA6ABIAAQACAAMAAAA6ABMAAQACAAMAAAA6ABQAAQACAAMAAAA6ABUAAQACAAMAAAA6ABYAAQACAAMAAAA6ABcAAQACAAMAAAA6ABgAAQACAAMAAAA6ABkAAQACAAMAAAA6ABoAAQACAAMAAAA6ABsAAQACAAMAAAA6ABwAAQACAAMAAAA6AB0AAQACAAMAAAA6AB4AAQACAAMAAAA6AB8AAQACAAMAAAA6ACAAAQACAAMAAAA6ACEAAQACAAMAAAA6ACIAAQACAAMAAAA6ACMAAQACAAMAAAA6ACQAAQACAAMAAAA6ACUAAQACAAMAAAA6ACYAAQACAAMAAAA6ACcAAQACAAMAAAA6ACgAAQACAAMAAAA6ACkAAQACAAMAAAA6ACoAAQACAAMAAAA6ACsAAQACAAMAAAA6ACwAAQACAAMAAAA6AC0AAQACAAMAAAA6AC4AAQACAAMAAAA6AC8AAQACAAMAAAA6ADAAAQACAAMAAAA6ADIAAgAAAAAAAAA6ADMAAgAAAAAAAAA6ADQAAgAAAAAAAAA6ADUAAgAAAAAAAAA6ADYAAgAAAAAAAAA7AAcAAQACAAMAAAA7AAgAAQACAAMAAAA7AAkAAQACAAMAAAA7AAoAAQACAAMAAAA7AAsAAQACAAMAAAA7AAwAAQACAAMAAAA7AA0AAQACAAMAAAA7AA4AAQACAAMAAAA7AA8AAQACAAMAAAA7ABAAAQACAAMAAAA7ABEAAQACAAMAAAA7ABIAAQACAAMAAAA7ABMAAQACAAMAAAA7ABQAAQACAAMAAAA7ABUAAQACAAMAAAA7ABYAAQACAAMAAAA7ABcAAQACAAMAAAA7ABgAAQACAAMAAAA7ABkAAQACAAMAAAA7ABoAAQACAAMAAAA7ABsAAQACAAMAAAA7ABwAAQACAAMAAAA7AB0AAQACAAMAAAA7AB4AAQACAAMAAAA7AB8AAQACAAMAAAA7ACAAAQACAAMAAAA7ACEAAQACAAMAAAA7ACIAAQACAAMAAAA7ACMAAQACAAMAAAA7ACQAAQACAAMAAAA7ACUAAQACAAMAAAA7ACYAAQACAAMAAAA7ACcAAQACAAMAAAA7ACgAAQACAAMAAAA7ACkAAQACAAMAAAA7ACoAAQACAAMAAAA7ACsAAQACAAMAAAA7ACwAAQACAAMAAAA7AC0AAQACAAMAAAA7AC4AAQACAAMAAAA7AC8AAQACAAMAAAA7ADAAAQACAAMAAAA7ADIAAgAAAAAAAAA7ADMAAgAAAAAAAAA7ADQAAgAAAAAAAAA7ADUAAgAAAAAAAAA7ADYAAgAAAAAAAAA8AAcAAQACAAMAAAA8AAgAAQACAAMAAAA8AAkAAQACAAMAAAA8AAoAAQACAAMAAAA8AAsAAQACAAMAAAA8AAwAAQACAAMAAAA8AA0AAQACAAMAAAA8AA4AAQACAAMAAAA8AA8AAQACAAMAAAA8ABAAAQACAAMAAAA8ABEAAQACAAMAAAA8ABIAAQACAAMAAAA8ABMAAQACAAMAAAA8ABQAAQACAAMAAAA8ABUAAQACAAMAAAA8ABYAAQACAAMAAAA8ABcAAQACAAMAAAA8ABgAAQACAAMAAAA8ABkAAQACAAMAAAA8ABoAAQACAAMAAAA8ABsAAQACAAMAAAA8ABwAAQACAAMAAAA8AB0AAQACAAMAAAA8AB4AAQACAAMAAAA8AB8AAQACAAMAAAA8ACAAAQACAAMAAAA8ACEAAQACAAMAAAA8ACIAAQACAAMAAAA8ACMAAQACAAMAAAA8ACQAAQACAAMAAAA8ACUAAQACAAMAAAA8ACYAAQACAAMAAAA8ACcAAQACAAMAAAA8ACgAAQACAAMAAAA8ACkAAQACAAMAAAA8ACoAAQACAAMAAAA8ACsAAQACAAMAAAA8ACwAAQACAAMAAAA8AC0AAQACAAMAAAA8AC4AAQACAAMAAAA8AC8AAQACAAMAAAA8ADAAAQACAAMAAAA8ADIAAgAAAAAAAAA8ADMAAgAAAAAAAAA8ADQAAgAAAAAAAAA8ADUAAgAAAAAAAAA8ADYAAgAAAAAAAAA9AAcAAQACAAMAAAA9AAgAAQACAAMAAAA9AAkAAQACAAMAAAA9AAoAAQACAAMAAAA9AAsAAQACAAMAAAA9AAwAAQACAAMAAAA9AA0AAQACAAMAAAA9AA4AAQACAAMAAAA9AA8AAQACAAMAAAA9ABAAAQACAAMAAAA9ABEAAQACAAMAAAA9ABIAAQACAAMAAAA9ABMAAQACAAMAAAA9ABQAAQACAAMAAAA9ABUAAQACAAMAAAA9ABYAAQACAAMAAAA9ABcAAQACAAMAAAA9ABgAAQACAAMAAAA9ABkAAQACAAMAAAA9ABoAAQACAAMAAAA9ABsAAQACAAMAAAA9ABwAAQACAAMAAAA9AB0AAQACAAMAAAA9AB4AAQACAAMAAAA9AB8AAQACAAMAAAA9ACAAAQACAAMAAAA9ACEAAQACAAMAAAA9ACIAAQACAAMAAAA9ACMAAQACAAMAAAA9ACQAAQACAAMAAAA9ACUAAQACAAMAAAA9ACYAAQACAAMAAAA9ACcAAQACAAMAAAA9ACgAAQACAAMAAAA9ACkAAQACAAMAAAA9ACoAAQACAAMAAAA9ACsAAQACAAMAAAA9ACwAAQACAAMAAAA9AC0AAQACAAMAAAA9AC4AAQACAAMAAAA9AC8AAQACAAMAAAA9ADAAAQACAAMAAAA+AAcAAQACAAMAAAA+AAgAAQACAAMAAAA+AAkAAQACAAMAAAA+AAoAAQACAAMAAAA+AAsAAQACAAMAAAA+AAwAAQACAAMAAAA+AA0AAQACAAMAAAA+AA4AAQACAAMAAAA+AA8AAQACAAMAAAA+ABAAAQACAAMAAAA+ABEAAQACAAMAAAA+ABIAAQACAAMAAAA+ABMAAQACAAMAAAA+ABQAAQACAAMAAAA+ABUAAQACAAMAAAA+ABYAAQACAAMAAAA+ABcAAQACAAMAAAA+ABgAAQACAAMAAAA+ABkAAQACAAMAAAA+ABoAAQACAAMAAAA+ABsAAQACAAMAAAA+ABwAAQACAAMAAAA+AB0AAQACAAMAAAA+AB4AAQACAAMAAAA+AB8AAQACAAMAAAA+ACAAAQACAAMAAAA+ACEAAQACAAMAAAA+ACIAAQACAAMAAAA+ACMAAQACAAMAAAA+ACQAAQACAAMAAAA+ACUAAQACAAMAAAA+ACYAAQACAAMAAAA+ACcAAQACAAMAAAA+ACgAAQACAAMAAAA+ACkAAQACAAMAAAA+ACoAAQACAAMAAAA+ACsAAQACAAMAAAA+ACwAAQACAAMAAAA+AC0AAQACAAMAAAA+AC4AAQACAAMAAAA+AC8AAQACAAMAAAA+ADAAAQACAAMAAAA+ADEAAQACAAMAAAA+ADIAAQACAAMAAAA+ADMAAQACAAMAAAA+ADQAAQACAAMAAAA+ADUAAQACAAMAAAA+ADYAAQACAAMAAAA+ADcAAQACAAMAAAA/AAcAAQACAAMAAAA/AAgAAQACAAMAAAA/AAkAAQACAAMAAAA/AAoAAQACAAMAAAA/AAsAAQACAAMAAAA/AAwAAQACAAMAAAA/AA0AAQACAAMAAAA/AA4AAQACAAMAAAA/AA8AAQACAAMAAAA/ABAAAQACAAMAAAA/ABEAAQACAAMAAAA/ABIAAQACAAMAAAA/ABMAAQACAAMAAAA/ABQAAQACAAMAAAA/ABUAAQACAAMAAAA/ABYAAQACAAMAAAA/ABcAAQACAAMAAAA/ABgAAQACAAMAAAA/ABkAAQACAAMAAAA/ABoAAQACAAMAAAA/ABsAAQACAAMAAAA/ABwAAQACAAMAAAA/AB0AAQACAAMAAAA/AB4AAQACAAMAAAA/AB8AAQACAAMAAAA/ACAAAQACAAMAAAA/ACEAAQACAAMAAAA/ACIAAQACAAMAAAA/ACMAAQACAAMAAAA/ACQAAQACAAMAAAA/ACUAAQACAAMAAAA/ACYAAQACAAMAAAA/ACcAAQACAAMAAAA/ACgAAQACAAMAAAA/ACkAAQACAAMAAAA/ACoAAQACAAMAAAA/ACsAAQACAAMAAAA/ACwAAQACAAMAAAA/AC0AAQACAAMAAAA/AC4AAQACAAMAAAA/AC8AAQACAAMAAAA/ADAAAQACAAMAAAA/ADEAAQACAAMAAAA/ADIAAQACAAMAAAA/ADMAAQACAAMAAAA/ADQAAQACAAMAAAA/ADUAAQACAAMAAAA/ADYAAQACAAMAAAA/ADcAAQACAAMAAABAAAcAAQACAAMAAABAAAgAAQACAAMAAABAAAkAAQACAAMAAABAAAoAAQACAAMAAABAAAsAAQACAAMAAABAAAwAAQACAAMAAABAAA0AAQACAAMAAABAAA4AAQACAAMAAABAAA8AAQACAAMAAABAABAAAQACAAMAAABAABEAAQACAAMAAABAABIAAQACAAMAAABAABMAAQACAAMAAABAABQAAQACAAMAAABAABUAAQACAAMAAABAABYAAQACAAMAAABAABcAAQACAAMAAABAABgAAQACAAMAAABAABkAAQACAAMAAABAABoAAQACAAMAAABAABsAAQACAAMAAABAABwAAQACAAMAAABAAB0AAQACAAMAAABAAB4AAQACAAMAAABAAB8AAQACAAMAAABAACAAAQACAAMAAABAACEAAQACAAMAAABAACIAAQACAAMAAABAACMAAQACAAMAAABAACQAAQACAAMAAABAACUAAQACAAMAAABAACYAAQACAAMAAABAACcAAQACAAMAAABAACgAAQACAAMAAABAACkAAQACAAMAAABAACoAAQACAAMAAABAACsAAQACAAMAAABAACwAAQACAAMAAABAAC0AAQACAAMAAABAAC4AAQACAAMAAABAAC8AAQACAAMAAABAADAAAQACAAMAAABAADEAAQACAAMAAABAADIAAQACAAMAAABAADMAAQACAAMAAABAADQAAQACAAMAAABAADUAAQACAAMAAABAADYAAQACAAMAAABAADcAAQACAAMAAABBAAcAAQACAAMAAABBAAgAAQACAAMAAABBAAkAAQACAAMAAABBAAoAAQACAAMAAABBAAsAAQACAAMAAABBAAwAAQACAAMAAABBAA0AAQACAAMAAABBAA4AAQACAAMAAABBAA8AAQACAAMAAABBABAAAQACAAMAAABBABEAAQACAAMAAABBABIAAQACAAMAAABBABMAAQACAAMAAABBABQAAQACAAMAAABBABUAAQACAAMAAABBABYAAQACAAMAAABBABcAAQACAAMAAABBABgAAQACAAMAAABBABkAAQACAAMAAABBABoAAQACAAMAAABBABsAAQACAAMAAABBABwAAQACAAMAAABBAB0AAQACAAMAAABBAB4AAQACAAMAAABBAB8AAQACAAMAAABBACAAAQACAAMAAABBACEAAQACAAMAAABBACIAAQACAAMAAABBACMAAQACAAMAAABBACQAAQACAAMAAABBACUAAQACAAMAAABBACYAAQACAAMAAABBACcAAQACAAMAAABBACgAAQACAAMAAABBACkAAQACAAMAAABBACoAAQACAAMAAABBACsAAQACAAMAAABBACwAAQACAAMAAABBAC0AAQACAAMAAABBAC4AAQACAAMAAABBAC8AAQACAAMAAABBADAAAQACAAMAAABBADEAAQACAAMAAABBADIAAQACAAMAAABBADMAAQACAAMAAABBADQAAQACAAMAAABBADUAAQACAAMAAABBADYAAQACAAMAAABBADcAAQACAAMAAABCAAcAAQACAAMAAABCAAgAAQACAAMAAABCAAkAAQACAAMAAABCAAoAAQACAAMAAABCAAsAAQACAAMAAABCAAwAAQACAAMAAABCAA0AAQACAAMAAABCAA4AAQACAAMAAABCAA8AAQACAAMAAABCABAAAQACAAMAAABCABEAAQACAAMAAABCABIAAQACAAMAAABCABMAAQACAAMAAABCABQAAQACAAMAAABCABUAAQACAAMAAABCABYAAQACAAMAAABCABcAAQACAAMAAABCABgAAQACAAMAAABCABkAAQACAAMAAABCABoAAQACAAMAAABCABsAAQACAAMAAABCABwAAQACAAMAAABCAB0AAQACAAMAAABCAB4AAQACAAMAAABCAB8AAQACAAMAAABCACAAAQACAAMAAABCACEAAQACAAMAAABCACIAAQACAAMAAABCACMAAQACAAMAAABCACQAAQACAAMAAABCACUAAQACAAMAAABCACYAAQACAAMAAABCACcAAQACAAMAAABCACgAAQACAAMAAABCACkAAQACAAMAAABCACoAAQACAAMAAABCACsAAQACAAMAAABCACwAAQACAAMAAABCAC0AAQACAAMAAABCAC4AAQACAAMAAABCAC8AAQACAAMAAABCADAAAQACAAMAAABCADEAAQACAAMAAABCADIAAQACAAMAAABCADMAAQACAAMAAABCADQAAQACAAMAAABCADUAAQACAAMAAABCADYAAQACAAMAAABCADcAAQACAAMAAABDAAcAAQACAAMAAABDAAgAAQACAAMAAABDAAkAAQACAAMAAABDAAoAAQACAAMAAABDAAsAAQACAAMAAABDAAwAAQACAAMAAABDAA0AAQACAAMAAABDAA4AAQACAAMAAABDAA8AAQACAAMAAABDABAAAQACAAMAAABDABEAAQACAAMAAABDABIAAQACAAMAAABDABMAAQACAAMAAABDABQAAQACAAMAAABDABUAAQACAAMAAABDABYAAQACAAMAAABDABcAAQACAAMAAABDABgAAQACAAMAAABDABkAAQACAAMAAABDABoAAQACAAMAAABDABsAAQACAAMAAABDABwAAQACAAMAAABDAB0AAQACAAMAAABDAB4AAQACAAMAAABDAB8AAQACAAMAAABDACAAAQACAAMAAABDACEAAQACAAMAAABDACIAAQACAAMAAABDACMAAQACAAMAAABDACQAAQACAAMAAABDACUAAQACAAMAAABDACYAAQACAAMAAABDACcAAQACAAMAAABDACgAAQACAAMAAABDACkAAQACAAMAAABDACoAAQACAAMAAABDACsAAQACAAMAAABDACwAAQACAAMAAABDAC0AAQACAAMAAABDAC4AAQACAAMAAABDAC8AAQACAAMAAABDADAAAQACAAMAAABDADEAAQACAAMAAABDADIAAQACAAMAAABDADMAAQACAAMAAABDADQAAQACAAMAAABDADUAAQACAAMAAABDADYAAQACAAMAAABDADcAAQACAAMAAABEAAcAAQACAAMAAABEAAgAAQACAAMAAABEAAkAAQACAAMAAABEAAoAAQACAAMAAABEAAsAAQACAAMAAABEAAwAAQACAAMAAABEAA0AAQACAAMAAABEAA4AAQACAAMAAABEAA8AAQACAAMAAABEABAAAQACAAMAAABEABEAAQACAAMAAABEABIAAQACAAMAAABEABMAAQACAAMAAABEABQAAQACAAMAAABEABUAAQACAAMAAABEABYAAQACAAMAAABEABcAAQACAAMAAABEABgAAQACAAMAAABEABkAAQACAAMAAABEABoAAQACAAMAAABEABsAAQACAAMAAABEABwAAQACAAMAAABEAB0AAQACAAMAAABEAB4AAQACAAMAAABEAB8AAQACAAMAAABEACAAAQACAAMAAABEACEAAQACAAMAAABEACIAAQACAAMAAABEACMAAQACAAMAAABEACQAAQACAAMAAABEACUAAQACAAMAAABEACYAAQACAAMAAABEACcAAQACAAMAAABEACgAAQACAAMAAABEACkAAQACAAMAAABEACoAAQACAAMAAABEACsAAQACAAMAAABEACwAAQACAAMAAABEAC0AAQACAAMAAABEAC4AAQACAAMAAABEAC8AAQACAAMAAABEADAAAQACAAMAAABEADEAAQACAAMAAABEADIAAQACAAMAAABEADMAAQACAAMAAABEADQAAQACAAMAAABEADUAAQACAAMAAABEADYAAQACAAMAAABEADcAAQACAAMAAABFAAcAAQACAAMAAABFAAgAAQACAAMAAABFAAkAAQACAAMAAABFAAoAAQACAAMAAABFAAsAAQACAAMAAABFAAwAAQACAAMAAABFAA0AAQACAAMAAABFAA4AAQACAAMAAABFAA8AAQACAAMAAABFABAAAQACAAMAAABFABEAAQACAAMAAABFABIAAQACAAMAAABFABMAAQACAAMAAABFABQAAQACAAMAAABFABUAAQACAAMAAABFABYAAQACAAMAAABFABcAAQACAAMAAABFABgAAQACAAMAAABFABkAAQACAAMAAABFABoAAQACAAMAAABFABsAAQACAAMAAABFABwAAQACAAMAAABFAB0AAQACAAMAAABFAB4AAQACAAMAAABFAB8AAQACAAMAAABFACAAAQACAAMAAABFACEAAQACAAMAAABFACIAAQACAAMAAABFACMAAQACAAMAAABFACQAAQACAAMAAABFACUAAQACAAMAAABFACYAAQACAAMAAABFACcAAQACAAMAAABFACgAAQACAAMAAABFACkAAQACAAMAAABFACoAAQACAAMAAABFACsAAQACAAMAAABFACwAAQACAAMAAABFAC0AAQACAAMAAABFAC4AAQACAAMAAABFAC8AAQACAAMAAABFADAAAQACAAMAAABFADEAAQACAAMAAABFADIAAQACAAMAAABFADMAAQACAAMAAABFADQAAQACAAMAAABFADUAAQACAAMAAABFADYAAQACAAMAAABFADcAAQACAAMAAABGAAcAAQACAAMAAABGAAgAAQACAAMAAABGAAkAAQACAAMAAABGAAoAAQACAAMAAABGAAsAAQACAAMAAABGAAwAAQACAAMAAABGAA0AAQACAAMAAABGAA4AAQACAAMAAABGAA8AAQACAAMAAABGABAAAQACAAMAAABGABEAAQACAAMAAABGABIAAQACAAMAAABGABMAAQACAAMAAABGABQAAQACAAMAAABGABUAAQACAAMAAABGABYAAQACAAMAAABGABcAAQACAAMAAABGABgAAQACAAMAAABGABkAAQACAAMAAABGABoAAQACAAMAAABGABsAAQACAAMAAABGABwAAQACAAMAAABGAB0AAQACAAMAAABGAB4AAQACAAMAAABGAB8AAQACAAMAAABGACAAAQACAAMAAABGACEAAQACAAMAAABGACIAAQACAAMAAABGACMAAQACAAMAAABGACQAAQACAAMAAABGACUAAQACAAMAAABGACYAAQACAAMAAABGACcAAQACAAMAAABGACgAAQACAAMAAABGACkAAQACAAMAAABGACoAAQACAAMAAABGACsAAQACAAMAAABGACwAAQACAAMAAABGAC0AAQACAAMAAABGAC4AAQACAAMAAABGAC8AAQACAAMAAABGADAAAQACAAMAAABGADEAAQACAAMAAABGADIAAQACAAMAAABGADMAAQACAAMAAABGADQAAQACAAMAAABGADUAAQACAAMAAABGADYAAQACAAMAAABGADcAAQACAAMAAABHAAcAAQACAAMAAABHAAgAAQACAAMAAABHAAkAAQACAAMAAABHAAoAAQACAAMAAABHAAsAAQACAAMAAABHAAwAAQACAAMAAABHAA0AAQACAAMAAABHAA4AAQACAAMAAABHAA8AAQACAAMAAABHABAAAQACAAMAAABHABEAAQACAAMAAABHABIAAQACAAMAAABHABMAAQACAAMAAABHABQAAQACAAMAAABHABUAAQACAAMAAABHABYAAQACAAMAAABHABcAAQACAAMAAABHABgAAQACAAMAAABHABkAAQACAAMAAABHABoAAQACAAMAAABHABsAAQACAAMAAABHABwAAQACAAMAAABHAB0AAQACAAMAAABHAB4AAQACAAMAAABHAB8AAQACAAMAAABHACAAAQACAAMAAABHACEAAQACAAMAAABHACIAAQACAAMAAABHACMAAQACAAMAAABHACQAAQACAAMAAABHACUAAQACAAMAAABHACYAAQACAAMAAABHACcAAQACAAMAAABHACgAAQACAAMAAABHACkAAQACAAMAAABHACoAAQACAAMAAABHACsAAQACAAMAAABHACwAAQACAAMAAABHAC0AAQACAAMAAABHAC4AAQACAAMAAABHAC8AAQACAAMAAABHADAAAQACAAMAAABHADEAAQACAAMAAABHADIAAQACAAMAAABHADMAAQACAAMAAABHADQAAQACAAMAAABHADUAAQACAAMAAABHADYAAQACAAMAAABHADcAAQACAAMAAABIAAcAAQACAAMAAABIAAgAAQACAAMAAABIAAkAAQACAAMAAABIAAoAAQACAAMAAABIAAsAAQACAAMAAABIAAwAAQACAAMAAABIAA0AAQACAAMAAABIAA4AAQACAAMAAABIAA8AAQACAAMAAABIABAAAQACAAMAAABIABEAAQACAAMAAABIABIAAQACAAMAAABIABMAAQACAAMAAABIABQAAQACAAMAAABIABUAAQACAAMAAABIABYAAQACAAMAAABIABcAAQACAAMAAABIABgAAQACAAMAAABIABkAAQACAAMAAABIABoAAQACAAMAAABIABsAAQACAAMAAABIABwAAQACAAMAAABIAB0AAQACAAMAAABIAB4AAQACAAMAAABIAB8AAQACAAMAAABIACAAAQACAAMAAABIACEAAQACAAMAAABIACIAAQACAAMAAABIACMAAQACAAMAAABIACQAAQACAAMAAABIACUAAQACAAMAAABIACYAAQACAAMAAABIACcAAQACAAMAAABIACgAAQACAAMAAABIACkAAQACAAMAAABIACoAAQACAAMAAABIACsAAQACAAMAAABIACwAAQACAAMAAABIAC0AAQACAAMAAABIAC4AAQACAAMAAABIAC8AAQACAAMAAABIADAAAQACAAMAAABIADEAAQACAAMAAABIADIAAQACAAMAAABIADMAAQACAAMAAABIADQAAQACAAMAAABIADUAAQACAAMAAABIADYAAQACAAMAAABIADcAAQACAAMAAABJAAcAAQACAAMAAABJAAgAAQACAAMAAABJAAkAAQACAAMAAABJAAoAAQACAAMAAABJAAsAAQACAAMAAABJAAwAAQACAAMAAABJAA0AAQACAAMAAABJAA4AAQACAAMAAABJAA8AAQACAAMAAABJABAAAQACAAMAAABJABEAAQACAAMAAABJABIAAQACAAMAAABJABMAAQACAAMAAABJABQAAQACAAMAAABJABUAAQACAAMAAABJABYAAQACAAMAAABJABcAAQACAAMAAABJABgAAQACAAMAAABJABkAAQACAAMAAABJABoAAQACAAMAAABJABsAAQACAAMAAABJABwAAQACAAMAAABJAB0AAQACAAMAAABJAB4AAQACAAMAAABJAB8AAQACAAMAAABJACAAAQACAAMAAABJACEAAQACAAMAAABJACIAAQACAAMAAABJACMAAQACAAMAAABJACQAAQACAAMAAABJACUAAQACAAMAAABJACYAAQACAAMAAABJACcAAQACAAMAAABJACgAAQACAAMAAABJACkAAQACAAMAAABJACoAAQACAAMAAABJACsAAQACAAMAAABJACwAAQACAAMAAABJAC0AAQACAAMAAABJAC4AAQACAAMAAABJAC8AAQACAAMAAABJADAAAQACAAMAAABJADEAAQACAAMAAABJADIAAQACAAMAAABJADMAAQACAAMAAABJADQAAQACAAMAAABJADUAAQACAAMAAABJADYAAQACAAMAAABJADcAAQACAAMAAABKAAcAAQACAAMAAABKAAgAAQACAAMAAABKAAkAAQACAAMAAABKAAoAAQACAAMAAABKAAsAAQACAAMAAABKAAwAAQACAAMAAABKAA0AAQACAAMAAABKAA4AAQACAAMAAABKAA8AAQACAAMAAABKABAAAQACAAMAAABKABEAAQACAAMAAABKABIAAQACAAMAAABKABMAAQACAAMAAABKABQAAQACAAMAAABKABUAAQACAAMAAABKABYAAQACAAMAAABKABcAAQACAAMAAABKABgAAQACAAMAAABKABkAAQACAAMAAABKABoAAQACAAMAAABKABsAAQACAAMAAABKABwAAQACAAMAAABKAB0AAQACAAMAAABKAB4AAQACAAMAAABKAB8AAQACAAMAAABKACAAAQACAAMAAABKACEAAQACAAMAAABKACIAAQACAAMAAABKACMAAQACAAMAAABKACQAAQACAAMAAABKACUAAQACAAMAAABKACYAAQACAAMAAABKACcAAQACAAMAAABKACgAAQACAAMAAABKACkAAQACAAMAAABKACoAAQACAAMAAABKACsAAQACAAMAAABKACwAAQACAAMAAABKAC0AAQACAAMAAABKAC4AAQACAAMAAABKAC8AAQACAAMAAABKADAAAQACAAMAAABKADEAAQACAAMAAABKADIAAQACAAMAAABKADMAAQACAAMAAABKADQAAQACAAMAAABKADUAAQACAAMAAABKADYAAQACAAMAAABKADcAAQACAAMAAABLAAcAAQACAAMAAABLAAgAAQACAAMAAABLAAkAAQACAAMAAABLAAoAAQACAAMAAABLAAsAAQACAAMAAABLAAwAAQACAAMAAABLAA0AAQACAAMAAABLAA4AAQACAAMAAABLAA8AAQACAAMAAABLABAAAQACAAMAAABLABEAAQACAAMAAABLABIAAQACAAMAAABLABMAAQACAAMAAABLABQAAQACAAMAAABLABUAAQACAAMAAABLABYAAQACAAMAAABLABcAAQACAAMAAABLABgAAQACAAMAAABLABkAAQACAAMAAABLABoAAQACAAMAAABLABsAAQACAAMAAABLABwAAQACAAMAAABLAB0AAQACAAMAAABLAB4AAQACAAMAAABLAB8AAQACAAMAAABLACAAAQACAAMAAABLACEAAQACAAMAAABLACIAAQACAAMAAABLACMAAQACAAMAAABLACQAAQACAAMAAABLACUAAQACAAMAAABLACYAAQACAAMAAABLACcAAQACAAMAAABLACgAAQACAAMAAABLACkAAQACAAMAAABLACoAAQACAAMAAABLACsAAQACAAMAAABLACwAAQACAAMAAABLAC0AAQACAAMAAABLAC4AAQACAAMAAABLAC8AAQACAAMAAABLADAAAQACAAMAAABLADEAAQACAAMAAABLADIAAQACAAMAAABLADMAAQACAAMAAABLADQAAQACAAMAAABLADUAAQACAAMAAABLADYAAQACAAMAAABLADcAAQACAAMAAABMAAcAAQACAAMAAABMAAgAAQACAAMAAABMAAkAAQACAAMAAABMAAoAAQACAAMAAABMAAsAAQACAAMAAABMAAwAAQACAAMAAABMAA0AAQACAAMAAABMAA4AAQACAAMAAABMAA8AAQACAAMAAABMABAAAQACAAMAAABMABEAAQACAAMAAABMABIAAQACAAMAAABMABMAAQACAAMAAABMABQAAQACAAMAAABMABUAAQACAAMAAABMABYAAQACAAMAAABMABcAAQACAAMAAABMABgAAQACAAMAAABMABkAAQACAAMAAABMABoAAQACAAMAAABMABsAAQACAAMAAABMABwAAQACAAMAAABMAB0AAQACAAMAAABMAB4AAQACAAMAAABMAB8AAQACAAMAAABMACAAAQACAAMAAABMACEAAQACAAMAAABMACIAAQACAAMAAABMACMAAQACAAMAAABMACQAAQACAAMAAABMACUAAQACAAMAAABMACYAAQACAAMAAABMACcAAQACAAMAAABMACgAAQACAAMAAABMACkAAQACAAMAAABMACoAAQACAAMAAABMACsAAQACAAMAAABMACwAAQACAAMAAABMAC0AAQACAAMAAABMAC4AAQACAAMAAABMAC8AAQACAAMAAABMADAAAQACAAMAAABMADEAAQACAAMAAABMADIAAQACAAMAAABMADMAAQACAAMAAABMADQAAQACAAMAAABMADUAAQACAAMAAABMADYAAQACAAMAAABMADcAAQACAAMAAABNAAcAAQACAAMAAABNAAgAAQACAAMAAABNAAkAAQACAAMAAABNAAoAAQACAAMAAABNAAsAAQACAAMAAABNAAwAAQACAAMAAABNAA0AAQACAAMAAABNAA4AAQACAAMAAABNAA8AAQACAAMAAABNABAAAQACAAMAAABNABEAAQACAAMAAABNABIAAQACAAMAAABNABMAAQACAAMAAABNABQAAQACAAMAAABNABUAAQACAAMAAABNABYAAQACAAMAAABNABcAAQACAAMAAABNABgAAQACAAMAAABNABkAAQACAAMAAABNABoAAQACAAMAAABNABsAAQACAAMAAABNABwAAQACAAMAAABNAB0AAQACAAMAAABNAB4AAQACAAMAAABNAB8AAQACAAMAAABNACAAAQACAAMAAABNACEAAQACAAMAAABNACIAAQACAAMAAABNACMAAQACAAMAAABNACQAAQACAAMAAABNACUAAQACAAMAAABNACYAAQACAAMAAABNACcAAQACAAMAAABNACgAAQACAAMAAABNACkAAQACAAMAAABNACoAAQACAAMAAABNACsAAQACAAMAAABNACwAAQACAAMAAABNAC0AAQACAAMAAABNAC4AAQACAAMAAABNAC8AAQACAAMAAABNADAAAQACAAMAAABNADEAAQACAAMAAABNADIAAQACAAMAAABNADMAAQACAAMAAABNADQAAQACAAMAAABNADUAAQACAAMAAABNADYAAQACAAMAAABNADcAAQACAAMAAABOAAcAAQACAAMAAABOAAgAAQACAAMAAABOAAkAAQACAAMAAABOAAoAAQACAAMAAABOAAsAAQACAAMAAABOAAwAAQACAAMAAABOAA0AAQACAAMAAABOAA4AAQACAAMAAABOAA8AAQACAAMAAABOABAAAQACAAMAAABOABEAAQACAAMAAABOABIAAQACAAMAAABOABMAAQACAAMAAABOABQAAQACAAMAAABOABUAAQACAAMAAABOABYAAQACAAMAAABOABcAAQACAAMAAABOABgAAQACAAMAAABOABkAAQACAAMAAABOABoAAQACAAMAAABOABsAAQACAAMAAABOABwAAQACAAMAAABOAB0AAQACAAMAAABOAB4AAQACAAMAAABOAB8AAQACAAMAAABOACAAAQACAAMAAABOACEAAQACAAMAAABOACIAAQACAAMAAABOACMAAQACAAMAAABOACQAAQACAAMAAABOACUAAQACAAMAAABOACYAAQACAAMAAABOACcAAQACAAMAAABOACgAAQACAAMAAABOACkAAQACAAMAAABOACoAAQACAAMAAABOACsAAQACAAMAAABOACwAAQACAAMAAABOAC0AAQACAAMAAABOAC4AAQACAAMAAABOAC8AAQACAAMAAABOADAAAQACAAMAAABOADEAAQACAAMAAABOADIAAQACAAMAAABOADMAAQACAAMAAABOADQAAQACAAMAAABOADUAAQACAAMAAABOADYAAQACAAMAAABOADcAAQACAAMAAABPAAcAAQACAAMAAABPAAgAAQACAAMAAABPAAkAAQACAAMAAABPAAoAAQACAAMAAABPAAsAAQACAAMAAABPAAwAAQACAAMAAABPAA0AAQACAAMAAABPAA4AAQACAAMAAABPAA8AAQACAAMAAABPABAAAQACAAMAAABPABEAAQACAAMAAABPABIAAQACAAMAAABPABMAAQACAAMAAABPABQAAQACAAMAAABPABUAAQACAAMAAABPABYAAQACAAMAAABPABcAAQACAAMAAABPABgAAQACAAMAAABPABkAAQACAAMAAABPABoAAQACAAMAAABPABsAAQACAAMAAABPABwAAQACAAMAAABPAB0AAQACAAMAAABPAB4AAQACAAMAAABPAB8AAQACAAMAAABPACAAAQACAAMAAABPACEAAQACAAMAAABPACIAAQACAAMAAABPACMAAQACAAMAAABPACQAAQACAAMAAABPACUAAQACAAMAAABPACYAAQACAAMAAABPACcAAQACAAMAAABPACgAAQACAAMAAABPACkAAQACAAMAAABPACoAAQACAAMAAABPACsAAQACAAMAAABPACwAAQACAAMAAABPAC0AAQACAAMAAABPAC4AAQACAAMAAABPAC8AAQACAAMAAABPADAAAQACAAMAAABPADEAAQACAAMAAABPADIAAQACAAMAAABPADMAAQACAAMAAABPADQAAQACAAMAAABPADUAAQACAAMAAABPADYAAQACAAMAAABPADcAAQACAAMAAABQAAcAAQACAAMAAABQAAgAAQACAAMAAABQAAkAAQACAAMAAABQAAoAAQACAAMAAABQAAsAAQACAAMAAABQAAwAAQACAAMAAABQAA0AAQACAAMAAABQAA4AAQACAAMAAABQAA8AAQACAAMAAABQABAAAQACAAMAAABQABEAAQACAAMAAABQABIAAQACAAMAAABQABMAAQACAAMAAABQABQAAQACAAMAAABQABUAAQACAAMAAABQABYAAQACAAMAAABQABcAAQACAAMAAABQABgAAQACAAMAAABQABkAAQACAAMAAABQABoAAQACAAMAAABQABsAAQACAAMAAABQABwAAQACAAMAAABQAB0AAQACAAMAAABQAB4AAQACAAMAAABQAB8AAQACAAMAAABQACAAAQACAAMAAABQACEAAQACAAMAAABQACIAAQACAAMAAABQACMAAQACAAMAAABQACQAAQACAAMAAABQACUAAQACAAMAAABQACYAAQACAAMAAABQACcAAQACAAMAAABQACgAAQACAAMAAABQACkAAQACAAMAAABQACoAAQACAAMAAABQACsAAQACAAMAAABQACwAAQACAAMAAABQAC0AAQACAAMAAABQAC4AAQACAAMAAABQAC8AAQACAAMAAABQADAAAQACAAMAAABQADEAAQACAAMAAABQADIAAQACAAMAAABQADMAAQACAAMAAABQADQAAQACAAMAAABQADUAAQACAAMAAABQADYAAQACAAMAAABQADcAAQACAAMAAABRAAcAAQACAAMAAABRAAgAAQACAAMAAABRAAkAAQACAAMAAABRAAoAAQACAAMAAABRAAsAAQACAAMAAABRAAwAAQACAAMAAABRAA0AAQACAAMAAABRAA4AAQACAAMAAABRAA8AAQACAAMAAABRABAAAQACAAMAAABRABEAAQACAAMAAABRABIAAQACAAMAAABRABMAAQACAAMAAABRABQAAQACAAMAAABRABUAAQACAAMAAABRABYAAQACAAMAAABRABcAAQACAAMAAABRABgAAQACAAMAAABRABkAAQACAAMAAABRABoAAQACAAMAAABRABsAAQACAAMAAABRABwAAQACAAMAAABRAB0AAQACAAMAAABRAB4AAQACAAMAAABRAB8AAQACAAMAAABRACAAAQACAAMAAABRACEAAQACAAMAAABRACIAAQACAAMAAABRACMAAQACAAMAAABRACQAAQACAAMAAABRACUAAQACAAMAAABRACYAAQACAAMAAABRACcAAQACAAMAAABRACgAAQACAAMAAABRACkAAQACAAMAAABRACoAAQACAAMAAABRACsAAQACAAMAAABRACwAAQACAAMAAABRAC0AAQACAAMAAABRAC4AAQACAAMAAABRAC8AAQACAAMAAABRADAAAQACAAMAAABRADEAAQACAAMAAABRADIAAQACAAMAAABRADMAAQACAAMAAABRADQAAQACAAMAAABRADUAAQACAAMAAABRADYAAQACAAMAAABRADcAAQACAAMAAABSAAcAAQACAAMAAABSAAgAAQACAAMAAABSAAkAAQACAAMAAABSAAoAAQACAAMAAABSAAsAAQACAAMAAABSAAwAAQACAAMAAABSAA0AAQACAAMAAABSAA4AAQACAAMAAABSAA8AAQACAAMAAABSABAAAQACAAMAAABSABEAAQACAAMAAABSABIAAQACAAMAAABSABMAAQACAAMAAABSABQAAQACAAMAAABSABUAAQACAAMAAABSABYAAQACAAMAAABSABcAAQACAAMAAABSABgAAQACAAMAAABSABkAAQACAAMAAABSABoAAQACAAMAAABSABsAAQACAAMAAABSABwAAQACAAMAAABSAB0AAQACAAMAAABSAB4AAQACAAMAAABSAB8AAQACAAMAAABSACAAAQACAAMAAABSACEAAQACAAMAAABSACIAAQACAAMAAABSACMAAQACAAMAAABSACQAAQACAAMAAABSACUAAQACAAMAAABSACYAAQACAAMAAABSACcAAQACAAMAAABSACgAAQACAAMAAABSACkAAQACAAMAAABSACoAAQACAAMAAABSACsAAQACAAMAAABSACwAAQACAAMAAABSAC0AAQACAAMAAABSAC4AAQACAAMAAABSAC8AAQACAAMAAABSADAAAQACAAMAAABSADEAAQACAAMAAABSADIAAQACAAMAAABSADMAAQACAAMAAABSADQAAQACAAMAAABSADUAAQACAAMAAABSADYAAQACAAMAAABSADcAAQACAAMAAABTAAcAAQACAAMAAABTAAgAAQACAAMAAABTAAkAAQACAAMAAABTAAoAAQACAAMAAABTAAsAAQACAAMAAABTAAwAAQACAAMAAABTAA0AAQACAAMAAABTAA4AAQACAAMAAABTAA8AAQACAAMAAABTABAAAQACAAMAAABTABEAAQACAAMAAABTABIAAQACAAMAAABTABMAAQACAAMAAABTABQAAQACAAMAAABTABUAAQACAAMAAABTABYAAQACAAMAAABTABcAAQACAAMAAABTABgAAQACAAMAAABTABkAAQACAAMAAABTABoAAQACAAMAAABTABsAAQACAAMAAABTABwAAQACAAMAAABTAB0AAQACAAMAAABTAB4AAQACAAMAAABTAB8AAQACAAMAAABTACAAAQACAAMAAABTACEAAQACAAMAAABTACIAAQACAAMAAABTACMAAQACAAMAAABTACQAAQACAAMAAABTACUAAQACAAMAAABTACYAAQACAAMAAABTACcAAQACAAMAAABTACgAAQACAAMAAABTACkAAQACAAMAAABTACoAAQACAAMAAABTACsAAQACAAMAAABTACwAAQACAAMAAABTAC0AAQACAAMAAABTAC4AAQACAAMAAABTAC8AAQACAAMAAABTADAAAQACAAMAAABTADEAAQACAAMAAABTADIAAQACAAMAAABTADMAAQACAAMAAABTADQAAQACAAMAAABTADUAAQACAAMAAABTADYAAQACAAMAAABTADcAAQACAAMAAABUAAcAAQACAAMAAABUAAgAAQACAAMAAABUAAkAAQACAAMAAABUAAoAAQACAAMAAABUAAsAAQACAAMAAABUAAwAAQACAAMAAABUAA0AAQACAAMAAABUAA4AAQACAAMAAABUAA8AAQACAAMAAABUABAAAQACAAMAAABUABEAAQACAAMAAABUABIAAQACAAMAAABUABMAAQACAAMAAABUABQAAQACAAMAAABUABUAAQACAAMAAABUABYAAQACAAMAAABUABcAAQACAAMAAABUABgAAQACAAMAAABUABkAAQACAAMAAABUABoAAQACAAMAAABUABsAAQACAAMAAABUABwAAQACAAMAAABUAB0AAQACAAMAAABUAB4AAQACAAMAAABUAB8AAQACAAMAAABUACAAAQACAAMAAABUACEAAQACAAMAAABUACIAAQACAAMAAABUACMAAQACAAMAAABUACQAAQACAAMAAABUACUAAQACAAMAAABUACYAAQACAAMAAABUACcAAQACAAMAAABUACgAAQACAAMAAABUACkAAQACAAMAAABUACoAAQACAAMAAABUACsAAQACAAMAAABUACwAAQACAAMAAABUAC0AAQACAAMAAABUAC4AAQACAAMAAABUAC8AAQACAAMAAABUADAAAQACAAMAAABUADEAAQACAAMAAABUADIAAQACAAMAAABUADMAAQACAAMAAABUADQAAQACAAMAAABUADUAAQACAAMAAABUADYAAQACAAMAAABUADcAAQACAAMAAABVAAcAAQACAAMAAABVAAgAAQACAAMAAABVAAkAAQACAAMAAABVAAoAAQACAAMAAABVAAsAAQACAAMAAABVAAwAAQACAAMAAABVAA0AAQACAAMAAABVAA4AAQACAAMAAABVAA8AAQACAAMAAABVABAAAQACAAMAAABVABEAAQACAAMAAABVABIAAQACAAMAAABVABMAAQACAAMAAABVABQAAQACAAMAAABVABUAAQACAAMAAABVABYAAQACAAMAAABVABcAAQACAAMAAABVABgAAQACAAMAAABVABkAAQACAAMAAABVABoAAQACAAMAAABVABsAAQACAAMAAABVABwAAQACAAMAAABVAB0AAQACAAMAAABVAB4AAQACAAMAAABVAB8AAQACAAMAAABVACAAAQACAAMAAABVACEAAQACAAMAAABVACIAAQACAAMAAABVACMAAQACAAMAAABVACQAAQACAAMAAABVACUAAQACAAMAAABVACYAAQACAAMAAABVACcAAQACAAMAAABVACgAAQACAAMAAABVACkAAQACAAMAAABVACoAAQACAAMAAABVACsAAQACAAMAAABVACwAAQACAAMAAABVAC0AAQACAAMAAABVAC4AAQACAAMAAABVAC8AAQACAAMAAABVADAAAQACAAMAAABVADEAAQACAAMAAABVADIAAQACAAMAAABVADMAAQACAAMAAABVADQAAQACAAMAAABVADUAAQACAAMAAABVADYAAQACAAMAAABVADcAAQACAAMAAABWAAcAAQACAAMAAABWAAgAAQACAAMAAABWAAkAAQACAAMAAABWAAoAAQACAAMAAABWAAsAAQACAAMAAABWAAwAAQACAAMAAABWAA0AAQACAAMAAABWAA4AAQACAAMAAABWAA8AAQACAAMAAABWABAAAQACAAMAAABWABEAAQACAAMAAABWABIAAQACAAMAAABWABMAAQACAAMAAABWABQAAQACAAMAAABWABUAAQACAAMAAABWABYAAQACAAMAAABWABcAAQACAAMAAABWABgAAQACAAMAAABWABkAAQACAAMAAABWABoAAQACAAMAAABWABsAAQACAAMAAABWABwAAQACAAMAAABWAB0AAQACAAMAAABWAB4AAQACAAMAAABWAB8AAQACAAMAAABWACAAAQACAAMAAABWACEAAQACAAMAAABWACIAAQACAAMAAABWACMAAQACAAMAAABWACQAAQACAAMAAABWACUAAQACAAMAAABWACYAAQACAAMAAABWACcAAQACAAMAAABWACgAAQACAAMAAABWACkAAQACAAMAAABWACoAAQACAAMAAABWACsAAQACAAMAAABWACwAAQACAAMAAABWAC0AAQACAAMAAABWAC4AAQACAAMAAABWAC8AAQACAAMAAABWADAAAQACAAMAAABWADEAAQACAAMAAABWADIAAQACAAMAAABWADMAAQACAAMAAABWADQAAQACAAMAAABWADUAAQACAAMAAABWADYAAQACAAMAAABWADcAAQACAAMAAABXAAcAAQACAAMAAABXAAgAAQACAAMAAABXAAkAAQACAAMAAABXAAoAAQACAAMAAABXAAsAAQACAAMAAABXAAwAAQACAAMAAABXAA0AAQACAAMAAABXAA4AAQACAAMAAABXAA8AAQACAAMAAABXABAAAQACAAMAAABXABEAAQACAAMAAABXABIAAQACAAMAAABXABMAAQACAAMAAABXABQAAQACAAMAAABXABUAAQACAAMAAABXABYAAQACAAMAAABXABcAAQACAAMAAABXABgAAQACAAMAAABXABkAAQACAAMAAABXABoAAQACAAMAAABXABsAAQACAAMAAABXABwAAQACAAMAAABXAB0AAQACAAMAAABXAB4AAQACAAMAAABXAB8AAQACAAMAAABXACAAAQACAAMAAABXACEAAQACAAMAAABXACIAAQACAAMAAABXACMAAQACAAMAAABXACQAAQACAAMAAABXACUAAQACAAMAAABXACYAAQACAAMAAABXACcAAQACAAMAAABXACgAAQACAAMAAABXACkAAQACAAMAAABXACoAAQACAAMAAABXACsAAQACAAMAAABXACwAAQACAAMAAABXAC0AAQACAAMAAABXAC4AAQACAAMAAABXAC8AAQACAAMAAABXADAAAQACAAMAAABXADEAAQACAAMAAABXADIAAQACAAMAAABXADMAAQACAAMAAABXADQAAQACAAMAAABXADUAAQACAAMAAABXADYAAQACAAMAAABXADcAAQACAAMAAABYAAcAAQACAAMAAABYAAgAAQACAAMAAABYAAkAAQACAAMAAABYAAoAAQACAAMAAABYAAsAAQACAAMAAABYAAwAAQACAAMAAABYAA0AAQACAAMAAABYAA4AAQACAAMAAABYAA8AAQACAAMAAABYABAAAQACAAMAAABYABEAAQACAAMAAABYABIAAQACAAMAAABYABMAAQACAAMAAABYABQAAQACAAMAAABYABUAAQACAAMAAABYABYAAQACAAMAAABYABcAAQACAAMAAABYABgAAQACAAMAAABYABkAAQACAAMAAABYABoAAQACAAMAAABYABsAAQACAAMAAABYABwAAQACAAMAAABYAB0AAQACAAMAAABYAB4AAQACAAMAAABYAB8AAQACAAMAAABYACAAAQACAAMAAABYACEAAQACAAMAAABYACIAAQACAAMAAABYACMAAQACAAMAAABYACQAAQACAAMAAABYACUAAQACAAMAAABYACYAAQACAAMAAABYACcAAQACAAMAAABYACgAAQACAAMAAABYACkAAQACAAMAAABYACoAAQACAAMAAABYACsAAQACAAMAAABYACwAAQACAAMAAABYAC0AAQACAAMAAABYAC4AAQACAAMAAABYAC8AAQACAAMAAABYADAAAQACAAMAAABYADEAAQACAAMAAABYADIAAQACAAMAAABYADMAAQACAAMAAABYADQAAQACAAMAAABYADUAAQACAAMAAABYADYAAQACAAMAAABYADcAAQACAAMAAABZAAcAAQACAAMAAABZAAgAAQACAAMAAABZAAkAAQACAAMAAABZAAoAAQACAAMAAABZAAsAAQACAAMAAABZAAwAAQACAAMAAABZAA0AAQACAAMAAABZAA4AAQACAAMAAABZAA8AAQACAAMAAABZABAAAQACAAMAAABZABEAAQACAAMAAABZABIAAQACAAMAAABZABMAAQACAAMAAABZABQAAQACAAMAAABZABUAAQACAAMAAABZABYAAQACAAMAAABZABcAAQACAAMAAABZABgAAQACAAMAAABZABkAAQACAAMAAABZABoAAQACAAMAAABZABsAAQACAAMAAABZABwAAQACAAMAAABZAB0AAQACAAMAAABZAB4AAQACAAMAAABZAB8AAQACAAMAAABZACAAAQACAAMAAABZACEAAQACAAMAAABZACIAAQACAAMAAABZACMAAQACAAMAAABZACQAAQACAAMAAABZACUAAQACAAMAAABZACYAAQACAAMAAABZACcAAQACAAMAAABZACgAAQACAAMAAABZACkAAQACAAMAAABZACoAAQACAAMAAABZACsAAQACAAMAAABZACwAAQACAAMAAABZAC0AAQACAAMAAABZAC4AAQACAAMAAABZAC8AAQACAAMAAABZADAAAQACAAMAAABZADIAAQACAAMAAABZADMAAQACAAMAAABZADQAAQACAAMAAABZADUAAQACAAMAAABZADYAAQACAAMAAABZADcAAQACAAMAAABaAAcAAQACAAMAAABaAAgAAQACAAMAAABaAAkAAQACAAMAAABaAAoAAQACAAMAAABaAAsAAQACAAMAAABaAAwAAQACAAMAAABaAA0AAQACAAMAAABaAA4AAQACAAMAAABaAA8AAQACAAMAAABaABAAAQACAAMAAABaABEAAQACAAMAAABaABIAAQACAAMAAABaABMAAQACAAMAAABaABQAAQACAAMAAABaABUAAQACAAMAAABaABYAAQACAAMAAABaABcAAQACAAMAAABaABgAAQACAAMAAABaABkAAQACAAMAAABaABoAAQACAAMAAABaABsAAQACAAMAAABaABwAAQACAAMAAABaAB0AAQACAAMAAABaAB4AAQACAAMAAABaAB8AAQACAAMAAABaACAAAQACAAMAAABaACEAAQACAAMAAABaACIAAQACAAMAAABaACMAAQACAAMAAABaACQAAQACAAMAAABaACUAAQACAAMAAABaACYAAQACAAMAAABaACcAAQACAAMAAABaACgAAQACAAMAAABaACkAAQACAAMAAABaACoAAQACAAMAAABaACsAAQACAAMAAABaACwAAQACAAMAAABaAC0AAQACAAMAAABaAC4AAQACAAMAAABaAC8AAQACAAMAAABaADAAAQACAAMAAABaADEAAQACAAMAAABaADMAAQACAAMAAABaADQAAQACAAMAAABaADUAAQACAAMAAABaADYAAQACAAMAAABaADcAAQACAAMAAABbAAcAAQACAAMAAABbAAgAAQACAAMAAABbAAkAAQACAAMAAABbAAoAAQACAAMAAABbAAsAAQACAAMAAABbAAwAAQACAAMAAABbAA0AAQACAAMAAABbAA4AAQACAAMAAABbAA8AAQACAAMAAABbABAAAQACAAMAAABbABEAAQACAAMAAABbABIAAQACAAMAAABbABMAAQACAAMAAABbABQAAQACAAMAAABbABUAAQACAAMAAABbABYAAQACAAMAAABbABcAAQACAAMAAABbABgAAQACAAMAAABbABkAAQACAAMAAABbABoAAQACAAMAAABbABsAAQACAAMAAABbABwAAQACAAMAAABbAB0AAQACAAMAAABbAB4AAQACAAMAAABbAB8AAQACAAMAAABbACAAAQACAAMAAABbACEAAQACAAMAAABbACIAAQACAAMAAABbACMAAQACAAMAAABbACQAAQACAAMAAABbACUAAQACAAMAAABbACYAAQACAAMAAABbACcAAQACAAMAAABbACgAAQACAAMAAABbACkAAQACAAMAAABbACoAAQACAAMAAABbACsAAQACAAMAAABbACwAAQACAAMAAABbAC0AAQACAAMAAABbAC4AAQACAAMAAABbAC8AAQACAAMAAABbADAAAQACAAMAAABbADEAAQACAAMAAABbADIAAQACAAMAAABbADQAAQACAAMAAABbADUAAQACAAMAAABbADYAAQACAAMAAABbADcAAQACAAMAAABcAAcAAQACAAMAAABcAAgAAQACAAMAAABcAAkAAQACAAMAAABcAAoAAQACAAMAAABcAAsAAQACAAMAAABcAAwAAQACAAMAAABcAA0AAQACAAMAAABcAA4AAQACAAMAAABcAA8AAQACAAMAAABcABAAAQACAAMAAABcABEAAQACAAMAAABcABIAAQACAAMAAABcABMAAQACAAMAAABcABQAAQACAAMAAABcABUAAQACAAMAAABcABYAAQACAAMAAABcABcAAQACAAMAAABcABgAAQACAAMAAABcABkAAQACAAMAAABcABoAAQACAAMAAABcABsAAQACAAMAAABcABwAAQACAAMAAABcAB0AAQACAAMAAABcAB4AAQACAAMAAABcAB8AAQACAAMAAABcACAAAQACAAMAAABcACEAAQACAAMAAABcACIAAQACAAMAAABcACMAAQACAAMAAABcACQAAQACAAMAAABcACUAAQACAAMAAABcACYAAQACAAMAAABcACcAAQACAAMAAABcACgAAQACAAMAAABcACkAAQACAAMAAABcACoAAQACAAMAAABcACsAAQACAAMAAABcACwAAQACAAMAAABcAC0AAQACAAMAAABcAC4AAQACAAMAAABcAC8AAQACAAMAAABcADAAAQACAAMAAABcADEAAQACAAMAAABcADIAAQACAAMAAABcADMAAQACAAMAAABcADYAAQACAAMAAABcADcAAQACAAMAAABdAAcAAQACAAMAAABdAAgAAQACAAMAAABdAAkAAQACAAMAAABdAAoAAQACAAMAAABdAAsAAQACAAMAAABdAAwAAQACAAMAAABdAA0AAQACAAMAAABdAA4AAQACAAMAAABdAA8AAQACAAMAAABdABAAAQACAAMAAABdABEAAQACAAMAAABdABIAAQACAAMAAABdABMAAQACAAMAAABdABQAAQACAAMAAABdABUAAQACAAMAAABdABYAAQACAAMAAABdABcAAQACAAMAAABdABgAAQACAAMAAABdABkAAQACAAMAAABdABoAAQACAAMAAABdABsAAQACAAMAAABdABwAAQACAAMAAABdAB0AAQACAAMAAABdAB4AAQACAAMAAABdAB8AAQACAAMAAABdACAAAQACAAMAAABdACEAAQACAAMAAABdACIAAQACAAMAAABdACMAAQACAAMAAABdACQAAQACAAMAAABdACUAAQACAAMAAABdACYAAQACAAMAAABdACcAAQACAAMAAABdACgAAQACAAMAAABdACkAAQACAAMAAABdACoAAQACAAMAAABdACsAAQACAAMAAABdACwAAQACAAMAAABdAC0AAQACAAMAAABdAC4AAQACAAMAAABdAC8AAQACAAMAAABdADAAAQACAAMAAABdADEAAQACAAMAAABdADIAAQACAAMAAABdADMAAQACAAMAAABdADQAAQACAAMAAABdADUAAQACAAMAAABdADcAAQACAAMAAABeAAcAAQACAAMAAABeAAgAAQACAAMAAABeAAkAAQACAAMAAABeAAoAAQACAAMAAABeAAsAAQACAAMAAABeAAwAAQACAAMAAABeAA0AAQACAAMAAABeAA4AAQACAAMAAABeAA8AAQACAAMAAABeABAAAQACAAMAAABeABEAAQACAAMAAABeABIAAQACAAMAAABeABMAAQACAAMAAABeABQAAQACAAMAAABeABUAAQACAAMAAABeABYAAQACAAMAAABeABcAAQACAAMAAABeABgAAQACAAMAAABeABkAAQACAAMAAABeABoAAQACAAMAAABeABsAAQACAAMAAABeABwAAQACAAMAAABeAB0AAQACAAMAAABeAB4AAQACAAMAAABeAB8AAQACAAMAAABeACAAAQACAAMAAABeACEAAQACAAMAAABeACIAAQACAAMAAABeACMAAQACAAMAAABeACQAAQACAAMAAABeACUAAQACAAMAAABeACYAAQACAAMAAABeACcAAQACAAMAAABeACgAAQACAAMAAABeACkAAQACAAMAAABeACoAAQACAAMAAABeACsAAQACAAMAAABeACwAAQACAAMAAABeAC0AAQACAAMAAABeAC4AAQACAAMAAABeAC8AAQACAAMAAABeADAAAQACAAMAAABeADEAAQACAAMAAABeADIAAQACAAMAAABeADMAAQACAAMAAABeADQAAQACAAMAAABeADUAAQACAAMAAABeADYAAQACAAMAAABfAAcAAQACAAMAAABfAAgAAQACAAMAAABfAAkAAQACAAMAAABfAAoAAQACAAMAAABfAAsAAQACAAMAAABfAAwAAQACAAMAAABfAA0AAQACAAMAAABfAA4AAQACAAMAAABfAA8AAQACAAMAAABfABAAAQACAAMAAABfABEAAQACAAMAAABfABIAAQACAAMAAABfABMAAQACAAMAAABfABQAAQACAAMAAABfABUAAQACAAMAAABfABYAAQACAAMAAABfABcAAQACAAMAAABfABgAAQACAAMAAABfABkAAQACAAMAAABfABoAAQACAAMAAABfABsAAQACAAMAAABfABwAAQACAAMAAABfAB0AAQACAAMAAABfAB4AAQACAAMAAABfAB8AAQACAAMAAABfACAAAQACAAMAAABfACEAAQACAAMAAABfACIAAQACAAMAAABfACMAAQACAAMAAABfACQAAQACAAMAAABfACUAAQACAAMAAABfACYAAQACAAMAAABfACcAAQACAAMAAABfACgAAQACAAMAAABfACkAAQACAAMAAABfACoAAQACAAMAAABfACsAAQACAAMAAABfACwAAQACAAMAAABfAC0AAQACAAMAAABfAC4AAQACAAMAAABfAC8AAQACAAMAAABfADAAAQACAAMAAABfADEAAQACAAMAAABfADIAAQACAAMAAABfADMAAQACAAMAAABfADQAAQACAAMAAABfADUAAQACAAMAAABfADYAAQACAAMAAABfADcAAQACAAMAAABgAAcAAQACAAMAAABgAAgAAQACAAMAAABgAAkAAQACAAMAAABgAAoAAQACAAMAAABgAAsAAQACAAMAAABgAAwAAQACAAMAAABgAA0AAQACAAMAAABgAA4AAQACAAMAAABgAA8AAQACAAMAAABgABAAAQACAAMAAABgABEAAQACAAMAAABgABIAAQACAAMAAABgABMAAQACAAMAAABgABQAAQACAAMAAABgABUAAQACAAMAAABgABYAAQACAAMAAABgABcAAQACAAMAAABgABgAAQACAAMAAABgABkAAQACAAMAAABgABoAAQACAAMAAABgABsAAQACAAMAAABgABwAAQACAAMAAABgAB0AAQACAAMAAABgAB4AAQACAAMAAABgAB8AAQACAAMAAABgACAAAQACAAMAAABgACEAAQACAAMAAABgACIAAQACAAMAAABgACMAAQACAAMAAABgACQAAQACAAMAAABgACUAAQACAAMAAABgACYAAQACAAMAAABgACcAAQACAAMAAABgACgAAQACAAMAAABgACkAAQACAAMAAABgACoAAQACAAMAAABgACsAAQACAAMAAABgACwAAQACAAMAAABgAC0AAQACAAMAAABgAC4AAQACAAMAAABgAC8AAQACAAMAAABgADAAAQACAAMAAABgADEAAQACAAMAAABgADIAAQACAAMAAABgADMAAQACAAMAAABgADQAAQACAAMAAABgADUAAQACAAMAAABgADYAAQACAAMAAABgADcAAQACAAMAAABhAAcAAQACAAMAAABhAAgAAQACAAMAAABhAAkAAQACAAMAAABhAAoAAQACAAMAAABhAAsAAQACAAMAAABhAAwAAQACAAMAAABhAA0AAQACAAMAAABhAA4AAQACAAMAAABhAA8AAQACAAMAAABhABAAAQACAAMAAABhABEAAQACAAMAAABhABIAAQACAAMAAABhABMAAQACAAMAAABhABQAAQACAAMAAABhABUAAQACAAMAAABhABYAAQACAAMAAABhABcAAQACAAMAAABhABgAAQACAAMAAABhABkAAQACAAMAAABhABoAAQACAAMAAABhABsAAQACAAMAAABhABwAAQACAAMAAABhAB0AAQACAAMAAABhAB4AAQACAAMAAABhAB8AAQACAAMAAABhACAAAQACAAMAAABhACEAAQACAAMAAABhACIAAQACAAMAAABhACMAAQACAAMAAABhACQAAQACAAMAAABhACUAAQACAAMAAABhACYAAQACAAMAAABhACcAAQACAAMAAABhACgAAQACAAMAAABhACkAAQACAAMAAABhACoAAQACAAMAAABhACsAAQACAAMAAABhACwAAQACAAMAAABhAC0AAQACAAMAAABhAC4AAQACAAMAAABhAC8AAQACAAMAAABhADAAAQACAAMAAABhADEAAQACAAMAAABhADIAAQACAAMAAABhADMAAQACAAMAAABhADQAAQACAAMAAABhADUAAQACAAMAAABhADYAAQACAAMAAABhADcAAQACAAMAAABiAAcAAQACAAMAAABiAAgAAQACAAMAAABiAAkAAQACAAMAAABiAAoAAQACAAMAAABiAAsAAQACAAMAAABiAAwAAQACAAMAAABiAA0AAQACAAMAAABiAA4AAQACAAMAAABiAA8AAQACAAMAAABiABAAAQACAAMAAABiABEAAQACAAMAAABiABIAAQACAAMAAABiABMAAQACAAMAAABiABQAAQACAAMAAABiABUAAQACAAMAAABiABYAAQACAAMAAABiABcAAQACAAMAAABiABgAAQACAAMAAABiABkAAQACAAMAAABiABoAAQACAAMAAABiABsAAQACAAMAAABiABwAAQACAAMAAABiAB0AAQACAAMAAABiAB4AAQACAAMAAABiAB8AAQACAAMAAABiACAAAQACAAMAAABiACEAAQACAAMAAABiACIAAQACAAMAAABiACMAAQACAAMAAABiACQAAQACAAMAAABiACUAAQACAAMAAABiACYAAQACAAMAAABiACcAAQACAAMAAABiACgAAQACAAMAAABiACkAAQACAAMAAABiACoAAQACAAMAAABiACsAAQACAAMAAABiACwAAQACAAMAAABiAC0AAQACAAMAAABiAC4AAQACAAMAAABiAC8AAQACAAMAAABiADAAAQACAAMAAABiADEAAQACAAMAAABiADIAAQACAAMAAABiADMAAQACAAMAAABiADQAAQACAAMAAABiADUAAQACAAMAAABiADYAAQACAAMAAABiADcAAQACAAMAAABjAAcAAQACAAMAAABjAAgAAQACAAMAAABjAAkAAQACAAMAAABjAAoAAQACAAMAAABjAAsAAQACAAMAAABjAAwAAQACAAMAAABjAA0AAQACAAMAAABjAA4AAQACAAMAAABjAA8AAQACAAMAAABjABAAAQACAAMAAABjABEAAQACAAMAAABjABIAAQACAAMAAABjABMAAQACAAMAAABjABQAAQACAAMAAABjABUAAQACAAMAAABjABYAAQACAAMAAABjABcAAQACAAMAAABjABgAAQACAAMAAABjABkAAQACAAMAAABjABoAAQACAAMAAABjABsAAQACAAMAAABjABwAAQACAAMAAABjAB0AAQACAAMAAABjAB4AAQACAAMAAABjAB8AAQACAAMAAABjACAAAQACAAMAAABjACEAAQACAAMAAABjACIAAQACAAMAAABjACMAAQACAAMAAABjACQAAQACAAMAAABjACUAAQACAAMAAABjACYAAQACAAMAAABjACcAAQACAAMAAABjACgAAQACAAMAAABjACkAAQACAAMAAABjACoAAQACAAMAAABjACsAAQACAAMAAABjACwAAQACAAMAAABjAC0AAQACAAMAAABjAC4AAQACAAMAAABjAC8AAQACAAMAAABjADAAAQACAAMAAABjADEAAQACAAMAAABjADIAAQACAAMAAABjADMAAQACAAMAAABjADQAAQACAAMAAABjADUAAQACAAMAAABjADYAAQACAAMAAABjADcAAQACAAMAAABkAAcAAQACAAMAAABkAAgAAQACAAMAAABkAAkAAQACAAMAAABkAAoAAQACAAMAAABkAAsAAQACAAMAAABkAAwAAQACAAMAAABkAA0AAQACAAMAAABkAA4AAQACAAMAAABkAA8AAQACAAMAAABkABAAAQACAAMAAABkABEAAQACAAMAAABkABIAAQACAAMAAABkABMAAQACAAMAAABkABQAAQACAAMAAABkABUAAQACAAMAAABkABYAAQACAAMAAABkABcAAQACAAMAAABkABgAAQACAAMAAABkABkAAQACAAMAAABkABoAAQACAAMAAABkABsAAQACAAMAAABkABwAAQACAAMAAABkAB0AAQACAAMAAABkAB4AAQACAAMAAABkAB8AAQACAAMAAABkACAAAQACAAMAAABkACEAAQACAAMAAABkACIAAQACAAMAAABkACMAAQACAAMAAABkACQAAQACAAMAAABkACUAAQACAAMAAABkACYAAQACAAMAAABkACcAAQACAAMAAABkACgAAQACAAMAAABkACkAAQACAAMAAABkACoAAQACAAMAAABkACsAAQACAAMAAABkACwAAQACAAMAAABkAC0AAQACAAMAAABkAC4AAQACAAMAAABkAC8AAQACAAMAAABkADAAAQACAAMAAABkADEAAQACAAMAAABkADIAAQACAAMAAABkADMAAQACAAMAAABkADQAAQACAAMAAABkADUAAQACAAMAAABkADYAAQACAAMAAABkADcAAQACAAMAAABlAAcAAQACAAMAAABlAAgAAQACAAMAAABlAAkAAQACAAMAAABlAAoAAQACAAMAAABlAAsAAQACAAMAAABlAAwAAQACAAMAAABlAA0AAQACAAMAAABlAA4AAQACAAMAAABlAA8AAQACAAMAAABlABAAAQACAAMAAABlABEAAQACAAMAAABlABIAAQACAAMAAABlABMAAQACAAMAAABlABQAAQACAAMAAABlABUAAQACAAMAAABlABYAAQACAAMAAABlABcAAQACAAMAAABlABgAAQACAAMAAABlABkAAQACAAMAAABlABoAAQACAAMAAABlABsAAQACAAMAAABlABwAAQACAAMAAABlAB0AAQACAAMAAABlAB4AAQACAAMAAABlAB8AAQACAAMAAABlACAAAQACAAMAAABlACEAAQACAAMAAABlACIAAQACAAMAAABlACMAAQACAAMAAABlACQAAQACAAMAAABlACUAAQACAAMAAABlACYAAQACAAMAAABlACcAAQACAAMAAABlACgAAQACAAMAAABlACkAAQACAAMAAABlACoAAQACAAMAAABlACsAAQACAAMAAABlACwAAQACAAMAAABlAC0AAQACAAMAAABlAC4AAQACAAMAAABlAC8AAQACAAMAAABlADAAAQACAAMAAABlADEAAQACAAMAAABlADIAAQACAAMAAABlADMAAQACAAMAAABlADQAAQACAAMAAABlADUAAQACAAMAAABlADYAAQACAAMAAABlADcAAQACAAMAAABmAAcAAQACAAMAAABmAAgAAQACAAMAAABmAAkAAQACAAMAAABmAAoAAQACAAMAAABmAAsAAQACAAMAAABmAAwAAQACAAMAAABmAA0AAQACAAMAAABmAA4AAQACAAMAAABmAA8AAQACAAMAAABmABAAAQACAAMAAABmABEAAQACAAMAAABmABIAAQACAAMAAABmABMAAQACAAMAAABmABQAAQACAAMAAABmABUAAQACAAMAAABmABYAAQACAAMAAABmABcAAQACAAMAAABmABgAAQACAAMAAABmABkAAQACAAMAAABmABoAAQACAAMAAABmABsAAQACAAMAAABmABwAAQACAAMAAABmAB0AAQACAAMAAABmAB4AAQACAAMAAABmAB8AAQACAAMAAABmACAAAQACAAMAAABmACEAAQACAAMAAABmACIAAQACAAMAAABmACMAAQACAAMAAABmACQAAQACAAMAAABmACUAAQACAAMAAABmACYAAQACAAMAAABmACcAAQACAAMAAABmACgAAQACAAMAAABmACkAAQACAAMAAABmACoAAQACAAMAAABmACsAAQACAAMAAABmACwAAQACAAMAAABmAC0AAQACAAMAAABmAC4AAQACAAMAAABmAC8AAQACAAMAAABmADAAAQACAAMAAABmADEAAQACAAMAAABmADIAAQACAAMAAABmADMAAQACAAMAAABmADQAAQACAAMAAABmADUAAQACAAMAAABmADYAAQACAAMAAABmADcAAQACAAMAAAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAEAAQACAAMAAAADAAIAAQACAAMAAAAEAAMAAQACAAMAAAAFAAMAAQACAAMAAAAGAAQAAQACAAMAAAAHAAUAAQACAAMAAAAIAAUAAQACAAMAAAAJAAYAAQACAAMAAAAKAAYAAQACAAMAAAALAAcAAQACAAMAAAAMAAcAAQACAAMAAAANAAgAAQACAAMAAAANAAkAAQACAAMAAAAOAAoAAQACAAMAAAAPAAoAAQACAAMAAAAQAAoAAQACAAMAAAARAAsAAQACAAMAAAASAAsAAQACAAMAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAAAAAoAAAABAAEAAAAAAAsAAAABAAEAAAAAAAwAAAABAAEAAAAAAA0AAAABAAEAAAABAAEAAQACAAMAAAABAAIAAQACAAMAAAABAAMAAQACAAMAAAABAAQAAQACAAMAAAABAAUAAQACAAMAAAABAAYAAQACAAMAAAABAAcAAQACAAMAAAABAAgAAQACAAMAAAABAAkAAQACAAMAAAABAAoAAQACAAMAAAABAAsAAQACAAMAAAABAAwAAQACAAMAAAABAA0AAQACAAMAAAACAAAAAAABAAEAAAACAAIAAQACAAMAAAACAAMAAQACAAMAAAACAAQAAQACAAMAAAACAAUAAQACAAMAAAACAAYAAQACAAMAAAACAAcAAQACAAMAAAACAAgAAQACAAMAAAACAAkAAQACAAMAAAACAAoAAQACAAMAAAACAAsAAQACAAMAAAACAAwAAQACAAMAAAACAA0AAQACAAMAAAADAAAAAAABAAEAAAADAAEAAQACAAMAAAADAAMAAQACAAMAAAADAAQAAQACAAMAAAADAAUAAQACAAMAAAADAAYAAQACAAMAAAADAAcAAQACAAMAAAADAAgAAQACAAMAAAADAAkAAQACAAMAAAADAAoAAQACAAMAAAADAAsAAQACAAMAAAADAAwAAQACAAMAAAADAA0AAQACAAMAAAAEAAAAAAABAAEAAAAEAAEAAQACAAMAAAAEAAIAAQACAAMAAAAEAAQAAQACAAMAAAAEAAUAAQACAAMAAAAEAAYAAQACAAMAAAAEAAcAAQACAAMAAAAEAAgAAQACAAMAAAAEAAkAAQACAAMAAAAEAAoAAQACAAMAAAAEAAsAAQACAAMAAAAEAAwAAQACAAMAAAAEAA0AAQACAAMAAAAFAAAAAAABAAEAAAAFAAEAAQACAAMAAAAFAAIAAQACAAMAAAAFAAQAAQACAAMAAAAFAAUAAQACAAMAAAAFAAYAAQACAAMAAAAFAAcAAQACAAMAAAAFAAgAAQACAAMAAAAFAAkAAQACAAMAAAAFAAoAAQACAAMAAAAFAAsAAQACAAMAAAAFAAwAAQACAAMAAAAFAA0AAQACAAMAAAAGAAAAAAABAAEAAAAGAAEAAQACAAMAAAAGAAIAAQACAAMAAAAGAAMAAQACAAMAAAAGAAUAAQACAAMAAAAGAAYAAQACAAMAAAAGAAcAAQACAAMAAAAGAAgAAQACAAMAAAAGAAkAAQACAAMAAAAGAAoAAQACAAMAAAAGAAsAAQACAAMAAAAGAAwAAQACAAMAAAAGAA0AAQACAAMAAAAHAAAAAAABAAEAAAAHAAEAAQACAAMAAAAHAAIAAQACAAMAAAAHAAMAAQACAAMAAAAHAAQAAQACAAMAAAAHAAYAAQACAAMAAAAHAAcAAQACAAMAAAAHAAgAAQACAAMAAAAHAAkAAQACAAMAAAAHAAoAAQACAAMAAAAHAAsAAQACAAMAAAAHAAwAAQACAAMAAAAHAA0AAQACAAMAAAAIAAAAAAABAAEAAAAIAAEAAQACAAMAAAAIAAIAAQACAAMAAAAIAAMAAQACAAMAAAAIAAQAAQACAAMAAAAIAAYAAQACAAMAAAAIAAcAAQACAAMAAAAIAAgAAQACAAMAAAAIAAkAAQACAAMAAAAIAAoAAQACAAMAAAAIAAsAAQACAAMAAAAIAAwAAQACAAMAAAAIAA0AAQAIAAMAAAAJAAAAAAABAAEAAAAJAAEAAQACAAMAAAAJAAIAAQACAAMAAAAJAAMAAQACAAMAAAAJAAQAAQACAAMAAAAJAAUAAQACAAMAAAAJAAcAAQACAAMAAAAJAAgAAQACAAMAAAAJAAkAAQACAAMAAAAJAAoAAQACAAMAAAAJAAsAAQACAAMAAAAJAAwAAQACAAMAAAAJAA0AAQACAAMAAAAKAAAAAAABAAEAAAAKAAEAAQACAAMAAAAKAAIAAQACAAMAAAAKAAMAAQACAAMAAAAKAAQAAQACAAMAAAAKAAUAAQACAAMAAAAKAAcAAQACAAMAAAAKAAgAAQACAAMAAAAKAAkAAQACAAMAAAAKAAoAAQACAAMAAAAKAAsAAQACAAMAAAAKAAwAAQACAAMAAAAKAA0AAQACAAMAAAALAAAAAAABAAEAAAALAAEAAQACAAMAAAALAAIAAQACAAMAAAALAAMAAQACAAMAAAALAAQAAQACAAMAAAALAAUAAQACAAMAAAALAAYAAQACAAMAAAALAAgAAQACAAMAAAALAAkAAQACAAMAAAALAAoAAQACAAMAAAALAAsAAQACAAMAAAALAAwAAQACAAMAAAALAA0AAQACAAMAAAAMAAAAAAABAAEAAAAMAAEAAQACAAMAAAAMAAIAAQACAAMAAAAMAAMAAQACAAMAAAAMAAQAAQACAAMAAAAMAAUAAQACAAMAAAAMAAYAAQACAAMAAAAMAAgAAQACAAMAAAAMAAkAAQACAAMAAAAMAAoAAQACAAMAAAAMAAsAAQACAAMAAAAMAAwAAQACAAMAAAAMAA0AAQACAAMAAAANAAAAAAABAAEAAAANAAEAAQACAAMAAAANAAIAAQACAAMAAAANAAMAAQACAAMAAAANAAQAAQACAAMAAAANAAUAAQACAAMAAAANAAYAAQACAAMAAAANAAcAAQACAAMAAAANAAoAAQACAAMAAAANAAsAAQACAAMAAAANAAwAAQACAAMAAAANAA0AAQACAAMAAAAOAAAAAAABAAEAAAAOAAEAAQACAAMAAAAOAAIAAQACAAMAAAAOAAMAAQACAAMAAAAOAAQAAQACAAMAAAAOAAUAAQACAAMAAAAOAAYAAQACAAMAAAAOAAcAAQACAAMAAAAOAAgAAQACAAMAAAAOAAkAAQACAAMAAAAOAAsAAQACAAMAAAAOAAwAAQACAAMAAAAOAA0AAQACAAMAAAAPAAAAAAABAAEAAAAPAAEAAQACAAMAAAAPAAIAAQACAAMAAAAPAAMAAQACAAMAAAAPAAQAAQACAAMAAAAPAAUAAQACAAMAAAAPAAYAAQACAAMAAAAPAAcAAQACAAMAAAAPAAgAAQACAAMAAAAPAAkAAQACAAMAAAAPAAsAAQACAAMAAAAPAAwAAQACAAMAAAAPAA0AAQACAAMAAAAQAAAAAAABAAEAAAAQAAEAAQACAAMAAAAQAAIAAQACAAMAAAAQAAMAAQACAAMAAAAQAAQAAQACAAMAAAAQAAUAAQACAAMAAAAQAAYAAQACAAMAAAAQAAcAAQACAAMAAAAQAAgAAQACAAMAAAAQAAkAAQACAAMAAAAQAAsAAQACAAMAAAAQAAwAAQACAAMAAAAQAA0AAQACAAMAAAARAAAAAAABAAEAAAARAAEAAQACAAMAAAARAAIAAQACAAMAAAARAAMAAQACAAMAAAARAAQAAQACAAMAAAARAAUAAQACAAMAAAARAAYAAQACAAMAAAARAAcAAQACAAMAAAARAAgAAQACAAMAAAARAAkAAQACAAMAAAARAAoAAQACAAMAAAARAAwAAQACAAMAAAARAA0AAQACAAMAAAASAAAAAAABAAEAAAASAAEAAQACAAMAAAASAAIAAQACAAMAAAASAAMAAQACAAMAAAASAAQAAQACAAMAAAASAAUAAQACAAMAAAASAAYAAQACAAMAAAASAAcAAQACAAMAAAASAAgAAQACAAMAAAASAAkAAQACAAMAAAASAAoAAQACAAMAAAASAAwAAQACAAMAAAASAA0AAQACAAMAAAATAAAAAAABAAEAAAATAAEAAQACAAMAAAATAAIAAQACAAMAAAATAAMAAQACAAMAAAATAAQAAQACAAMAAAATAAUAAQACAAMAAAATAAYAAQACAAMAAAAUAAAAAAABAAEAAAAUAAEAAQACAAMAAAAUAAIAAQACAAMAAAAUAAMAAQACAAMAAAAUAAQAAQACAAMAAAAUAAUAAQACAAMAAAAUAAYAAQACAAMAAAAVAAAAAAABAAEAAAAVAAEAAQACAAMAAAAVAAIAAQACAAMAAAAVAAMAAQACAAMAAAAVAAQAAQACAAMAAAAVAAUAAQACAAMAAAAVAAYAAQACAAMAAAAWAAAAAAABAAEAAAAWAAEAAQACAAMAAAAWAAIAAQACAAMAAAAWAAMAAQACAAMAAAAWAAQAAQACAAMAAAAWAAUAAQACAAMAAAAWAAYAAQACAAMAAAAXAAAAAAABAAEAAAAXAAEAAQACAAMAAAAXAAIAAQACAAMAAAAXAAMAAQACAAMAAAAXAAQAAQACAAMAAAAXAAUAAQACAAMAAAAXAAYAAQACAAMAAAAAAA4AAAABAAEAAAAAAA8AAAABAAEAAAAAABAAAAABAAEAAAAAABEAAAABAAEAAAAAABIAAAABAAEAAAAAABMAAAABAAEAAAAAABQAAAABAAEAAAAAABUAAAABAAEAAAAAABYAAAABAAEAAAAAABcAAAABAAEAAAAAABgAAAABAAEAAAAAABkAAAABAAEAAAAAABoAAAABAAEAAAAAABsAAAABAAEAAAAAABwAAAABAAEAAAAAAB0AAAABAAEAAAAAAB4AAAABAAEAAAAAAB8AAAABAAEAAAAAACAAAAABAAEAAAAAACEAAAABAAEAAAAAACIAAAABAAEAAAAAACMAAAABAAEAAAAAACQAAAABAAEAAAAAACUAAAABAAEAAAAAACYAAAABAAEAAAAAACcAAAABAAEAAAAAACgAAAABAAEAAAAAACkAAAABAAEAAAAAACoAAAABAAEAAAAAACsAAAABAAEAAAAAACwAAAABAAEAAAAAAC0AAAABAAEAAAAAAC4AAAABAAEAAAAAAC8AAAABAAEAAAAAADAAAAABAAEAAAAAADEAAAABAAEAAAAAADIAAAABAAEAAAAAADMAAAABAAEAAAAAADQAAAABAAEAAAAAADUAAAABAAEAAAAAADYAAAABAAEAAAAAADcAAAABAAEAAAAAADgAAAABAAEAAAAAADkAAAABAAEAAAAAADoAAAABAAEAAAAAADsAAAABAAEAAAAAADwAAAABAAEAAAAAAD0AAAABAAEAAAAAAD4AAAABAAEAAAAAAD8AAAABAAEAAAAAAEAAAAABAAEAAAAAAEEAAAABAAEAAAABAA4AAQACAAMAAAABAA8AAQACAAMAAAABABAAAQACAAMAAAABABEAAQACAAMAAAABABIAAQACAAMAAAABABMAAQACAAMAAAABABQAAQACAAMAAAABABUAAQACAAMAAAABABYAAQACAAMAAAABABcAAQACAAMAAAABABgAAQACAAMAAAABABkAAQACAAMAAAABABoAAQACAAMAAAABABsAAQACAAMAAAABABwAAQACAAMAAAABAB0AAQACAAMAAAABAB4AAQACAAMAAAABAB8AAQACAAMAAAABACAAAQACAAMAAAABACEAAQACAAMAAAABACIAAQACAAMAAAABACMAAQACAAMAAAABACQAAQACAAMAAAABACUAAQACAAMAAAABACYAAQACAAMAAAABACcAAQACAAMAAAABACgAAQACAAMAAAABACkAAQACAAMAAAABACoAAQACAAMAAAABACsAAQACAAMAAAABACwAAQACAAMAAAABAC0AAQACAAMAAAABAC4AAQACAAMAAAABAC8AAQACAAMAAAABADAAAQACAAMAAAABADEAAQACAAMAAAABADIAAQACAAMAAAABADMAAQACAAMAAAABADQAAQACAAMAAAABADUAAQACAAMAAAABADYAAQACAAMAAAABADcAAQACAAMAAAABADgAAQACAAMAAAABADkAAQACAAMAAAABADoAAQACAAMAAAABADsAAQACAAMAAAABADwAAQACAAMAAAABAD0AAQACAAMAAAABAD4AAQACAAMAAAABAD8AAQACAAMAAAABAEAAAQACAAMAAAABAEEAAQACAAMAAAACAA4AAQACAAMAAAACAA8AAQACAAMAAAACABAAAQACAAMAAAACABEAAQACAAMAAAACABIAAQACAAMAAAACABMAAQACAAMAAAACABQAAQACAAMAAAACABUAAQACAAMAAAACABYAAQACAAMAAAACABcAAQACAAMAAAACABgAAQACAAMAAAACABkAAQACAAMAAAACABoAAQACAAMAAAACABsAAQACAAMAAAACABwAAQACAAMAAAACAB0AAQACAAMAAAACAB4AAQACAAMAAAACAB8AAQACAAMAAAACACAAAQACAAMAAAACACEAAQACAAMAAAACACIAAQACAAMAAAACACMAAQACAAMAAAACACQAAQACAAMAAAACACUAAQACAAMAAAACACYAAQACAAMAAAACACcAAQACAAMAAAACACgAAQACAAMAAAACACkAAQACAAMAAAACACoAAQACAAMAAAACACsAAQACAAMAAAACACwAAQACAAMAAAACAC0AAQACAAMAAAACAC4AAQACAAMAAAACAC8AAQACAAMAAAACADAAAQACAAMAAAACADEAAQACAAMAAAACADIAAQACAAMAAAACADMAAQACAAMAAAACADQAAQACAAMAAAACADUAAQACAAMAAAACADYAAQACAAMAAAACADcAAQACAAMAAAACADgAAQACAAMAAAACADkAAQACAAMAAAACADoAAQACAAMAAAACADsAAQACAAMAAAACADwAAQACAAMAAAACAD0AAQACAAMAAAACAD4AAQACAAMAAAACAD8AAQACAAMAAAACAEAAAQACAAMAAAACAEEAAQACAAMAAAADAA4AAQACAAMAAAADAA8AAQACAAMAAAADABAAAQACAAMAAAADABEAAQACAAMAAAADABIAAQACAAMAAAADABMAAQACAAMAAAADABQAAQACAAMAAAADABUAAQACAAMAAAADABYAAQACAAMAAAADABcAAQACAAMAAAADABgAAQACAAMAAAADABkAAQACAAMAAAADABoAAQACAAMAAAADABsAAQACAAMAAAADABwAAQACAAMAAAADAB0AAQACAAMAAAADAB4AAQACAAMAAAADAB8AAQACAAMAAAADACAAAQACAAMAAAADACEAAQACAAMAAAADACIAAQACAAMAAAADACMAAQACAAMAAAADACQAAQACAAMAAAADACUAAQACAAMAAAADACYAAQACAAMAAAADACcAAQACAAMAAAADACgAAQACAAMAAAADACkAAQACAAMAAAADACoAAQACAAMAAAADACsAAQACAAMAAAADACwAAQACAAMAAAADAC0AAQACAAMAAAADAC4AAQACAAMAAAADAC8AAQACAAMAAAADADAAAQACAAMAAAADADEAAQACAAMAAAADADIAAQACAAMAAAADADMAAQACAAMAAAADADQAAQACAAMAAAADADUAAQACAAMAAAADADYAAQACAAMAAAADADcAAQACAAMAAAADADgAAQACAAMAAAADADkAAQACAAMAAAADADoAAQACAAMAAAADADsAAQACAAMAAAADADwAAQACAAMAAAADAD0AAQACAAMAAAADAD4AAQACAAMAAAADAD8AAQACAAMAAAADAEAAAQACAAMAAAADAEEAAQACAAMAAAAEAA4AAQACAAMAAAAEAA8AAQACAAMAAAAEABAAAQACAAMAAAAEABEAAQACAAMAAAAEABIAAQACAAMAAAAEABMAAQACAAMAAAAEABQAAQACAAMAAAAEABUAAQACAAMAAAAEABYAAQACAAMAAAAEABcAAQACAAMAAAAEABgAAQACAAMAAAAEABkAAQACAAMAAAAEABoAAQACAAMAAAAEABsAAQACAAMAAAAEABwAAQACAAMAAAAEAB0AAQACAAMAAAAEAB4AAQACAAMAAAAEAB8AAQACAAMAAAAEACAAAQACAAMAAAAEACEAAQACAAMAAAAEACIAAQACAAMAAAAEACMAAQACAAMAAAAEACQAAQACAAMAAAAEACUAAQACAAMAAAAEACYAAQACAAMAAAAEACcAAQACAAMAAAAEACgAAQACAAMAAAAEACkAAQACAAMAAAAEACoAAQACAAMAAAAEACsAAQACAAMAAAAEACwAAQACAAMAAAAEAC0AAQACAAMAAAAEAC4AAQACAAMAAAAEAC8AAQACAAMAAAAEADAAAQACAAMAAAAEADEAAQACAAMAAAAEADIAAQACAAMAAAAEADMAAQACAAMAAAAEADQAAQACAAMAAAAEADUAAQACAAMAAAAEADYAAQACAAMAAAAEADcAAQACAAMAAAAEADgAAQACAAMAAAAEADkAAQACAAMAAAAEADoAAQACAAMAAAAEADsAAQACAAMAAAAEADwAAQACAAMAAAAEAD0AAQACAAMAAAAEAD4AAQACAAMAAAAEAD8AAQACAAMAAAAEAEAAAQACAAMAAAAEAEEAAQACAAMAAAAFAA4AAQACAAMAAAAFAA8AAQACAAMAAAAFABAAAQACAAMAAAAFABEAAQACAAMAAAAFABIAAQACAAMAAAAFABMAAQACAAMAAAAFABQAAQACAAMAAAAFABUAAQACAAMAAAAFABYAAQACAAMAAAAFABcAAQACAAMAAAAFABgAAQACAAMAAAAFABkAAQACAAMAAAAFABoAAQACAAMAAAAFABsAAQACAAMAAAAFABwAAQACAAMAAAAFAB0AAQACAAMAAAAFAB4AAQACAAMAAAAFAB8AAQACAAMAAAAFACAAAQACAAMAAAAFACEAAQACAAMAAAAFACIAAQACAAMAAAAFACMAAQACAAMAAAAFACQAAQACAAMAAAAFACUAAQACAAMAAAAFACYAAQACAAMAAAAFACcAAQACAAMAAAAFACgAAQACAAMAAAAFACkAAQACAAMAAAAFACoAAQACAAMAAAAFACsAAQACAAMAAAAFACwAAQACAAMAAAAFAC0AAQACAAMAAAAFAC4AAQACAAMAAAAFAC8AAQACAAMAAAAFADAAAQACAAMAAAAFADEAAQACAAMAAAAFADIAAQACAAMAAAAFADMAAQACAAMAAAAFADQAAQACAAMAAAAFADUAAQACAAMAAAAFADYAAQACAAMAAAAFADcAAQACAAMAAAAFADgAAQACAAMAAAAFADkAAQACAAMAAAAFADoAAQACAAMAAAAFADsAAQACAAMAAAAFADwAAQACAAMAAAAFAD0AAQACAAMAAAAFAD4AAQACAAMAAAAFAD8AAQACAAMAAAAFAEAAAQACAAMAAAAFAEEAAQACAAMAAAAGAA4AAQACAAMAAAAGAA8AAQACAAMAAAAGABAAAQACAAMAAAAGABEAAQACAAMAAAAGABIAAQACAAMAAAAGABMAAQACAAMAAAAGABQAAQACAAMAAAAGABUAAQACAAMAAAAGABYAAQACAAMAAAAGABcAAQACAAMAAAAGABgAAQACAAMAAAAGABkAAQACAAMAAAAGABoAAQACAAMAAAAGABsAAQACAAMAAAAGABwAAQACAAMAAAAGAB0AAQACAAMAAAAGAB4AAQACAAMAAAAGAB8AAQACAAMAAAAGACAAAQACAAMAAAAGACEAAQACAAMAAAAGACIAAQACAAMAAAAGACMAAQACAAMAAAAGACQAAQACAAMAAAAGACUAAQACAAMAAAAGACYAAQACAAMAAAAGACcAAQACAAMAAAAGACgAAQACAAMAAAAGACkAAQACAAMAAAAGACoAAQACAAMAAAAGACsAAQACAAMAAAAGACwAAQACAAMAAAAGAC0AAQACAAMAAAAGAC4AAQACAAMAAAAGAC8AAQACAAMAAAAGADAAAQACAAMAAAAGADEAAQACAAMAAAAGADIAAQACAAMAAAAGADMAAQACAAMAAAAGADQAAQACAAMAAAAGADUAAQACAAMAAAAGADYAAQACAAMAAAAGADcAAQACAAMAAAAGADgAAQACAAMAAAAGADkAAQACAAMAAAAGADoAAQACAAMAAAAGADsAAQACAAMAAAAGADwAAQACAAMAAAAGAD0AAQACAAMAAAAGAD4AAQACAAMAAAAGAD8AAQACAAMAAAAGAEAAAQACAAMAAAAGAEEAAQACAAMAAAAHAA4AAQACAAMAAAAHAA8AAQACAAMAAAAHABAAAQACAAMAAAAHABEAAQACAAMAAAAHABIAAQACAAMAAAAHABMAAQACAAMAAAAHABQAAQACAAMAAAAHABUAAQACAAMAAAAHABYAAQACAAMAAAAHABcAAQACAAMAAAAHABgAAQACAAMAAAAHABkAAQACAAMAAAAHABoAAQACAAMAAAAHABsAAQACAAMAAAAHABwAAQACAAMAAAAHAB0AAQACAAMAAAAHAB4AAQACAAMAAAAHAB8AAQACAAMAAAAHACAAAQACAAMAAAAHACEAAQACAAMAAAAHACIAAQACAAMAAAAHACMAAQACAAMAAAAHACQAAQACAAMAAAAHACUAAQACAAMAAAAHACYAAQACAAMAAAAHACcAAQACAAMAAAAHACgAAQACAAMAAAAHACkAAQACAAMAAAAHACoAAQACAAMAAAAHACsAAQACAAMAAAAHACwAAQACAAMAAAAHAC0AAQACAAMAAAAHAC4AAQACAAMAAAAHAC8AAQACAAMAAAAHADAAAQACAAMAAAAHADEAAQACAAMAAAAHADIAAQACAAMAAAAHADMAAQACAAMAAAAHADQAAQACAAMAAAAHADUAAQACAAMAAAAHADYAAQACAAMAAAAHADcAAQACAAMAAAAHADgAAQACAAMAAAAHADkAAQACAAMAAAAHADoAAQACAAMAAAAHADsAAQACAAMAAAAHADwAAQACAAMAAAAHAD0AAQACAAMAAAAHAD4AAQACAAMAAAAHAD8AAQACAAMAAAAHAEAAAQACAAMAAAAHAEEAAQACAAMAAAAIAA4AAQAIAAMAAAAIAA8AAQAIAAMAAAAIABAAAQAIAAMAAAAIABEAAQAIAAMAAAAIABIAAQAIAAMAAAAIABMAAQAIAAMAAAAIABQAAQAIAAMAAAAIABUAAQAIAAMAAAAIABYAAQAIAAMAAAAIABcAAQAIAAMAAAAIABgAAQAIAAMAAAAIABkAAQAIAAMAAAAIABoAAQAIAAMAAAAIABsAAQAIAAMAAAAIABwAAQAIAAMAAAAIAB0AAQAIAAMAAAAIAB4AAQAIAAMAAAAIAB8AAQAIAAMAAAAIACAAAQAIAAMAAAAIACEAAQAIAAMAAAAIACIAAQAIAAMAAAAIACMAAQAIAAMAAAAIACQAAQAIAAMAAAAIACUAAQAIAAMAAAAIACYAAQAIAAMAAAAIACcAAQAIAAMAAAAIACgAAQAIAAMAAAAIACkAAQAIAAMAAAAIACoAAQAIAAMAAAAIACsAAQAIAAMAAAAIACwAAQAIAAMAAAAIAC0AAQAIAAMAAAAIAC4AAQAIAAMAAAAIAC8AAQAIAAMAAAAIADAAAQAIAAMAAAAIADEAAQAIAAMAAAAIADIAAQAIAAMAAAAIADMAAQAIAAMAAAAIADQAAQAIAAMAAAAIADUAAQAIAAMAAAAIADYAAQAIAAMAAAAIADcAAQAIAAMAAAAIADgAAQAIAAMAAAAIADkAAQAIAAMAAAAIADoAAQAIAAMAAAAIADsAAQAIAAMAAAAIADwAAQAIAAMAAAAIAD0AAQAIAAMAAAAIAD4AAQAIAAMAAAAIAD8AAQAIAAMAAAAIAEAAAQAIAAMAAAAIAEEAAQAIAAMAAAAJAA4AAQACAAMAAAAJAA8AAQACAAMAAAAJABAAAQACAAMAAAAJABEAAQACAAMAAAAJABIAAQACAAMAAAAJABMAAQACAAMAAAAJABQAAQACAAMAAAAJABUAAQACAAMAAAAJABYAAQACAAMAAAAJABcAAQACAAMAAAAJABgAAQACAAMAAAAJABkAAQACAAMAAAAJABoAAQACAAMAAAAJABsAAQACAAMAAAAJABwAAQACAAMAAAAJAB0AAQACAAMAAAAJAB4AAQACAAMAAAAJAB8AAQACAAMAAAAJACAAAQACAAMAAAAJACEAAQACAAMAAAAJACIAAQACAAMAAAAJACMAAQACAAMAAAAJACQAAQACAAMAAAAJACUAAQACAAMAAAAJACYAAQACAAMAAAAJACcAAQACAAMAAAAJACgAAQACAAMAAAAJACkAAQACAAMAAAAJACoAAQACAAMAAAAJACsAAQACAAMAAAAJACwAAQACAAMAAAAJAC0AAQACAAMAAAAJAC4AAQACAAMAAAAJAC8AAQACAAMAAAAJADAAAQACAAMAAAAJADEAAQACAAMAAAAJADIAAQACAAMAAAAJADMAAQACAAMAAAAJADQAAQACAAMAAAAJADUAAQACAAMAAAAJADYAAQACAAMAAAAJADcAAQACAAMAAAAJADgAAQACAAMAAAAJADkAAQACAAMAAAAJADoAAQACAAMAAAAJADsAAQACAAMAAAAJADwAAQACAAMAAAAJAD0AAQACAAMAAAAJAD4AAQACAAMAAAAJAD8AAQACAAMAAAAJAEAAAQACAAMAAAAJAEEAAQACAAMAAAAKAA4AAQACAAMAAAAKAA8AAQACAAMAAAAKABAAAQACAAMAAAAKABEAAQACAAMAAAAKABIAAQACAAMAAAAKABMAAQACAAMAAAAKABQAAQACAAMAAAAKABUAAQACAAMAAAAKABYAAQACAAMAAAAKABcAAQACAAMAAAAKABgAAQACAAMAAAAKABkAAQACAAMAAAAKABoAAQACAAMAAAAKABsAAQACAAMAAAAKABwAAQACAAMAAAAKAB0AAQACAAMAAAAKAB4AAQACAAMAAAAKAB8AAQACAAMAAAAKACAAAQACAAMAAAAKACEAAQACAAMAAAAKACIAAQACAAMAAAAKACMAAQACAAMAAAAKACQAAQACAAMAAAAKACUAAQACAAMAAAAKACYAAQACAAMAAAAKACcAAQACAAMAAAAKACgAAQACAAMAAAAKACkAAQACAAMAAAAKACoAAQACAAMAAAAKACsAAQACAAMAAAAKACwAAQACAAMAAAAKAC0AAQACAAMAAAAKAC4AAQACAAMAAAAKAC8AAQACAAMAAAAKADAAAQACAAMAAAAKADEAAQACAAMAAAAKADIAAQACAAMAAAAKADMAAQACAAMAAAAKADQAAQACAAMAAAAKADUAAQACAAMAAAAKADYAAQACAAMAAAAKADcAAQACAAMAAAAKADgAAQACAAMAAAAKADkAAQACAAMAAAAKADoAAQACAAMAAAAKADsAAQACAAMAAAAKADwAAQACAAMAAAAKAD0AAQACAAMAAAAKAD4AAQACAAMAAAAKAD8AAQACAAMAAAAKAEAAAQACAAMAAAAKAEEAAQACAAMAAAALAA4AAQACAAMAAAALAA8AAQACAAMAAAALABAAAQACAAMAAAALABEAAQACAAMAAAALABIAAQACAAMAAAALABMAAQACAAMAAAALABQAAQACAAMAAAALABUAAQACAAMAAAALABYAAQACAAMAAAALABcAAQACAAMAAAALABgAAQACAAMAAAALABkAAQACAAMAAAALABoAAQACAAMAAAALABsAAQACAAMAAAALABwAAQACAAMAAAALAB0AAQACAAMAAAALAB4AAQACAAMAAAALAB8AAQACAAMAAAALACAAAQACAAMAAAALACEAAQACAAMAAAALACIAAQACAAMAAAALACMAAQACAAMAAAALACQAAQACAAMAAAALACUAAQACAAMAAAALACYAAQACAAMAAAALACcAAQACAAMAAAALACgAAQACAAMAAAALACkAAQACAAMAAAALACoAAQACAAMAAAALACsAAQACAAMAAAALACwAAQACAAMAAAALAC0AAQACAAMAAAALAC4AAQACAAMAAAALAC8AAQACAAMAAAALADAAAQACAAMAAAALADEAAQACAAMAAAALADIAAQACAAMAAAALADMAAQACAAMAAAALADQAAQACAAMAAAALADUAAQACAAMAAAALADYAAQACAAMAAAALADcAAQACAAMAAAALADgAAQACAAMAAAALADkAAQACAAMAAAALADoAAQACAAMAAAALADsAAQACAAMAAAALADwAAQACAAMAAAALAD0AAQACAAMAAAALAD4AAQACAAMAAAALAD8AAQACAAMAAAALAEAAAQACAAMAAAALAEEAAQACAAMAAAAMAA4AAQACAAMAAAAMAA8AAQACAAMAAAAMABAAAQACAAMAAAAMABEAAQACAAMAAAAMABIAAQACAAMAAAAMABMAAQACAAMAAAAMABQAAQACAAMAAAAMABUAAQACAAMAAAAMABYAAQACAAMAAAAMABcAAQACAAMAAAAMABgAAQACAAMAAAAMABkAAQACAAMAAAAMABoAAQACAAMAAAAMABsAAQACAAMAAAAMABwAAQACAAMAAAAMAB0AAQACAAMAAAAMAB4AAQACAAMAAAAMAB8AAQACAAMAAAAMACAAAQACAAMAAAAMACEAAQACAAMAAAAMACIAAQACAAMAAAAMACMAAQACAAMAAAAMACQAAQACAAMAAAAMACUAAQACAAMAAAAMACYAAQACAAMAAAAMACcAAQACAAMAAAAMACgAAQACAAMAAAAMACkAAQACAAMAAAAMACoAAQACAAMAAAAMACsAAQACAAMAAAAMACwAAQACAAMAAAAMAC0AAQACAAMAAAAMAC4AAQACAAMAAAAMAC8AAQACAAMAAAAMADAAAQACAAMAAAAMADEAAQACAAMAAAAMADIAAQACAAMAAAAMADMAAQACAAMAAAAMADQAAQACAAMAAAAMADUAAQACAAMAAAAMADYAAQACAAMAAAAMADcAAQACAAMAAAAMADgAAQACAAMAAAAMADkAAQACAAMAAAAMADoAAQACAAMAAAAMADsAAQACAAMAAAAMADwAAQACAAMAAAAMAD0AAQACAAMAAAAMAD4AAQACAAMAAAAMAD8AAQACAAMAAAAMAEAAAQACAAMAAAAMAEEAAQACAAMAAAANAA4AAQACAAMAAAANAA8AAQACAAMAAAANABAAAQACAAMAAAANABEAAQACAAMAAAANABIAAQACAAMAAAANABMAAQACAAMAAAANABQAAQACAAMAAAANABUAAQACAAMAAAANABYAAQACAAMAAAANABcAAQACAAMAAAANABgAAQACAAMAAAANABkAAQACAAMAAAANABoAAQACAAMAAAANABsAAQACAAMAAAANABwAAQACAAMAAAANAB0AAQACAAMAAAANAB4AAQACAAMAAAANAB8AAQACAAMAAAANACAAAQACAAMAAAANACEAAQACAAMAAAANACIAAQACAAMAAAANACMAAQACAAMAAAANACQAAQACAAMAAAANACUAAQACAAMAAAANACYAAQACAAMAAAANACcAAQACAAMAAAANACgAAQACAAMAAAANACkAAQACAAMAAAANACoAAQACAAMAAAANACsAAQACAAMAAAANACwAAQACAAMAAAANAC0AAQACAAMAAAANAC4AAQACAAMAAAANAC8AAQACAAMAAAANADAAAQACAAMAAAANADEAAQACAAMAAAANADIAAQACAAMAAAANADMAAQACAAMAAAANADQAAQACAAMAAAANADUAAQACAAMAAAANADYAAQACAAMAAAANADcAAQACAAMAAAANADgAAQACAAMAAAANADkAAQACAAMAAAANADoAAQACAAMAAAANADsAAQACAAMAAAANADwAAQACAAMAAAANAD0AAQACAAMAAAANAD4AAQACAAMAAAANAD8AAQACAAMAAAANAEAAAQACAAMAAAANAEEAAQACAAMAAAAOAA4AAQACAAMAAAAOAA8AAQACAAMAAAAOABAAAQACAAMAAAAOABEAAQACAAMAAAAOABIAAQACAAMAAAAOABMAAQACAAMAAAAOABQAAQACAAMAAAAOABUAAQACAAMAAAAOABYAAQACAAMAAAAOABcAAQACAAMAAAAOABgAAQACAAMAAAAOABkAAQACAAMAAAAOABoAAQACAAMAAAAOABsAAQACAAMAAAAOABwAAQACAAMAAAAOAB0AAQACAAMAAAAOAB4AAQACAAMAAAAOAB8AAQACAAMAAAAOACAAAQACAAMAAAAOACEAAQACAAMAAAAOACIAAQACAAMAAAAOACMAAQACAAMAAAAOACQAAQACAAMAAAAOACUAAQACAAMAAAAOACYAAQACAAMAAAAOACcAAQACAAMAAAAOACgAAQACAAMAAAAOACkAAQACAAMAAAAOACoAAQACAAMAAAAOACsAAQACAAMAAAAOACwAAQACAAMAAAAOAC0AAQACAAMAAAAOAC4AAQACAAMAAAAOAC8AAQACAAMAAAAOADAAAQACAAMAAAAOADEAAQACAAMAAAAOADIAAQACAAMAAAAOADMAAQACAAMAAAAOADQAAQACAAMAAAAOADUAAQACAAMAAAAOADYAAQACAAMAAAAOADcAAQACAAMAAAAOADgAAQACAAMAAAAOADkAAQACAAMAAAAOADoAAQACAAMAAAAOADsAAQACAAMAAAAOADwAAQACAAMAAAAOAD0AAQACAAMAAAAOAD4AAQACAAMAAAAOAD8AAQACAAMAAAAOAEAAAQACAAMAAAAOAEEAAQACAAMAAAAPAA4AAQACAAMAAAAPAA8AAQACAAMAAAAPABAAAQACAAMAAAAPABEAAQACAAMAAAAPABIAAQACAAMAAAAPABMAAQACAAMAAAAPABQAAQACAAMAAAAPABUAAQACAAMAAAAPABYAAQACAAMAAAAPABcAAQACAAMAAAAPABgAAQACAAMAAAAPABkAAQACAAMAAAAPABoAAQACAAMAAAAPABsAAQACAAMAAAAPABwAAQACAAMAAAAPAB0AAQACAAMAAAAPAB4AAQACAAMAAAAPAB8AAQACAAMAAAAPACAAAQACAAMAAAAPACEAAQACAAMAAAAPACIAAQACAAMAAAAPACMAAQACAAMAAAAPACQAAQACAAMAAAAPACUAAQACAAMAAAAPACYAAQACAAMAAAAPACcAAQACAAMAAAAPACgAAQACAAMAAAAPACkAAQACAAMAAAAPACoAAQACAAMAAAAPACsAAQACAAMAAAAPACwAAQACAAMAAAAPAC0AAQACAAMAAAAPAC4AAQACAAMAAAAPAC8AAQACAAMAAAAPADAAAQACAAMAAAAPADEAAQACAAMAAAAPADIAAQACAAMAAAAPADMAAQACAAMAAAAPADQAAQACAAMAAAAPADUAAQACAAMAAAAPADYAAQACAAMAAAAPADcAAQACAAMAAAAPADgAAQACAAMAAAAPADkAAQACAAMAAAAPADoAAQACAAMAAAAPADsAAQACAAMAAAAPADwAAQACAAMAAAAPAD0AAQACAAMAAAAPAD4AAQACAAMAAAAPAD8AAQACAAMAAAAPAEAAAQACAAMAAAAPAEEAAQACAAMAAAAQAA4AAQACAAMAAAAQAA8AAQACAAMAAAAQABAAAQACAAMAAAAQABEAAQACAAMAAAAQABIAAQACAAMAAAAQABMAAQACAAMAAAAQABQAAQACAAMAAAAQABUAAQACAAMAAAAQABYAAQACAAMAAAAQABcAAQACAAMAAAAQABgAAQACAAMAAAAQABkAAQACAAMAAAAQABoAAQACAAMAAAAQABsAAQACAAMAAAAQABwAAQACAAMAAAAQAB0AAQACAAMAAAAQAB4AAQACAAMAAAAQAB8AAQACAAMAAAAQACAAAQACAAMAAAAQACEAAQACAAMAAAAQACIAAQACAAMAAAAQACMAAQACAAMAAAAQACQAAQACAAMAAAAQACUAAQACAAMAAAAQACYAAQACAAMAAAAQACcAAQACAAMAAAAQACgAAQACAAMAAAAQACkAAQACAAMAAAAQACoAAQACAAMAAAAQACsAAQACAAMAAAAQACwAAQACAAMAAAAQAC0AAQACAAMAAAAQAC4AAQACAAMAAAAQAC8AAQACAAMAAAAQADAAAQACAAMAAAAQADEAAQACAAMAAAAQADIAAQACAAMAAAAQADMAAQACAAMAAAAQADQAAQACAAMAAAAQADUAAQACAAMAAAAQADYAAQACAAMAAAAQADcAAQACAAMAAAAQADgAAQACAAMAAAAQADkAAQACAAMAAAAQADoAAQACAAMAAAAQADsAAQACAAMAAAAQADwAAQACAAMAAAAQAD0AAQACAAMAAAAQAD4AAQACAAMAAAAQAD8AAQACAAMAAAAQAEAAAQACAAMAAAAQAEEAAQACAAMAAAARAA4AAQACAAMAAAARAA8AAQACAAMAAAARABAAAQACAAMAAAARABEAAQACAAMAAAARABIAAQACAAMAAAARABMAAQACAAMAAAARABQAAQACAAMAAAARABUAAQACAAMAAAARABYAAQACAAMAAAARABcAAQACAAMAAAARABgAAQACAAMAAAARABkAAQACAAMAAAARABoAAQACAAMAAAARABsAAQACAAMAAAARABwAAQACAAMAAAARAB0AAQACAAMAAAARAB4AAQACAAMAAAARAB8AAQACAAMAAAARACAAAQACAAMAAAARACEAAQACAAMAAAARACIAAQACAAMAAAARACMAAQACAAMAAAARACQAAQACAAMAAAARACUAAQACAAMAAAARACYAAQACAAMAAAARACcAAQACAAMAAAARACgAAQACAAMAAAARACkAAQACAAMAAAARACoAAQACAAMAAAARACsAAQACAAMAAAARACwAAQACAAMAAAARAC0AAQACAAMAAAARAC4AAQACAAMAAAARAC8AAQACAAMAAAARADAAAQACAAMAAAARADEAAQACAAMAAAARADIAAQACAAMAAAARADMAAQACAAMAAAARADQAAQACAAMAAAARADUAAQACAAMAAAARADYAAQACAAMAAAARADcAAQACAAMAAAARADgAAQACAAMAAAARADkAAQACAAMAAAARADoAAQACAAMAAAARADsAAQACAAMAAAARADwAAQACAAMAAAARAD0AAQACAAMAAAARAD4AAQACAAMAAAARAD8AAQACAAMAAAARAEAAAQACAAMAAAARAEEAAQAIAAMAAAASAA4AAQACAAMAAAASAA8AAQACAAMAAAASABAAAQACAAMAAAASABEAAQACAAMAAAASABIAAQACAAMAAAASABMAAQACAAMAAAASABQAAQACAAMAAAASABUAAQACAAMAAAASABYAAQACAAMAAAASABcAAQACAAMAAAASABgAAQACAAMAAAASABkAAQACAAMAAAASABoAAQACAAMAAAASABsAAQACAAMAAAASABwAAQACAAMAAAASAB0AAQACAAMAAAASAB4AAQACAAMAAAASAB8AAQACAAMAAAASACAAAQACAAMAAAASACEAAQACAAMAAAASACIAAQACAAMAAAASACMAAQACAAMAAAASACQAAQACAAMAAAASACUAAQACAAMAAAASACYAAQACAAMAAAASACcAAQACAAMAAAASACgAAQACAAMAAAASACkAAQACAAMAAAASACoAAQACAAMAAAASACsAAQACAAMAAAASACwAAQACAAMAAAASAC0AAQACAAMAAAASAC4AAQACAAMAAAASAC8AAQACAAMAAAASADAAAQACAAMAAAASADEAAQACAAMAAAASADIAAQACAAMAAAASADMAAQACAAMAAAASADQAAQACAAMAAAASADUAAQACAAMAAAASADYAAQACAAMAAAASADcAAQACAAMAAAASADgAAQACAAMAAAASADkAAQACAAMAAAASADoAAQACAAMAAAASADsAAQACAAMAAAASADwAAQACAAMAAAASAD0AAQACAAMAAAASAD4AAQACAAMAAAASAD8AAQACAAMAAAASAEAAAQACAAMAAAASAEEAAQAIAAMAAAATADgAAQACAAMAAAATADkAAQACAAMAAAATADoAAQACAAMAAAATADsAAQACAAMAAAATADwAAQACAAMAAAATAD0AAQACAAMAAAATAD4AAQACAAMAAAATAD8AAQACAAMAAAATAEAAAQACAAMAAAATAEEAAQAIAAMAAAAUADgAAQACAAMAAAAUADkAAQACAAMAAAAUADoAAQACAAMAAAAUADsAAQACAAMAAAAUADwAAQACAAMAAAAUAD0AAQACAAMAAAAUAD4AAQACAAMAAAAUAD8AAQACAAMAAAAUAEAAAQACAAMAAAAUAEEAAQAIAAMAAAAVADgAAQACAAMAAAAVADkAAQACAAMAAAAVADoAAQACAAMAAAAVADsAAQACAAMAAAAVADwAAQACAAMAAAAVAD0AAQACAAMAAAAVAD4AAQACAAMAAAAVAD8AAQACAAMAAAAVAEAAAQACAAMAAAAVAEEAAQAIAAMAAAAWADgAAQACAAMAAAAWADkAAQACAAMAAAAWADoAAQACAAMAAAAWADsAAQACAAMAAAAWADwAAQACAAMAAAAWAD0AAQACAAMAAAAWAD4AAQACAAMAAAAWAD8AAQACAAMAAAAWAEAAAQACAAMAAAAWAEEAAQAIAAMAAAAXADgAAQACAAMAAAAXADkAAQACAAMAAAAXADoAAQACAAMAAAAXADsAAQACAAMAAAAXADwAAQACAAMAAAAXAD0AAQACAAMAAAAXAD4AAQACAAMAAAAXAD8AAQACAAMAAAAXAEAAAQACAAMAAAAXAEEAAQAIAAMAAAAYAAAAAAABAAEAAAAYAAEAAQACAAMAAAAYAAIAAQACAAMAAAAYAAMAAQACAAMAAAAYAAQAAQACAAMAAAAYAAUAAQACAAMAAAAYAAYAAQACAAMAAAAYADgAAQACAAMAAAAYADkAAQACAAMAAAAYADoAAQACAAMAAAAYADsAAQACAAMAAAAYADwAAQACAAMAAAAYAD0AAQACAAMAAAAYAD4AAQACAAMAAAAYAD8AAQACAAMAAAAYAEAAAQACAAMAAAAYAEEAAQAIAAMAAAAZAAAAAAABAAEAAAAZAAEAAQACAAMAAAAZAAIAAQACAAMAAAAZAAMAAQACAAMAAAAZAAQAAQACAAMAAAAZAAUAAQACAAMAAAAZAAYAAQACAAMAAAAZADgAAQACAAMAAAAZADkAAQACAAMAAAAZADoAAQACAAMAAAAZADsAAQACAAMAAAAZADwAAQACAAMAAAAZAD0AAQACAAMAAAAZAD4AAQACAAMAAAAZAD8AAQACAAMAAAAZAEAAAQACAAMAAAAZAEEAAQAIAAMAAAAaAAAAAAABAAEAAAAaAAEAAQACAAMAAAAaAAIAAQACAAMAAAAaAAMAAQACAAMAAAAaAAQAAQACAAMAAAAaAAUAAQACAAMAAAAaAAYAAQACAAMAAAAaADgAAQAIAAMAAAAaADkAAQAIAAMAAAAaADoAAQAIAAMAAAAaADsAAQAIAAMAAAAaADwAAQAIAAMAAAAaAD0AAQAIAAMAAAAaAD4AAQAIAAMAAAAaAD8AAQAIAAMAAAAaAEAAAQAIAAMAAAAaAEEAAQAIAAMAAAAbAAAAAAABAAEAAAAbAAEAAQACAAMAAAAbAAIAAQACAAMAAAAbAAMAAQACAAMAAAAbAAQAAQACAAMAAAAbAAUAAQACAAMAAAAbAAYAAQACAAMAAAAbADgAAQACAAMAAAAbADkAAQACAAMAAAAbADoAAQACAAMAAAAbADsAAQACAAMAAAAbADwAAQACAAMAAAAbAD0AAQACAAMAAAAbAD4AAQACAAMAAAAbAD8AAQACAAMAAAAbAEAAAQAIAAMAAAAbAEEAAQACAAMAAAAcAAAAAAABAAEAAAAcAAEAAQACAAMAAAAcAAIAAQACAAMAAAAcAAMAAQACAAMAAAAcAAQAAQACAAMAAAAcAAUAAQACAAMAAAAcAAYAAQACAAMAAAAcADgAAQACAAMAAAAcADkAAQACAAMAAAAcADoAAQACAAMAAAAcADsAAQACAAMAAAAcADwAAQACAAMAAAAcAD0AAQACAAMAAAAcAD4AAQACAAMAAAAcAD8AAQACAAMAAAAcAEAAAQAIAAMAAAAcAEEAAQACAAMAAAAdAAAAAAABAAEAAAAdAAEAAQACAAMAAAAdAAIAAQACAAMAAAAdAAMAAQACAAMAAAAdAAQAAQACAAMAAAAdAAUAAQACAAMAAAAdAAYAAQACAAMAAAAdADgAAQACAAMAAAAdADkAAQACAAMAAAAdADoAAQACAAMAAAAdADsAAQACAAMAAAAdADwAAQACAAMAAAAdAD0AAQACAAMAAAAdAD4AAQACAAMAAAAdAD8AAQACAAMAAAAdAEAAAQAIAAMAAAAdAEEAAQACAAMAAAAeAAAAAAABAAEAAAAeAAEAAQACAAMAAAAeAAIAAQACAAMAAAAeAAMAAQACAAMAAAAeAAQAAQACAAMAAAAeAAUAAQACAAMAAAAeAAYAAQACAAMAAAAeADgAAQACAAMAAAAeADkAAQACAAMAAAAeADoAAQACAAMAAAAeADsAAQACAAMAAAAeADwAAQACAAMAAAAeAD0AAQACAAMAAAAeAD4AAQACAAMAAAAeAD8AAQACAAMAAAAeAEAAAQAIAAMAAAAeAEEAAQACAAMAAAAfAAAAAAABAAEAAAAfAAEAAQACAAMAAAAfAAIAAQACAAMAAAAfAAMAAQACAAMAAAAfAAQAAQACAAMAAAAfAAUAAQACAAMAAAAfAAYAAQACAAMAAAAfADgAAQACAAMAAAAfADkAAQACAAMAAAAfADoAAQACAAMAAAAfADsAAQACAAMAAAAfADwAAQACAAMAAAAfAD0AAQACAAMAAAAfAD4AAQACAAMAAAAfAD8AAQACAAMAAAAfAEAAAQAIAAMAAAAfAEEAAQACAAMAAAAgAAAAAAABAAEAAAAgAAEAAQACAAMAAAAgAAIAAQACAAMAAAAgAAMAAQACAAMAAAAgAAQAAQACAAMAAAAgAAUAAQACAAMAAAAgAAYAAQACAAMAAAAgADgAAQACAAMAAAAgADkAAQACAAMAAAAgADoAAQACAAMAAAAgADsAAQACAAMAAAAgADwAAQACAAMAAAAgAD0AAQACAAMAAAAgAD4AAQACAAMAAAAgAD8AAQACAAMAAAAgAEAAAQAIAAMAAAAgAEEAAQACAAMAAAAhAAAAAAABAAEAAAAhAAEAAQACAAMAAAAhAAIAAQACAAMAAAAhAAMAAQACAAMAAAAhAAQAAQACAAMAAAAhAAUAAQACAAMAAAAhAAYAAQACAAMAAAAhADgAAQACAAMAAAAhADkAAQACAAMAAAAhADoAAQACAAMAAAAhADsAAQACAAMAAAAhADwAAQACAAMAAAAhAD0AAQACAAMAAAAhAD4AAQACAAMAAAAhAD8AAQACAAMAAAAhAEAAAQAIAAMAAAAhAEEAAQACAAMAAAAiAAAAAAABAAEAAAAiAAEAAQACAAMAAAAiAAIAAQACAAMAAAAiAAMAAQACAAMAAAAiAAQAAQACAAMAAAAiAAUAAQACAAMAAAAiAAYAAQACAAMAAAAiADgAAQACAAMAAAAiADkAAQACAAMAAAAiADoAAQACAAMAAAAiADsAAQACAAMAAAAiADwAAQACAAMAAAAiAD0AAQACAAMAAAAiAD4AAQACAAMAAAAiAD8AAQACAAMAAAAiAEAAAQAIAAMAAAAiAEEAAQACAAMAAAAjAAAAAAABAAEAAAAjAAEAAQACAAMAAAAjAAIAAQACAAMAAAAjAAMAAQACAAMAAAAjAAQAAQACAAMAAAAjAAUAAQACAAMAAAAjAAYAAQACAAMAAAAjADgAAQACAAMAAAAjADkAAQACAAMAAAAjADoAAQACAAMAAAAjADsAAQACAAMAAAAjADwAAQACAAMAAAAjAD0AAQACAAMAAAAjAD4AAQACAAMAAAAjAD8AAQACAAMAAAAjAEAAAQAIAAMAAAAjAEEAAQACAAMAAAAkAAAAAAABAAEAAAAkAAEAAQACAAMAAAAkAAIAAQACAAMAAAAkAAMAAQACAAMAAAAkAAQAAQACAAMAAAAkAAUAAQACAAMAAAAkAAYAAQACAAMAAAAkADgAAQACAAMAAAAkADkAAQACAAMAAAAkADoAAQACAAMAAAAkADsAAQACAAMAAAAkADwAAQACAAMAAAAkAD0AAQACAAMAAAAkAD4AAQACAAMAAAAkAD8AAQACAAMAAAAkAEAAAQAIAAMAAAAkAEEAAQACAAMAAAAlAAAAAAABAAEAAAAlAAEAAQACAAMAAAAlAAIAAQACAAMAAAAlAAMAAQACAAMAAAAlAAQAAQACAAMAAAAlAAUAAQACAAMAAAAlAAYAAQACAAMAAAAlADgAAQACAAMAAAAlADkAAQACAAMAAAAlADoAAQACAAMAAAAlADsAAQACAAMAAAAlADwAAQACAAMAAAAlAD0AAQACAAMAAAAlAD4AAQACAAMAAAAlAD8AAQAIAAMAAAAlAEAAAQACAAMAAAAlAEEAAQACAAMAAAAmAAAAAAABAAEAAAAmAAEAAQACAAMAAAAmAAIAAQACAAMAAAAmAAMAAQACAAMAAAAmAAQAAQACAAMAAAAmAAUAAQACAAMAAAAmAAYAAQACAAMAAAAmADgAAQACAAMAAAAmADkAAQACAAMAAAAmADoAAQACAAMAAAAmADsAAQACAAMAAAAmADwAAQACAAMAAAAmAD0AAQACAAMAAAAmAD4AAQACAAMAAAAmAD8AAQAIAAMAAAAmAEAAAQACAAMAAAAmAEEAAQACAAMAAAAnAAAAAAABAAEAAAAnAAEAAQACAAMAAAAnAAIAAQACAAMAAAAnAAMAAQACAAMAAAAnAAQAAQACAAMAAAAnAAUAAQACAAMAAAAnAAYAAQACAAMAAAAnADgAAQACAAMAAAAnADkAAQACAAMAAAAnADoAAQACAAMAAAAnADsAAQACAAMAAAAnADwAAQACAAMAAAAnAD0AAQACAAMAAAAnAD4AAQACAAMAAAAnAD8AAQAIAAMAAAAnAEAAAQACAAMAAAAnAEEAAQACAAMAAAAoAAAAAAABAAEAAAAoAAEAAQACAAMAAAAoAAIAAQACAAMAAAAoAAMAAQACAAMAAAAoAAQAAQACAAMAAAAoAAUAAQACAAMAAAAoAAYAAQACAAMAAAAoADgAAQACAAMAAAAoADkAAQACAAMAAAAoADoAAQACAAMAAAAoADsAAQACAAMAAAAoADwAAQACAAMAAAAoAD0AAQACAAMAAAAoAD4AAQACAAMAAAAoAD8AAQAIAAMAAAAoAEAAAQACAAMAAAAoAEEAAQACAAMAAAApAAAAAAABAAEAAAApAAEAAQACAAMAAAApAAIAAQACAAMAAAApAAMAAQACAAMAAAApAAQAAQACAAMAAAApAAUAAQACAAMAAAApAAYAAQACAAMAAAApADgAAQACAAMAAAApADkAAQACAAMAAAApADoAAQACAAMAAAApADsAAQACAAMAAAApADwAAQACAAMAAAApAD0AAQACAAMAAAApAD4AAQACAAMAAAApAD8AAQAIAAMAAAApAEAAAQACAAMAAAApAEEAAQACAAMAAAAqAAAAAAABAAEAAAAqAAEAAQACAAMAAAAqAAIAAQACAAMAAAAqAAMAAQACAAMAAAAqAAQAAQACAAMAAAAqAAUAAQACAAMAAAAqAAYAAQACAAMAAAAqADgAAQACAAMAAAAqADkAAQACAAMAAAAqADoAAQACAAMAAAAqADsAAQACAAMAAAAqADwAAQACAAMAAAAqAD0AAQACAAMAAAAqAD4AAQACAAMAAAAqAD8AAQAIAAMAAAAqAEAAAQACAAMAAAAqAEEAAQACAAMAAAArAAAAAAABAAEAAAArAAEAAQACAAMAAAArAAIAAQACAAMAAAArAAMAAQACAAMAAAArAAQAAQACAAMAAAArAAUAAQACAAMAAAArAAYAAQACAAMAAAArADgAAQACAAMAAAArADkAAQACAAMAAAArADoAAQACAAMAAAArADsAAQACAAMAAAArADwAAQACAAMAAAArAD0AAQACAAMAAAArAD4AAQACAAMAAAArAD8AAQAIAAMAAAArAEAAAQACAAMAAAArAEEAAQACAAMAAAAsAAAAAAABAAEAAAAsAAEAAQACAAMAAAAsAAIAAQACAAMAAAAsAAMAAQACAAMAAAAsAAQAAQACAAMAAAAsAAUAAQACAAMAAAAsAAYAAQACAAMAAAAsADgAAQACAAMAAAAsADkAAQACAAMAAAAsADoAAQACAAMAAAAsADsAAQACAAMAAAAsADwAAQACAAMAAAAsAD0AAQACAAMAAAAsAD4AAQACAAMAAAAsAD8AAQAIAAMAAAAsAEAAAQACAAMAAAAsAEEAAQACAAMAAAAtAAAAAAABAAEAAAAtAAEAAQACAAMAAAAtAAIAAQACAAMAAAAtAAMAAQACAAMAAAAtAAQAAQACAAMAAAAtAAUAAQACAAMAAAAtAAYAAQACAAMAAAAtADgAAQACAAMAAAAtADkAAQACAAMAAAAtADoAAQACAAMAAAAtADsAAQACAAMAAAAtADwAAQACAAMAAAAtAD0AAQACAAMAAAAtAD4AAQACAAMAAAAtAD8AAQAIAAMAAAAtAEAAAQACAAMAAAAtAEEAAQACAAMAAAAuAAAAAAABAAEAAAAuAAEAAQACAAMAAAAuAAIAAQACAAMAAAAuAAMAAQACAAMAAAAuAAQAAQACAAMAAAAuAAUAAQACAAMAAAAuAAYAAQACAAMAAAAuADgAAQACAAMAAAAuADkAAQACAAMAAAAuADoAAQACAAMAAAAuADsAAQACAAMAAAAuADwAAQACAAMAAAAuAD0AAQACAAMAAAAuAD4AAQACAAMAAAAuAD8AAQAIAAMAAAAuAEAAAQACAAMAAAAuAEEAAQACAAMAAAAvAAAAAAABAAEAAAAvAAEAAQACAAMAAAAvAAIAAQACAAMAAAAvAAMAAQACAAMAAAAvAAQAAQACAAMAAAAvAAUAAQACAAMAAAAvAAYAAQACAAMAAAAvADgAAQACAAMAAAAvADkAAQACAAMAAAAvADoAAQACAAMAAAAvADsAAQACAAMAAAAvADwAAQACAAMAAAAvAD0AAQACAAMAAAAvAD4AAQACAAMAAAAvAD8AAQAIAAMAAAAvAEAAAQACAAMAAAAvAEEAAQACAAMAAAAwAAAAAAABAAEAAAAwAAEAAQACAAMAAAAwAAIAAQACAAMAAAAwAAMAAQACAAMAAAAwAAQAAQACAAMAAAAwAAUAAQACAAMAAAAwAAYAAQACAAMAAAAwADgAAQACAAMAAAAwADkAAQACAAMAAAAwADoAAQACAAMAAAAwADsAAQACAAMAAAAwADwAAQACAAMAAAAwAD0AAQACAAMAAAAwAD4AAQAIAAMAAAAwAD8AAQACAAMAAAAwAEAAAQACAAMAAAAwAEEAAQACAAMAAAAxAAAAAAABAAEAAAAxAAEAAQACAAMAAAAxAAIAAQACAAMAAAAxAAMAAQACAAMAAAAxAAQAAQACAAMAAAAxAAUAAQACAAMAAAAxAAYAAQACAAMAAAAxADgAAQACAAMAAAAxADkAAQACAAMAAAAxADoAAQACAAMAAAAxADsAAQACAAMAAAAxADwAAQACAAMAAAAxAD0AAQACAAMAAAAxAD4AAQAIAAMAAAAxAD8AAQACAAMAAAAxAEAAAQACAAMAAAAxAEEAAQACAAMAAAAyAAAAAAABAAEAAAAyAAEAAQACAAMAAAAyAAIAAQACAAMAAAAyAAMAAQACAAMAAAAyAAQAAQACAAMAAAAyAAUAAQACAAMAAAAyAAYAAQACAAMAAAAyADgAAQACAAMAAAAyADkAAQACAAMAAAAyADoAAQACAAMAAAAyADsAAQACAAMAAAAyADwAAQACAAMAAAAyAD0AAQACAAMAAAAyAD4AAQAIAAMAAAAyAD8AAQACAAMAAAAyAEAAAQACAAMAAAAyAEEAAQACAAMAAAAzAAAAAAABAAEAAAAzAAEAAQACAAMAAAAzAAIAAQACAAMAAAAzAAMAAQACAAMAAAAzAAQAAQACAAMAAAAzAAUAAQACAAMAAAAzAAYAAQACAAMAAAAzADgAAQACAAMAAAAzADkAAQACAAMAAAAzADoAAQACAAMAAAAzADsAAQACAAMAAAAzADwAAQACAAMAAAAzAD0AAQACAAMAAAAzAD4AAQAIAAMAAAAzAD8AAQACAAMAAAAzAEAAAQACAAMAAAAzAEEAAQACAAMAAAA0AAAAAAABAAEAAAA0AAEAAQACAAMAAAA0AAIAAQACAAMAAAA0AAMAAQACAAMAAAA0AAQAAQACAAMAAAA0AAUAAQACAAMAAAA0AAYAAQACAAMAAAA0ADgAAQACAAMAAAA0ADkAAQACAAMAAAA0ADoAAQACAAMAAAA0ADsAAQACAAMAAAA0ADwAAQACAAMAAAA0AD0AAQACAAMAAAA0AD4AAQAIAAMAAAA0AD8AAQACAAMAAAA0AEAAAQACAAMAAAA0AEEAAQACAAMAAAA1AAAAAAABAAEAAAA1AAEAAQACAAMAAAA1AAIAAQACAAMAAAA1AAMAAQACAAMAAAA1AAQAAQACAAMAAAA1AAUAAQACAAMAAAA1AAYAAQACAAMAAAA1ADgAAQACAAMAAAA1ADkAAQACAAMAAAA1ADoAAQACAAMAAAA1ADsAAQACAAMAAAA1ADwAAQACAAMAAAA1AD0AAQACAAMAAAA1AD4AAQAIAAMAAAA1AD8AAQACAAMAAAA1AEAAAQACAAMAAAA1AEEAAQACAAMAAAA2AAAAAAABAAEAAAA2AAEAAQACAAMAAAA2AAIAAQACAAMAAAA2AAMAAQACAAMAAAA2AAQAAQACAAMAAAA2AAUAAQACAAMAAAA2AAYAAQACAAMAAAA2ADkAAQAIAAMAAAA2ADoAAQAIAAMAAAA2ADsAAQAIAAMAAAA2ADwAAQAIAAMAAAA2AD0AAQAIAAMAAAA2AD4AAQAIAAMAAAA2AD8AAQAIAAMAAAA2AEAAAQAIAAMAAAA2AEEAAQAIAAMAAAA3AAAAAAABAAEAAAA3AAEAAQACAAMAAAA3AAIAAQACAAMAAAA3AAMAAQACAAMAAAA3AAQAAQACAAMAAAA3AAUAAQACAAMAAAA3AAYAAQACAAMAAAA3ADgAAQACAAMAAAA3ADkAAQACAAMAAAA3ADoAAQACAAMAAAA3ADsAAQACAAMAAAA3ADwAAQACAAMAAAA3AD0AAQACAAMAAAA3AD4AAQAIAAMAAAA3AD8AAQACAAMAAAA3AEAAAQACAAMAAAA3AEEAAQACAAMAAAA4AAAAAAABAAEAAAA4AAEAAQACAAMAAAA4AAIAAQACAAMAAAA4AAMAAQACAAMAAAA4AAQAAQACAAMAAAA4AAUAAQACAAMAAAA4AAYAAQACAAMAAAA4ADgAAQACAAMAAAA4ADkAAQACAAMAAAA4ADoAAQACAAMAAAA4ADsAAQACAAMAAAA4ADwAAQACAAMAAAA4AD0AAQACAAMAAAA4AD4AAQAIAAMAAAA4AD8AAQACAAMAAAA4AEAAAQACAAMAAAA4AEEAAQACAAMAAAA5AAAAAAABAAEAAAA5AAEAAQACAAMAAAA5AAIAAQACAAMAAAA5AAMAAQACAAMAAAA5AAQAAQACAAMAAAA5AAUAAQACAAMAAAA5AAYAAQACAAMAAAA5ADgAAQACAAMAAAA5ADkAAQACAAMAAAA5ADoAAQACAAMAAAA5ADsAAQACAAMAAAA5ADwAAQACAAMAAAA5AD0AAQACAAMAAAA5AD4AAQAIAAMAAAA5AD8AAQACAAMAAAA5AEAAAQACAAMAAAA5AEEAAQACAAMAAAA6AAAAAAABAAEAAAA6AAEAAQACAAMAAAA6AAIAAQACAAMAAAA6AAMAAQACAAMAAAA6AAQAAQACAAMAAAA6AAUAAQACAAMAAAA6AAYAAQACAAMAAAA6ADgAAQACAAMAAAA6ADkAAQACAAMAAAA6ADoAAQACAAMAAAA6ADsAAQACAAMAAAA6ADwAAQACAAMAAAA6AD0AAQAIAAMAAAA6AD4AAQACAAMAAAA6AD8AAQACAAMAAAA6AEAAAQACAAMAAAA6AEEAAQACAAMAAAA7AAAAAAABAAEAAAA7AAEAAQACAAMAAAA7AAIAAQACAAMAAAA7AAMAAQACAAMAAAA7AAQAAQACAAMAAAA7AAUAAQACAAMAAAA7AAYAAQACAAMAAAA7ADgAAQACAAMAAAA7ADkAAQACAAMAAAA7ADoAAQACAAMAAAA7ADsAAQACAAMAAAA7ADwAAQACAAMAAAA7AD0AAQAIAAMAAAA7AD4AAQACAAMAAAA7AD8AAQACAAMAAAA7AEAAAQACAAMAAAA7AEEAAQACAAMAAAA8AAAAAAABAAEAAAA8AAEAAQACAAMAAAA8AAIAAQACAAMAAAA8AAMAAQACAAMAAAA8AAQAAQACAAMAAAA8AAUAAQACAAMAAAA8AAYAAQACAAMAAAA8ADgAAQACAAMAAAA8ADkAAQACAAMAAAA8ADoAAQACAAMAAAA8ADsAAQACAAMAAAA8ADwAAQACAAMAAAA8AD0AAQAIAAMAAAA8AD4AAQACAAMAAAA8AD8AAQACAAMAAAA8AEAAAQACAAMAAAA8AEEAAQACAAMAAAA9AAAAAAABAAEAAAA9AAEAAQACAAMAAAA9AAIAAQACAAMAAAA9AAMAAQACAAMAAAA9AAQAAQACAAMAAAA9AAUAAQACAAMAAAA9AAYAAQACAAMAAAA9ADgAAQACAAMAAAA9ADkAAQACAAMAAAA9ADoAAQACAAMAAAA9ADsAAQACAAMAAAA9ADwAAQACAAMAAAA9AD0AAQAIAAMAAAA9AD4AAQACAAMAAAA9AD8AAQACAAMAAAA9AEAAAQACAAMAAAA9AEEAAQACAAMAAAA+AAAAAAABAAEAAAA+AAEAAQACAAMAAAA+AAIAAQACAAMAAAA+AAMAAQACAAMAAAA+AAQAAQACAAMAAAA+AAUAAQACAAMAAAA+AAYAAQACAAMAAAA+ADgAAQACAAMAAAA+ADkAAQACAAMAAAA+ADoAAQACAAMAAAA+ADsAAQACAAMAAAA+ADwAAQACAAMAAAA+AD0AAQAIAAMAAAA+AD4AAQACAAMAAAA+AD8AAQACAAMAAAA+AEAAAQACAAMAAAA+AEEAAQACAAMAAAA/AAAAAAABAAEAAAA/AAEAAQACAAMAAAA/AAIAAQACAAMAAAA/AAMAAQACAAMAAAA/AAQAAQACAAMAAAA/AAUAAQACAAMAAAA/AAYAAQACAAMAAAA/ADgAAQACAAMAAAA/ADkAAQACAAMAAAA/ADoAAQACAAMAAAA/ADsAAQACAAMAAAA/ADwAAQACAAMAAAA/AD0AAQAIAAMAAAA/AD4AAQACAAMAAAA/AD8AAQACAAMAAAA/AEAAAQACAAMAAAA/AEEAAQACAAMAAABAAAAAAAABAAEAAABAAAEAAQACAAMAAABAAAIAAQACAAMAAABAAAMAAQACAAMAAABAAAQAAQACAAMAAABAAAUAAQACAAMAAABAAAYAAQACAAMAAABAADgAAQACAAMAAABAADkAAQACAAMAAABAADoAAQACAAMAAABAADsAAQACAAMAAABAADwAAQACAAMAAABAAD0AAQAIAAMAAABAAD4AAQACAAMAAABAAD8AAQACAAMAAABAAEAAAQACAAMAAABAAEEAAQACAAMAAABBAAAAAAABAAEAAABBAAEAAQACAAMAAABBAAIAAQACAAMAAABBAAMAAQACAAMAAABBAAQAAQACAAMAAABBAAUAAQACAAMAAABBAAYAAQACAAMAAABBADgAAQACAAMAAABBADkAAQACAAMAAABBADoAAQACAAMAAABBADsAAQACAAMAAABBADwAAQACAAMAAABBAD0AAQAIAAMAAABBAD4AAQACAAMAAABBAD8AAQACAAMAAABBAEAAAQACAAMAAABBAEEAAQACAAMAAABCAAAAAAABAAEAAABCAAEAAQACAAMAAABCAAIAAQACAAMAAABCAAMAAQACAAMAAABCAAQAAQACAAMAAABCAAUAAQACAAMAAABCAAYAAQACAAMAAABCADgAAQACAAMAAABCADkAAQACAAMAAABCADoAAQACAAMAAABCADsAAQACAAMAAABCADwAAQACAAMAAABCAD0AAQAIAAMAAABCAD4AAQACAAMAAABCAD8AAQACAAMAAABCAEAAAQACAAMAAABCAEEAAQACAAMAAABDAAAAAAABAAEAAABDAAEAAQACAAMAAABDAAIAAQACAAMAAABDAAMAAQACAAMAAABDAAQAAQACAAMAAABDAAUAAQACAAMAAABDAAYAAQACAAMAAABDADgAAQACAAMAAABDADkAAQACAAMAAABDADoAAQACAAMAAABDADsAAQACAAMAAABDADwAAQACAAMAAABDAD0AAQAIAAMAAABDAD4AAQACAAMAAABDAD8AAQACAAMAAABDAEAAAQACAAMAAABDAEEAAQACAAMAAABEAAAAAAABAAEAAABEAAEAAQACAAMAAABEAAIAAQACAAMAAABEAAMAAQACAAMAAABEAAQAAQACAAMAAABEAAUAAQACAAMAAABEAAYAAQACAAMAAABEADgAAQACAAMAAABEADkAAQACAAMAAABEADoAAQACAAMAAABEADsAAQACAAMAAABEADwAAQAIAAMAAABEAD0AAQACAAMAAABEAD4AAQACAAMAAABEAD8AAQACAAMAAABEAEAAAQACAAMAAABEAEEAAQACAAMAAABFAAAAAAABAAEAAABFAAEAAQACAAMAAABFAAIAAQACAAMAAABFAAMAAQACAAMAAABFAAQAAQACAAMAAABFAAUAAQACAAMAAABFAAYAAQACAAMAAABFADgAAQACAAMAAABFADkAAQACAAMAAABFADoAAQACAAMAAABFADsAAQACAAMAAABFADwAAQAIAAMAAABFAD0AAQACAAMAAABFAD4AAQACAAMAAABFAD8AAQACAAMAAABFAEAAAQACAAMAAABFAEEAAQACAAMAAABGAAAAAAABAAEAAABGAAEAAQACAAMAAABGAAIAAQACAAMAAABGAAMAAQACAAMAAABGAAQAAQACAAMAAABGAAUAAQACAAMAAABGAAYAAQACAAMAAABGADgAAQACAAMAAABGADkAAQACAAMAAABGADoAAQACAAMAAABGADsAAQACAAMAAABGADwAAQAIAAMAAABGAD0AAQACAAMAAABGAD4AAQACAAMAAABGAD8AAQACAAMAAABGAEAAAQACAAMAAABGAEEAAQACAAMAAABHAAAAAAABAAEAAABHAAEAAQACAAMAAABHAAIAAQACAAMAAABHAAMAAQACAAMAAABHAAQAAQACAAMAAABHAAUAAQACAAMAAABHAAYAAQACAAMAAABHADgAAQACAAMAAABHADkAAQACAAMAAABHADoAAQACAAMAAABHADsAAQACAAMAAABHADwAAQAIAAMAAABHAD0AAQACAAMAAABHAD4AAQACAAMAAABHAD8AAQACAAMAAABHAEAAAQACAAMAAABHAEEAAQACAAMAAABIAAAAAAABAAEAAABIAAEAAQACAAMAAABIAAIAAQACAAMAAABIAAMAAQACAAMAAABIAAQAAQACAAMAAABIAAUAAQACAAMAAABIAAYAAQACAAMAAABIADgAAQACAAMAAABIADkAAQACAAMAAABIADoAAQACAAMAAABIADsAAQACAAMAAABIADwAAQAIAAMAAABIAD0AAQACAAMAAABIAD4AAQACAAMAAABIAD8AAQACAAMAAABIAEAAAQACAAMAAABIAEEAAQACAAMAAABJAAAAAAABAAEAAABJAAEAAQACAAMAAABJAAIAAQACAAMAAABJAAMAAQACAAMAAABJAAQAAQACAAMAAABJAAUAAQACAAMAAABJAAYAAQACAAMAAABJADgAAQACAAMAAABJADkAAQACAAMAAABJADoAAQACAAMAAABJADsAAQACAAMAAABJADwAAQAIAAMAAABJAD0AAQACAAMAAABJAD4AAQACAAMAAABJAD8AAQACAAMAAABJAEAAAQACAAMAAABJAEEAAQACAAMAAABKAAAAAAABAAEAAABKAAEAAQACAAMAAABKAAIAAQACAAMAAABKAAMAAQACAAMAAABKAAQAAQACAAMAAABKAAUAAQACAAMAAABKAAYAAQACAAMAAABKADgAAQACAAMAAABKADkAAQACAAMAAABKADoAAQACAAMAAABKADsAAQACAAMAAABKADwAAQAIAAMAAABKAD0AAQACAAMAAABKAD4AAQACAAMAAABKAD8AAQACAAMAAABKAEAAAQACAAMAAABKAEEAAQACAAMAAABLAAAAAAABAAEAAABLAAEAAQACAAMAAABLAAIAAQACAAMAAABLAAMAAQACAAMAAABLAAQAAQACAAMAAABLAAUAAQACAAMAAABLAAYAAQACAAMAAABLADgAAQACAAMAAABLADkAAQACAAMAAABLADoAAQACAAMAAABLADsAAQACAAMAAABLADwAAQAIAAMAAABLAD0AAQACAAMAAABLAD4AAQACAAMAAABLAD8AAQACAAMAAABLAEAAAQACAAMAAABLAEEAAQACAAMAAABMAAAAAAABAAEAAABMAAEAAQACAAMAAABMAAIAAQACAAMAAABMAAMAAQACAAMAAABMAAQAAQACAAMAAABMAAUAAQACAAMAAABMAAYAAQACAAMAAABMADgAAQACAAMAAABMADkAAQACAAMAAABMADoAAQACAAMAAABMADsAAQACAAMAAABMADwAAQAIAAMAAABMAD0AAQACAAMAAABMAD4AAQACAAMAAABMAD8AAQACAAMAAABMAEAAAQACAAMAAABMAEEAAQACAAMAAABNAAAAAAABAAEAAABNAAEAAQACAAMAAABNAAIAAQACAAMAAABNAAMAAQACAAMAAABNAAQAAQACAAMAAABNAAUAAQACAAMAAABNAAYAAQACAAMAAABNADgAAQACAAMAAABNADkAAQACAAMAAABNADoAAQACAAMAAABNADsAAQACAAMAAABNADwAAQAIAAMAAABNAD0AAQACAAMAAABNAD4AAQACAAMAAABNAD8AAQACAAMAAABNAEAAAQACAAMAAABNAEEAAQACAAMAAABOAAAAAAABAAEAAABOAAEAAQACAAMAAABOAAIAAQACAAMAAABOAAMAAQACAAMAAABOAAQAAQACAAMAAABOAAUAAQACAAMAAABOAAYAAQACAAMAAABOADgAAQACAAMAAABOADkAAQACAAMAAABOADoAAQACAAMAAABOADsAAQACAAMAAABOADwAAQAIAAMAAABOAD0AAQACAAMAAABOAD4AAQACAAMAAABOAD8AAQACAAMAAABOAEAAAQACAAMAAABOAEEAAQACAAMAAABPAAAAAAABAAEAAABPAAEAAQACAAMAAABPAAIAAQACAAMAAABPAAMAAQACAAMAAABPAAQAAQACAAMAAABPAAUAAQACAAMAAABPAAYAAQACAAMAAABPADgAAQACAAMAAABPADkAAQACAAMAAABPADoAAQACAAMAAABPADsAAQAIAAMAAABPADwAAQACAAMAAABPAD0AAQACAAMAAABPAD4AAQACAAMAAABPAD8AAQACAAMAAABPAEAAAQACAAMAAABPAEEAAQACAAMAAABQAAAAAAABAAEAAABQAAEAAQACAAMAAABQAAIAAQACAAMAAABQAAMAAQACAAMAAABQAAQAAQACAAMAAABQAAUAAQACAAMAAABQAAYAAQACAAMAAABQADgAAQACAAMAAABQADkAAQACAAMAAABQADoAAQACAAMAAABQADsAAQAIAAMAAABQADwAAQACAAMAAABQAD0AAQACAAMAAABQAD4AAQACAAMAAABQAD8AAQACAAMAAABQAEAAAQACAAMAAABQAEEAAQACAAMAAABRAAAAAAABAAEAAABRAAEAAQACAAMAAABRAAIAAQACAAMAAABRAAMAAQACAAMAAABRAAQAAQACAAMAAABRAAUAAQACAAMAAABRAAYAAQACAAMAAABRADgAAQACAAMAAABRADkAAQACAAMAAABRADoAAQACAAMAAABRADsAAQAIAAMAAABRADwAAQACAAMAAABRAD0AAQACAAMAAABRAD4AAQACAAMAAABRAD8AAQACAAMAAABRAEAAAQACAAMAAABRAEEAAQACAAMAAABSAAAAAAABAAEAAABSAAEAAQACAAMAAABSAAIAAQACAAMAAABSAAMAAQACAAMAAABSAAQAAQACAAMAAABSAAUAAQACAAMAAABSAAYAAQACAAMAAABSADgAAQACAAMAAABSADkAAQACAAMAAABSADoAAQACAAMAAABSADsAAQAIAAMAAABSADwAAQACAAMAAABSAD0AAQACAAMAAABSAD4AAQACAAMAAABSAD8AAQACAAMAAABSAEAAAQACAAMAAABSAEEAAQACAAMAAABTAAAAAAABAAEAAABTAAEAAQACAAMAAABTAAIAAQACAAMAAABTAAMAAQACAAMAAABTAAQAAQACAAMAAABTAAUAAQACAAMAAABTAAYAAQACAAMAAABTADgAAQACAAMAAABTADkAAQACAAMAAABTADoAAQACAAMAAABTADsAAQAIAAMAAABTADwAAQACAAMAAABTAD0AAQACAAMAAABTAD4AAQACAAMAAABTAD8AAQACAAMAAABTAEAAAQACAAMAAABTAEEAAQACAAMAAABUAAAAAAABAAEAAABUAAEAAQACAAMAAABUAAIAAQACAAMAAABUAAMAAQACAAMAAABUAAQAAQACAAMAAABUAAUAAQACAAMAAABUAAYAAQACAAMAAABUADgAAQACAAMAAABUADkAAQACAAMAAABUADoAAQACAAMAAABUADsAAQAIAAMAAABUADwAAQACAAMAAABUAD0AAQACAAMAAABUAD4AAQACAAMAAABUAD8AAQACAAMAAABUAEAAAQACAAMAAABUAEEAAQACAAMAAABVAAAAAAABAAEAAABVAAEAAQACAAMAAABVAAIAAQACAAMAAABVAAMAAQACAAMAAABVAAQAAQACAAMAAABVAAUAAQACAAMAAABVAAYAAQACAAMAAABVADgAAQACAAMAAABVADkAAQACAAMAAABVADoAAQACAAMAAABVADsAAQAIAAMAAABVADwAAQACAAMAAABVAD0AAQACAAMAAABVAD4AAQACAAMAAABVAD8AAQACAAMAAABVAEAAAQACAAMAAABVAEEAAQACAAMAAABWAAAAAAABAAEAAABWAAEAAQACAAMAAABWAAIAAQACAAMAAABWAAMAAQACAAMAAABWAAQAAQACAAMAAABWAAUAAQACAAMAAABWAAYAAQACAAMAAABWADgAAQACAAMAAABWADkAAQACAAMAAABWADoAAQACAAMAAABWADsAAQAIAAMAAABWADwAAQACAAMAAABWAD0AAQACAAMAAABWAD4AAQACAAMAAABWAD8AAQACAAMAAABWAEAAAQACAAMAAABWAEEAAQACAAMAAABXAAAAAAABAAEAAABXAAEAAQACAAMAAABXAAIAAQACAAMAAABXAAMAAQACAAMAAABXAAQAAQACAAMAAABXAAUAAQACAAMAAABXAAYAAQACAAMAAABXADgAAQACAAMAAABXADkAAQACAAMAAABXADoAAQACAAMAAABXADsAAQAIAAMAAABXADwAAQACAAMAAABXAD0AAQACAAMAAABXAD4AAQACAAMAAABXAD8AAQACAAMAAABXAEAAAQACAAMAAABXAEEAAQACAAMAAABYAAAAAAABAAEAAABYAAEAAQACAAMAAABYAAIAAQACAAMAAABYAAMAAQACAAMAAABYAAQAAQACAAMAAABYAAUAAQACAAMAAABYAAYAAQACAAMAAABYADgAAQACAAMAAABYADkAAQACAAMAAABYADoAAQACAAMAAABYADsAAQAIAAMAAABYADwAAQACAAMAAABYAD0AAQACAAMAAABYAD4AAQACAAMAAABYAD8AAQACAAMAAABYAEAAAQACAAMAAABYAEEAAQACAAMAAABZAAAAAAABAAEAAABZAAEAAQACAAMAAABZAAIAAQACAAMAAABZAAMAAQACAAMAAABZAAQAAQACAAMAAABZAAUAAQACAAMAAABZAAYAAQACAAMAAABZADgAAQACAAMAAABZADkAAQACAAMAAABZADoAAQAIAAMAAABZADsAAQACAAMAAABZADwAAQACAAMAAABZAD0AAQACAAMAAABZAD4AAQACAAMAAABZAD8AAQACAAMAAABZAEAAAQACAAMAAABZAEEAAQACAAMAAABaAAAAAAABAAEAAABaAAEAAQACAAMAAABaAAIAAQACAAMAAABaAAMAAQACAAMAAABaAAQAAQACAAMAAABaAAUAAQACAAMAAABaAAYAAQACAAMAAABaADgAAQACAAMAAABaADkAAQACAAMAAABaADoAAQAIAAMAAABaADsAAQACAAMAAABaADwAAQACAAMAAABaAD0AAQACAAMAAABaAD4AAQACAAMAAABaAD8AAQACAAMAAABaAEAAAQACAAMAAABaAEEAAQACAAMAAABbAAAAAAABAAEAAABbAAEAAQACAAMAAABbAAIAAQACAAMAAABbAAMAAQACAAMAAABbAAQAAQACAAMAAABbAAUAAQACAAMAAABbAAYAAQACAAMAAABbADgAAQACAAMAAABbADkAAQACAAMAAABbADoAAQAIAAMAAABbADsAAQACAAMAAABbADwAAQACAAMAAABbAD0AAQACAAMAAABbAD4AAQACAAMAAABbAD8AAQACAAMAAABbAEAAAQACAAMAAABbAEEAAQACAAMAAABcAAAAAAABAAEAAABcAAEAAQACAAMAAABcAAIAAQACAAMAAABcAAMAAQACAAMAAABcAAQAAQACAAMAAABcAAUAAQACAAMAAABcAAYAAQACAAMAAABcADgAAQACAAMAAABcADkAAQACAAMAAABcADoAAQAIAAMAAABcADsAAQACAAMAAABcADwAAQACAAMAAABcAD0AAQACAAMAAABcAD4AAQACAAMAAABcAD8AAQACAAMAAABcAEAAAQACAAMAAABcAEEAAQACAAMAAABdAAAAAAABAAEAAABdAAEAAQACAAMAAABdAAIAAQACAAMAAABdAAMAAQACAAMAAABdAAQAAQACAAMAAABdAAUAAQACAAMAAABdAAYAAQACAAMAAABdADgAAQACAAMAAABdADkAAQACAAMAAABdADoAAQAIAAMAAABdADsAAQACAAMAAABdADwAAQACAAMAAABdAD0AAQACAAMAAABdAD4AAQACAAMAAABdAD8AAQACAAMAAABdAEAAAQACAAMAAABdAEEAAQACAAMAAABeAAAAAAABAAEAAABeAAEAAQACAAMAAABeAAIAAQACAAMAAABeAAMAAQACAAMAAABeAAQAAQACAAMAAABeAAUAAQACAAMAAABeAAYAAQACAAMAAABeADgAAQACAAMAAABeADkAAQACAAMAAABeADoAAQAIAAMAAABeADsAAQACAAMAAABeADwAAQACAAMAAABeAD0AAQACAAMAAABeAD4AAQACAAMAAABeAD8AAQACAAMAAABeAEAAAQACAAMAAABeAEEAAQACAAMAAABfAAAAAAABAAEAAABfAAEAAQACAAMAAABfAAIAAQACAAMAAABfAAMAAQACAAMAAABfAAQAAQACAAMAAABfAAUAAQACAAMAAABfAAYAAQACAAMAAABfADkAAQACAAMAAABfADoAAQAIAAMAAABfADsAAQACAAMAAABfADwAAQACAAMAAABfAD0AAQACAAMAAABfAD4AAQACAAMAAABfAD8AAQACAAMAAABfAEAAAQACAAMAAABfAEEAAQACAAMAAABgAAAAAAABAAEAAABgAAEAAQACAAMAAABgAAIAAQACAAMAAABgAAMAAQACAAMAAABgAAQAAQACAAMAAABgAAUAAQACAAMAAABgAAYAAQACAAMAAABgADgAAQACAAMAAABgADsAAQACAAMAAABgADwAAQACAAMAAABgAD0AAQACAAMAAABgAD4AAQACAAMAAABgAD8AAQACAAMAAABgAEAAAQACAAMAAABgAEEAAQACAAMAAABhAAAAAAABAAEAAABhAAEAAQACAAMAAABhAAIAAQACAAMAAABhAAMAAQACAAMAAABhAAQAAQACAAMAAABhAAUAAQACAAMAAABhAAYAAQACAAMAAABhADgAAQACAAMAAABhADkAAQACAAMAAABhADoAAQAIAAMAAABhADwAAQACAAMAAABhAD0AAQACAAMAAABhAD4AAQACAAMAAABhAD8AAQACAAMAAABhAEAAAQACAAMAAABhAEEAAQACAAMAAABiAAAAAAABAAEAAABiAAEAAQACAAMAAABiAAIAAQACAAMAAABiAAMAAQACAAMAAABiAAQAAQACAAMAAABiAAUAAQACAAMAAABiAAYAAQACAAMAAABiADgAAQACAAMAAABiADkAAQACAAMAAABiADoAAQAIAAMAAABiADwAAQACAAMAAABiAD0AAQACAAMAAABiAD4AAQACAAMAAABiAD8AAQACAAMAAABiAEAAAQACAAMAAABiAEEAAQACAAMAAABjAAAAAAABAAEAAABjAAEAAQACAAMAAABjAAIAAQACAAMAAABjAAMAAQACAAMAAABjAAQAAQACAAMAAABjAAUAAQACAAMAAABjAAYAAQACAAMAAABjADgAAQACAAMAAABjADkAAQAIAAMAAABjADoAAQACAAMAAABjADwAAQACAAMAAABjAD0AAQACAAMAAABjAD4AAQACAAMAAABjAD8AAQACAAMAAABjAEAAAQACAAMAAABjAEEAAQACAAMAAABkAAAAAAABAAEAAABkAAEAAQACAAMAAABkAAIAAQACAAMAAABkAAMAAQACAAMAAABkAAQAAQACAAMAAABkAAUAAQACAAMAAABkAAYAAQACAAMAAABkADgAAQACAAMAAABkADkAAQAIAAMAAABkADoAAQACAAMAAABkADsAAQACAAMAAABkADwAAQACAAMAAABkAD0AAQACAAMAAABkAD4AAQACAAMAAABkAD8AAQACAAMAAABkAEAAAQACAAMAAABkAEEAAQACAAMAAABlAAAAAAABAAEAAABlAAEAAQACAAMAAABlAAIAAQACAAMAAABlAAMAAQACAAMAAABlAAQAAQACAAMAAABlAAUAAQACAAMAAABlAAYAAQACAAMAAABlADgAAQACAAMAAABlADkAAQAIAAMAAABlADoAAQACAAMAAABlADsAAQACAAMAAABlADwAAQACAAMAAABlAD0AAQACAAMAAABlAD4AAQACAAMAAABlAD8AAQACAAMAAABlAEAAAQACAAMAAABlAEEAAQACAAMAAABmAAAAAAABAAEAAABmAAEAAQACAAMAAABmAAIAAQACAAMAAABmAAMAAQACAAMAAABmAAQAAQACAAMAAABmAAUAAQACAAMAAABmAAYAAQACAAMAAABmADgAAQACAAMAAABmADkAAQAIAAMAAABmADoAAQACAAMAAABmADsAAQACAAMAAABmADwAAQACAAMAAABmAD0AAQACAAMAAABmAD4AAQACAAMAAABmAD8AAQACAAMAAABmAEAAAQACAAMAAABmAEEAAQACAAMAAABnAAAAAAABAAEAAABnAAEAAQACAAMAAABnAAIAAQACAAMAAABnAAMAAQACAAMAAABnAAQAAQACAAMAAABnAAUAAQACAAMAAABnAAYAAQACAAMAAABnAAcAAQACAAMAAABnAAgAAQACAAMAAABnAAkAAQACAAMAAABnAAoAAQACAAMAAABnAAsAAQACAAMAAABnAAwAAQACAAMAAABnAA0AAQACAAMAAABnAA4AAQACAAMAAABnAA8AAQACAAMAAABnABAAAQACAAMAAABnABEAAQACAAMAAABnABIAAQACAAMAAABnABMAAQACAAMAAABnABQAAQACAAMAAABnABUAAQACAAMAAABnABYAAQACAAMAAABnABcAAQACAAMAAABnABgAAQACAAMAAABnABkAAQACAAMAAABnABoAAQACAAMAAABnABsAAQACAAMAAABnABwAAQACAAMAAABnAB0AAQACAAMAAABnAB4AAQACAAMAAABnAB8AAQACAAMAAABnACAAAQACAAMAAABnACEAAQACAAMAAABnACIAAQACAAMAAABnACMAAQACAAMAAABnACQAAQACAAMAAABnACUAAQACAAMAAABnACYAAQACAAMAAABnACcAAQACAAMAAABnACgAAQACAAMAAABnACkAAQACAAMAAABnACoAAQACAAMAAABnACsAAQACAAMAAABnACwAAQACAAMAAABnAC0AAQACAAMAAABnAC4AAQACAAMAAABnAC8AAQACAAMAAABnADAAAQACAAMAAABnADEAAQACAAMAAABnADIAAQACAAMAAABnADMAAQACAAMAAABnADQAAQACAAMAAABnADUAAQACAAMAAABnADYAAQACAAMAAABnADcAAQACAAMAAABnADgAAQACAAMAAABnADkAAQAIAAMAAABnADoAAQACAAMAAABnADsAAQACAAMAAABnADwAAQACAAMAAABnAD0AAQACAAMAAABnAD4AAQACAAMAAABnAD8AAQACAAMAAABnAEAAAQACAAMAAABnAEEAAQACAAMAAABoAAAAAAABAAEAAABoAAEAAQACAAMAAABoAAIAAQACAAMAAABoAAMAAQACAAMAAABoAAQAAQACAAMAAABoAAUAAQACAAMAAABoAAYAAQACAAMAAABoAAcAAQACAAMAAABoAAgAAQACAAMAAABoAAkAAQACAAMAAABoAAoAAQACAAMAAABoAAsAAQACAAMAAABoAAwAAQACAAMAAABoAA0AAQACAAMAAABoAA4AAQACAAMAAABoAA8AAQACAAMAAABoABAAAQACAAMAAABoABEAAQACAAMAAABoABIAAQACAAMAAABoABMAAQACAAMAAABoABQAAQACAAMAAABoABUAAQACAAMAAABoABYAAQACAAMAAABoABcAAQACAAMAAABoABgAAQACAAMAAABoABkAAQACAAMAAABoABoAAQACAAMAAABoABsAAQACAAMAAABoABwAAQACAAMAAABoAB0AAQACAAMAAABoAB4AAQACAAMAAABoAB8AAQACAAMAAABoACAAAQACAAMAAABoACEAAQACAAMAAABoACIAAQACAAMAAABoACMAAQACAAMAAABoACQAAQACAAMAAABoACUAAQACAAMAAABoACYAAQACAAMAAABoACcAAQACAAMAAABoACgAAQACAAMAAABoACkAAQACAAMAAABoACoAAQACAAMAAABoACsAAQACAAMAAABoACwAAQACAAMAAABoAC0AAQACAAMAAABoAC4AAQACAAMAAABoAC8AAQACAAMAAABoADAAAQACAAMAAABoADEAAQACAAMAAABoADIAAQACAAMAAABoADMAAQACAAMAAABoADQAAQACAAMAAABoADUAAQACAAMAAABoADYAAQACAAMAAABoADcAAQACAAMAAABoADgAAQACAAMAAABoADkAAQAIAAMAAABoADoAAQACAAMAAABoADsAAQACAAMAAABoADwAAQACAAMAAABoAD0AAQACAAMAAABoAD4AAQACAAMAAABoAD8AAQACAAMAAABoAEAAAQACAAMAAABoAEEAAQACAAMAAABpAAAAAAABAAEAAABpAAEAAQACAAMAAABpAAIAAQACAAMAAABpAAMAAQACAAMAAABpAAQAAQACAAMAAABpAAUAAQACAAMAAABpAAYAAQACAAMAAABpAAcAAQACAAMAAABpAAgAAQACAAMAAABpAAkAAQACAAMAAABpAAoAAQACAAMAAABpAAsAAQACAAMAAABpAAwAAQACAAMAAABpAA0AAQACAAMAAABpAA4AAQACAAMAAABpAA8AAQACAAMAAABpABAAAQACAAMAAABpABEAAQACAAMAAABpABIAAQACAAMAAABpABMAAQACAAMAAABpABQAAQACAAMAAABpABUAAQACAAMAAABpABYAAQACAAMAAABpABcAAQACAAMAAABpABgAAQACAAMAAABpABkAAQACAAMAAABpABoAAQACAAMAAABpABsAAQACAAMAAABpABwAAQACAAMAAABpAB0AAQACAAMAAABpAB4AAQACAAMAAABpAB8AAQACAAMAAABpACAAAQACAAMAAABpACEAAQACAAMAAABpACIAAQACAAMAAABpACMAAQACAAMAAABpACQAAQACAAMAAABpACUAAQACAAMAAABpACYAAQACAAMAAABpACcAAQACAAMAAABpACgAAQACAAMAAABpACkAAQACAAMAAABpACoAAQACAAMAAABpACsAAQACAAMAAABpACwAAQACAAMAAABpAC0AAQACAAMAAABpAC4AAQACAAMAAABpAC8AAQACAAMAAABpADAAAQACAAMAAABpADEAAQACAAMAAABpADIAAQACAAMAAABpADMAAQACAAMAAABpADQAAQACAAMAAABpADUAAQACAAMAAABpADYAAQACAAMAAABpADcAAQACAAMAAABpADgAAQACAAMAAABpADkAAQAIAAMAAABpADoAAQACAAMAAABpADsAAQACAAMAAABpADwAAQACAAMAAABpAD0AAQACAAMAAABpAD4AAQACAAMAAABpAD8AAQACAAMAAABpAEAAAQACAAMAAABpAEEAAQACAAMAAABqAAAAAAABAAEAAABqAAEAAQACAAMAAABqAAIAAQACAAMAAABqAAMAAQACAAMAAABqAAQAAQACAAMAAABqAAUAAQACAAMAAABqAAYAAQACAAMAAABqAAcAAQACAAMAAABqAAgAAQACAAMAAABqAAkAAQACAAMAAABqAAoAAQACAAMAAABqAAsAAQACAAMAAABqAAwAAQACAAMAAABqAA0AAQACAAMAAABqAA4AAQACAAMAAABqAA8AAQACAAMAAABqABAAAQACAAMAAABqABEAAQACAAMAAABqABIAAQACAAMAAABqABMAAQACAAMAAABqABQAAQACAAMAAABqABUAAQACAAMAAABqABYAAQACAAMAAABqABcAAQACAAMAAABqABgAAQACAAMAAABqABkAAQACAAMAAABqABoAAQACAAMAAABqABsAAQACAAMAAABqABwAAQACAAMAAABqAB0AAQACAAMAAABqAB4AAQACAAMAAABqAB8AAQACAAMAAABqACAAAQACAAMAAABqACEAAQACAAMAAABqACIAAQACAAMAAABqACMAAQACAAMAAABqACQAAQACAAMAAABqACUAAQACAAMAAABqACYAAQACAAMAAABqACcAAQACAAMAAABqACgAAQACAAMAAABqACkAAQACAAMAAABqACoAAQACAAMAAABqACsAAQACAAMAAABqACwAAQACAAMAAABqAC0AAQACAAMAAABqAC4AAQACAAMAAABqAC8AAQACAAMAAABqADAAAQACAAMAAABqADEAAQACAAMAAABqADIAAQACAAMAAABqADMAAQACAAMAAABqADQAAQACAAMAAABqADUAAQACAAMAAABqADYAAQACAAMAAABqADcAAQACAAMAAABqADgAAQACAAMAAABqADkAAQAIAAMAAABqADoAAQACAAMAAABqADsAAQACAAMAAABqADwAAQACAAMAAABqAD0AAQACAAMAAABqAD4AAQACAAMAAABqAD8AAQACAAMAAABqAEAAAQACAAMAAABqAEEAAQACAAMAAABjADsAAQACAAMAAABiADsAAQACAAMAAABhADsAAQACAAMAAABgADoAAQAIAAMAAABgADkAAQACAAMAAABfADgAAQACAAMAAABeADcAAQACAAMAAABdADYAAQACAAMAAABcADUAAQACAAMAAABcADQAAQACAAMAAABbADMAAQACAAMAAABaADIAAQACAAMAAABZADEAAQACAAMAAAB3AAAAAAABAAEAAAB3AAEAAAABAAEAAAB3AAIAAAABAAEAAAB2AAMAAQACAAMAAAB1AAQAAQACAAMAAAB1AAUAAQACAAMAAAB0AAYAAQACAAMAAABzAAcAAQACAAMAAABzAAgAAQACAAMAAAByAAkAAQACAAMAAAByAAoAAQACAAMAAABxAAsAAQACAAMAAABxAAwAAQACAAMAAABwAA0AAQACAAMAAABwAA4AAQACAAMAAABvAA8AAQACAAMAAABvABAAAQACAAMAAABuABEAAQACAAMAAABuABIAAQACAAMAAABtABMAAQACAAMAAABtABQAAQACAAMAAABsABUAAQACAAMAAABsABYAAQACAAMAAABrABcAAQACAAMAAABrAAAAAAABAAEAAABrAAEAAQACAAMAAABrAAIAAQACAAMAAABrAAMAAQACAAMAAABrAAQAAQACAAMAAABrAAUAAQACAAMAAABrAAYAAQACAAMAAABrAAcAAQACAAMAAABrAAgAAQACAAMAAABrAAkAAQACAAMAAABrAAoAAQACAAMAAABrAAsAAQACAAMAAABrAAwAAQACAAMAAABrAA0AAQACAAMAAABrAA4AAQACAAMAAABrAA8AAQACAAMAAABrABAAAQACAAMAAABrABEAAQACAAMAAABrABIAAQACAAMAAABrABMAAQACAAMAAABrABQAAQACAAMAAABrABUAAQACAAMAAABrABYAAQACAAMAAABrABgAAQACAAMAAABrABkAAQACAAMAAABrABoAAQACAAMAAABrABsAAQACAAMAAABrABwAAQACAAMAAABrAB0AAQACAAMAAABrAB4AAQACAAMAAABrAB8AAQACAAMAAABrACAAAQACAAMAAABrACEAAQACAAMAAABrACIAAQACAAMAAABrACMAAQACAAMAAABrACQAAQACAAMAAABrACUAAQACAAMAAABrACYAAQACAAMAAABrACcAAQACAAMAAABsAAAAAAABAAEAAABsAAEAAQACAAMAAABsAAIAAQACAAMAAABsAAMAAQACAAMAAABsAAQAAQACAAMAAABsAAUAAQACAAMAAABsAAYAAQACAAMAAABsAAcAAQACAAMAAABsAAgAAQACAAMAAABsAAkAAQACAAMAAABsAAoAAQACAAMAAABsAAsAAQACAAMAAABsAAwAAQACAAMAAABsAA0AAQACAAMAAABsAA4AAQACAAMAAABsAA8AAQACAAMAAABsABAAAQACAAMAAABsABEAAQACAAMAAABsABIAAQACAAMAAABsABMAAQACAAMAAABsABQAAQACAAMAAABsABcAAQACAAMAAABsABgAAQACAAMAAABsABkAAQACAAMAAABsABoAAQACAAMAAABsABsAAQACAAMAAABsABwAAQACAAMAAABsAB0AAQACAAMAAABsAB4AAQACAAMAAABsAB8AAQACAAMAAABsACAAAQACAAMAAABsACEAAQACAAMAAABsACIAAQACAAMAAABsACMAAQACAAMAAABsACQAAQACAAMAAABsACUAAQACAAMAAABsACYAAQACAAMAAABsACcAAQACAAMAAABtAAAAAAABAAEAAABtAAEAAQACAAMAAABtAAIAAQACAAMAAABtAAMAAQACAAMAAABtAAQAAQACAAMAAABtAAUAAQACAAMAAABtAAYAAQACAAMAAABtAAcAAQACAAMAAABtAAgAAQACAAMAAABtAAkAAQACAAMAAABtAAoAAQACAAMAAABtAAsAAQACAAMAAABtAAwAAQACAAMAAABtAA0AAQACAAMAAABtAA4AAQACAAMAAABtAA8AAQACAAMAAABtABAAAQACAAMAAABtABEAAQACAAMAAABtABIAAQACAAMAAABtABUAAQACAAMAAABtABYAAQACAAMAAABtABcAAQACAAMAAABtABgAAQACAAMAAABtABkAAQACAAMAAABtABoAAQACAAMAAABtABsAAQACAAMAAABtABwAAQACAAMAAABtAB0AAQACAAMAAABtAB4AAQACAAMAAABtAB8AAQACAAMAAABtACAAAQACAAMAAABtACEAAQACAAMAAABtACIAAQACAAMAAABtACMAAQACAAMAAABtACQAAQACAAMAAABtACUAAQACAAMAAABtACYAAQACAAMAAABtACcAAQACAAMAAABuAAAAAAABAAEAAABuAAEAAQACAAMAAABuAAIAAQACAAMAAABuAAMAAQACAAMAAABuAAQAAQACAAMAAABuAAUAAQACAAMAAABuAAYAAQACAAMAAABuAAcAAQACAAMAAABuAAgAAQACAAMAAABuAAkAAQACAAMAAABuAAoAAQACAAMAAABuAAsAAQACAAMAAABuAAwAAQACAAMAAABuAA0AAQACAAMAAABuAA4AAQACAAMAAABuAA8AAQACAAMAAABuABAAAQACAAMAAABuABMAAQACAAMAAABuABQAAQACAAMAAABuABUAAQACAAMAAABuABYAAQACAAMAAABuABcAAQACAAMAAABuABgAAQACAAMAAABuABkAAQACAAMAAABuABoAAQACAAMAAABuABsAAQACAAMAAABuABwAAQACAAMAAABuAB0AAQACAAMAAABuAB4AAQACAAMAAABuAB8AAQACAAMAAABuACAAAQACAAMAAABuACEAAQACAAMAAABuACIAAQACAAMAAABuACMAAQACAAMAAABuACQAAQACAAMAAABuACUAAQACAAMAAABuACYAAQACAAMAAABuACcAAQACAAMAAABvAAAAAAABAAEAAABvAAEAAQACAAMAAABvAAIAAQACAAMAAABvAAMAAQACAAMAAABvAAQAAQACAAMAAABvAAUAAQACAAMAAABvAAYAAQACAAMAAABvAAcAAQACAAMAAABvAAgAAQACAAMAAABvAAkAAQACAAMAAABvAAoAAQACAAMAAABvAAsAAQACAAMAAABvAAwAAQACAAMAAABvAA0AAQACAAMAAABvAA4AAQACAAMAAABvABEAAQACAAMAAABvABIAAQACAAMAAABvABMAAQACAAMAAABvABQAAQACAAMAAABvABUAAQACAAMAAABvABYAAQACAAMAAABvABcAAQACAAMAAABvABgAAQACAAMAAABvABkAAQACAAMAAABvABoAAQACAAMAAABvABsAAQACAAMAAABvABwAAQACAAMAAABvAB0AAQACAAMAAABvAB4AAQACAAMAAABvAB8AAQACAAMAAABvACAAAQACAAMAAABvACEAAQACAAMAAABvACIAAQACAAMAAABvACMAAQACAAMAAABvACQAAQACAAMAAABvACUAAQACAAMAAABvACYAAQACAAMAAABvACcAAQACAAMAAABwAAAAAAABAAEAAABwAAEAAQACAAMAAABwAAIAAQACAAMAAABwAAMAAQACAAMAAABwAAQAAQACAAMAAABwAAUAAQACAAMAAABwAAYAAQACAAMAAABwAAcAAQACAAMAAABwAAgAAQACAAMAAABwAAkAAQACAAMAAABwAAoAAQACAAMAAABwAAsAAQACAAMAAABwAAwAAQACAAMAAABwAA8AAQACAAMAAABwABAAAQACAAMAAABwABEAAQACAAMAAABwABIAAQACAAMAAABwABMAAQACAAMAAABwABQAAQACAAMAAABwABUAAQACAAMAAABwABYAAQACAAMAAABwABcAAQACAAMAAABwABgAAQACAAMAAABwABkAAQACAAMAAABwABoAAQACAAMAAABwABsAAQACAAMAAABwABwAAQACAAMAAABwAB0AAQACAAMAAABwAB4AAQACAAMAAABwAB8AAQACAAMAAABwACAAAQACAAMAAABwACEAAQACAAMAAABwACIAAQACAAMAAABwACMAAQACAAMAAABwACQAAQACAAMAAABwACUAAQACAAMAAABwACYAAQACAAMAAABwACcAAQACAAMAAABxAAAAAAABAAEAAABxAAEAAQACAAMAAABxAAIAAQACAAMAAABxAAMAAQACAAMAAABxAAQAAQACAAMAAABxAAUAAQACAAMAAABxAAYAAQACAAMAAABxAAcAAQACAAMAAABxAAgAAQACAAMAAABxAAkAAQACAAMAAABxAAoAAQACAAMAAABxAA0AAQACAAMAAABxAA4AAQACAAMAAABxAA8AAQACAAMAAABxABAAAQACAAMAAABxABEAAQACAAMAAABxABIAAQACAAMAAABxABMAAQACAAMAAABxABQAAQACAAMAAABxABUAAQACAAMAAABxABYAAQACAAMAAABxABcAAQACAAMAAABxABgAAQACAAMAAABxABkAAQACAAMAAABxABoAAQACAAMAAABxABsAAQACAAMAAABxABwAAQACAAMAAABxAB0AAQACAAMAAABxAB4AAQACAAMAAABxAB8AAQACAAMAAABxACAAAQACAAMAAABxACEAAQACAAMAAABxACIAAQACAAMAAABxACMAAQACAAMAAABxACQAAQACAAMAAABxACUAAQACAAMAAABxACYAAQACAAMAAABxACcAAQACAAMAAAByAAAAAAABAAEAAAByAAEAAQACAAMAAAByAAIAAQACAAMAAAByAAMAAQACAAMAAAByAAQAAQACAAMAAAByAAUAAQACAAMAAAByAAYAAQACAAMAAAByAAcAAQACAAMAAAByAAgAAQACAAMAAAByAAsAAQACAAMAAAByAAwAAQACAAMAAAByAA0AAQACAAMAAAByAA4AAQACAAMAAAByAA8AAQACAAMAAAByABAAAQACAAMAAAByABEAAQACAAMAAAByABIAAQACAAMAAAByABMAAQACAAMAAAByABQAAQACAAMAAAByABUAAQACAAMAAAByABYAAQACAAMAAAByABcAAQACAAMAAAByABgAAQACAAMAAAByABkAAQACAAMAAAByABoAAQACAAMAAAByABsAAQACAAMAAAByABwAAQACAAMAAAByAB0AAQACAAMAAAByAB4AAQACAAMAAAByAB8AAQACAAMAAAByACAAAQACAAMAAAByACEAAQACAAMAAAByACIAAQACAAMAAAByACMAAQACAAMAAAByACQAAQACAAMAAAByACUAAQACAAMAAAByACYAAQACAAMAAAByACcAAQACAAMAAABzAAAAAAABAAEAAABzAAEAAQACAAMAAABzAAIAAQACAAMAAABzAAMAAQACAAMAAABzAAQAAQACAAMAAABzAAUAAQACAAMAAABzAAYAAQACAAMAAABzAAkAAQACAAMAAABzAAoAAQACAAMAAABzAAsAAQACAAMAAABzAAwAAQACAAMAAABzAA0AAQACAAMAAABzAA4AAQACAAMAAABzAA8AAQACAAMAAABzABAAAQACAAMAAABzABEAAQACAAMAAABzABIAAQACAAMAAABzABMAAQACAAMAAABzABQAAQACAAMAAABzABUAAQACAAMAAABzABYAAQACAAMAAABzABcAAQACAAMAAABzABgAAQACAAMAAABzABkAAQACAAMAAABzABoAAQACAAMAAABzABsAAQACAAMAAABzABwAAQACAAMAAABzAB0AAQACAAMAAABzAB4AAQACAAMAAABzAB8AAQACAAMAAABzACAAAQACAAMAAABzACEAAQACAAMAAABzACIAAQACAAMAAABzACMAAQACAAMAAABzACQAAQACAAMAAABzACUAAQACAAMAAABzACYAAQACAAMAAABzACcAAQACAAMAAAB0AAAAAAABAAEAAAB0AAEAAQACAAMAAAB0AAIAAQACAAMAAAB0AAMAAQACAAMAAAB0AAQAAQACAAMAAAB0AAUAAQACAAMAAAB0AAcAAQACAAMAAAB0AAgAAQACAAMAAAB0AAkAAQACAAMAAAB0AAoAAQACAAMAAAB0AAsAAQACAAMAAAB0AAwAAQACAAMAAAB0AA0AAQACAAMAAAB0AA4AAQACAAMAAAB0AA8AAQACAAMAAAB0ABAAAQACAAMAAAB0ABEAAQACAAMAAAB0ABIAAQACAAMAAAB0ABMAAQACAAMAAAB0ABQAAQACAAMAAAB0ABUAAQACAAMAAAB0ABYAAQACAAMAAAB0ABcAAQACAAMAAAB0ABgAAQACAAMAAAB0ABkAAQACAAMAAAB0ABoAAQACAAMAAAB0ABsAAQACAAMAAAB0ABwAAQACAAMAAAB0AB0AAQACAAMAAAB0AB4AAQACAAMAAAB0AB8AAQACAAMAAAB0ACAAAQACAAMAAAB0ACEAAQACAAMAAAB0ACIAAQACAAMAAAB0ACMAAQACAAMAAAB0ACQAAQACAAMAAAB0ACUAAQACAAMAAAB0ACYAAQACAAMAAAB0ACcAAQACAAMAAAB1AAAAAAABAAEAAAB1AAEAAQACAAMAAAB1AAIAAQACAAMAAAB1AAMAAQACAAMAAAB1AAYAAQACAAMAAAB1AAcAAQACAAMAAAB1AAgAAQACAAMAAAB1AAkAAQACAAMAAAB1AAoAAQACAAMAAAB1AAsAAQACAAMAAAB1AAwAAQACAAMAAAB1AA0AAQACAAMAAAB1AA4AAQACAAMAAAB1AA8AAQACAAMAAAB1ABAAAQACAAMAAAB1ABEAAQACAAMAAAB1ABIAAQACAAMAAAB1ABMAAQACAAMAAAB1ABQAAQACAAMAAAB1ABUAAQACAAMAAAB1ABYAAQACAAMAAAB1ABcAAQACAAMAAAB1ABgAAQACAAMAAAB1ABkAAQACAAMAAAB1ABoAAQACAAMAAAB1ABsAAQACAAMAAAB1ABwAAQACAAMAAAB1AB0AAQACAAMAAAB1AB4AAQACAAMAAAB1AB8AAQACAAMAAAB1ACAAAQACAAMAAAB1ACEAAQACAAMAAAB1ACIAAQACAAMAAAB1ACMAAQACAAMAAAB1ACQAAQACAAMAAAB1ACUAAQACAAMAAAB1ACYAAQACAAMAAAB1ACcAAQACAAMAAAB2AAAAAAABAAEAAAB2AAEAAQACAAMAAAB2AAIAAQACAAMAAAB2AAQAAQACAAMAAAB2AAUAAQACAAMAAAB2AAYAAQACAAMAAAB2AAcAAQACAAMAAAB2AAgAAQACAAMAAAB2AAkAAQACAAMAAAB2AAoAAQACAAMAAAB2AAsAAQACAAMAAAB2AAwAAQACAAMAAAB2AA0AAQACAAMAAAB2AA4AAQACAAMAAAB2AA8AAQACAAMAAAB2ABAAAQACAAMAAAB2ABEAAQACAAMAAAB2ABIAAQACAAMAAAB2ABMAAQACAAMAAAB2ABQAAQACAAMAAAB2ABUAAQACAAMAAAB2ABYAAQACAAMAAAB2ABcAAQACAAMAAAB2ABgAAQACAAMAAAB2ABkAAQACAAMAAAB2ABoAAQACAAMAAAB2ABsAAQACAAMAAAB2ABwAAQACAAMAAAB2AB0AAQACAAMAAAB2AB4AAQACAAMAAAB2AB8AAQACAAMAAAB2ACAAAQACAAMAAAB2ACEAAQACAAMAAAB2ACIAAQACAAMAAAB2ACMAAQACAAMAAAB2ACQAAQACAAMAAAB2ACUAAQACAAMAAAB2ACYAAQACAAMAAAB2ACcAAQACAAMAAAB3AAMAAAABAAEAAAB3AAQAAAABAAEAAAB3AAUAAAABAAEAAAB3AAYAAAABAAEAAAB3AAcAAAABAAEAAAB3AAgAAAABAAEAAAB3AAkAAAABAAEAAAB3AAoAAAABAAEAAAB3AAsAAAABAAEAAAB3AAwAAAABAAEAAAB3AA0AAAABAAEAAAB3AA4AAAABAAEAAAB3AA8AAAABAAEAAAB3ABAAAAABAAEAAAB3ABEAAAABAAEAAAB3ABIAAAABAAEAAAB3ABMAAAABAAEAAAB3ABQAAAABAAEAAAB3ABUAAAABAAEAAAB3ABYAAAABAAEAAAB3ABcAAAABAAEAAAB3ABgAAAABAAEAAAB3ABkAAAABAAEAAAB3ABoAAAABAAEAAAB3ABsAAAABAAEAAAB3ABwAAAABAAEAAAB3AB0AAAABAAEAAAB3AB4AAAABAAEAAAB3AB8AAAABAAEAAAB3ACAAAAABAAEAAAB3ACEAAAABAAEAAAB3ACIAAAABAAEAAAB3ACMAAAABAAEAAAB3ACQAAAABAAEAAAB3ACUAAAABAAEAAAB3ACYAAAABAAEAAAB3ACcAAAABAAEAAABpAEIAAQACAAMAAABpAEMAAAABAAEAAABqAEIAAQACAAMAAABqAEMAAAABAAEAAABrACgAAQACAAMAAABrACkAAQACAAMAAABrACoAAQACAAMAAABrACsAAQACAAMAAABrACwAAQACAAMAAABrAC0AAQACAAMAAABrAC4AAQACAAMAAABrAC8AAQACAAMAAABrADAAAQACAAMAAABrADEAAQACAAMAAABrADIAAQACAAMAAABrADMAAQACAAMAAABrADQAAQACAAMAAABrADUAAQACAAMAAABrADYAAQACAAMAAABrADcAAQACAAMAAABrADgAAQACAAMAAABrADkAAQAIAAMAAABrADoAAQACAAMAAABrADsAAQACAAMAAABrADwAAQACAAMAAABrAD0AAQACAAMAAABrAD4AAQACAAMAAABrAD8AAQACAAMAAABrAEAAAQACAAMAAABrAEEAAQACAAMAAABrAEIAAQACAAMAAABrAEMAAAABAAEAAABsACgAAQACAAMAAABsACkAAQACAAMAAABsACoAAQACAAMAAABsACsAAQACAAMAAABsACwAAQACAAMAAABsAC0AAQACAAMAAABsAC4AAQACAAMAAABsAC8AAQACAAMAAABsADAAAQACAAMAAABsADEAAQACAAMAAABsADIAAQACAAMAAABsADMAAQACAAMAAABsADQAAQACAAMAAABsADUAAQACAAMAAABsADYAAQACAAMAAABsADcAAQACAAMAAABsADgAAQACAAMAAABsADkAAQAIAAMAAABsADoAAQACAAMAAABsADsAAQACAAMAAABsADwAAQACAAMAAABsAD0AAQACAAMAAABsAD4AAQACAAMAAABsAD8AAQACAAMAAABsAEAAAQACAAMAAABsAEEAAQACAAMAAABsAEIAAQACAAMAAABsAEMAAAABAAEAAABtACgAAQACAAMAAABtACkAAQACAAMAAABtACoAAQACAAMAAABtACsAAQACAAMAAABtACwAAQACAAMAAABtAC0AAQACAAMAAABtAC4AAQACAAMAAABtAC8AAQACAAMAAABtADAAAQACAAMAAABtADEAAQACAAMAAABtADIAAQACAAMAAABtADMAAQACAAMAAABtADQAAQACAAMAAABtADUAAQACAAMAAABtADYAAQACAAMAAABtADcAAQACAAMAAABtADgAAQAIAAMAAABtADkAAQACAAMAAABtADoAAQACAAMAAABtADsAAQACAAMAAABtADwAAQACAAMAAABtAD0AAQACAAMAAABtAD4AAQACAAMAAABtAD8AAQACAAMAAABtAEAAAQACAAMAAABtAEEAAQACAAMAAABtAEIAAQACAAMAAABtAEMAAAABAAEAAABuACgAAQACAAMAAABuACkAAQACAAMAAABuACoAAQACAAMAAABuACsAAQACAAMAAABuACwAAQACAAMAAABuAC0AAQACAAMAAABuAC4AAQACAAMAAABuAC8AAQACAAMAAABuADAAAQACAAMAAABuADEAAQACAAMAAABuADIAAQACAAMAAABuADMAAQACAAMAAABuADQAAQACAAMAAABuADUAAQACAAMAAABuADYAAQACAAMAAABuADcAAQACAAMAAABuADgAAQAIAAMAAABuADkAAQACAAMAAABuADoAAQACAAMAAABuADsAAQACAAMAAABuADwAAQACAAMAAABuAD0AAQACAAMAAABuAD4AAQACAAMAAABuAD8AAQACAAMAAABuAEAAAQACAAMAAABuAEEAAQACAAMAAABuAEIAAQACAAMAAABuAEMAAAABAAEAAABvACgAAQACAAMAAABvACkAAQACAAMAAABvACoAAQACAAMAAABvACsAAQACAAMAAABvACwAAQACAAMAAABvAC0AAQACAAMAAABvAC4AAQACAAMAAABvAC8AAQACAAMAAABvADAAAQACAAMAAABvADEAAQACAAMAAABvADIAAQACAAMAAABvADMAAQACAAMAAABvADQAAQACAAMAAABvADUAAQACAAMAAABvADYAAQACAAMAAABvADcAAQACAAMAAABvADgAAQAIAAMAAABvADkAAQACAAMAAABvADoAAQACAAMAAABvADsAAQACAAMAAABvADwAAQACAAMAAABvAD0AAQACAAMAAABvAD4AAQACAAMAAABvAD8AAQACAAMAAABvAEAAAQACAAMAAABvAEEAAQACAAMAAABvAEIAAQACAAMAAABvAEMAAAABAAEAAABwACgAAQACAAMAAABwACkAAQACAAMAAABwACoAAQACAAMAAABwACsAAQACAAMAAABwACwAAQACAAMAAABwAC0AAQACAAMAAABwAC4AAQACAAMAAABwAC8AAQACAAMAAABwADAAAQACAAMAAABwADEAAQACAAMAAABwADIAAQACAAMAAABwADMAAQACAAMAAABwADQAAQACAAMAAABwADUAAQACAAMAAABwADYAAQACAAMAAABwADcAAQACAAMAAABwADgAAQAIAAMAAABwADkAAQACAAMAAABwADoAAQACAAMAAABwADsAAQACAAMAAABwADwAAQACAAMAAABwAD0AAQACAAMAAABwAD4AAQACAAMAAABwAD8AAQACAAMAAABwAEAAAQACAAMAAABwAEEAAQACAAMAAABwAEIAAQACAAMAAABwAEMAAAABAAEAAABxACgAAQACAAMAAABxACkAAQACAAMAAABxACoAAQACAAMAAABxACsAAQACAAMAAABxACwAAQACAAMAAABxAC0AAQACAAMAAABxAC4AAQACAAMAAABxAC8AAQACAAMAAABxADAAAQACAAMAAABxADEAAQACAAMAAABxADIAAQACAAMAAABxADMAAQACAAMAAABxADQAAQACAAMAAABxADUAAQACAAMAAABxADYAAQACAAMAAABxADcAAQACAAMAAABxADgAAQAIAAMAAABxADkAAQACAAMAAABxADoAAQACAAMAAABxADsAAQACAAMAAABxADwAAQACAAMAAABxAD0AAQACAAMAAABxAD4AAQACAAMAAABxAD8AAQACAAMAAABxAEAAAQACAAMAAABxAEEAAQACAAMAAABxAEIAAQACAAMAAABxAEMAAAABAAEAAAByACgAAQACAAMAAAByACkAAQACAAMAAAByACoAAQACAAMAAAByACsAAQACAAMAAAByACwAAQACAAMAAAByAC0AAQACAAMAAAByAC4AAQACAAMAAAByAC8AAQACAAMAAAByADAAAQACAAMAAAByADEAAQACAAMAAAByADIAAQACAAMAAAByADMAAQACAAMAAAByADQAAQACAAMAAAByADUAAQACAAMAAAByADYAAQACAAMAAAByADcAAQACAAMAAAByADgAAQAIAAMAAAByADkAAQACAAMAAAByADoAAQACAAMAAAByADsAAQACAAMAAAByADwAAQACAAMAAAByAD0AAQACAAMAAAByAD4AAQACAAMAAAByAD8AAQACAAMAAAByAEAAAQACAAMAAAByAEEAAQACAAMAAAByAEIAAQACAAMAAAByAEMAAAABAAEAAABzACgAAQACAAMAAABzACkAAQACAAMAAABzACoAAQACAAMAAABzACsAAQACAAMAAABzACwAAQACAAMAAABzAC0AAQACAAMAAABzAC4AAQACAAMAAABzAC8AAQACAAMAAABzADAAAQACAAMAAABzADEAAQACAAMAAABzADIAAQACAAMAAABzADMAAQACAAMAAABzADQAAQACAAMAAABzADUAAQACAAMAAABzADYAAQACAAMAAABzADcAAQACAAMAAABzADgAAQACAAMAAABzADkAAQACAAMAAABzADoAAQACAAMAAABzADsAAQACAAMAAABzADwAAQACAAMAAABzAD0AAQACAAMAAABzAD4AAQACAAMAAABzAD8AAQACAAMAAABzAEAAAQACAAMAAABzAEEAAQACAAMAAABzAEIAAQACAAMAAABzAEMAAAABAAEAAAB0ACgAAQACAAMAAAB0ACkAAQACAAMAAAB0ACoAAQACAAMAAAB0ACsAAQACAAMAAAB0ACwAAQACAAMAAAB0AC0AAQACAAMAAAB0AC4AAQACAAMAAAB0AC8AAQACAAMAAAB0ADAAAQACAAMAAAB0ADEAAQACAAMAAAB0ADIAAQACAAMAAAB0ADMAAQACAAMAAAB0ADQAAQACAAMAAAB0ADUAAQACAAMAAAB0ADYAAQACAAMAAAB0ADcAAQACAAMAAAB0ADgAAQACAAMAAAB0ADkAAQACAAMAAAB0ADoAAQACAAMAAAB0ADsAAQACAAMAAAB0ADwAAQACAAMAAAB0AD0AAQACAAMAAAB0AD4AAQACAAMAAAB0AD8AAQACAAMAAAB0AEAAAQACAAMAAAB0AEEAAQACAAMAAAB0AEIAAQACAAMAAAB0AEMAAAABAAEAAAB1ACgAAQACAAMAAAB1ACkAAQACAAMAAAB1ACoAAQACAAMAAAB1ACsAAQACAAMAAAB1ACwAAQACAAMAAAB1AC0AAQACAAMAAAB1AC4AAQACAAMAAAB1AC8AAQACAAMAAAB1ADAAAQACAAMAAAB1ADEAAQACAAMAAAB1ADIAAQACAAMAAAB1ADMAAQACAAMAAAB1ADQAAQACAAMAAAB1ADUAAQACAAMAAAB1ADYAAQACAAMAAAB1ADcAAQACAAMAAAB1ADgAAQACAAMAAAB1ADkAAQACAAMAAAB1ADoAAQACAAMAAAB1ADsAAQACAAMAAAB1ADwAAQACAAMAAAB1AD0AAQACAAMAAAB1AD4AAQACAAMAAAB1AD8AAQACAAMAAAB1AEAAAQACAAMAAAB1AEEAAQACAAMAAAB1AEIAAQACAAMAAAB1AEMAAAABAAEAAAB2ACgAAQACAAMAAAB2ACkAAQACAAMAAAB2ACoAAQACAAMAAAB2ACsAAQACAAMAAAB2ACwAAQACAAMAAAB2AC0AAQACAAMAAAB2AC4AAQACAAMAAAB2AC8AAQACAAMAAAB2ADAAAQACAAMAAAB2ADEAAQACAAMAAAB2ADIAAQACAAMAAAB2ADMAAQACAAMAAAB2ADQAAQACAAMAAAB2ADUAAQACAAMAAAB2ADYAAQACAAMAAAB2ADcAAQACAAMAAAB2ADgAAQACAAMAAAB2ADkAAQACAAMAAAB2ADoAAQACAAMAAAB2ADsAAQACAAMAAAB2ADwAAQACAAMAAAB2AD0AAQACAAMAAAB2AD4AAQACAAMAAAB2AD8AAQACAAMAAAB2AEAAAQACAAMAAAB2AEEAAQACAAMAAAB2AEIAAQACAAMAAAB2AEMAAAABAAEAAAB3ACgAAAABAAEAAAB3ACkAAAABAAEAAAB3ACoAAAABAAEAAAB3ACsAAAABAAEAAAB3ACwAAAABAAEAAAB3AC0AAAABAAEAAAB3AC4AAAABAAEAAAB3AC8AAAABAAEAAAB3ADAAAAABAAEAAAB3ADEAAAABAAEAAAB3ADIAAAABAAEAAAB3ADMAAAABAAEAAAB3ADQAAAABAAEAAAB3ADUAAAABAAEAAAB3ADYAAAABAAEAAAB3ADcAAAABAAEAAAB3ADgAAAABAAEAAAB3ADkAAAABAAEAAAB3ADoAAAABAAEAAAB3ADsAAAABAAEAAAB3ADwAAAABAAEAAAB3AD0AAAABAAEAAAB3AD4AAAABAAEAAAB3AD8AAAABAAEAAAB3AEAAAAABAAEAAAB3AEEAAAABAAEAAAB3AEIAAAABAAEAAAB3AEMAAAABAAEAAAAtAEIAAQACAAMAAAAtAEMAAAABAAEAAAAuAEIAAQACAAMAAAAuAEMAAAABAAEAAAAvAEIAAQACAAMAAAAvAEMAAAABAAEAAAAwAEIAAQACAAMAAAAwAEMAAAABAAEAAAAxAEIAAQACAAMAAAAxAEMAAAABAAEAAAAyAEIAAQACAAMAAAAyAEMAAAABAAEAAAAzAEIAAQACAAMAAAAzAEMAAAABAAEAAAA0AEIAAQACAAMAAAA0AEMAAAABAAEAAAA1AEIAAQACAAMAAAA1AEMAAAABAAEAAAA2AEIAAQAIAAMAAAA2AEMAAAABAAEAAAA3AEIAAQACAAMAAAA3AEMAAAABAAEAAAA4AEIAAQACAAMAAAA4AEMAAAABAAEAAAA5AEIAAQACAAMAAAA5AEMAAAABAAEAAAA6AEIAAQACAAMAAAA6AEMAAAABAAEAAAA7AEIAAQACAAMAAAA7AEMAAAABAAEAAAA8AEIAAQACAAMAAAA8AEMAAAABAAEAAAA9AEIAAQACAAMAAAA9AEMAAAABAAEAAAA+AEIAAQACAAMAAAA+AEMAAAABAAEAAAA/AEIAAQACAAMAAAA/AEMAAAABAAEAAABAAEIAAQACAAMAAABAAEMAAAABAAEAAABBAEIAAQACAAMAAABBAEMAAAABAAEAAABCAEIAAQACAAMAAABCAEMAAAABAAEAAABDAEIAAQACAAMAAABDAEMAAAABAAEAAABEAEIAAQACAAMAAABEAEMAAAABAAEAAABFAEIAAQACAAMAAABFAEMAAAABAAEAAABGAEIAAQACAAMAAABGAEMAAAABAAEAAABHAEIAAQACAAMAAABHAEMAAAABAAEAAABIAEIAAQACAAMAAABIAEMAAAABAAEAAABJAEIAAQACAAMAAABJAEMAAAABAAEAAABKAEIAAQACAAMAAABKAEMAAAABAAEAAABLAEIAAQACAAMAAABLAEMAAAABAAEAAABMAEIAAQACAAMAAABMAEMAAAABAAEAAABNAEIAAQACAAMAAABNAEMAAAABAAEAAABOAEIAAQACAAMAAABOAEMAAAABAAEAAABPAEIAAQACAAMAAABPAEMAAAABAAEAAABQAEIAAQACAAMAAABQAEMAAAABAAEAAABRAEIAAQACAAMAAABRAEMAAAABAAEAAABSAEIAAQACAAMAAABSAEMAAAABAAEAAABTAEIAAQACAAMAAABTAEMAAAABAAEAAABUAEIAAQACAAMAAABUAEMAAAABAAEAAABVAEIAAQACAAMAAABVAEMAAAABAAEAAABWAEIAAQACAAMAAABWAEMAAAABAAEAAABXAEIAAQACAAMAAABXAEMAAAABAAEAAABYAEIAAQACAAMAAABYAEMAAAABAAEAAABZAEIAAQACAAMAAABZAEMAAAABAAEAAABaAEIAAQACAAMAAABaAEMAAAABAAEAAABbAEIAAQACAAMAAABbAEMAAAABAAEAAABcAEIAAQACAAMAAABcAEMAAAABAAEAAABdAEIAAQACAAMAAABdAEMAAAABAAEAAABeAEIAAQACAAMAAABeAEMAAAABAAEAAABfAEIAAQACAAMAAABfAEMAAAABAAEAAABgAEIAAQACAAMAAABgAEMAAAABAAEAAABhAEIAAQACAAMAAABhAEMAAAABAAEAAABiAEIAAQACAAMAAABiAEMAAAABAAEAAABjAEIAAQACAAMAAABjAEMAAAABAAEAAABkAEIAAQACAAMAAABkAEMAAAABAAEAAABlAEIAAQACAAMAAABlAEMAAAABAAEAAABmAEIAAQACAAMAAABmAEMAAAABAAEAAABnAEIAAQACAAMAAABnAEMAAAABAAEAAABoAEIAAQACAAMAAABoAEMAAAABAAEAAAAAAEIAAAABAAEAAAABAEIAAQACAAMAAAACAEIAAQACAAMAAAADAEIAAQACAAMAAAAEAEIAAQACAAMAAAAFAEIAAQACAAMAAAAGAEIAAQACAAMAAAAHAEIAAQAIAAMAAAAIAEIAAQAIAAMAAAAJAEIAAQAIAAMAAAAKAEIAAQAIAAMAAAALAEIAAQAIAAMAAAAMAEIAAQAIAAMAAAANAEIAAQAIAAMAAAAOAEIAAQAIAAMAAAAPAEIAAQAIAAMAAAAQAEIAAQAIAAMAAAARAEIAAQACAAMAAAASAEIAAQACAAMAAAATAEIAAQACAAMAAAAUAEIAAQACAAMAAAAVAEIAAQACAAMAAAAWAEIAAQACAAMAAAAXAEIAAQACAAMAAAAYAEIAAQACAAMAAAAZAEIAAQACAAMAAAAaAEIAAQAIAAMAAAAbAEIAAQACAAMAAAAcAEIAAQACAAMAAAAdAEIAAQACAAMAAAAeAEIAAQACAAMAAAAfAEIAAQACAAMAAAAgAEIAAQACAAMAAAAhAEIAAQACAAMAAAAiAEIAAQACAAMAAAAjAEIAAQACAAMAAAAkAEIAAQACAAMAAAAlAEIAAQACAAMAAAAmAEIAAQACAAMAAAAnAEIAAQACAAMAAAAoAEIAAQACAAMAAAApAEIAAQACAAMAAAAqAEIAAQACAAMAAAArAEIAAQACAAMAAAAsAEIAAQACAAMAAAAAAEMAAAABAAEAAAABAEMAAAABAAEAAAACAEMAAAABAAEAAAADAEMAAAABAAEAAAAEAEMAAAABAAEAAAAFAEMAAAABAAEAAAAGAEMAAAABAAEAAAAHAEMAAAABAAEAAAAIAEMAAAABAAEAAAAJAEMAAAABAAEAAAAKAEMAAAABAAEAAAALAEMAAAABAAEAAAAMAEMAAAABAAEAAAANAEMAAAABAAEAAAAOAEMAAAABAAEAAAAPAEMAAAABAAEAAAAQAEMAAAABAAEAAAARAEMAAAABAAEAAAASAEMAAAABAAEAAAATAEMAAAABAAEAAAAUAEMAAAABAAEAAAAVAEMAAAABAAEAAAAWAEMAAAABAAEAAAAXAEMAAAABAAEAAAAYAEMAAAABAAEAAAAZAEMAAAABAAEAAAAaAEMAAAABAAEAAAAbAEMAAAABAAEAAAAcAEMAAAABAAEAAAAdAEMAAAABAAEAAAAeAEMAAAABAAEAAAAfAEMAAAABAAEAAAAgAEMAAAABAAEAAAAhAEMAAAABAAEAAAAiAEMAAAABAAEAAAAjAEMAAAABAAEAAAAkAEMAAAABAAEAAAAlAEMAAAABAAEAAAAmAEMAAAABAAEAAAAnAEMAAAABAAEAAAAoAEMAAAABAAEAAAApAEMAAAABAAEAAAAqAEMAAAABAAEAAAArAEMAAAABAAEAAAAsAEMAAAABAAEAAAA2ADgAAQAIAAMAAAA5ADcAAQACAAMAAAA=")
+tile_set = SubResource("TileSet_umkae")
+
+[node name="Wall" type="TileMapLayer" parent="World/Level"]
+tile_map_data = PackedByteArray("AAA1ADYAAAAAAAEAAAA1ADUAAAAAAAEAAAA1ADQAAAAAAAEAAAA1ADMAAAAAAAEAAAA1ADIAAAAAAAEAAAA1ADEAAAABAAAAAAA2ADEAAAACAAMAAAA3ADEAAAACAAMAAAA4ADEAAAACAAMAAAA5ADEAAAACAAMAAAA6ADEAAAACAAMAAAA7ADEAAAACAAMAAAA8ADEAAAACAAMAAAA9ADEAAAADAAAAAAA9ADcAAAADAAIAAAA1ADcAAAABAAIAAAA2ADcAAAACAAMAAAA3ADcAAAACAAMAAAA4ADcAAAACAAMAAAA5ADcAAgAAAAAAAAA6ADcAAAACAAMAAAA7ADcAAAACAAMAAAA8ADcAAAACAAMAAAA9ADYAAAAAAAEAAAA9ADUAAAAAAAEAAAA9ADQAAAAAAAEAAAA9ADMAAAAAAAEAAAA9ADIAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_lxujo")
+
+[node name="Placeholder" type="TileMapLayer" parent="World/Level"]
+modulate = Color(1, 1, 1, 0.5)
+tile_set = SubResource("TileSet_4356y")
+
+[node name="Preview" type="TileMapLayer" parent="World/Level"]
+modulate = Color(1, 1, 1, 0.5)
+tile_set = SubResource("TileSet_4356y")
+
+[node name="Objects" type="Node2D" parent="World"]
+
+[node name="Heroes" type="Node2D" parent="World"]
+
+[node name="Construction" parent="." instance=ExtResource("9_1lff4")]
+
+[node name="GuildCamera" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+zoom = Vector2(2, 2)
+script = ExtResource("2")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="HUD" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3")
+
+[node name="TopBar" type="HBoxContainer" parent="UILayer/HUD"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -480.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/separation = 16
+
+[node name="GoldLabel" type="Label" parent="UILayer/HUD/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "💰 0"
+
+[node name="FoodLabel" type="Label" parent="UILayer/HUD/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "🍖 0"
+
+[node name="ReputationLabel" type="Label" parent="UILayer/HUD/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "⭐ 0"
+
+[node name="Spacer" type="Control" parent="UILayer/HUD/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeLabel" type="Label" parent="UILayer/HUD/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "07:00"
+
+[node name="DayLabel" type="Label" parent="UILayer/HUD/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Jour 1"
+
+[node name="SpeedContainer" type="HBoxContainer" parent="UILayer/HUD/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PauseBtn" type="Button" parent="UILayer/HUD/TopBar/SpeedContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "⏸"
+
+[node name="Speed1Btn" type="Button" parent="UILayer/HUD/TopBar/SpeedContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "▶"
+
+[node name="Speed2Btn" type="Button" parent="UILayer/HUD/TopBar/SpeedContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "▶▶"
+
+[node name="Speed4Btn" type="Button" parent="UILayer/HUD/TopBar/SpeedContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "▶▶▶"
+
+[node name="BottomBar" type="HBoxContainer" parent="UILayer/HUD"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -52.0
+offset_right = 300.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="HeroesTabBtn" type="Button" parent="UILayer/HUD/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "👥 Héros"
+
+[node name="RecruitTabBtn" type="Button" parent="UILayer/HUD/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "🧑 Recruter"
+
+[node name="BuildTabBtn" type="Button" parent="UILayer/HUD/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "🔨 Construire"
+
+[node name="ResearchTabBtn" type="Button" parent="UILayer/HUD/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "🔬 Recherche"
+
+[node name="InventoryTabBtn" type="Button" parent="UILayer/HUD/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "🎒 Inventaire"
+
+[node name="MapTabBtn" type="Button" parent="UILayer/HUD/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "🗺 Carte"
+
+[node name="QuestTabBtn" type="Button" parent="UILayer/HUD/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "📜 Quêtes"
+
+[node name="HeroPanel" parent="UILayer" instance=ExtResource("5")]
+visible = false
+
+[node name="BuildMenu" parent="UILayer" instance=ExtResource("6")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("4")]
+visible = false
+
+[connection signal="pressed" from="UILayer/HUD/TopBar/SpeedContainer/PauseBtn" to="UILayer/HUD" method="_on_pause_btn_pressed"]
+[connection signal="pressed" from="UILayer/HUD/TopBar/SpeedContainer/Speed1Btn" to="UILayer/HUD" method="_on_speed1_btn_pressed"]
+[connection signal="pressed" from="UILayer/HUD/TopBar/SpeedContainer/Speed2Btn" to="UILayer/HUD" method="_on_speed2_btn_pressed"]
+[connection signal="pressed" from="UILayer/HUD/TopBar/SpeedContainer/Speed4Btn" to="UILayer/HUD" method="_on_speed4_btn_pressed"]
+[connection signal="pressed" from="UILayer/HUD/BottomBar/HeroesTabBtn" to="UILayer/HUD" method="_on_heroes_tab_pressed"]
+[connection signal="pressed" from="UILayer/HUD/BottomBar/RecruitTabBtn" to="UILayer/HUD" method="_on_recruit_tab_pressed"]
+[connection signal="pressed" from="UILayer/HUD/BottomBar/BuildTabBtn" to="UILayer/HUD" method="_on_build_tab_pressed"]
+[connection signal="pressed" from="UILayer/HUD/BottomBar/ResearchTabBtn" to="UILayer/HUD" method="_on_research_tab_pressed"]
+[connection signal="pressed" from="UILayer/HUD/BottomBar/InventoryTabBtn" to="UILayer/HUD" method="_on_inventory_tab_pressed"]
+[connection signal="pressed" from="UILayer/HUD/BottomBar/MapTabBtn" to="UILayer/HUD" method="_on_map_tab_pressed"]
+[connection signal="pressed" from="UILayer/HUD/BottomBar/QuestTabBtn" to="UILayer/HUD" method="_on_quest_tab_pressed"]

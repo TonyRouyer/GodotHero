@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dgbq70un0jaq8"]
-
-[ext_resource type="Shader" uid="uid://ck111rngcxb7r" path="res://Ressources/Shaders/preview_tile.gdshader" id="1_1rrgk"]
-
-[resource]
-shader = ExtResource("1_1rrgk")
-shader_parameter/tint_color = Color(1, 1, 1, 0.5)

@@ -1,0 +1,11 @@
+keys,fr,en
+UI_HEROES,Héros,Heroes
+UI_PLANNING,Planning,Schedule
+UI_RECRUIT,Recruter,Recruit
+UI_BUILD,Construire,Build
+NOTIF_HERO_HIRED,"%s a rejoint la guilde !","%s joined the guild!"
+NOTIF_LOW_GOLD,Or très bas : %d restant !,Gold running low: %d left!
+HERO_ACTIVITY_SLEEP,Sommeil,Sleep
+HERO_ACTIVITY_WORK,Travail,Work
+HERO_ACTIVITY_TRAIN,Entraînement,Training
+HERO_ACTIVITY_FREE,Libre,Free

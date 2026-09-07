@@ -2,12 +2,23 @@
 
 > **Moteur** : Godot 4.4 | **Langage** : GDScript | **Style** : Pixel art 16-bit, top-down
 > **Genre** : Gestion de guilde d'aventuriers (inspiré Dwarf Fortress / Guild of Dungeoneering)
-> **Fichiers associés** : [`GDD.md`](GDD.md) — règles de jeu & formules | [`CONTENT.md`](CONTENT.md) — listes de contenu exhaustives
 
 **Règles de code :**
 - Typage explicite TOUJOURS : `var x : int = 0`, jamais `var x := 0`
 - Le code doit respecter les principes SOLID
 - Ces fichiers doivent être continuellement tenus à jour
+
+---
+
+## Documentation
+
+| Fichier | Contenu |
+|---------|---------|
+| [`docs/gamedesign.md`](docs/gamedesign.md) | Règles de jeu, formules, équilibrage |
+| [`docs/content.md`](docs/content.md) | Listes exhaustives : classes, skills, mobs, armes, matériaux… |
+| [`docs/backlog.md`](docs/backlog.md) | Suivi d'avancement par système (checkboxes) |
+| [`docs/bugs.md`](docs/bugs.md) | Bugs résolus à ne pas réintroduire + dette technique |
+| [`docs/lore.md`](docs/lore.md) | Univers, factions, bestiaire, géographie |
 
 ---
 
@@ -27,15 +38,12 @@
 12. [Construction — Placeholders](#12-système-de-construction--placeholders)
 13. [Traduction](#13-traduction)
 14. [EventBus — Signaux](#14-eventbus--signaux-déclarés)
-15. [TODO — État d'avancement](#15-todo--état-davancement)
-16. [Points d'Attention](#16-points-dattention-pour-reprendre-le-projet)
-17. [Dette Technique & SOLID](#17-dette-technique--violations-solid)
 
 ---
 
 ## 1. Vision du Jeu
 
-Le joueur gère une guilde d'aventuriers dans un monde médiéval-fantastique (Astralia). Il recrute des héros, construit et aménage la guilde, planifie les journées des héros (sommeil, travail, entraînement, temps libre), et les envoie en mission. Les héros ont des besoins, un moral, des traits de caractère, et peuvent démissionner si mal traités.
+Le joueur gère une guilde d'aventuriers dans le monde médiéval-fantastique d'Astralia. Il recrute des héros, construit et aménage la guilde, planifie les journées (sommeil, travail, entraînement, temps libre), et les envoie en mission.
 
 **Boucle principale :**
 1. Construire et améliorer la guilde (murs, sols, objets)
@@ -43,7 +51,7 @@ Le joueur gère une guilde d'aventuriers dans un monde médiéval-fantastique (A
 3. Envoyer des héros en mission → or, ressources, réputation, XP
 4. Réinvestir pour progresser → missions plus difficiles → retour au 1
 
-**Univers** : Monde Astralia — médiéval-fantastique avec magie. Rangs héros : F → E → D → C → B → A → S. Voir [GDD.md](GDD.md) pour les règles, [CONTENT.md](CONTENT.md) pour tous les contenus.
+**Rangs héros** : F → E → D → C → B → A → S
 
 ---
 
@@ -225,11 +233,9 @@ MissionScene (Node2D)
 
 ### 6.1 Temps (TimeManager)
 
-- **1 tick = 5 minutes in-game**
-- Vitesses : `TIME_SPEEDS = [0, 1, 2, 4]` (index 0 = pause)
-- Signaux émis : `time_tick(hour, minute)`, `hour_changed(hour)`, `day_changed(day)`
-- `TimeManager.current_hour` (0–23)
-- `TimeManager.pause()` / `TimeManager.unpause()`
+- **1 tick = 5 minutes in-game** — vitesses : `TIME_SPEEDS = [0, 1, 2, 4]` (index 0 = pause)
+- Signaux : `time_tick(hour, minute)`, `hour_changed(hour)`, `day_changed(day)`
+- API : `TimeManager.current_hour` (0–23), `pause()` / `unpause()`
 
 ### 6.2 Héros — Composants (guilde)
 
@@ -240,10 +246,10 @@ Chaque héros (`CharacterBody2D`) a 5 composants enfants accessibles via `%` :
 | `HeroRoutine` | Lit le planning, génère les tâches par priorité via think tree |
 | `HeroActivity` | Exécute la tâche (navigate, travail, craft, construction…) |
 | `HeroNeeds` | Décrémente besoins, moral (TEMPORARY/CONSTANT/PROGRESSIVE), salaire, level up |
-| `HeroNavigator` | Wrapper NavigationAgent2D, `set_destination()`, signaux `navigation_finished` |
+| `HeroNavigator` | Wrapper NavigationAgent2D, `set_destination()`, signal `navigation_finished` |
 | `HeroAnimator` | Anime le sprite selon la direction et l'activité |
 
-**Pattern _exit_tree** : tous les composants qui se connectent à EventBus doivent déconnecter dans `_exit_tree()`.
+**Pattern _exit_tree** : tous les composants connectés à EventBus doivent déconnecter dans `_exit_tree()`.
 
 ### 6.3 Routine des Héros — Think Tree
 
@@ -254,53 +260,22 @@ Chaque héros (`CharacterBody2D`) a 5 composants enfants accessibles via `%` :
 | 1 | **Critique** | Énergie < 8, faim < 10, toilette < 8 → switch immédiat, interrompt **tout** |
 | 2 | **Continuation** | Tâche en cours encore valide → pas d'interruption |
 | 3 | **Planning** | Tâche assignée pour cette heure, si réalisable (objet disponible) |
-| 4 | **Libre** | Besoins secondaires par ordre de priorité (faim < 35%, énergie < 20%, divertissement < 25%, toilette < 20%, hygiène < 25%), puis construction, puis divertissement |
+| 4 | **Libre** | Besoins secondaires par ordre de priorité, puis construction, puis divertissement |
 | 5 | **Idle** | Fallback — erre aléatoirement |
 
-> **Distinction seuils** : niveau 1 = seuil d'interruption absolue. Niveau 4 = seuil de recherche autonome (valeurs différentes, voir GDD.md §3).
-
-**Seuils GameConfig** :
-
-| Constante | Usage |
-|-----------|-------|
-| `NEED_CRITICAL_THRESHOLD` | Déclenche l'interruption absolue (niveau 1) |
-| `NEED_URGENT_THRESHOLD` | Interrompt work/train/construct (continuation niveau 2) |
-| `NEED_FREE_THRESHOLD` | Seuils pour la branche libre (niveau 4) |
+Seuils dans `GameConfig` : `NEED_CRITICAL_THRESHOLD` (niveau 1), `NEED_URGENT_THRESHOLD` (niveau 2), `NEED_FREE_THRESHOLD` (niveau 4). Voir [docs/gamedesign.md](docs/gamedesign.md) §3 pour les valeurs exactes par besoin.
 
 ### 6.4 Construction
 
-**Flow complet** :
-1. Joueur place objet/mur via BuildMenu → `ConstructionManager.request_*()` → débit or → `_make_task()` → `pending_tasks.append()` → `EventBus.construction_task_added.emit(task)`
-2. `ConstructionLayer` crée un `ColorRect` bleu 50% transparent (placeholder)
-3. Héros libre → `HeroRoutine` génère tâche `construct` → `HeroActivity._construct()` → navigate adjacence
-4. Arrivée → `EventBus.construction_task_completed.emit(task)` → `ConstructionManager._finalize_task()` → objet/tuile posé, placeholder supprimé
+Flow : Joueur → `ConstructionManager.request_*()` → débit or → `pending_tasks` → placeholder ColorRect bleu → héros libre navigue et finalise → `ConstructionManager._finalize_task()` → objet posé, placeholder supprimé.
 
-### 6.5 Système de Craft (CraftManager)
+### 6.5 Craft (CraftManager)
 
-**Clé de station** : `"%d,%d" % [origin.x, origin.y]` (position grille, stable entre sessions)
+Clé de station : `"%d,%d" % [origin.x, origin.y]`. Progression par tick : `(skill / craft_time) × CRAFT_SPEED_FACTOR`. Formule complète dans [docs/gamedesign.md](docs/gamedesign.md) §11.1.
 
-**Flow** :
-1. UI appelle `CraftManager.add_to_queue(object, material_id, qty)` — vérifie compatibilité poste
-2. Quand un héros s'assoit au poste : `CraftManager.register_worker(object, hero)`
-3. Chaque `time_tick` : `increment = (skill / craft_time) × CRAFT_SPEED_FACTOR`
-4. À 100% : `GameData.add_item(mat_id, 1)` + notification + passe à l'item suivant
-
-**Formula** : `Progression_par_tic = (Compétence / Difficulté) × 0.35` (voir GDD.md §8.1)
-
-**Objets par métier** (JOB_CRAFT_OBJECTS) :
-
-| Job | ID | Objets |
-|-----|-----|--------|
-| 0 | Libre | — |
-| 1 | Accueil | reception_desk |
-| 2 | Forgeron | forge, workbench_craft, tanning_rack, loom |
-| 3 | Alchimiste | alchemy_table, magic_cauldron |
-| 4 | Chercheur | research_desk |
-| 5 | Cuisinier | furnace |
+**Objets par métier** (JOB_CRAFT_OBJECTS) : 0=Libre, 1=Accueil (reception_desk), 2=Forgeron (forge, workbench_craft, tanning_rack, loom), 3=Alchimiste (alchemy_table, magic_cauldron), 4=Chercheur (research_desk), 5=Cuisinier (furnace).
 
 ### 6.6 Moral (HeroNeeds)
-
-Trois types d'effets moraux, gérés dans `HeroNeeds.gd` :
 
 | Type | Description | Durée |
 |------|-------------|-------|
@@ -308,91 +283,58 @@ Trois types d'effets moraux, gérés dans `HeroNeeds.gd` :
 | `CONSTANT` | Actif tant que la condition dure | Illimité |
 | `PROGRESSIVE` | Appliqué progressivement sur N ticks | Plusieurs jours |
 
-API : `add_timed_effect(label, value, duration_ticks)`, `add_progressive_effect(label, total, duration_ticks)`
-
-Voir GDD.md §4 pour les tables complètes d'effets moraux.
+API : `add_timed_effect(label, value, duration_ticks)`, `add_progressive_effect(label, total, duration_ticks)`. Tables complètes dans [docs/gamedesign.md](docs/gamedesign.md) §4.
 
 ### 6.7 Planification des Héros
 
 `HeroData.planning` = `Dictionary { int(heure 0-23) → String("sleep"|"work"|"train"|"free") }`
 
-**Couleurs** :
-- Bleu nuit `Color(0.20, 0.30, 0.70)` → sleep
-- Orange `Color(0.80, 0.55, 0.10)` → work
-- Vert `Color(0.15, 0.60, 0.25)` → train
-- Gris `Color(0.40, 0.40, 0.45)` → free
+Couleurs : bleu nuit `Color(0.20, 0.30, 0.70)` → sleep | orange `Color(0.80, 0.55, 0.10)` → work | vert `Color(0.15, 0.60, 0.25)` → train | gris `Color(0.40, 0.40, 0.45)` → free
 
 ### 6.8 Recrutement
 
-**Formules** (voir GDD.md §6 pour le détail complet) :
-- `T_recrutement (h) = 15 − min(Réputation / 5, 12)` → entre 3h et 15h
-- `Max_héros_visibles = 1 + floor(Réputation / 10)`
-- Coût recrutement = `salaire × 5`
-- Niveau proposé : `Niveau_moyen_guilde + (Réputation / 2) + rand(−5, 0)`
-- Rang proposé : `Score = (Niveau / 10) + (Réputation / 3)` → table conversion (voir GDD.md §6.3)
-- Probabilité classe avancée : 20% (si le joueur a déjà un héros de cette classe avancée), 80% classe de base
+Formules condensées : `T_recrutement = 15 − min(Rep/5, 12)` | `Max_visibles = 1 + floor(Rep/10)` | Coût = `Salaire × 5`. Formules complètes dans [docs/gamedesign.md](docs/gamedesign.md) §6.
 
 ### 6.9 Missions (MissionManager)
 
-- 13 templates de missions (difficulté F→S)
-- Génération selon réputation : rang max accessible, tirage parmi les disponibles
-- Résolution : `P = (HP_finale_moy / HP_init_moy) × Ratio_objectifs` → succès/échec
-- Effets moraux automatiques : succès → `add_timed_effect("+moral mission", +10, 24ticks)`, échec → −10
-- Mise à jour du rang héros : `missions_last_20` + `_recalculate_rank()` après chaque mission
-- Héros en mission : `on_mission=true`, `visible=false`, routines suspendues
+13 templates (F→S). Résolution : `P = (HP_finale_moy / HP_init_moy) × Ratio_objectifs`. Effets moraux auto : +10 succès, −10 échec. Rang héros : `missions_last_20` + `_recalculate_rank()`. Formules dans [docs/gamedesign.md](docs/gamedesign.md) §8.
 
 ### 6.10 Recherche (ResearchManager)
 
-- 39 recherches réparties sur 10 niveaux (voir CONTENT.md §7)
-- Avancement par `time_tick` si un héros Chercheur (job=4) est au `research_desk`
-- Vitesse : `progress += (knowledge / RESEARCH_DIFFICULTY[level]) × 0.35`
-- Déblocage : certains objets dans `ItemRegistry` sont gated par une recherche
+39 recherches sur 10 niveaux. Avancement par tick si héros Chercheur (job=4) au `research_desk`. Vitesse : `progress += (knowledge / RESEARCH_DIFFICULTY[level]) × 0.35`. Certains objets `ItemRegistry` sont gated par recherche. Liste complète dans [docs/content.md](docs/content.md) §14.
 
 ### 6.11 Équipements (EquipmentLibrary)
 
-**Structure** : `{ id, label, type, subtype, rank, stats, effects, recipe, craft_location, price, description }`
+Structure : `{ id, label, type, subtype, rank, stats, effects, recipe, craft_location, price, description }`
 
-| Type | Sous-types | Rangs |
-|------|-----------|-------|
-| `weapon` | epee, hache, lance, dague, marteau, baton, arc, orbe, grimoire, shuriken | F→S (10 types, rangs variables) |
-| `armor` | legere, moyenne, lourde | F→S (3 sous-types × tête/torse/jambes) |
-| `accessory` | anneau, amulette | Divers rangs |
-| `consumable` | potion_soin, potion_mana, potion_buff, potion_defense, potion_rare | Divers effets |
+| Type | Sous-types |
+|------|-----------|
+| `weapon` | epee, hache, lance, dague, marteau, baton, arc, orbe, grimoire, shuriken |
+| `armor` | legere, moyenne, lourde (tête/torse/jambes) |
+| `accessory` | anneau, amulette |
+| `consumable` | potion_soin, potion_mana, potion_buff, potion_defense, potion_rare |
 
-**Bonus stats disponibles** : `atk`, `matk`, `def`, `mdef`, `spd`, `crit`, `hp`, `mana`
-
-**API HeroData** :
-```gdscript
-hero_data.equip("epee_acier")        # valide la compatibilité classe, retourne bool
-hero_data.unequip("weapon")          # vide le slot
-hero_data.get_equipment_bonus("atk") # somme des bonus de tous les slots
-```
-
-Voir CONTENT.md §3–5 pour les listes complètes d'armes, armures, accessoires, potions.
+API HeroData : `equip(item_id)` → bool | `unequip(slot)` | `get_equipment_bonus(stat_key)`. Listes dans [docs/content.md](docs/content.md) §6–9.
 
 ### 6.12 Audio
 
-`AudioManager` crée en code 2 players musique (crossfade) et 8 players SFX. Les volumes sont pilotés par `SettingsManager.apply_audio()`.
-
-`AudioManager._on_scene_loaded("guild")` → `play_music(guild_ambiance.ogg)` avec `stream.loop = true`.
+`AudioManager` crée 2 players musique (crossfade) et 8 players SFX. Volumes pilotés par `SettingsManager.apply_audio()`. `_on_scene_loaded("guild")` → `play_music(guild_ambiance.ogg, loop=true)`.
 
 **Buses à créer dans Godot** : `Project > Audio` → ajouter `Music` et `SFX` (output → Master).
 
 ### 6.13 Notifications
 
-4 types : `success` (vert), `error` (rouge), `warning` (jaune), `info` (bleu).
+4 types : `success` (vert), `error` (rouge), `warning` (jaune), `info` (bleu). Max 3 simultanées. Filtre `SettingsManager.get_value("notifications")`.
 
-`EventBus.ui_notification_requested.emit(message, type)` → filtre `SettingsManager.get_value("notifications")` → max 3 simultanées.
+`EventBus.ui_notification_requested.emit(message, type)`.
 
 ### 6.14 Combat (MissionScene)
 
-**HeroCombatNode** : CharacterBody2D jouable ou IA. Gère attaques, compétences, potions auto, effets de statut, dégâts visuels (flash, nombres flottants), flèche de direction (joueur).
+**HeroCombatNode** : CharacterBody2D jouable ou IA. Gère attaques, compétences (4 slots), potions auto, effets de statut, flash hits, nombres flottants, flèche de direction.
 
-**MobNode** : IA simple — approche, attaque, séparation anti-overlap. `collision_mask = 6` (layer 2 héros + layer 3 mobs).
+**MobNode** : approche, attaque, anti-overlap. `collision_mask = 6` (layer 2 héros + layer 3 mobs).
 
-**CombatHUD** : CanvasLayer layer=10. 4 slots HeroCard pré-alloués (`set_empty()` grisé). Remplis par `add_hero_card()` au lancement.
-
-Voir GDD.md §7 pour les formules de combat complètes.
+**CombatHUD** : CanvasLayer layer=10. 4 slots HeroCard pré-alloués (`set_empty()` grisé). Formules combat dans [docs/gamedesign.md](docs/gamedesign.md) §7.
 
 ---
 
@@ -492,11 +434,11 @@ unequip(slot)                   # vide le slot
 
 3 onglets :
 
-**Liste** : une `HeroListRow` par héros — rang, nom, classe, niveau, barre HP colorée, barre moral, bouton ⌖ (focus caméra), bouton ✕ (renvoyer avec `ConfirmationDialog`).
+**Liste** : une `HeroListRow` par héros — rang, nom, classe, niveau, barre HP colorée, barre moral, bouton focus caméra, bouton renvoyer avec `ConfirmationDialog`.
 
 **Planning** : une `PlanningRow` par héros (nom cliquable + 24 ColorRect). Préréglages : Journée/Nuit/Entraînement/Congé. Le NameLabel passe en jaune si un preset est sélectionné.
 
-**Recruter** : une `RecruitRow` par héros disponible — rang, nom, classe, niveau, coût, bouton ✓/✕. Bouton `[TEST]` pour générer un héros instantanément.
+**Recruter** : une `RecruitRow` par héros disponible — rang, nom, classe, niveau, coût, bouton recruter/refuser. Bouton `[TEST]` pour générer un héros instantanément.
 
 ---
 
@@ -507,7 +449,7 @@ unequip(slot)                   # vide le slot
 - Vitesse : `SettingsManager.get_value("camera_speed")` (défaut 400 px/s, divisé par zoom)
 - Zoom molette : lerp vers `_zoom_target`
 - Focus : `EventBus.camera_focus_requested.emit(world_position)`
-- Position sauvegardée dans `GameData.save_camera_state()` avant de quitter vers les options
+- Position sauvegardée dans `GameData.save_camera_state()` avant de quitter
 
 ---
 
@@ -651,136 +593,3 @@ signal ui_notification_requested(message: String, type: String)
 signal ui_tooltip_show(text: String, position: Vector2)
 signal ui_tooltip_hide()
 ```
-
----
-
-## 15. TODO — État d'avancement
-
-> Dernière vérification : 2026-09-07
-
-### Ce qui fonctionne
-
-| Système | État | Fichier clé |
-|---------|------|-------------|
-| Architecture core (GameData, EventBus, SaveManager) | ✅ Complet | `Autoloads/` |
-| Temps (tick, heure, jour, vitesses) | ✅ Complet | `TimeManager.gd` |
-| Construction (murs, sols, 50+ objets) | ✅ Complet | `Systems/Construction/` |
-| Navigation + animation héros | ✅ Complet | `HeroNavigator.gd`, `HeroAnimator.gd` |
-| Besoins héros (5 besoins + moral 3 types) | ✅ Complet | `HeroNeeds.gd` |
-| Salaire + démission si impayé / moral trop bas | ✅ Complet | `HeroNeeds.gd` |
-| Planning horaire + think tree (5 niveaux) | ✅ Complet | `HeroRoutine.gd`, `HeroActivity.gd` |
-| Level up (XP + gain stats) | ✅ Complet | `HeroNeeds.gd` |
-| Recrutement (pool, timer, coût) | ✅ Complet | `RecruitManager.gd`, `RecruitPanel.gd` |
-| 6 classes de base + 12 avancées (data) | ✅ Complet | `HeroClassRegistry.gd` |
-| 99 compétences (6 classes de base) | ✅ Complet | `SkillLibrary.gd` |
-| 10 types d'armes, armures légère/moyenne/lourde | ✅ Complet | `EquipmentLibrary.gd` |
-| 19 mobs avec stats, drops, attaques | ✅ Complet | `MobLibrary.gd` |
-| Matériaux (naturels, craftables, magiques…) | ✅ Complet | `MaterialLibrary.gd` |
-| Craft par poste (CraftManager) | ✅ Complet | `CraftManager.gd` |
-| Missions (génération + résolution automatique) | ✅ Complet | `MissionManager.gd` |
-| Combat jouable (IA héros + mobs, effets de statut) | ✅ Complet | `HeroCombatNode.gd`, `MobNode.gd` |
-| Visuels combat (flash hits, nombres, flèche direction) | ✅ Complet | `HeroCombatNode.gd`, `MobNode.gd` |
-| Attaque clic gauche (joueur → cible proche souris) | ✅ Complet | `HeroCombatNode.gd` |
-| Scènes de mission (génération procédurale Wood1) | ✅ Complet | `wood1_scene.gd` |
-| CombatHUD (4 slots héros, skills, log, fin) | ✅ Complet | `CombatHUD.gd`, `HeroCard.gd` |
-| UI Équipement (paperdoll + drag&drop) | ✅ Complet | `HeroEquipmentView.gd` |
-| Points de compétence (achat + équipement) | ✅ Complet | `HeroSkillsPanel.gd` |
-| Potions en combat (auto-heal 30% HP, résurrection) | ✅ Complet | `HeroCombatNode.gd` |
-| Enchantements (18 enchants C→S, coût + gating) | ✅ Complet | `EnchantmentPanel.gd`, `EnchantmentLibrary.gd` |
-| Marché (achat/vente, filtre, gating recherche) | ✅ Complet | `MarketPanel.gd` |
-| Quêtes (tableau lettres + préparation équipe) | ✅ Complet | `QuestPanel.gd`, `QuestPrepPanel.gd` |
-| Jardin / Agriculture (8 cultures, croissance par jours) | ✅ Complet | `FarmingManager.gd`, `FarmingPanel.gd` |
-| Recettes culinaires (11 plats + 2 fermentés, buffs) | ✅ Complet | `DishLibrary.gd`, `HeroNeeds._try_cook_dish()` |
-| Recherche (39 recherches, 10 niveaux) | ✅ Complet | `ResearchManager.gd`, `ResearchPanel.gd` |
-| Inventaire guilde (30 slots, drag&drop) | ✅ Complet | `GuildInventoryManager.gd`, `InventoryPanel.gd` |
-| Sauvegarde / chargement | ✅ Complet | `SaveManager.gd` |
-| Détection des pièces (flood-fill BFS) | ✅ Complet | `RoomManager.gd` |
-
-### Non implémenté / Priorité
-
-| Système | Priorité | Notes |
-|---------|----------|-------|
-| **Beauté / Température des pièces** | 🔴 Haute | `RoomManager` détecte les pièces mais ne calcule pas la beauté ni la température. Formules dans GDD.md §5. |
-| **Compétences classes avancées** (12 classes) | 🔴 Haute | `SkillLibrary` ne couvre que les 6 classes de base. Section "À compléter" dans CONTENT.md. |
-| **Factions / Diplomatie** | 🟡 Moyenne | 4 factions définies dans GDD.md §9. Aucun code. Marché actuel = prix fixes. |
-| **Fermentation** (bière 3j, hydromel 5j) | 🟡 Moyenne | `FermentationBarrel` placé, logique = stub |
-| **Classe avancée / Ascension** | 🟡 Moyenne | Flag `is_advanced_class` dans HeroData, `AscensionAltar` = stub |
-| **Événements aléatoires** | 🟢 Basse | 9 positifs + 9 négatifs + 5 à choix définis dans GDD.md §10, aucun code |
-| **Aggro / Menace** en combat | 🟢 Basse | Formule définie dans GDD.md §7.7, non implémentée (mobs ciblent le plus proche) |
-| **Stats métier — progression par usage** | 🟢 Basse | Formule définie dans GDD.md §2.5, non implémentée |
-| Support manette | 🟢 Basse | Non commencé |
-| Menu options complet | 🟢 Basse | Audio OK, contrôles + résolution manquants |
-| Autres environnements de mission | 🟢 Basse | Seul Wood1 existe |
-
-### Nettoyage technique
-
-| Tâche | Priorité |
-|-------|---------|
-| Renommer `ItemRegistery.gd` → `ItemRegistry.gd` (typo) | 🔴 Haute |
-| Renommer `heroVisual.gd` → `HeroVisual.gd` (PascalCase) | 🟢 Basse |
-| Supprimer signaux EventBus jamais consommés (`object_freed`, `object_used`) | 🟢 Basse |
-| Ajouter plus d'environnements de mission (donjon, village, caverne…) | 🟡 Moyenne |
-
----
-
-## 16. Points d'Attention pour Reprendre le Projet
-
-### Bugs connus résolus (ne pas réintroduire)
-- `get_parent()` retourne `Window` si un composant reste connecté à un signal global après `queue_free()` → toujours implémenter `_exit_tree()` avec disconnect
-- Double déclaration de `_on_navigation_finished` → Godot utilise la première silencieusement
-- `SettingsManager` doit être avant `AudioManager` dans les autoloads
-- UIDs inventés dans les `.tscn` → ne jamais écrire `uid://xxx_001`, laisser Godot générer
-- `HeroUI` doit être `Node2D`, pas `CanvasLayer` (sinon il ne suit pas le héros)
-- `_exit_tree()` : écrire `disconnect`, pas `connect`
-- `GameData.set_gold(delta)` supprimé — utiliser `add_gold()` ou `spend_gold()`
-- `GameData.menu_open` déplacé dans `UIState.menu_open` (SRP)
-- Chemins hardcodés vers les nodes → utiliser `WorldContext.objects_container`
-- `navigator.nav.target_desired_distance` → utiliser `navigator.set_arrival_distance(x)`
-- `is_instance_valid()` obligatoire sur tout node qui peut avoir été `queue_free()`'d
-- Assigner une instance `queue_free()`'d à une variable **typée** déclenche l'erreur avant même `is_instance_valid()` → utiliser une variable non typée d'abord, puis caster
-- `Color(r,g,b)` en 3 args dans les `.tscn` → Godot exige 4 args `Color(r,g,b,a)`
-- Commentaires `##` dans les `.tscn` → cassent le parser de scène Godot, interdit
-- `HeroClassRegistry.get_class()` → méthode built-in Godot (0 args), utiliser `get_class_by_id(id)`
-- `is_crit ? 14 : 11` → ternaire C-style invalide en GDScript → `14 if is_crit else 11`
-- `add_child(camera)` doit précéder `camera.global_position = pos` (node doit être dans l'arbre)
-
-### Règles de code
-- Typage explicite TOUJOURS : `var x : int = 0` jamais `var x := 0`
-- Lambdas typées : `func(a: Dictionary, b: Dictionary) -> bool: return a["key"] > b["key"]`
-- Pas de `class_name` sur les autoloads
-- `_exit_tree()` sur tous les composants qui se connectent à EventBus
-- Signaux globaux → EventBus, jamais de références directes entre scènes
-
-### Buses audio à créer
-`Project > Audio` → ajouter `Music` et `SFX` (output → Master)
-
----
-
-## 17. Dette Technique & Violations SOLID
-
-### 🔴 Priorité haute
-
-#### [S] HeroActivity — trop de responsabilités
-- Combine dispatch des tâches, gestion de `used_object`, navigation, construction adjacente, craft registration
-- Extraction possible : `HeroConstructionHandler`, `HeroCraftHandler`
-
-#### [S] ConstructionManager — classe God Object (~450 lignes)
-- Validation + affectation + finalisation + sérialisation dans un fichier
-- À faire : séparer en `ConstructionValidator` + `ConstructionTaskQueue`
-
-### 🟡 Priorité moyenne
-
-#### [O] Match statements non extensibles pour les tâches
-- Ajouter une tâche = modifier `HeroActivity.gd` et `ConstructionInput.gd`
-- À faire : `TaskFactory` + interface `ITask.execute(hero)`
-
-#### Atlas coords hardcodés dans ConstructionLayer
-- Tous les murs mappés à `Vector2i(0, 0)` — à déplacer dans ItemRegistry
-
-### 🟢 Priorité basse
-
-#### Cache de textures sans limite dans ConstructionPreview
-- `_tex_cache` grandit indéfiniment — ajouter un clear au changement de scène
-
-#### Signaux EventBus déclarés mais jamais consommés
-- `object_freed`, `object_used` : émis par GuildObject, personne ne les écoute

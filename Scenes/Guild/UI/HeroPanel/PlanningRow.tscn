@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw2jeh11dssho"]
+
+[ext_resource type="Script" uid="uid://bibv7rwdv7oab" path="res://Scenes/Guild/UI/HeroPanel/planning_row.gd" id="1"]
+
+[node name="PlanningRow" type="HBoxContainer"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+script = ExtResource("1")
+
+[node name="NameLabel" type="Label" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Héros"
+vertical_alignment = 1
+
+[node name="HoursContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1

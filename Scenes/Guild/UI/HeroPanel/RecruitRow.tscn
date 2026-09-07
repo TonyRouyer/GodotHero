@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scenes/Guild/UI/HeroPanel/recruit_row.gd" id="1"]
+
+[node name="RecruitRow" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 40)
+size_flags_horizontal = 3
+script = ExtResource("1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBox" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RankLabel" type="Label" parent="MarginContainer/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 11
+text = "F"
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 12
+clip_contents = true
+text = "Nom"
+
+[node name="ClassLabel" type="Label" parent="MarginContainer/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 11
+text = "Classe"
+
+[node name="LvlLabel" type="Label" parent="MarginContainer/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+vertical_alignment = 1
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 11
+text = "L1"
+
+[node name="CostLabel" type="Label" parent="MarginContainer/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+vertical_alignment = 1
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 11
+text = "50 ⚜"
+
+[node name="RecruitBtn" type="Button" parent="MarginContainer/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 24)
+layout_mode = 2
+tooltip_text = "Recruter"
+text = "✓"
+
+[node name="RefuseBtn" type="Button" parent="MarginContainer/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+tooltip_text = "Refuser"
+text = "✕"
+
+[connection signal="pressed" from="MarginContainer/HBox/RecruitBtn" to="." method="_on_recruit_pressed"]
+[connection signal="pressed" from="MarginContainer/HBox/RefuseBtn" to="." method="_on_refuse_pressed"]

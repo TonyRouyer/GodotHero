@@ -1,0 +1,133 @@
+[gd_scene load_steps=18 format=3 uid="uid://s2dcb7kcmr4a"]
+
+[ext_resource type="Script" uid="uid://b084je2onsfm4" path="res://Entities/Hero/Hero.gd" id="1"]
+[ext_resource type="Script" uid="uid://cdhye1qhfnstd" path="res://Entities/Hero/Components/HeroNavigator.gd" id="2"]
+[ext_resource type="Script" uid="uid://ddb3rc6t88onm" path="res://Entities/Hero/Components/HeroNeeds.gd" id="3"]
+[ext_resource type="Script" uid="uid://3kmjam7m7b3b" path="res://Entities/Hero/Components/HeroRoutine.gd" id="4"]
+[ext_resource type="Script" uid="uid://bb47b8w2wp1ic" path="res://Entities/Hero/Components/HeroAnimator.gd" id="5"]
+[ext_resource type="Script" uid="uid://beflkmp4m1m5m" path="res://Entities/Hero/Components/HeroActivity.gd" id="6"]
+[ext_resource type="Script" uid="uid://bnsp8qplxsm7t" path="res://Entities/Hero/Components/heroVisual.gd" id="7_66t7r"]
+[ext_resource type="Script" uid="uid://cei7lotftw2s7" path="res://Entities/Hero/hero_wander.gd" id="8_8w7am"]
+[ext_resource type="Texture2D" uid="uid://dkhuaw8ia7s55" path="res://Assets/Sprites/Heroes/body/body_male.png" id="8_poglt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_poglt"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yag5"]
+atlas = ExtResource("8_poglt")
+region = Rect2(0, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bjuv"]
+atlas = ExtResource("8_poglt")
+region = Rect2(16, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bpuf"]
+atlas = ExtResource("8_poglt")
+region = Rect2(32, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj0c4"]
+atlas = ExtResource("8_poglt")
+region = Rect2(48, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iu71"]
+atlas = ExtResource("8_poglt")
+region = Rect2(64, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s47s"]
+atlas = ExtResource("8_poglt")
+region = Rect2(80, 32, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dim7g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yag5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bjuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bpuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj0c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iu71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s47s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Hero" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 4.25)
+shape = SubResource("CircleShape2D_poglt")
+
+[node name="HeroNavigator" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="HeroNavigator"]
+unique_name_in_owner = true
+path_desired_distance = 4.0
+target_desired_distance = 4.0
+path_max_distance = 32.0
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="HeroNeeds" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3")
+
+[node name="HeroRoutine" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4")
+
+[node name="HeroActivity" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6")
+
+[node name="HeroAnimator" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5")
+
+[node name="HeroVisuals" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_66t7r")
+
+[node name="Body" type="AnimatedSprite2D" parent="HeroVisuals"]
+sprite_frames = SubResource("SpriteFrames_dim7g")
+
+[node name="Eye" type="AnimatedSprite2D" parent="HeroVisuals"]
+
+[node name="Hair" type="AnimatedSprite2D" parent="HeroVisuals"]
+
+[node name="Helm" type="AnimatedSprite2D" parent="HeroVisuals"]
+
+[node name="Chest" type="AnimatedSprite2D" parent="HeroVisuals"]
+
+[node name="Pant" type="AnimatedSprite2D" parent="HeroVisuals"]
+
+[node name="Weapon" type="AnimatedSprite2D" parent="HeroVisuals"]
+
+[node name="HeroUI" type="Node2D" parent="."]
+
+[node name="ActivityLabel" type="Label" parent="HeroUI"]
+unique_name_in_owner = true
+offset_left = -32.0
+offset_top = -28.0
+offset_right = 32.0
+offset_bottom = -16.0
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 1
+
+[node name="HeroWander" type="Node2D" parent="."]
+script = ExtResource("8_8w7am")
