@@ -138,21 +138,20 @@
 
 ## 7. Contenu (data)
 
-- [x] 6/6 classes de base dans `HeroClassRegistry`
-- [x] 12/12 classes avancées (données) dans `HeroClassRegistry`
-- [x] 99/99 compétences (classes de base) dans `SkillLibrary`
-- [ ] 0/? compétences (classes avancées) dans `SkillLibrary` — à concevoir et implémenter
-- [x] 42/42 traits dans `TraitLibrary`
-- [x] 19/19 mobs dans `MobLibrary`
-- [x] 10/10 types d'armes dans `EquipmentLibrary`
-- [x] 3/3 types d'armures (légère, moyenne, lourde) dans `EquipmentLibrary`
-- [x] 2/2 types d'accessoires (anneaux, amulettes) dans `EquipmentLibrary`
-- [x] 16/16 potions et consommables dans `EquipmentLibrary`
-- [x] 18/18 enchantements dans `EnchantmentLibrary`
-- [x] 32/32 matériaux dans `MaterialLibrary`
-- [x] 11/11 plats dans `DishLibrary`
-- [ ] 0/2 fermentés dans `DishLibrary` (stub — logique de fermentation à écrire)
-- [x] 8/8 cultures dans `FarmingManager`
+- [ ] 2/6 classes de base dans `HeroClassRegistry` (Guerrier, Mage)
+- [ ] 0/12 classes avancées dans `HeroClassRegistry`
+- [ ] 0/? compétences dans `SkillLibrary`
+- [ ] 0/42 traits dans `TraitLibrary`
+- [ ] 1/19 mobs dans `MobLibrary` (Slime)
+- [ ] 1/? armes dans `EquipmentLibrary` (Épée d'entraînement)
+- [ ] 0/? armures dans `EquipmentLibrary`
+- [ ] 0/? accessoires dans `EquipmentLibrary`
+- [ ] 0/? potions et consommables dans `EquipmentLibrary`
+- [ ] 0/18 enchantements dans `EnchantmentLibrary`
+- [ ] 1/? matériaux dans `MaterialLibrary` (Bois)
+- [ ] 0/11 plats dans `DishLibrary`
+- [ ] 0/2 fermentés dans `DishLibrary`
+- [ ] 0/8 cultures dans `FarmingManager`
 - [x] 39/39 recherches dans `ResearchLibrary`
 - [x] 50+/50+ objets de construction dans `ItemRegistry`
 
