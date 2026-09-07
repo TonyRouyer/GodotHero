@@ -14,6 +14,8 @@ var _hero_cards : Dictionary = {}
 var _skill_slots : Dictionary = {}
 ## Référence au héros joueur pour les actions
 var _player_node : Node = null
+## Prochain slot à remplir (0-3)
+var _next_slot : int = 0
 
 @onready var _top_left      : PanelContainer  = $Root/TopLeft
 @onready var _mission_title : Label           = $Root/TopLeft/VBox/MissionTitle
@@ -48,6 +50,14 @@ func _ready() -> void:
 	_btn_fast.pressed.connect(_on_fast)
 	_top_left.hide()
 	_bottom_center.hide()
+	_preallocate_hero_slots()
+
+
+func _preallocate_hero_slots() -> void:
+	for i in 4:
+		var card := HERO_CARD_SCENE.instantiate() as PanelContainer
+		_hero_cards_hb.add_child(card)
+		card.set_empty()
 
 
 # ─────────────────────────────────────────────
@@ -56,8 +66,11 @@ func _ready() -> void:
 
 ## Appelé par mission_scene pour chaque héros.
 func add_hero_card(hero_node: Node2D, hero_data: HeroData, is_player: bool) -> void:
-	var card := HERO_CARD_SCENE.instantiate() as PanelContainer
-	_hero_cards_hb.add_child(card)
+	if _next_slot >= 4:
+		push_warning("CombatHUD: plus de 4 héros, slot ignoré.")
+		return
+	var card := _hero_cards_hb.get_child(_next_slot) as PanelContainer
+	_next_slot += 1
 	card.setup(hero_data, is_player)
 	_hero_cards[hero_node] = card
 

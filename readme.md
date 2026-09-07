@@ -1,18 +1,18 @@
-# Jeu de Gestion de Guilde — Documentation Complète
+# Jeu de Gestion de Guilde — Documentation Technique
 
 > **Moteur** : Godot 4.4 | **Langage** : GDScript | **Style** : Pixel art 16-bit, top-down
 > **Genre** : Gestion de guilde d'aventuriers (inspiré Dwarf Fortress / Guild of Dungeoneering)
+> **Fichiers associés** : [`GDD.md`](GDD.md) — règles de jeu & formules | [`CONTENT.md`](CONTENT.md) — listes de contenu exhaustives
 
 **Règles de code :**
 - Typage explicite TOUJOURS : `var x : int = 0`, jamais `var x := 0`
 - Le code doit respecter les principes SOLID
-- Ce README doit être continuellement tenu à jour
+- Ces fichiers doivent être continuellement tenus à jour
 
 ---
 
 ## Table des matières
 
-### Documentation Technique
 1. [Vision du Jeu](#1-vision-du-jeu)
 2. [Architecture du Projet](#2-architecture-du-projet)
 3. [Autoloads — Ordre et Rôles](#3-autoloads--ordre-et-rôles)
@@ -31,34 +31,19 @@
 16. [Points d'Attention](#16-points-dattention-pour-reprendre-le-projet)
 17. [Dette Technique & SOLID](#17-dette-technique--violations-solid)
 
-### Game Design Document
-- [GDD 1. Concept et Boucle de Jeu](#gdd-1-concept-et-boucle-de-jeu)
-- [GDD 2. Héros](#gdd-2-héros)
-- [GDD 3. Recrutement](#gdd-3-recrutement)
-- [GDD 4. Construction](#gdd-4-construction)
-- [GDD 5. Réputation](#gdd-5-réputation)
-- [GDD 6. Missions et Combat](#gdd-6-missions-et-combat)
-- [GDD 7. Diplomatie et Factions](#gdd-7-diplomatie-et-factions)
-- [GDD 8. Économie](#gdd-8-économie)
-- [GDD 9. Événements Aléatoires](#gdd-9-événements-aléatoires)
-- [GDD 10. Recherche et Développement](#gdd-10-recherche-et-développement)
-- [GDD 11. État d'implémentation](#gdd-11-état-dimplémentation)
-
----
-
-# DOCUMENTATION TECHNIQUE
-
 ---
 
 ## 1. Vision du Jeu
 
-Le joueur gère une guilde d'aventuriers dans un monde médiéval-fantastique. Il recrute des héros, construit et aménage la guilde, planifie les journées des héros (sommeil, travail, entraînement, temps libre), et les envoie en mission. Les héros ont des besoins, un moral, des traits de caractère, et peuvent démissionner si mal traités.
+Le joueur gère une guilde d'aventuriers dans un monde médiéval-fantastique (Astralia). Il recrute des héros, construit et aménage la guilde, planifie les journées des héros (sommeil, travail, entraînement, temps libre), et les envoie en mission. Les héros ont des besoins, un moral, des traits de caractère, et peuvent démissionner si mal traités.
 
-### Univers (LORE)
-- Monde médiéval-fantastique avec magie — Astralia
-- La guilde est une organisation reconnue qui monte en réputation
-- Les héros sont des individus avec personnalités et incompatibilités
-- Système de rangs : F → E → D → C → B → A → S
+**Boucle principale :**
+1. Construire et améliorer la guilde (murs, sols, objets)
+2. Recruter et gérer les héros (planning, besoins, moral)
+3. Envoyer des héros en mission → or, ressources, réputation, XP
+4. Réinvestir pour progresser → missions plus difficiles → retour au 1
+
+**Univers** : Monde Astralia — médiéval-fantastique avec magie. Rangs héros : F → E → D → C → B → A → S. Voir [GDD.md](GDD.md) pour les règles, [CONTENT.md](CONTENT.md) pour tous les contenus.
 
 ---
 
@@ -90,16 +75,16 @@ res://
 │   │   ├── AudioManager.gd
 │   │   └── SettingsManager.gd
 │   └── Registry/
-│       ├── EquipmentLibrary.gd    ← 99 équipements (armes, armures, accessoires, potions)
+│       ├── EquipmentLibrary.gd    ← équipements (armes, armures, accessoires, potions)
 │       ├── HeroClassRegistry.gd   ← 6 classes de base + 12 avancées
 │       ├── ItemRegistery.gd       ← ⚠ typo à corriger (ItemRegistry)
-│       ├── MaterialLibrary.gd     ← 60 matériaux (naturels, craftables, magiques, drops)
+│       ├── MaterialLibrary.gd     ← matériaux (naturels, craftables, magiques, drops)
 │       ├── MobLibrary.gd          ← 19 mobs (F→S) avec stats, drops, attaques
 │       ├── ResearchLibrary.gd     ← 39 recherches réparties sur 10 niveaux
-│       └── SkillLibrary.gd        ← 87 compétences pour les 6 classes de base
+│       └── SkillLibrary.gd        ← 99 compétences pour les 6 classes de base
 ├── Entities/
 │   ├── Hero/
-│   │   ├── Hero.tscn / Hero.gd            ← CharacterBody2D
+│   │   ├── Hero.tscn / Hero.gd            ← CharacterBody2D (guilde)
 │   │   └── Components/
 │   │       ├── HeroActivity.gd            ← Exécute les tâches (navigate, travail, craft…)
 │   │       ├── HeroRoutine.gd             ← Think tree, lit le planning
@@ -107,9 +92,9 @@ res://
 │   │       ├── HeroNavigator.gd           ← Wrapper NavigationAgent2D
 │   │       ├── HeroAnimator.gd            ← Anime le sprite
 │   │       └── heroVisual.gd              ← ⚠ nommage incohérent (snake_case)
-│   └── Objects/
-│       ├── ObjectLibrary.gd               ← Source de vérité pour tous les objets
-│       └── [PascalCase]/ (Forge, Bed, Anvil…)  ← une scène par objet
+│   └── Mission/
+│       ├── HeroCombatNode.gd              ← Héros en combat (jouable ou IA)
+│       └── MobNode.gd                     ← Mob en combat
 ├── Ressources/
 │   └── Heros/HeroData.gd                  ← Resource complète (stats, besoins, équipement…)
 ├── Scenes/
@@ -120,9 +105,12 @@ res://
 │   │       ├── guild_hud.gd
 │   │       ├── BuildMenu/
 │   │       └── HeroPanel/
-│   ├── Menus/
-│   └── Mission/
-│       └── Environments/Wood1/            ← Scène de test missions (stubs)
+│   ├── Mission/
+│   │   ├── mission_scene.gd               ← Orchestrateur mission (spawns héros + mobs)
+│   │   ├── CombatHUD.tscn / CombatHUD.gd  ← HUD combat (barres HP, skills, log)
+│   │   ├── HeroCard.tscn / HeroCard.gd    ← Carte héros dans le HUD
+│   │   └── Environments/Wood1/            ← Environnement forêt (génération procédurale)
+│   └── Menus/
 ├── Systems/
 │   ├── Construction/
 │   │   ├── ConstructionLayer.gd
@@ -158,14 +146,14 @@ L'ordre dans `project.godot` est critique. Les autoloads s'initialisent dans l'o
 | 11 | `AudioManager` | Buses Music + SFX, crossfade, pool SFX (8 players) |
 | 12 | `HeroManager` | Spawn/fire/serialize héros |
 | 13 | `ItemRegistry` | Données items construction (coût, atlas_id, taille…) |
-| 14 | `EquipmentLibrary` | 99 équipements : armes, armures, accessoires, potions |
+| 14 | `EquipmentLibrary` | Équipements : armes (10 types), armures, accessoires, potions |
 | 15 | `BetterTerrain` | Addon externe terrain auto |
 | 16 | `ConstructionManager` | État construction, pending_tasks, finalize |
 | 17 | `RoomManager` | Détection des pièces par flood-fill |
 | 18 | `HeroClassRegistry` | 6 classes de base + 12 avancées (stat_range, weapon_types, armor_type…) |
-| 19 | `SkillLibrary` | 87 compétences (6 classes de base, F→S) |
+| 19 | `SkillLibrary` | 99 compétences (6 classes de base, F→S) |
 | 20 | `MobLibrary` | 19 mobs (F→S) avec stats, drops, attaques typées |
-| 21 | `MaterialLibrary` | 60 matériaux (naturels, craftables, magiques, drops, culinaires) |
+| 21 | `MaterialLibrary` | Matériaux (naturels, craftables, magiques, drops, culinaires) |
 | 22 | `HeroGenerator` | Génération procédurale de HeroData (stateless) |
 | 23 | `RecruitManager` | Pool recrutement, timer, pool_changed signal |
 | 24 | `MissionManager` | 13 templates de missions, résolution succès/échec, effets moraux |
@@ -182,12 +170,14 @@ L'ordre dans `project.godot` est critique. Les autoloads s'initialisent dans l'o
 ```
 Main (Node — permanent, jamais détruit)
 ├── SceneContainer (Node — les scènes enfants sont chargées/déchargées ici)
-│   └── [GuildScene | MainMenu | Options | ...] ← une seule à la fois
+│   └── [GuildScene | MissionScene | MainMenu | Options | ...] ← une seule à la fois
 └── NotificationContainer (CanvasLayer — HUD global)
     └── [Notification nodes instanciés dynamiquement]
 ```
 
 `SceneManager.go_to("guild")` détruit l'enfant courant de SceneContainer et instancie la nouvelle scène. **Ne jamais utiliser `change_scene_to_packed()`.**
+
+**Navigation mission** : `MissionManager.start_playable_mission(mission_data, hero_ids)` → `SceneManager.go_to("mission", params)` → `mission_scene.gd` instancie héros + mobs + CombatHUD.
 
 ---
 
@@ -213,6 +203,22 @@ GuildScene (Node2D)
     └── BuildMenu (build_menu.gd)
 ```
 
+**MissionScene** :
+```
+MissionScene (Node2D)
+├── World (Node2D)
+│   ├── TileMap / NavigationRegion2D
+│   ├── Heroes (Node2D)   ← HeroCombatNode instanciés
+│   └── Mobs (Node2D)     ← MobNode instanciés
+└── CombatHUD (CanvasLayer, layer=10)
+    ├── TopLeft     ← Info mission (full-IA seulement)
+    ├── TopRight    ← BtnPause / BtnPlay / BtnFast
+    ├── BottomLeft  ← HeroCards (1-4, slots pré-alloués)
+    ├── BottomCenter← Slots compétences (Comp.1-4 + Obj.1-2)
+    ├── BottomRight ← Journal de combat (petite fenêtre)
+    └── EndPanel    ← Écran de fin (Victoire / Défaite)
+```
+
 ---
 
 ## 6. Systèmes Principaux
@@ -225,7 +231,7 @@ GuildScene (Node2D)
 - `TimeManager.current_hour` (0–23)
 - `TimeManager.pause()` / `TimeManager.unpause()`
 
-### 6.2 Héros — Composants
+### 6.2 Héros — Composants (guilde)
 
 Chaque héros (`CharacterBody2D`) a 5 composants enfants accessibles via `%` :
 
@@ -248,8 +254,10 @@ Chaque héros (`CharacterBody2D`) a 5 composants enfants accessibles via `%` :
 | 1 | **Critique** | Énergie < 8, faim < 10, toilette < 8 → switch immédiat, interrompt **tout** |
 | 2 | **Continuation** | Tâche en cours encore valide → pas d'interruption |
 | 3 | **Planning** | Tâche assignée pour cette heure, si réalisable (objet disponible) |
-| 4 | **Libre** | Besoins secondaires par ordre de priorité, puis construction, puis divertissement |
+| 4 | **Libre** | Besoins secondaires par ordre de priorité (faim < 35%, énergie < 20%, divertissement < 25%, toilette < 20%, hygiène < 25%), puis construction, puis divertissement |
 | 5 | **Idle** | Fallback — erre aléatoirement |
+
+> **Distinction seuils** : niveau 1 = seuil d'interruption absolue. Niveau 4 = seuil de recherche autonome (valeurs différentes, voir GDD.md §3).
 
 **Seuils GameConfig** :
 
@@ -277,14 +285,10 @@ Chaque héros (`CharacterBody2D`) a 5 composants enfants accessibles via `%` :
 3. Chaque `time_tick` : `increment = (skill / craft_time) × CRAFT_SPEED_FACTOR`
 4. À 100% : `GameData.add_item(mat_id, 1)` + notification + passe à l'item suivant
 
-**Formula balancing** (GameConfig) :
-```
-CRAFT_SPEED_FACTOR = 0.35   # GDD §8.1
-# Exemple : Forgeron skill=20, épée Rang D (craft_time=6h)
-# → 20/6 × 0.35 ≈ 1.17/tick → ~85 ticks ≈ 7h in-game
-```
+**Formula** : `Progression_par_tic = (Compétence / Difficulté) × 0.35` (voir GDD.md §8.1)
 
 **Objets par métier** (JOB_CRAFT_OBJECTS) :
+
 | Job | ID | Objets |
 |-----|-----|--------|
 | 0 | Libre | — |
@@ -306,6 +310,8 @@ Trois types d'effets moraux, gérés dans `HeroNeeds.gd` :
 
 API : `add_timed_effect(label, value, duration_ticks)`, `add_progressive_effect(label, total, duration_ticks)`
 
+Voir GDD.md §4 pour les tables complètes d'effets moraux.
+
 ### 6.7 Planification des Héros
 
 `HeroData.planning` = `Dictionary { int(heure 0-23) → String("sleep"|"work"|"train"|"free") }`
@@ -318,23 +324,26 @@ API : `add_timed_effect(label, value, duration_ticks)`, `add_progressive_effect(
 
 ### 6.8 Recrutement
 
-**Formules** :
+**Formules** (voir GDD.md §6 pour le détail complet) :
 - `T_recrutement (h) = 15 − min(Réputation / 5, 12)` → entre 3h et 15h
 - `Max_héros_visibles = 1 + floor(Réputation / 10)`
 - Coût recrutement = `salaire × 5`
+- Niveau proposé : `Niveau_moyen_guilde + (Réputation / 2) + rand(−5, 0)`
+- Rang proposé : `Score = (Niveau / 10) + (Réputation / 3)` → table conversion (voir GDD.md §6.3)
+- Probabilité classe avancée : 20% (si le joueur a déjà un héros de cette classe avancée), 80% classe de base
 
 ### 6.9 Missions (MissionManager)
 
 - 13 templates de missions (difficulté F→S)
 - Génération selon réputation : rang max accessible, tirage parmi les disponibles
-- Résolution : comparaison stats héros vs difficulté mission → succès/échec
+- Résolution : `P = (HP_finale_moy / HP_init_moy) × Ratio_objectifs` → succès/échec
 - Effets moraux automatiques : succès → `add_timed_effect("+moral mission", +10, 24ticks)`, échec → −10
 - Mise à jour du rang héros : `missions_last_20` + `_recalculate_rank()` après chaque mission
 - Héros en mission : `on_mission=true`, `visible=false`, routines suspendues
 
 ### 6.10 Recherche (ResearchManager)
 
-- 39 recherches réparties sur 10 niveaux
+- 39 recherches réparties sur 10 niveaux (voir CONTENT.md §7)
 - Avancement par `time_tick` si un héros Chercheur (job=4) est au `research_desk`
 - Vitesse : `progress += (knowledge / RESEARCH_DIFFICULTY[level]) × 0.35`
 - Déblocage : certains objets dans `ItemRegistry` sont gated par une recherche
@@ -345,10 +354,10 @@ API : `add_timed_effect(label, value, duration_ticks)`, `add_progressive_effect(
 
 | Type | Sous-types | Rangs |
 |------|-----------|-------|
-| `weapon` | epee, hache, dague, arc, baton, grimoire | F→S (7 items × 6 types = 42) |
-| `armor` | legere, moyenne, lourde | F→S (7 items × 3 types = 21) |
-| `accessory` | anneau, amulette, ceinture | Divers rangs (15 items) |
-| `consumable` | potion_soin, potion_mana, potion_buff, potion_utilitaire | — (21 items) |
+| `weapon` | epee, hache, lance, dague, marteau, baton, arc, orbe, grimoire, shuriken | F→S (10 types, rangs variables) |
+| `armor` | legere, moyenne, lourde | F→S (3 sous-types × tête/torse/jambes) |
+| `accessory` | anneau, amulette | Divers rangs |
+| `consumable` | potion_soin, potion_mana, potion_buff, potion_defense, potion_rare | Divers effets |
 
 **Bonus stats disponibles** : `atk`, `matk`, `def`, `mdef`, `spd`, `crit`, `hp`, `mana`
 
@@ -358,6 +367,8 @@ hero_data.equip("epee_acier")        # valide la compatibilité classe, retourne
 hero_data.unequip("weapon")          # vide le slot
 hero_data.get_equipment_bonus("atk") # somme des bonus de tous les slots
 ```
+
+Voir CONTENT.md §3–5 pour les listes complètes d'armes, armures, accessoires, potions.
 
 ### 6.12 Audio
 
@@ -372,6 +383,16 @@ hero_data.get_equipment_bonus("atk") # somme des bonus de tous les slots
 4 types : `success` (vert), `error` (rouge), `warning` (jaune), `info` (bleu).
 
 `EventBus.ui_notification_requested.emit(message, type)` → filtre `SettingsManager.get_value("notifications")` → max 3 simultanées.
+
+### 6.14 Combat (MissionScene)
+
+**HeroCombatNode** : CharacterBody2D jouable ou IA. Gère attaques, compétences, potions auto, effets de statut, dégâts visuels (flash, nombres flottants), flèche de direction (joueur).
+
+**MobNode** : IA simple — approche, attaque, séparation anti-overlap. `collision_mask = 6` (layer 2 héros + layer 3 mobs).
+
+**CombatHUD** : CanvasLayer layer=10. 4 slots HeroCard pré-alloués (`set_empty()` grisé). Remplis par `add_hero_card()` au lancement.
+
+Voir GDD.md §7 pour les formules de combat complètes.
 
 ---
 
@@ -437,6 +458,9 @@ var mana_priority     : int
 
 ## Compétences  [{ "id": String, "rank": String, "level": int }]
 var skills : Array
+
+## Compétences équipées en combat (4 slots)
+var equipped_skills : Array[String]
 
 ## Équipement  { "weapon", "armor", "accessory", "consumable" → item_id }
 var equipment : Dictionary
@@ -632,7 +656,7 @@ signal ui_tooltip_hide()
 
 ## 15. TODO — État d'avancement
 
-> Dernière vérification : 2026-08-29 (lecture des fichiers sources)
+> Dernière vérification : 2026-09-07
 
 ### Ce qui fonctionne
 
@@ -642,46 +666,51 @@ signal ui_tooltip_hide()
 | Temps (tick, heure, jour, vitesses) | ✅ Complet | `TimeManager.gd` |
 | Construction (murs, sols, 50+ objets) | ✅ Complet | `Systems/Construction/` |
 | Navigation + animation héros | ✅ Complet | `HeroNavigator.gd`, `HeroAnimator.gd` |
-| Besoins héros (5 besoins + moral 3 types) | ✅ Complet | `HeroNeeds.gd` (569 lignes) |
+| Besoins héros (5 besoins + moral 3 types) | ✅ Complet | `HeroNeeds.gd` |
 | Salaire + démission si impayé / moral trop bas | ✅ Complet | `HeroNeeds.gd` |
 | Planning horaire + think tree (5 niveaux) | ✅ Complet | `HeroRoutine.gd`, `HeroActivity.gd` |
 | Level up (XP + gain stats) | ✅ Complet | `HeroNeeds.gd` |
 | Recrutement (pool, timer, coût) | ✅ Complet | `RecruitManager.gd`, `RecruitPanel.gd` |
 | 6 classes de base + 12 avancées (data) | ✅ Complet | `HeroClassRegistry.gd` |
-| 87 compétences (6 classes de base) | ✅ Complet | `SkillLibrary.gd` |
+| 99 compétences (6 classes de base) | ✅ Complet | `SkillLibrary.gd` |
+| 10 types d'armes, armures légère/moyenne/lourde | ✅ Complet | `EquipmentLibrary.gd` |
 | 19 mobs avec stats, drops, attaques | ✅ Complet | `MobLibrary.gd` |
-| 60 matériaux (naturels, craftables, magiques…) | ✅ Complet | `MaterialLibrary.gd` |
-| 99 équipements (armes, armures, accessoires, potions) | ✅ Complet | `EquipmentLibrary.gd` |
+| Matériaux (naturels, craftables, magiques…) | ✅ Complet | `MaterialLibrary.gd` |
 | Craft par poste (CraftManager) | ✅ Complet | `CraftManager.gd` |
 | Missions (génération + résolution automatique) | ✅ Complet | `MissionManager.gd` |
-| **Combat jouable** (IA héros + mobs, effets de statut) | ✅ Complet | `HeroCombatNode.gd` (438L), `MobNode.gd` (209L) |
-| **Scènes de mission** (génération procédurale) | ✅ Complet | `wood1_scene.gd` (220L) |
-| **UI Équipement** (paperdoll + drag&drop) | ✅ Complet | `HeroEquipmentView.gd` (725L) |
-| **Points de compétence** (achat + équipement) | ✅ Complet | `HeroSkillsPanel.gd` (409L) |
-| **Potions en combat** (auto-heal 30% HP, résurrection) | ✅ Complet | `HeroCombatNode.gd` |
-| **Enchantements** (18 enchants C→S, coût + gating) | ✅ Complet | `EnchantmentPanel.gd` (406L), `EnchantmentLibrary.gd` |
-| **Marché** (achat/vente, filtre, gating recherche) | ✅ Complet | `MarketPanel.gd` (462L) |
-| **Quêtes** (tableau lettres + préparation équipe) | ✅ Complet | `QuestPanel.gd` (527L), `QuestPrepPanel.gd` (604L) |
-| **Jardin / Agriculture** (8 cultures, croissance par jours) | ✅ Complet | `FarmingManager.gd`, `FarmingPanel.gd` |
-| **Recettes culinaires** (11 plats, buffs intégrés besoins) | ✅ Complet | `DishLibrary.gd`, `HeroNeeds._try_cook_dish()` |
-| CombatHUD (barres HP/mana, log, compétences) | ✅ Complet | `CombatHUD.gd` (287L) |
+| Combat jouable (IA héros + mobs, effets de statut) | ✅ Complet | `HeroCombatNode.gd`, `MobNode.gd` |
+| Visuels combat (flash hits, nombres, flèche direction) | ✅ Complet | `HeroCombatNode.gd`, `MobNode.gd` |
+| Attaque clic gauche (joueur → cible proche souris) | ✅ Complet | `HeroCombatNode.gd` |
+| Scènes de mission (génération procédurale Wood1) | ✅ Complet | `wood1_scene.gd` |
+| CombatHUD (4 slots héros, skills, log, fin) | ✅ Complet | `CombatHUD.gd`, `HeroCard.gd` |
+| UI Équipement (paperdoll + drag&drop) | ✅ Complet | `HeroEquipmentView.gd` |
+| Points de compétence (achat + équipement) | ✅ Complet | `HeroSkillsPanel.gd` |
+| Potions en combat (auto-heal 30% HP, résurrection) | ✅ Complet | `HeroCombatNode.gd` |
+| Enchantements (18 enchants C→S, coût + gating) | ✅ Complet | `EnchantmentPanel.gd`, `EnchantmentLibrary.gd` |
+| Marché (achat/vente, filtre, gating recherche) | ✅ Complet | `MarketPanel.gd` |
+| Quêtes (tableau lettres + préparation équipe) | ✅ Complet | `QuestPanel.gd`, `QuestPrepPanel.gd` |
+| Jardin / Agriculture (8 cultures, croissance par jours) | ✅ Complet | `FarmingManager.gd`, `FarmingPanel.gd` |
+| Recettes culinaires (11 plats + 2 fermentés, buffs) | ✅ Complet | `DishLibrary.gd`, `HeroNeeds._try_cook_dish()` |
 | Recherche (39 recherches, 10 niveaux) | ✅ Complet | `ResearchManager.gd`, `ResearchPanel.gd` |
 | Inventaire guilde (30 slots, drag&drop) | ✅ Complet | `GuildInventoryManager.gd`, `InventoryPanel.gd` |
 | Sauvegarde / chargement | ✅ Complet | `SaveManager.gd` |
-| Détection des pièces (flood-fill BFS) | ✅ Complet | `RoomManager.gd` (186L) |
+| Détection des pièces (flood-fill BFS) | ✅ Complet | `RoomManager.gd` |
 
-### Non implémenté
+### Non implémenté / Priorité
 
 | Système | Priorité | Notes |
 |---------|----------|-------|
-| **Beauté / Température des pièces** | 🔴 Haute | `RoomManager` détecte les pièces mais ne calcule pas `Beauté = Σ(meubles) + sol + mur` ni la temp. Effets moraux GDD §4.2 non appliqués. |
-| **Compétences classes avancées** (12 classes) | 🔴 Haute | `SkillLibrary` ne couvre que les 6 classes de base |
-| **Factions / Diplomatie** | 🟡 Moyenne | 4 factions définies dans le GDD, aucun code. Marché actuel = prix fixes sans relation faction. |
+| **Beauté / Température des pièces** | 🔴 Haute | `RoomManager` détecte les pièces mais ne calcule pas la beauté ni la température. Formules dans GDD.md §5. |
+| **Compétences classes avancées** (12 classes) | 🔴 Haute | `SkillLibrary` ne couvre que les 6 classes de base. Section "À compléter" dans CONTENT.md. |
+| **Factions / Diplomatie** | 🟡 Moyenne | 4 factions définies dans GDD.md §9. Aucun code. Marché actuel = prix fixes. |
 | **Fermentation** (bière 3j, hydromel 5j) | 🟡 Moyenne | `FermentationBarrel` placé, logique = stub |
-| **Classe avancée / Ascension** | 🟡 Moyenne | Flag `is_advanced_class` dans HeroData, `AscensionAltar` = stub — aucune UI ni logique |
-| **Événements aléatoires** | 🟢 Basse | 9 positifs + 9 négatifs + 5 à choix définis dans le GDD, aucun code |
+| **Classe avancée / Ascension** | 🟡 Moyenne | Flag `is_advanced_class` dans HeroData, `AscensionAltar` = stub |
+| **Événements aléatoires** | 🟢 Basse | 9 positifs + 9 négatifs + 5 à choix définis dans GDD.md §10, aucun code |
+| **Aggro / Menace** en combat | 🟢 Basse | Formule définie dans GDD.md §7.7, non implémentée (mobs ciblent le plus proche) |
+| **Stats métier — progression par usage** | 🟢 Basse | Formule définie dans GDD.md §2.5, non implémentée |
 | Support manette | 🟢 Basse | Non commencé |
 | Menu options complet | 🟢 Basse | Audio OK, contrôles + résolution manquants |
+| Autres environnements de mission | 🟢 Basse | Seul Wood1 existe |
 
 ### Nettoyage technique
 
@@ -690,7 +719,7 @@ signal ui_tooltip_hide()
 | Renommer `ItemRegistery.gd` → `ItemRegistry.gd` (typo) | 🔴 Haute |
 | Renommer `heroVisual.gd` → `HeroVisual.gd` (PascalCase) | 🟢 Basse |
 | Supprimer signaux EventBus jamais consommés (`object_freed`, `object_used`) | 🟢 Basse |
-| Ajouter plus d'environnements de mission (seul Wood1 existe) | 🟡 Moyenne |
+| Ajouter plus d'environnements de mission (donjon, village, caverne…) | 🟡 Moyenne |
 
 ---
 
@@ -708,6 +737,12 @@ signal ui_tooltip_hide()
 - Chemins hardcodés vers les nodes → utiliser `WorldContext.objects_container`
 - `navigator.nav.target_desired_distance` → utiliser `navigator.set_arrival_distance(x)`
 - `is_instance_valid()` obligatoire sur tout node qui peut avoir été `queue_free()`'d
+- Assigner une instance `queue_free()`'d à une variable **typée** déclenche l'erreur avant même `is_instance_valid()` → utiliser une variable non typée d'abord, puis caster
+- `Color(r,g,b)` en 3 args dans les `.tscn` → Godot exige 4 args `Color(r,g,b,a)`
+- Commentaires `##` dans les `.tscn` → cassent le parser de scène Godot, interdit
+- `HeroClassRegistry.get_class()` → méthode built-in Godot (0 args), utiliser `get_class_by_id(id)`
+- `is_crit ? 14 : 11` → ternaire C-style invalide en GDScript → `14 if is_crit else 11`
+- `add_child(camera)` doit précéder `camera.global_position = pos` (node doit être dans l'arbre)
 
 ### Règles de code
 - Typage explicite TOUJOURS : `var x : int = 0` jamais `var x := 0`
@@ -749,350 +784,3 @@ signal ui_tooltip_hide()
 
 #### Signaux EventBus déclarés mais jamais consommés
 - `object_freed`, `object_used` : émis par GuildObject, personne ne les écoute
-
----
-
-# GAME DESIGN DOCUMENT
-
-> Ce document couvre le **quoi** et le **pourquoi** : règles, formules, systèmes de jeu.
-
----
-
-## GDD 1. Concept et Boucle de Jeu
-
-Le joueur est maître d'une guilde d'aventuriers dans le monde d'Astralia (médiéval-fantastique). Il construit et aménage sa guilde, recrute des héros avec des personnalités propres, les envoie en mission, et fait grandir sa réputation dans le royaume.
-
-**Boucle principale :**
-1. Construire et améliorer la guilde (murs, sols, objets)
-2. Recruter et gérer les héros (planning, besoins, moral)
-3. Envoyer des héros en mission → or, ressources, réputation, XP
-4. Réinvestir pour progresser → missions plus difficiles → retour au 1
-
----
-
-## GDD 2. Héros
-
-### 2.1 Stats de combat
-
-| Stat | Rôle |
-|------|------|
-| **Force** | Dégâts physiques |
-| **Défense** | Réduction des dégâts reçus |
-| **Agilité** | Esquive, vitesse de déplacement |
-| **Magie** | Puissance des sorts |
-| **Chance** | Coups critiques, qualité du butin |
-| **Mana** | Réserve de capacités magiques |
-
-**PV Max** = `100 + (Force × 2) + (Défense × 1.5)` + bonus équipement
-
-**Mana Max** = `50 + (Magie × 3)` + bonus équipement
-Régénération : `1 + (Magie × 0.05)` par seconde hors combat, `0.5/s` en combat
-
-### 2.2 Stats de métier (hors combat)
-
-| Stat | Usage |
-|------|-------|
-| **Social** | Accueil — attire quêtes et candidats |
-| **Travaux Manuels** | Forge, artisanat d'armes et armures |
-| **Travaux Occultes** | Potions, enchantements |
-| **Cuisine** | Préparation des repas de la guilde |
-| **Savoir** | Vitesse de débloquage des recherches |
-
-À la génération : `Valeur = rand(1, 10) + (Niveau × 0.3)`
-
-### 2.3 Besoins primaires
-
-| Besoin | Seuil alerte | Taux normal |
-|--------|-------------|-------------|
-| Énergie (sommeil) | 8% | −2.5%/h |
-| Faim | 10% | −2%/h |
-| Divertissement | 25% | −1.5%/h |
-| Toilette | 8% | −3%/h |
-| Hygiène | 25% | −2%/h |
-
-### 2.4 Moral
-
-**Types d'effets moraux :**
-- *TEMPORARY* (durée 1–12h) : gagner une mission +10, échouer −10, bon repas +5…
-- *CONSTANT* (actif tant que la condition dure) : chambre propre +5, non payé −10…
-- *PROGRESSIVE* (sur plusieurs jours) : perte d'un camarade −20 sur 10j…
-
-**Démission :**
-`P_démission (%) = 5 + (heures_consécutives_à_moral_0 × 1)` (plafonné à 80%)
-→ À moral = 0 pendant 3+ jours → démission garantie (sauf trait Dévoué)
-
-### 2.5 Traits de caractère
-
-Chaque héros a 1 à 3 traits (max 2 négatifs), tirés à la génération.
-
-**Traits incompatibles :** Stoïque ↔ Instable Émotionnellement, Travailleur ↔ Fainéant, Sang-froid ↔ Colérique
-
-### 2.6 Travail et métiers
-
-**Vitesse de craft (GDD §8.1) :**
-`Progression_par_tic = (Compétence / Difficulté) × 0.35`
-
-La tâche est complète quand la progression atteint 100. 1 tic = 5 minutes in-game.
-
-**Difficultés par type de tâche :**
-
-| Tâche | Difficulté |
-|-------|-----------|
-| Forge Rang F / E / D / C / B / A / S | 2 / 4 / 6 / 8 / 10 / 12 / 15 |
-| Craft de potion | 5 |
-| Enchantement | 8 |
-| Recherche niv. 1 à 10 | 3 → 14 |
-
-### 2.7 Équipements
-
-**Armes par classe :**
-
-| Classe | Armes autorisées | Armure |
-|--------|-----------------|--------|
-| Guerrier | épée, hache | lourde |
-| Mage | bâton, grimoire | légère |
-| Roublard | dague | moyenne |
-| Chasseur | arc | moyenne |
-| Guérisseur | bâton | légère |
-| Invocateur | grimoire | légère |
-
-**Rangs d'équipement** : F → E → D → C → B → A → S (7 niveaux par type d'arme/armure).
-
-**Effets consommables** : heal, restore_mana, stat_buff, cure_status, apply_status, prevent_death, heal_over_time.
-
-### 2.8 Progression et classes
-
-**XP requise pour monter de niveau :** `XP_n = 100 × 1.7^(n−1)`
-
-**Au niveau up :** +15 points de compétence, +1 à 5 points aléatoires sur chaque stat principale.
-
-**Coût des compétences par rang :** F=15pts, E=30pts, D=60pts, C=90pts, B=120pts, A=150pts, S=180pts
-
-**Rang d'aventurier :** F→E→D→C→B→A→S. Progresse après 10 missions réussies sur les 20 dernières.
-
-**Classe Avancée :** accessible niveau 50, rang B minimum, dans la Salle d'Ascension.
-
-### 2.9 Salaire
-
-`Salaire = Base_rang × (1 + 0.03 × Niveau) × (1 + Bonus_classe)`
-
-| Rang | Base (or/jour) |
-|------|---------------|
-| F | 10 |
-| E | 20 |
-| D | 40 |
-| C | 60 |
-| B | 100 |
-| A | 150 |
-| S | 200 |
-
-Classe avancée : +30%.
-
----
-
-## GDD 3. Recrutement
-
-**Fréquence :** `T (heures) = 15 − min(Réputation / 5, 12)` → entre 3h (rep≥60) et 15h (rep=0)
-
-**Pool maximum visible :** `1 + floor(Réputation / 10)`
-
-**Coût de recrutement :** `salaire × 5`
-
-**Niveau proposé :** `Niveau_moyen_guilde + (Réputation / 2) + rand(−5, 0)`
-
----
-
-## GDD 4. Construction
-
-### 4.1 Principe
-
-Grille de 16×16px. Placement modulaire de murs, sols, portes, et objets. Les héros en mode Free avec besoins satisfaits construisent automatiquement.
-
-**QoL construction :**
-- Prévisualisation en vert (valide) ou rouge (invalide)
-- Rotation des objets avec la touche R
-- Clic droit → menu rapide (déplacer, supprimer)
-- Murs adjacents auto-adaptatifs
-
-### 4.2 Pièces
-
-Une pièce = zone délimitée par des murs fermés. Détection par flood-fill à chaque modification.
-
-**Beauté d'une pièce :**
-`Beauté = Σ(Beauté_meuble) + Σ(Beauté_sol × nb_cases) + Beauté_mur × périmètre`
-
-| Beauté | État | Effet moral |
-|--------|------|-------------|
-| < 0 | Repoussante | −5 constant |
-| 0–9 | Austère | −2 constant |
-| 10–24 | Neutre | 0 |
-| 25–49 | Agréable | +2 constant |
-| 50–99 | Belle | +4 constant |
-| ≥ 100 | Remarquable | +6 constant |
-
-**Température d'une pièce :**
-`Température = Température_base_biome + Σ(Modificateurs_objets)`
-
-Confort : 15–22°C (aucun effet). En dehors → malus moral + fatigue.
-
----
-
-## GDD 5. Réputation
-
-**Gain de réputation (mission réussie) :**
-`Gain_Rep = (D × P) × (100 / (100 + R))`
-
-**Paliers de déblocage des rangs de missions :**
-
-| Rang | Réputation requise |
-|------|-------------------|
-| F | 0+ |
-| E | 2+ |
-| D | 4+ |
-| C | 6+ |
-| B | 8+ |
-| A | 10+ |
-| S | 12+ |
-
----
-
-## GDD 6. Missions et Combat
-
-### 6.1 Génération des missions
-
-Chaque mission est générée selon la réputation du joueur (rang max accessible + tirage parmi disponibles).
-
-**Difficulté totale :** `D = Σ(FM_i × N_i)`
-
-**Types de quêtes :** Chasse, Exploration, Sauvetage, Défense, Collecte.
-
-### 6.2 Récompense en or
-
-`CR = 1 + (Réputation / 100)`
-`Or = D_totale × 100 × CR`
-
-### 6.3 Combat — Calcul des dégâts (Héros)
-
-`D_base = √Stat_adaptée + Attaque_arme`
-`D_final = (D_base × M_moral × M_type) − √Défense_cible` (minimum 1)
-
-**Coups critiques :** P_crit = `Chance × 0.5 + bonus équipement`. Multiplicateur : ×2.0.
-
-### 6.4 Combat — Mobs
-
-`D_mob = √Force_mob + Puissance_attaque`
-`PV_mob = 50 + (Force × 2) + (Défense × 1.5)`
-
-**Effets de statut** : Brûlure, Poison, Stun, Saignement, Affaiblissement, Silence.
-
-### 6.5 Logique de combat (IA des héros)
-
-1. Si stun ou silence → ne fait rien
-2. Si effets critiques → utilise antidote si disponible
-3. Si PV < 30% → utilise potion de soin si disponible
-4. Cible l'ennemi le plus proche
-5. Utilise une compétence disponible (hors CD)
-6. Attaque de base
-
----
-
-## GDD 7. Diplomatie et Factions
-
-### 7.1 Les 4 factions
-
-| Faction | Spécialité |
-|---------|-----------|
-| **Empire de Valoria** | Ordre et loi |
-| **Ligue Marchande** | Commerce |
-| **Ordre des Magi** | Magie |
-| **Garde du Nord** | Terres froides |
-
-### 7.2 Relations (−100 à +100)
-
-**Prix ajusté selon la relation :**
-`Prix = Prix_base × (1 − R / 100)` (réduction max −50%)
-
-À R=+100 (Alliée) → prix −50%. À R=−100 (Hostile) → prix ×2.0.
-
----
-
-## GDD 8. Économie
-
-### 8.1 Sources de revenus
-- Récompenses de missions (or + ressources + drops mobs)
-- Vente de matériaux / équipements craftés
-- Recyclage d'équipements obsolètes
-- Récolte de plantes (jardin)
-- Événements positifs
-
-### 8.2 Sources de dépenses
-- Salaires journaliers des héros
-- Construction
-- Achat de ressources aux factions
-- Coûts de recrutement (`salaire × 5`)
-
-### 8.3 Cuisine
-
-Stock de repas maintenu par les Cuisiniers (job=5) à la cuisine. Chaque héros consomme 1 repas par repas. Stock vide → moral baisse, démissions possibles.
-
-Fermentation : bière (3j), hydromel (5j).
-
----
-
-## GDD 9. Événements Aléatoires
-
-Fréquence : 1 événement toutes les 5 à 10 jours in-game.
-
-**9 positifs** (ex: visite marchand rare, don anonyme +500–1500 or, festival royaume +15 moral).
-**9 négatifs** (ex: vol −200–500 or, maladie contagieuse, accident à la forge, infestation stock nourriture).
-**5 à choix** (ex: héros blessé à la porte, héros mécontent, mission secrète risquée).
-
----
-
-## GDD 10. Recherche et Développement
-
-39 recherches sur 10 niveaux. Avancement par les héros Chercheurs (job=4) au research_desk.
-
-Vitesse : `progress += (knowledge / RESEARCH_DIFFICULTY[level]) × 0.35`
-
-Les enchantements et la Salle d'Ascension sont des recherches à débloquer avant utilisation.
-
----
-
-## GDD 11. État d'implémentation
-
-> Vérifié par lecture des fichiers sources — 2026-08-29
-
-| Système | État |
-|---------|------|
-| Architecture core | ✅ Complet |
-| Construction (50+ objets, murs, sols) | ✅ Complet |
-| Besoins + moral (3 types d'effets) | ✅ Complet |
-| Planning + think tree | ✅ Complet |
-| Génération héros (6+12 classes, traits, skills) | ✅ Complet |
-| 87 compétences (6 classes de base) | ✅ Complet |
-| 19 mobs avec stats et drops | ✅ Complet |
-| 60 matériaux (recettes, stack, craft) | ✅ Complet |
-| 99 équipements (armes/armures/accessoires/potions) | ✅ Complet |
-| Système de craft par poste | ✅ Complet |
-| Missions (résolution automatique + jouable) | ✅ Complet |
-| Combat jouable (IA héros + mobs, compétences, potions) | ✅ Complet |
-| Scènes de mission (Wood1 — génération procédurale) | ✅ Complet (1 seul environnement) |
-| UI équipement (paperdoll + drag&drop) | ✅ Complet |
-| Points de compétence (achat + équipement) | ✅ Complet |
-| Enchantements (18 enchants C→S) | ✅ Complet |
-| Marché (achat/vente équipements et matériaux) | ✅ Complet |
-| Quêtes (tableau + préparation équipe) | ✅ Complet |
-| Jardin / Agriculture (8 cultures) | ✅ Complet |
-| Recettes culinaires (11 plats avec buffs) | ✅ Complet |
-| Recherche (39 recherches) | ✅ Complet |
-| Inventaire guilde | ✅ Complet |
-| Sauvegarde / chargement | ✅ Complet |
-| Beauté / Température des pièces | ❌ Non commencé |
-| Compétences classes avancées (12 classes) | ❌ Non commencé |
-| Factions / Diplomatie | ❌ Non commencé |
-| Fermentation (bière, hydromel) | ❌ Stub |
-| Ascension classe avancée | ❌ Stub |
-| Événements aléatoires | ❌ Non commencé |
-| Autres environnements de mission (donjon, village…) | ❌ Non commencé |
-| Support manette | ❌ Non commencé |

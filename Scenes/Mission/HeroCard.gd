@@ -12,7 +12,18 @@ extends PanelContainer
 @onready var _player_tag : Label         = $VBox/PlayerTag
 
 
+func set_empty() -> void:
+	modulate = Color(1.0, 1.0, 1.0, 0.25)
+	_name_lbl.text  = "—"
+	_class_lbl.text = "Emplacement libre"
+	_ai_badge.visible   = false
+	_player_tag.visible = false
+	_hp_fill.anchor_right = 0.0
+	_moral_fill.anchor_right = 0.0
+
+
 func setup(hero_data: HeroData, is_player: bool) -> void:
+	modulate = Color(1.0, 1.0, 1.0, 1.0)
 	_name_lbl.text  = hero_data.hero_name
 	var cls : Dictionary = HeroClassRegistry.get_class_by_id(hero_data.hero_class)
 	var cls_label : String = cls.get("label", hero_data.hero_class)

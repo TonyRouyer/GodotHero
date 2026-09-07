@@ -72,10 +72,10 @@ func get_hero_data(hero_id: int) -> HeroData:
 
 
 func get_hero_node(hero_id: int) -> Hero:
-	var node : Hero = _nodes.get(hero_id, null)
+	var node = _nodes.get(hero_id, null)
 	if not is_instance_valid(node):
 		return null
-	return node
+	return node as Hero
 
 
 func get_hero_count() -> int:
