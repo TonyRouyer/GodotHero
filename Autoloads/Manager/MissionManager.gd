@@ -245,14 +245,16 @@ func _resolve(entry: Dictionary) -> void:
 	var chance     : float  = clamp((stat_val / threshold) * 70.0 + 15.0, 10.0, 95.0)
 	var success    : bool   = randf_range(0.0, 100.0) < chance
 
-	## Récompenses
+	## Récompenses — GDD §8.3 : Or = Or_base × CR, CR = 1 + (Réputation / 100)
 	if success:
-		GameData.add_gold(entry.get("gold", 0))
+		var cr      : float = 1.0 + GameData.reputation / 100.0
+		var gold    : int   = int(entry.get("gold", 0) * cr)
+		GameData.add_gold(gold)
 		GameData.reputation += entry.get("reputation", 0)
 		hero_data.xp        += entry.get("xp", 0)
 		EventBus.ui_notification_requested.emit(
 			"%s est de retour ! Mission réussie (+%d or, +%d réputation)" % [
-				hero_data.hero_name, entry.get("gold", 0), entry.get("reputation", 0)
+				hero_data.hero_name, gold, entry.get("reputation", 0)
 			], "success"
 		)
 	else:
