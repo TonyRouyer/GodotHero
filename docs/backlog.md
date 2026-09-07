@@ -138,23 +138,23 @@
 
 ## 7. Contenu (data)
 
-- [x] 6 classes de base dans `HeroClassRegistry`
-- [x] 12 classes avancées — données présentes dans `HeroClassRegistry`
-- [x] 99 compétences (6 classes de base) dans `SkillLibrary`
-- [x] 42 traits dans `TraitLibrary`
-- [x] 19 mobs dans `MobLibrary`
-- [x] 10 types d'armes dans `EquipmentLibrary`
-- [x] Armures légères / moyennes / lourdes dans `EquipmentLibrary`
-- [x] Accessoires (anneaux, amulettes) dans `EquipmentLibrary`
-- [x] Potions et consommables dans `EquipmentLibrary`
-- [x] 18 enchantements dans `EnchantmentLibrary`
-- [x] Matériaux dans `MaterialLibrary`
-- [x] 11 plats dans `DishLibrary`
-- [x] 8 cultures dans `FarmingManager`
-- [x] 39 recherches dans `ResearchLibrary`
-- [x] 50+ objets de construction dans `ItemRegistry`
-- [ ] Compétences des 12 classes avancées (SkillLibrary ne couvre que les 6 classes de base)
-- [ ] 2 fermentés dans `DishLibrary` (stub uniquement)
+- [x] 6/6 classes de base dans `HeroClassRegistry`
+- [x] 12/12 classes avancées (données) dans `HeroClassRegistry`
+- [x] 99/99 compétences (classes de base) dans `SkillLibrary`
+- [ ] 0/? compétences (classes avancées) dans `SkillLibrary` — à concevoir et implémenter
+- [x] 42/42 traits dans `TraitLibrary`
+- [x] 19/19 mobs dans `MobLibrary`
+- [x] 10/10 types d'armes dans `EquipmentLibrary`
+- [x] 3/3 types d'armures (légère, moyenne, lourde) dans `EquipmentLibrary`
+- [x] 2/2 types d'accessoires (anneaux, amulettes) dans `EquipmentLibrary`
+- [x] 16/16 potions et consommables dans `EquipmentLibrary`
+- [x] 18/18 enchantements dans `EnchantmentLibrary`
+- [x] 32/32 matériaux dans `MaterialLibrary`
+- [x] 11/11 plats dans `DishLibrary`
+- [ ] 0/2 fermentés dans `DishLibrary` (stub — logique de fermentation à écrire)
+- [x] 8/8 cultures dans `FarmingManager`
+- [x] 39/39 recherches dans `ResearchLibrary`
+- [x] 50+/50+ objets de construction dans `ItemRegistry`
 
 ---
 
