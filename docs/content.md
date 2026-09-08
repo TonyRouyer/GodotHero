@@ -1,9 +1,9 @@
-# Contenu du Jeu — Listes Exhaustives
+## Contenu du Jeu — Listes Exhaustives
 
 > Suivi de l'implémentation du contenu. Chaque item est ajouté au fur et à mesure de son implémentation.
 > Fichiers associés : [`../readme.md`](../readme.md) | [`gamedesign.md`](gamedesign.md) | [`backlog.md`](backlog.md)
 
-**Légende** : `- [x]` = implémenté | `- [ ]` = non implémenté
+**Légende** : `- [x]` = implémenté | `- [ ]` = prévu, non implémenté
 
 ---
 
@@ -57,23 +57,169 @@
 | Magie | 12 – 16 |
 | Chance | 8 – 12 |
 
+### 1.3 Roublard (Physique)
+
+- [ ] Roublard — `HeroClassRegistry`
+
+**Armes** : Dague | **Armure** : Moyenne
+
+| Stat | Intervalle génération |
+|------|----------------------|
+| Force | 6 – 10 |
+| Défense | 3 – 7 |
+| Agilité | 12 – 16 |
+| Magie | 5 – 9 |
+| Chance | 10 – 14 |
+
+### 1.4 Chasseur (Physique)
+
+- [ ] Chasseur — `HeroClassRegistry`
+
+**Armes** : Arc | **Armure** : Moyenne
+
+| Stat | Intervalle génération |
+|------|----------------------|
+| Force | 7 – 11 |
+| Défense | 7 – 11 |
+| Agilité | 11 – 15 |
+| Magie | 4 – 8 |
+| Chance | 8 – 12 |
+
+### 1.5 Guérisseur (Magique)
+
+- [ ] Guérisseur — `HeroClassRegistry`
+
+**Armes** : Bâton | **Armure** : Légère
+
+| Stat | Intervalle génération |
+|------|----------------------|
+| Force | 4 – 8 |
+| Défense | 6 – 10 |
+| Agilité | 6 – 10 |
+| Magie | 11 – 15 |
+| Chance | 10 – 14 |
+
+### 1.6 Invocateur (Magique)
+
+- [ ] Invocateur — `HeroClassRegistry`
+
+**Armes** : Bâton, Grimoire | **Armure** : Légère
+
+| Stat | Intervalle génération |
+|------|----------------------|
+| Force | 3 – 7 |
+| Défense | 5 – 9 |
+| Agilité | 6 – 10 |
+| Magie | 11 – 15 |
+| Chance | 10 – 14 |
+
 ---
 
 ## 2. Classes Avancées
 
-*(aucune implémentée)*
+> Accessibles niveau 50+, rang B minimum, via la Salle d'Ascension.
+
+### Depuis Guerrier
+- [ ] Chevalier | Armes : Épée, Hache, Lance | Armure : Lourde
+- [ ] Berserker | Armes : Épée, Hache, Marteau | Armure : Moyenne + Lourde
+
+### Depuis Mage
+- [ ] Sage Arcanique | Armes : Bâton, Grimoire, Orbe | Armure : Légère
+- [ ] Maître des Éléments | Armes : Bâton, Grimoire, Orbe | Armure : Légère
+
+### Depuis Roublard
+- [ ] Assassin | Armes : Dague, Arc | Armure : Légère + Moyenne
+- [ ] Ombre | Armes : Dague, Shuriken | Armure : Légère + Moyenne
+
+### Depuis Chasseur
+- [ ] Ranger | Armes : Arc | Armure : Moyenne
+- [ ] Archer Mystique | Armes : Arc | Armure : Moyenne
+
+### Depuis Guérisseur
+- [ ] Paladin
+- [ ] Chaman
+
+### Depuis Invocateur
+- [ ] Maître des Ombres
+- [ ] Archiviste
 
 ---
 
 ## 3. Compétences par Classe
 
-*(aucune implémentée)*
+> Les compétences sont détaillées dans un document séparé (non encore intégré).
+> Chaque héros équipe 4 compétences en combat. Coût en points de compétence (15 pts/niveau).
+
+| Rang | Coût |
+|------|------|
+| F | 15 pts |
+| E | 30 pts |
+| D | 60 pts |
+| C | 90 pts |
+| B | 120 pts |
+| A | 150 pts |
+| S | 180 pts |
+
+- [ ] Compétences Guerrier (actives + passives, rangs F → S)
+- [ ] Compétences Mage (actives + passives, rangs F → S)
+- [ ] Compétences Roublard (actives + passives, rangs F → S)
+- [ ] Compétences Chasseur (actives + passives, rangs F → S)
+- [ ] Compétences Guérisseur (actives + passives, rangs F → S)
+- [ ] Compétences Invocateur (actives + passives, rangs F → S)
 
 ---
 
 ## 4. Traits de Caractère
 
-*(aucun implémenté)*
+> 1 à 3 traits par héros, maximum 2 négatifs. Les héros de rang élevé ont plus de chances d'avoir des traits positifs.
+
+### Traits Positifs
+
+- [ ] **Charismatique** — +10% efficacité tâches sociales, +3 moral aux héros proches
+- [ ] **Travailleur** — +15% vitesse toutes tâches non-combattantes
+- [ ] **Stoïque** — malus moraux sur événements négatifs réduits de 50%
+- [ ] **Inspiration Divine** — 10% de chance/tâche de terminer instantanément ou +10 moral à un allié
+- [ ] **Ami des Animaux** — +20% sur missions impliquant des créatures
+- [ ] **Résilient** — guérit 2× plus vite, malus blessure réduit de 10%
+- [ ] **Leader Naturel** — +5 moral à tous les héros du même groupe de mission
+- [ ] **Dévoué à la Guilde** — ne démissionne jamais sauf moral = 0 pendant 10+ jours consécutifs
+- [ ] **Bonne Constitution** — besoins Sommeil et Faim descendent 20% moins vite
+- [ ] **Compagnon Loyal** — malus "perte d'un camarade" réduit de 50%
+- [ ] **Apprend Vite** — +25% XP combat et métier
+- [ ] **Cuistot Passionné** — +15% vitesse cuisine, +3 moral aux héros qui mangent ses plats
+- [ ] **Forgeur d'Élite** — +20% qualité forge (équipements produits : +1 rang effectif de stats)
+- [ ] **Enthousiaste** — +15 moral au début de chaque journée in-game (durée 12h)
+- [ ] **Mémoire Visuelle** — +10% efficacité tâches liées au Savoir
+- [ ] **Combatif** — +10% vitesse d'attaque, initiative +1 en combat
+- [ ] **Esprit d'Équipe** — réduit la probabilité de conflit interne de 70%
+- [ ] **Artisan Inspiré** — 5% de chance par craft de produire un objet de qualité supérieure (+1 rang)
+- [ ] **Sang-froid** — durée des effets Stun et Peur réduite de 50%
+- [ ] **Robuste** — PV Max +15%
+- [ ] **Infatigable** — besoins Hygiène et Toilette descendent 25% moins vite
+
+### Traits Négatifs
+
+- [ ] **Colérique** — 20% de chance/jour de déclencher un conflit (−8 moral pour les deux)
+- [ ] **Fainéant** — −20% vitesse toutes tâches
+- [ ] **Instable Émotionnellement** — tous les effets moraux (+ et −) amplifiés ×1.5
+- [ ] **Cynique** — ne bénéficie pas des bonus moraux collectifs (cérémonies, festivals)
+- [ ] **Solitaire** — −5 moral constant si 3+ héros dans la même pièce
+- [ ] **Gourmand** — besoin Faim descend 2× plus vite
+- [ ] **Somnoleur** — besoin Sommeil descend 1.5× plus vite, récupère 20% moins vite au sol
+- [ ] **Maladroit** — 10% de chance d'échec partiel sur un craft (qualité inférieure)
+- [ ] **Hypocondriaque** — se met en arrêt maladie si PV ≤ 80% (refus de travailler 1 jour)
+- [ ] **Orgueilleux** — 15% de chance d'ignorer une affectation
+- [ ] **Mauvais Perdant** — −20 moral immédiat après chaque mission échouée
+- [ ] **Tête en l'Air** — 10% de chance par heure de changer d'activité sans raison
+- [ ] **Addict au Combat** — −5 moral constant si aucune mission dans les 5 derniers jours
+- [ ] **Insomnie** — récupère le besoin Sommeil 40% moins vite
+- [ ] **Apathique** — aucun bonus moral positif supérieur à +5 (plafond dur)
+- [ ] **Voleur** — si moral < 30 pendant 3+ jours, déclenche l'événement vol
+- [ ] **Superstitieux** — −10 moral lors d'événements "maudits"
+- [ ] **Dépressif** — moral −1/heure passivement sans interaction positive dans la journée
+- [ ] **Allergique aux Animaux** — −5 moral constant + −10% santé max dans pièce avec objets liés aux animaux
+- [ ] **Indiscret** — 20% de chance lors d'un accueil de révéler des infos (−2 relation faction aléatoire)
+- [ ] **Claustrophobe** — −5 moral constant dans les pièces de superficie < 6 cases
 
 ---
 
@@ -81,10 +227,100 @@
 
 ### Rang F
 
-- [x] **Slime** | Rang F | FM 0.1 | Vitesse 100 | STR 3 DEF 4 AGI 6 MAG 1 LCK 5 | PV 62
-  - Drop : Gelée de slime ×1 (commun) | Cristal magique ×1 (rare 15%)
-  - Coup Gluant : bondit sur l'ennemi. Puissance 4
-  - Charge Instable *(spécial)* : zone légère. Puissance 3
+- [x] **Slime** | FM 0.1 | Vitesse 100 | STR 3 DEF 4 AGI 6 MAG 1 LCK 5 | PV 62
+  - Drop : Gelée de slime ×1 (commun) | Cristal magique ×1 (rare)
+  - Coup Gluant : bondit sur l'ennemi — Puissance 4
+  - Charge Instable *(spécial)* : dégâts de zone légers — Puissance 3
+- [ ] **Araignée sylvestre** | FM 0.15 | Vitesse 90 | STR 4 DEF 3 AGI 8 MAG 1 LCK 5
+  - Drop : Résine collante ×1 | Venin ×1–2 | Baie noire ×1 (rare)
+  - Morsure rapide : Puissance 5
+  - Jet de toile *(spécial)* : ralentit −30% vitesse pendant 3s — Puissance 2
+
+### Rang E
+
+- [ ] **Loup** | FM 0.2 | Vitesse 250 | STR 8 DEF 6 AGI 12 MAG 2 LCK 5
+  - Drop : Peau brute ×1–2 | Viande de loup ×1–2 | Graisse animale ×1–2 | Cristal magique (rare)
+  - Morsure sauvage : Puissance 10
+  - Hurlement de meute *(spécial)* : +10% agilité alliés loups pendant 10s
+- [ ] **Sanglier** | FM 0.25 | Vitesse 90 | STR 9 DEF 7 AGI 6 MAG 1 LCK 4
+  - Drop : Viande de sanglier ×1–2 | Cuir ×1 | Graisse animale ×1–3 | Peau brute ×1–2
+  - Charge bestiale : frontale, chance de repoussement — Puissance 3
+  - Grognement furieux *(spécial)* : +10% défense propre pendant 6s
+- [ ] **Soldat Squelette** | FM 0.2 | Vitesse 100 | STR 7 DEF 6 AGI 5 MAG 2 LCK 3
+  - Drop : Métal brut ×1 | Cristaux magiques ×1 | Os de berserker (rare)
+  - Coup d'épée rouillée : Puissance 8
+  - Cri spectral *(spécial)* : −5 Défense pendant 5s
+
+### Rang D
+
+- [ ] **Gobelin** | FM 0.15 | Vitesse 120 | STR 5 DEF 4 AGI 8 MAG 3 LCK 8
+  - Drop : Dents de gobelin ×2–3 | Viande de gobelin ×1 | Métal ×1–4 | Cristal magique (rare)
+  - Coup de poignard : Puissance 7
+  - Jet de pierre *(spécial)* : 10% chance d'étourdir 3s — Puissance 5
+- [ ] **Vipère** | FM 0.25 | Vitesse 150 | STR 6 DEF 5 AGI 14 MAG 4 LCK 8
+  - Drop : Venin ×1–2 | Viande de vipère ×1 | Cristal magique (rare)
+  - Morsure venimeuse : poison 2 dégâts/s pendant 5s — Puissance 6
+  - Constriction *(spécial)* : immobilise 2s — Puissance 4
+- [ ] **Esprit des Ruines** | FM 0.35 | Vitesse 110 | STR 2 DEF 5 AGI 10 MAG 12 LCK 6
+  - Drop : Essence d'ombre ×1 | Étoffe fantomatique ×1 | Cristaux magiques ×1
+  - Toucher spectral : dégâts magiques purs — Puissance 9
+  - Hurlement du passé *(spécial)* : peur 3s + −5% intelligence
+
+### Rang C
+
+- [ ] **Orque Berserker** | FM 0.4 | Vitesse 100 | STR 14 DEF 10 AGI 7 MAG 2 LCK 4
+  - Drop : Os de berserker ×1 | Cristal magique (rare)
+  - Coup de massue : Puissance 3
+  - Frénésie sanglante *(spécial)* : +5 Force, −5 Défense pendant 15s
+- [ ] **Spectre Hanté** | FM 0.4 | Vitesse 100 | STR 3 DEF 7 AGI 12 MAG 15 LCK 6
+  - Drop : Étoffe fantomatique ×1–2 | Essence d'ombre (rare) | Cristal magique ×1
+  - Drain vital : soigne 50% des dégâts infligés — Puissance 8
+  - Hurlement surnaturel *(spécial)* : peur 3s
+- [ ] **Chasseur Elfe Noir** | FM 0.45 | Vitesse 130 | STR 10 DEF 8 AGI 14 MAG 6 LCK 10
+  - Drop : Baie noire ×1–2 | Ambre ×1 | Rune magique (rare)
+  - Tir empoisonné : poison 3 dégâts/s — Puissance 8
+  - Flèche runique *(spécial)* : silence 4s — Puissance 10
+
+### Rang B
+
+- [ ] **Cyclope** | FM 0.5 | Vitesse 80 | STR 18 DEF 16 AGI 4 MAG 3 LCK 5
+  - Drop : Peau brute ×2–4 | Œil de cyclope (rare) | Cristal magique (rare)
+  - Coup massif : Puissance 18
+  - Piétinement *(spécial)* : −15% agilité zone pendant 10s — Puissance 8
+- [ ] **Chaman Corrompu** | FM 0.35 | Vitesse 100 | STR 5 DEF 6 AGI 8 MAG 18 LCK 7
+  - Drop : Essence d'ombre ×1–2 | Totem corrompu (rare) | Cristal magique ×1
+  - Flamme noire : brûlure 5 dégâts/s pendant 5s
+  - Malédiction des ombres *(spécial)* : −5% Force & Défense pendant 15s
+- [ ] **Gardien de Lave** | FM 0.5 | Vitesse 80 | STR 14 DEF 14 AGI 3 MAG 10 LCK 4
+  - Drop : Charbon ×2 | Cœur de flamme ×1 | Lingot d'acier (rare)
+  - Poing brûlant : dégâts + brûlure 5s — Puissance 16
+  - Explosion de lave *(spécial)* : AoE feu 15 dégâts + lenteur 2s
+- [ ] **Basilic Caverneux** | FM 0.55 | Vitesse 100 | STR 12 DEF 12 AGI 8 MAG 3 LCK 5
+  - Drop : Venin ×1 | Écaille de dragon ×1–2 | Graisse animale ×1–2
+  - Morsure paralysante : chance de stun 2s — Puissance 12
+  - Regard pétrifiant *(spécial)* : 10% chance de geler 1 cible 3s
+
+### Rang A
+
+- [ ] **Dragonnet de Feu** | FM 0.5 | Vitesse 150 | STR 12 DEF 10 AGI 9 MAG 14 LCK 8
+  - Drop : Écaille de dragon ×2–3 | Viande de dragonnet ×1 | Cœur de flamme (rare) | Cristal magique ×1 | Graisse animale ×1–3
+  - Griffure : Puissance 14
+  - Souffle enflammé *(spécial)* : brûlure 10 dégâts/s pendant 3s
+- [ ] **Ent Ancien** | FM 0.65 | Vitesse 70 | STR 16 DEF 18 AGI 4 MAG 10 LCK 7
+  - Drop : Ambre ×2 | Résine collante ×2 | Bois renforcé ×1
+  - Écrasement racinaire : AoE physique — Puissance 16
+  - Renaissance sylvestre *(spécial)* : soigne les alliés végétaux de 10%
+
+### Rang S
+
+- [ ] **Seigneur Démoniaque** | FM 1.0 | Vitesse 110 | STR 20 DEF 18 AGI 12 MAG 22 LCK 15
+  - Drop : Corne démoniaque ×1–2 | Cœur des ténèbres (rare) | Éclat du chaos ×2–3 | Cristal magique ×1 | Fragment d'esprit (rare)
+  - Frappe du chaos : Puissance 20
+  - Souffle infernal *(spécial)* : zone, brûlure 15 dégâts/s pendant 4s
+- [ ] **Spectre d'Oubli** | FM 1.0 | Vitesse 150 | STR 8 DEF 10 AGI 16 MAG 20 LCK 12
+  - Drop : Fragment d'esprit ×1 | Essence d'ombre ×1 | Cristal magique ×1
+  - Drain mental : −10% mana + dégâts magiques — Puissance 12
+  - Brume de l'oubli *(spécial)* : silence de zone 3s, chance de perte de compétence temporaire — Puissance 6
 
 ---
 
@@ -92,31 +328,232 @@
 
 ### 6.1 Épées
 
-- [x] Épée d'entraînement | Rang F | Atk 5 | Bois ×2
+- [x] **Épée Rouillée** | Rang F | Atk 5 | Métal brut ×2
+- [ ] **Épée du Soldat** | Rang E | Atk 10 | Lingot de fer ×3, Cuir ×1
+- [ ] **Épée Longue** | Rang D | Atk 15 | Lingot de fer ×4, Bois renforcé ×2
+- [ ] **Lame de Chevalier** | Rang C | Atk 20 | Lingot d'acier ×2, Ambre ×2, Cuir souple ×1
+- [ ] **Épée Draconique** | Rang A | Atk 25 | Lingot d'acier trempé ×2, Écaille de dragon ×2, Cœur de flamme ×1
+
+### 6.2 Haches
+
+- [ ] **Hachette de Bûcheron** | Rang F | Atk 8 | Bois ×2, Lingot de fer ×1
+- [ ] **Hache de Guerre** | Rang E | Atk 14 | Lingot de fer ×2, Bois ×1, Cuir ×1
+- [ ] **Hache Double** | Rang D | Atk 18 | Lingot de fer ×4, Cuir tanné ×1
+- [ ] **Hache Viking** | Rang C | Atk 22 | Lingot d'acier ×3, Ambre ×1, Cuir souple ×1
+
+### 6.3 Lances
+
+- [ ] **Lance de Chasse** | Rang F | Atk 7 | Bois ×2, Lingot de fer ×1
+- [ ] **Pique du Soldat** | Rang E | Atk 12 | Lingot de fer ×3, Cuir ×1
+- [ ] **Lance Royale** | Rang D | Atk 17 | Lingot d'acier ×2, Ambre ×2, Cuir tanné ×1
+- [ ] **Trident de Bataille** | Rang C | Atk 20 | Lingot d'acier ×3, Essence d'ombre ×1
+- [ ] **Lance des Tempêtes** | Rang A | Atk 25 | Essence de vent ×2, Rune magique ×1, Lingot d'acier ×3
+
+### 6.4 Dagues
+
+- [ ] **Dague de Voleur** | Rang F | Atk 5 | Lingot de fer ×1, Cuir ×1
+- [ ] **Lame de Serpent** | Rang D | Atk 10 | Lingot de fer ×2, Venin ×1
+- [ ] **Karambit** | Rang C | Atk 12 | Lingot d'acier ×2, Cuir souple ×1
+
+### 6.5 Marteaux
+
+- [ ] **Marteau de Forgeron** | Rang F | Atk 9 | Bois brut ×2, Fer brut ×1
+- [ ] **Masse d'Armes** | Rang E | Atk 15 | Lingot de fer ×3, Cuir tanné ×1
+- [ ] **Marteau du Titan** | Rang C | Atk 20 | Lingot d'acier ×3, Os de berserker ×1
+- [ ] **Marteau des Tempêtes** | Rang B | Atk 25 | Lingot d'acier ×3, Cristaux magiques ×2
+- [ ] **Marteau du Chaos** | Rang A | Atk 27 | Lingot d'acier trempé ×2, Éclat du chaos ×1, Cristaux magiques ×1
+
+### 6.6 Bâtons
+
+- [ ] **Bâton de Novice** | Rang F | Atk 6 | Bois ×2, Cristaux magiques ×1
+- [ ] **Bâton de Chêne** | Rang E | Atk 10 | Bois ×2, Rune magique ×1
+- [ ] **Bâton Magique** | Rang D | Atk 14 | Bois renforcé ×2, Cristaux magiques ×2
+- [ ] **Bâton du Sage** | Rang B | Atk 18 | Bois renforcé ×3, Rune magique ×1
+
+### 6.7 Arcs
+
+- [ ] **Arc Court** | Rang F | Atk 7 | Bois ×2, Corde ×1
+- [ ] **Arc de Chasseur** | Rang E | Atk 12 | Bois ×3, Cuir tanné ×1, Corde ×1
+- [ ] **Arc Long** | Rang D | Atk 17 | Bois renforcé ×3, Corde ×1
+- [ ] **Arc Elfique** | Rang B | Atk 22 | Bois renforcé ×2, Ambre ×1, Rune magique ×1, Corde ×1
+
+### 6.8 Orbes
+
+- [ ] **Orbe de Cristal** | Rang F | Atk 6 | Verre ×1, Cristaux magiques ×1
+- [ ] **Orbe des Éléments** | Rang E | Atk 10 | Verre ×2, Rune magique ×1
+- [ ] **Orbe de Mana** | Rang D | Atk 14 | Verre ×2, Cristaux magiques ×2, Ambre ×1
+- [ ] **Orbe Runique** | Rang B | Atk 18 | Verre ×2, Rune magique ×2
+
+### 6.9 Grimoires
+
+- [ ] **Grimoire de Novice** | Rang F | Atk 5 | Cuir ×2, Baie noire ×1
+- [ ] **Grimoire des Ombres** | Rang E | Atk 9 | Cuir ×2, Cristaux magiques ×1, Baie noire ×1
+- [ ] **Grimoire des Arcanes** | Rang D | Atk 13 | Cuir tanné ×3, Rune magique ×2
+- [ ] **Grimoire de l'Archimage** | Rang A | Atk 17 | Cuir souple ×3, Baie noire ×2, Cristaux magiques ×2
+
+### 6.10 Shurikens
+
+- [ ] **Shuriken Simple** | Rang F | Atk 4 | Lingot de fer ×1
+- [ ] **Shuriken Tranchant** | Rang E | Atk 6 | Lingot de fer ×2
+- [ ] **Étoile de Lancer** | Rang D | Atk 8 | Lingot d'acier ×3
+- [ ] **Shuriken Empoisonné** | Rang C | Atk 10 | Lingot d'acier ×2, Venin ×1
 
 ---
 
 ## 7. Armures
 
-*(aucune implémentée)*
+### 7.1 Armures Légères (tissu/lin)
+
+**Têtes**
+- [ ] **Chapeau de Paille** | Rang F | Def 1 | Tissu ×1
+- [ ] **Capuche en Lin** | Rang F | Def 2 | Tissu ×2
+- [ ] **Chapeau d'Acolyte** | Rang E | Def 3 | Tissu ×2, Cristaux magiques ×1
+- [ ] **Capuche Matelassée** | Rang E | Def 4 | Tissu ×2
+- [ ] **Chapeau de Druide** | Rang E | Def 4 | Tissu ×2, Essence de vent ×1
+- [ ] **Chapeau Mystique** | Rang D | Def 5 | Tissu ×2, Cristaux magiques ×1, Rune magique ×1
+
+**Torses**
+- [ ] **Robe de l'Apprenti** | Rang F | Def 3 | Tissu ×3
+- [ ] **Robe de Magicien** | Rang E | Def 5 | Tissu ×3, Cristaux magiques ×1
+- [ ] **Robe des Éléments** | Rang D | Def 6 | Tissu renforcé ×2, Essence de vent ×1, Cristaux magiques ×1
+- [ ] **Robe des Arcanes** | Rang C | Def 7 | Tissu renforcé ×3, Rune magique ×1, Cristaux magiques ×2
+- [ ] **Tunique d'Ombre** | Rang B | Def 8 | Tissu renforcé ×2, Essence d'ombre ×1, Baie noire ×1
+
+**Jambes**
+- [ ] **Pantalon de Lin** | Rang F | Def 2 | Tissu ×2
+- [ ] **Pantalon Enchanté** | Rang E | Def 4 | Tissu ×2, Cristaux magiques ×1
+- [ ] **Jambières de Mage** | Rang D | Def 5 | Tissu ×2, Cristaux magiques ×1
+
+### 7.2 Armures Moyennes (cuir)
+
+**Têtes**
+- [ ] **Casque de Patrouilleur** | Rang E | Def 6 | Cuir tanné ×2, Rivets en acier ×1
+- [ ] **Casque de Chasseur** | Rang D | Def 8 | Cuir tanné ×2, Lingot de fer ×1
+- [ ] **Casque d'Éclaireur** | Rang C | Def 10 | Cuir souple ×1, Lingot d'acier ×1, Essence de vent ×1
+
+**Torses**
+- [ ] **Armure de Rôdeur** | Rang E | Def 8 | Cuir tanné ×3, Rivets en acier ×2
+- [ ] **Armure de Mercenaire** | Rang D | Def 10 | Cuir tanné ×3, Lingot de fer ×2
+- [ ] **Armure de l'Éclaireur** | Rang C | Def 12 | Cuir ×2, Lingot d'acier ×2, Essence de vent ×1
+- [ ] **Armure des Ombres** | Rang C | Def 11 | Cuir ×2, Essence d'ombre ×1, Tissu renforcé ×1
+
+**Jambes**
+- [ ] **Jambières du Rôdeur** | Rang E | Def 6 | Cuir tanné ×2, Rivets en acier ×1, Baie noire ×1
+- [ ] **Jambières de Mercenaire** | Rang D | Def 8 | Cuir tanné ×3, Lingot de fer ×1
+- [ ] **Jambières de l'Éclaireur** | Rang C | Def 10 | Cuir souple ×2, Lingot d'acier ×1, Essence de vent ×1
+
+### 7.3 Armures Lourdes (métal)
+
+**Têtes**
+- [ ] **Heaume de Soldat** | Rang E | Def 12 | Lingot de fer ×3, Rivets en acier ×2
+- [ ] **Casque de Chevalier** | Rang D | Def 15 | Lingot d'acier ×2, Cuir tanné ×1, Rivets en acier ×2
+- [ ] **Casque des Highlands** | Rang A | Def 16 | Lingot d'acier ×3, Cuir souple ×1, Essence de vent ×1
+- [ ] **Heaume du Conquérant** | Rang S | Def 18 | Lingot d'acier trempé ×2, Rivets en acier ×3, Œil de cyclope ×1
+
+**Torses**
+- [ ] **Cuirasse de Soldat** | Rang E | Def 15 | Lingot de fer ×3, Cuir ×2, Rivets en acier ×2
+- [ ] **Armure de Chevalier** | Rang D | Def 18 | Lingot d'acier ×3, Rivets en acier ×2, Cuir ×1
+- [ ] **Armure de Guerre** | Rang B | Def 20 | Lingot d'acier trempé ×3, Rivets en acier ×2, Os de berserker ×1
+- [ ] **Plastron Volcan** | Rang A | Def 20 | Lingot d'acier trempé ×3, Charbon ×2, Cœur de flamme ×1
+- [ ] **Armure de Bataille** | Rang S | Def 22 | Lingot d'acier trempé ×2, Rivets en acier ×3, Cuir souple ×1, Cœur de flamme ×1
+
+**Jambes**
+- [ ] **Grèves de Soldat** | Rang E | Def 12 | Lingot de fer ×2, Cuir tanné ×1, Rivets en acier ×1
+- [ ] **Jambières de Chevalier** | Rang D | Def 15 | Lingot d'acier ×2, Cuir tanné ×1, Rivets en acier ×2
+- [ ] **Jambières de Bataille** | Rang B | Def 18 | Lingot d'acier ×2, Lingot d'acier trempé ×1, Os de berserker ×1
 
 ---
 
 ## 8. Accessoires
 
-*(aucun implémenté)*
+### Anneaux
+
+- [ ] **Anneau de Fer** | Rang F | (décoratif) | Lingot de fer ×1
+- [ ] **Anneau de Force** | Rang D | +5 Force | Lingot d'acier ×1, Ambre ×1
+- [ ] **Anneau du Mage** | Rang C | +8 Magie | Lingot d'acier ×1, Cristaux magiques ×1
+- [ ] **Anneau de Vivacité** | Rang C | +5 Agilité | Lingot d'acier ×1, Ambre ×1
+- [ ] **Anneau de Vitalité** | Rang C | +25 PV | Lingot d'acier ×1, Plante médicinale ×1, Cristaux magiques ×1
+
+### Amulettes
+
+- [ ] **Amulette en Bois** | Rang F | (décorative) | Bois ×1
+- [ ] **Amulette de Soin** | Rang D | Régénération lente PV | Lingot d'acier ×1, Plante médicinale ×1
+- [ ] **Amulette de Feu** | Rang C | Résistance au feu | Lingot d'acier ×1, Cristal magique ×1
+- [ ] **Amulette des Anciens** | Rang B | +10% mana max | Lingot d'acier ×1, Rune magique ×1
+- [ ] **Amulette Runique** | Rang B | +25 mana | Lingot d'acier ×1, Rune magique ×2
 
 ---
 
 ## 9. Potions et Consommables
 
-*(aucune implémentée)*
+### Soins & Régénération
+
+- [ ] **Potion de Soin Mineur** | +50 PV | Eau ×1, Plante médicinale ×1
+- [ ] **Potion de Soin** | +100 PV | Eau ×1, Plante médicinale ×2
+- [ ] **Potion de Soin Majeure** | +200 PV | Eau ×2, Plante médicinale ×3, Cristal magique ×1
+
+### Magiques
+
+- [ ] **Potion de Mana Mineur** | +50 Mana | Eau ×1, Cristal magique ×1
+- [ ] **Potion de Mana** | +100 Mana | Eau ×1, Cristal magique ×2
+- [ ] **Potion de Mana Supérieure** | +200 Mana | Eau ×1, Cristal magique ×3
+
+### Défensives & Résistance
+
+- [ ] **Potion de Pierre** | +20 END pendant 20s | Eau ×1, Essence d'ombre ×1
+- [ ] **Potion de Résistance au Feu** | −50% dégâts feu pendant 30s | Eau ×1, Cœur de flamme ×1, Cristal magique ×1
+- [ ] **Potion d'Ombre Protectrice** | −30% dégâts magiques pendant 30s | Eau ×1, Essence d'ombre ×1, Rune magique ×1
+
+### Offensives & Buffs
+
+- [ ] **Potion de Force Brute** | +10 Force pendant 30s | Eau pure ×1, Os de berserker ×1
+- [ ] **Potion de Précision** | +15% critique pendant 30s | Eau pure ×1, Dent de gobelin ×2
+- [ ] **Potion de Vitesse** | +30% Agilité pendant 15s | Eau pure ×1, Essence de vent ×1, Cristal magique ×1
+- [ ] **Potion de Poison** | Arme empoisonnée (3 coups) | Venin ×1, Baies noires ×1, Eau ×1
+- [ ] **Potion de Canalisation** | +20% dégâts magiques pendant 20s | Eau ×1, Essence de vent ×1, Rune magique ×1
+
+### Spéciales / Rares
+
+- [ ] **Potion d'Invisibilité** | Invisibilité 10s | Eau ×1, Essence d'ombre ×1, Cristaux magiques ×1
+- [ ] **Potion de Rage Berserk** | +25 Force, −20% Défense pendant 15s | Huile de bœuf ×1, Os de berserker ×1, Baies noires ×1
+- [ ] **Potion du Chaos** | Effet aléatoire (buffs ou debuffs extrêmes) | Éclat du chaos ×1, Rune magique ×1, Cristal magique ×2
+- [ ] **Potion de Purification** | Supprime poison, brûlure, saignement, malus | Eau ×2, Plante médicinale ×2, Essence d'ombre ×1
 
 ---
 
 ## 10. Enchantements
 
-*(aucun implémenté)*
+> Irréversible, 1 max par équipement. Nécessite la recherche correspondante avant application.
+
+### Rang C *(prérequis : recherche "Enchantement")*
+
+- [ ] **Igni** | Arme | +6 dégâts de feu, 20% brûlure 3s | 5× Cristaux Magiques
+- [ ] **Bouclier de Givre** | Armure | −10% dégâts reçus, +5% résistance au feu | 7× Cristaux Magiques
+- [ ] **Cape de l'Ombre** | Armure | +10% agilité, +5% esquive | 7× Cristaux Magiques
+- [ ] **Aura de Célérité** | Armure | +10% vitesse déplacement, −5% temps attaque | 5× Cristaux Magiques
+- [ ] **Tranchant Raffiné** | Arme | +5% chance de critique | 4× Cristaux Magiques
+
+### Rang B *(prérequis : recherche "Enchantement Avancé")*
+
+- [ ] **Lame de Foudre** | Arme | +8 dégâts foudre, 10% paralysie 1.5s | 6× Cristaux Magiques
+- [ ] **Lumière Purifiante** | Armure | Immunité poison/saignement, +2 PV/s regen | 8× Cristaux Magiques
+- [ ] **Griffes Spectrales** | Arme | +5 dégâts d'ombre, 10% ignore armure | 6× Cristaux Magiques
+- [ ] **Rune du Titan** | Armure | +15% défense physique, +10% poids max | 9× Cristaux Magiques
+- [ ] **Sceau des Arcanes** | Bijou | +10% puissance magique, +10 mana max | 8× Cristaux Magiques
+
+### Rang A *(prérequis : recherche "Enchantement Expert")*
+
+- [ ] **Bénédiction du Gardien** | Armure | 10% dégâts redirigés, +3% armure magique | 9× Cristaux Magiques
+- [ ] **Toucher Vampirique** | Arme | Vol de vie : +3% des dégâts infligés rendus en PV | 10× Cristaux Magiques
+- [ ] **Aura de Vaillance** | Bijou | +8% force, immunité à la peur | 9× Cristaux Magiques
+- [ ] **Réflexe Surnaturel** | Armure | 15% chance d'esquive automatique (CD 2 tours) | 9× Cristaux Magiques
+
+### Rang S *(prérequis : recherche "Enchantement Expert")*
+
+- [ ] **Voile du Néant** | Armure | 20% chance d'éviter toute attaque | 10× Cristaux Magiques + Essence d'ombre ×1
+- [ ] **Lame du Chaos** | Arme | +10 dégâts aléatoires, 5% confusion | 12× Cristaux Magiques + Éclat du chaos ×1
+- [ ] **Aura d'Ascension** | Bijou | +10% toutes stats principales, bonus moral constant | 12× Cristaux Magiques + Fragment d'esprit ×1
+- [ ] **Égide Totale** | Armure | −25% dégâts, +10% résistance magie, −10% vitesse | 11× Cristaux Magiques + Écaille de dragon ×1
 
 ---
 
@@ -124,19 +561,121 @@
 
 ### 11.1 Ressources Naturelles
 
-- [x] Bois | Valeur 2 | Récolte forêt, Achat
+- [x] **Bois** | Valeur 2 | Récolte forêt, Achat
+- [ ] **Pierre** | Valeur 3 | Récolte montagne, Achat
+- [ ] **Lin** | Valeur 2 | Récolte (culture), Achat
+- [ ] **Eau** | Valeur 1 | Récolte (puits), Achat
+- [ ] **Sel** | Valeur 1 | Récolte, Achat
+- [ ] **Baie Noire** | Valeur 1 | Récolte (culture), Achat
+- [ ] **Plante Médicinale** | Valeur 3 | Récolte (culture), Achat
+- [ ] **Ambre** | Valeur 11 | Récolte, Achat
+- [ ] **Résine Collante** | Valeur 5 | Récolte, Achat
+- [ ] **Métal Brut** | Valeur 3 | Récolte, Achat
+- [ ] **Graisse Animale** | Valeur 3 | Drop : Loup, Sanglier, Cyclope
+- [ ] **Peau Brute** | Valeur 3 | Drop : Loup, Sanglier, Cyclope
+- [ ] **Sable** | Valeur 2 | Récolte, Achat
+- [ ] **Miel** | Valeur 2 | Ruche
+- [ ] **Houblon** | Valeur 1 | Culture
+
+### 11.2 Matériaux Artisanaux (Craftables)
+
+- [ ] **Corde** | Valeur 3 | Lin ×3 | Atelier | 1h
+- [ ] **Fil Résistant** | Valeur 4 | Lin ×2, Résine collante ×1 | Atelier | 2h
+- [ ] **Tissu** | Valeur 3 | Lin ×2 | Métier à tisser | 1h
+- [ ] **Tissu Renforcé** | Valeur 3 | Tissu ×1, Fil résistant ×1 | Métier à tisser | 2h
+- [ ] **Cuir** | Valeur 3 | Peau brute ×1, Eau ×1 | Atelier de tannage | 1h
+- [ ] **Cuir Tanné** | Valeur 5 | Cuir ×2, Sel ×1, Eau ×1 | Atelier de tannage | 2h
+- [ ] **Cuir Souple** | Valeur 8 | Cuir tanné ×2, Huile de bœuf ×1 | Atelier de tannage | 3h
+- [ ] **Lingot de Fer** | Valeur 4 | Métal brut ×2 | Forge | 2h
+- [ ] **Lingot d'Acier** | Valeur 6 | Métal brut ×3, Charbon ×1 | Forge | 3h
+- [ ] **Lingot d'Acier Trempé** | Valeur 9 | Lingot d'acier ×2, Huile de trempe ×1, Résine collante ×1, Eau ×1 | Forge | 4h
+- [ ] **Rivets en Acier** | Valeur 3 | Métal brut ×1 | Forge | 1h
+- [ ] **Charbon** | Valeur 3 | Bois ×2 | Forge | 1h
+- [ ] **Verre** | Valeur 3 | Sable ×2, Charbon ×1 | Forge | 2h
+- [ ] **Bois Renforcé** | Valeur 15 | Bois ×2, Résine collante ×1 | Atelier | 2h
+- [ ] **Huile de Bœuf** | Valeur 4 | Graisse animale ×2, Plante médicinale ×1 | Table d'alchimie | 2h
+- [ ] **Huile de Trempe** | Valeur 7 | Huile de bœuf ×1, Résine collante ×1, Eau ×1 | Table d'alchimie | 3h
+- [ ] **Essence de Vent** | Valeur 12 | Cristaux magiques ×2, Gelée de slime ×1 | Table d'alchimie | 4h
+- [ ] **Rune Magique** | Valeur 15 | Cristal magique ×1, Baie noire ×1, Étoffe fantomatique ×1 | Table d'alchimie | 5h
+- [ ] **Farine de Lin** | Valeur 3 | Lin ×2 | Four | —
+
+### 11.3 Matériaux Magiques & Rares
+
+- [ ] **Cristaux Magiques** | Valeur 8 | Drop : tous les mobs
+- [ ] **Essence d'Ombre** | Valeur 15 | Drop : Spectre (rare)
+- [ ] **Étoffe Fantomatique** | Valeur 9 | Drop : Spectre
+- [ ] **Fragment d'Esprit** | Valeur 25 | Drop : Seigneur Démoniaque, Spectre d'oubli
+
+### 11.4 Composants de Monstres (Mob Drops)
+
+- [ ] **Gelée de Slime** | Valeur 2 | Drop : Slime
+- [ ] **Dent de Gobelin** | Valeur 3 | Drop : Gobelin
+- [ ] **Os de Berserker** | Valeur 6 | Drop : Orque Berserker
+- [ ] **Venin** | Valeur 5 | Drop : Vipère, Basilic caverneux
+- [ ] **Écaille de Dragon** | Valeur 10 | Drop : Dragonnet de Feu
+- [ ] **Cœur de Flamme** | Valeur 15 | Drop : Dragonnet de Feu (rare)
+- [ ] **Corne Démoniaque** | Valeur 18 | Drop : Seigneur Démoniaque
+- [ ] **Éclat du Chaos** | Valeur 20 | Drop : Seigneur Démoniaque
+- [ ] **Œil de Cyclope** | — | Drop : Cyclope (rare)
+- [ ] **Totem Corrompu** | — | Drop : Chaman Corrompu (rare)
+- [ ] **Cœur des Ténèbres** | — | Drop : Seigneur Démoniaque (rare)
+
+### 11.5 Ingrédients Culinaires
+
+- [ ] **Œuf** | Valeur 3 | Ferme (poules), Marchand
+- [ ] **Viande de Loup** | Valeur 6 | Drop : Loup
+- [ ] **Carotte** | Valeur 4 | Jardin, Ferme
+- [ ] **Champignons** | Valeur 5 | Récolte forêt, caverne
+- [ ] **Piment Noir** | Valeur 8 | Zone volcanique, Achat
+- [ ] **Herbes Sauvages** | Valeur 4 | Récolte forêt, plaine
+- [ ] **Viande de Gobelin** | Valeur 5 | Drop : Gobelin
+- [ ] **Viande de Vipère** | Valeur 6 | Drop : Vipère
+- [ ] **Viande de Dragon** | Valeur 15 | Drop : Dragonnet de Feu (rare)
+- [ ] **Viande de Sanglier** | Valeur 15 | Drop : Sanglier
+- [ ] **Herbes Rares** | Valeur 10 | Jardin magique, Drop : Chaman corrompu
+- [ ] **Farine de Lin** | Valeur 3 | Lin ×2 (Four)
 
 ---
 
 ## 12. Plats et Fermentés
 
-*(aucun implémenté)*
+### Plats Simples
+
+- [ ] **Pain de Lin** | Satiété 20 | Farine de lin ×2, Eau ×1 | Aucun effet
+- [ ] **Soupe Claire** | Satiété 15 | Eau ×1, Champignon ×1 | +5 PV
+- [ ] **Omelette aux Herbes** | Satiété 25 | Œuf ×2, Herbes sauvages ×1 | +5 énergie
+
+### Plats Nourrissants
+
+- [ ] **Ragoût de Loup** | Satiété 40 | Viande de loup ×2, Carotte ×1, Eau ×1 | +10 défense pendant 60s
+- [ ] **Brochette Forestière** | Satiété 35 | Viande ×1, Champignons ×2, Sel ×1 | +5 agilité pendant 30s
+- [ ] **Curry de Gobelin** | Satiété 45 | Viande de gobelin ×1, Piment noir ×1, Eau ×1 | +10 force pendant 30s
+- [ ] **Tartine aux Baies Noires** | Satiété 30 | Pain ×1, Baies noires ×3 | +5 moral, soigne stress
+
+### Plats Exotiques
+
+- [ ] **Soupe Spectrale** | Satiété 35 | Étoffe fantomatique ×1, Eau ×2, Champignons ×2 | +10 magie pendant 60s
+- [ ] **Tartare de Vipère** | Satiété 40 | Viande de vipère ×1, Herbes ×1, Sel ×1, Huile de bœuf ×1 | Immunité poison 60s
+- [ ] **Filet de Dragon Grillé** | Satiété 50 | Viande de dragon ×1, Cœur de flamme ×1, Herbes rares ×1 | +25% dégâts pendant 60s
+- [ ] **Tourte de Mana** | Satiété 30 | Farine ×2, Œuf ×1, Cristal magique ×1, Sel ×1 | +30 mana instant, +10 mana/30s
+
+### Boissons Fermentées
+
+- [ ] **Bière** | Houblon ×3 | Fermentation 3 jours in-game
+- [ ] **Hydromel** | Miel ×3 | Fermentation 5 jours in-game
 
 ---
 
 ## 13. Cultures
 
-*(aucune implémentée)*
+- [ ] **Lin** | Pousse 2.5 jours | Artisanat textile
+- [ ] **Carotte** | Pousse 3 jours | Cuisine
+- [ ] **Champignons** | Pousse 2 jours | Cuisine + Alchimie
+- [ ] **Baie Noire** | Pousse 3 jours | Cuisine, teinture
+- [ ] **Piment Noir** | Pousse 4 jours | Cuisine
+- [ ] **Herbes Sauvages** | Pousse 2 jours | Cuisine de base, potions mineures
+- [ ] **Herbes Rares** | Pousse 5 jours | Alchimie avancée, potions puissantes
+- [ ] **Plante Médicinale** | Pousse 3 jours | Base pour potions de soin
 
 ---
 
