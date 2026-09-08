@@ -72,7 +72,6 @@
 - [x] NavigationRegion2D — mise à jour après construction
 - [x] GuildCamera — zoom, pan ZQSD, focus, sauvegarde position
 - [ ] 0/57 objets placables dans `ItemRegistry`
-- [ ] Atlas coords hardcodés dans ConstructionLayer → déplacer dans `ItemRegistry`
 - [ ] Beauté des pièces — `Beauté_pièce = Σ(meubles) + Σ(sol × cases) + mur × périmètre` (GDD §5.1)
 - [ ] Température des pièces — `T = T_biome + Σ(modificateurs)` (GDD §5.2)
 - [ ] Beauté / température — impact effectif sur moral et besoins des héros
@@ -94,7 +93,6 @@
 - [x] GuildInventoryManager — 30 slots, drag&drop
 - [x] MarketPanel — achat/vente avec filtre et gating recherche
 - [x] CraftManager — files de craft par poste, progression par tick
-- [ ] CraftPanel — interface de craft (liste recettes disponibles, file d'attente, progression)
 - [ ] 1/33 matériaux dans `MaterialLibrary` — recettes craft non fonctionnelles sans contenu
 - [ ] Recyclage 25% — logique dans `CraftManager` ou `ConstructionManager` (recherche Recyclage primaire)
 - [ ] Recyclage 50% — recherche Recyclage avancé
@@ -130,15 +128,6 @@
 
 ## 7. Progression des héros
 
-- [x] HeroEquipmentView — paperdoll + drag&drop
-- [x] HeroSkillsPanel — UI achat et équipement de compétences (contenu vide)
-- [x] EnchantmentPanel — UI application d'enchantements (contenu vide)
-- [ ] 0/99 compétences dans `SkillLibrary` — panel fonctionnel mais vide
-- [ ] 0/44 armes dans `EquipmentLibrary` (1 arme présente)
-- [ ] 0/32 armures dans `EquipmentLibrary`
-- [ ] 0/10 accessoires dans `EquipmentLibrary`
-- [ ] 0/18 enchantements dans `EnchantmentLibrary`
-- [ ] 0/42 traits dans `TraitLibrary`
 - [ ] 4/6 classes de base manquantes (Roublard, Chasseur, Guérisseur, Invocateur)
 - [ ] 0/12 classes avancées dans `HeroClassRegistry`
 - [ ] Ascension — logique complète : vérification prérequis, transformation HeroData, nouvelles stats
@@ -150,9 +139,6 @@
 - [x] FarmingManager — logique croissance cultures par jours in-game
 - [x] FarmingPanel — interface jardin
 - [ ] 0/8 cultures dans `CropLibrary` — FarmingManager opérationnel mais sans données
-- [ ] 0/11 plats dans `DishLibrary`
-- [ ] 0/2 fermentés dans `DishLibrary`
-- [ ] Consommables — 0/19 potions et consommables dans `EquipmentLibrary`
 - [ ] Fermentation — logique brassage bière (3j) / hydromel (5j) dans `FermentationBarrel`
 - [ ] Cuisine — logique cuisson au fourneau (héros affecté → consomme ingrédients → produit plat)
 - [ ] Plats consommés — application buff temporaire + satiété dans `HeroNeeds`
@@ -176,27 +162,23 @@
 - [ ] 0/57 objets de construction dans `ItemRegistry` (stubs 16 salles prêts)
 
 ### Héros
-- [x] 2/6 classes de base (Guerrier, Mage)
-- [ ] 4/6 classes de base (Roublard, Chasseur, Guérisseur, Invocateur)
-- [ ] 0/12 classes avancées
+- [ ] Classes de base — 2/6 : Guerrier ✓, Mage ✓ · Roublard, Chasseur, Guérisseur, Invocateur à faire
+- [ ] 0/12 classes avancées dans `HeroClassRegistry`
 - [ ] 0/99 compétences dans `SkillLibrary`
 - [ ] 0/42 traits dans `TraitLibrary`
 
 ### Combat
-- [x] 1/19 mobs (Slime)
-- [ ] 18/19 mobs restants dans `MobLibrary`
+- [ ] Mobs — 1/19 : Slime ✓ · 18 restants dans `MobLibrary`
 
 ### Équipement
-- [x] 1/44 armes (Épée Rouillée)
-- [ ] 43/44 armes restantes dans `EquipmentLibrary`
-- [ ] 0/32 armures
-- [ ] 0/10 accessoires
-- [ ] 0/19 consommables
+- [ ] Armes — 1/44 : Épée Rouillée ✓ · 43 restantes dans `EquipmentLibrary`
+- [ ] 0/32 armures dans `EquipmentLibrary`
+- [ ] 0/10 accessoires dans `EquipmentLibrary`
+- [ ] 0/19 consommables dans `EquipmentLibrary`
 - [ ] 0/18 enchantements dans `EnchantmentLibrary`
 
 ### Ressources & Cuisine
-- [x] 1/33 matériaux (Bois)
-- [ ] 32/33 matériaux restants dans `MaterialLibrary`
+- [ ] Matériaux — 1/33 : Bois ✓ · 32 restants dans `MaterialLibrary`
 - [ ] 0/11 plats dans `DishLibrary`
 - [ ] 0/2 fermentés dans `DishLibrary`
 - [ ] 0/8 cultures dans `CropLibrary`
@@ -207,13 +189,13 @@
 
 - [x] HeroPanel — 3 onglets (Liste, Planning, Recruter)
 - [x] HeroEquipmentView — paperdoll + drag&drop
-- [x] HeroSkillsPanel — achat et équipement de compétences
-- [x] EnchantmentPanel — application d'enchantements
+- [x] HeroSkillsPanel — achat et équipement de compétences (contenu vide)
+- [x] EnchantmentPanel — application d'enchantements (contenu vide)
 - [x] BuildMenu — menu construction
 - [x] CombatHUD — CanvasLayer layer=10
 - [x] guild_hud — HUD principal guilde
 - [x] PauseMenu
-- [ ] CraftPanel — interface dédiée craft (file, recettes, progression)
+- [ ] CraftPanel — interface craft (liste recettes, file d'attente, progression)
 - [ ] HeroInspectPanel — fiche détaillée héros (traits, stats complètes, historique missions)
 - [ ] Menu options complet — contrôles remappables + résolution + mode fenêtre (audio OK)
 - [ ] Support manette
