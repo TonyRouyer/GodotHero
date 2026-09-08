@@ -67,7 +67,7 @@
 - [x] ItemRegistry — données items (coût, atlas_id, taille…)
 - [x] RoomManager — détection pièces par flood-fill BFS
 - [x] NavigationRegion2D — mise à jour après construction
-- [x] 50+ objets placables
+- [ ] 0/57 objets placables dans `ItemRegistry` (système ConstructionManager opérationnel)
 - [ ] Beauté des pièces — `Beauté_pièce = Σ(meubles) + Σ(sol × cases) + mur × périmètre` (GDD §5.1)
 - [ ] Température des pièces — `T = T_biome + Σ(modificateurs)` (GDD §5.2)
 - [ ] Atlas coords hardcodés dans ConstructionLayer → déplacer dans ItemRegistry
@@ -105,7 +105,7 @@
 - [x] GuildInventoryManager — 30 slots, drag&drop
 - [x] FarmingManager — 8 cultures, croissance par jours
 - [x] FarmingPanel — interface jardin
-- [x] ResearchManager — 39 recherches sur 10 niveaux
+- [x] ResearchManager — logique complète (progression, prérequis, coût)
 - [x] ResearchPanel — interface de recherche
 - [x] CraftManager — files de craft par poste, progression par tick
 - [ ] Factions / Diplomatie — 4 factions définies, aucun code (GDD §9)
@@ -155,8 +155,8 @@
 - [ ] 0/11 plats dans `DishLibrary` (stubs simples/nourrissants/exotiques prêts)
 - [ ] 0/2 fermentés dans `DishLibrary` (stub prêt)
 - [ ] 0/8 cultures dans `CropLibrary`
-- [x] 39/39 recherches dans `ResearchLibrary`
-- [x] 50+/50+ objets de construction dans `ItemRegistry`
+- [ ] 0/39 recherches dans `ResearchLibrary` (stubs par niveau 1→10 prêts)
+- [ ] 0/57 objets de construction dans `ItemRegistry` (stubs par salle prêts)
 
 ---
 
