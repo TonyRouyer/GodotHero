@@ -42,6 +42,7 @@ const _MARKET_PANEL_SCRIPT       = preload("res://Scenes/Guild/UI/MarketPanel.gd
 const _ENCHANTMENT_PANEL_SCRIPT  = preload("res://Scenes/Guild/UI/EnchantmentPanel.gd")
 const _FARMING_PANEL_SCRIPT      = preload("res://Scenes/Guild/UI/FarmingPanel.gd")
 const _SKILLS_PANEL_SCRIPT       = preload("res://Scenes/Guild/UI/HeroSkillsPanel.gd")
+const _CRAFT_PANEL_SCRIPT        = preload("res://Scenes/Guild/UI/CraftPanel.gd")
 
 
 
@@ -67,6 +68,7 @@ func _ready() -> void:
 	_setup_enchantment_panel()
 	_setup_farming_panel()
 	_setup_skills_panel()
+	_setup_craft_panel()
 	_setup_navigation()
 	_sync_editor_tiles()
 	_connect_event_bus()
@@ -159,6 +161,11 @@ func _setup_farming_panel() -> void:
 
 func _setup_skills_panel() -> void:
 	var panel = _SKILLS_PANEL_SCRIPT.new()
+	$UILayer.add_child(panel)
+
+
+func _setup_craft_panel() -> void:
+	var panel = _CRAFT_PANEL_SCRIPT.new()
 	$UILayer.add_child(panel)
 
 

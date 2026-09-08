@@ -1033,6 +1033,13 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 14
 text = "📜 Quêtes"
 
+[node name="CraftTabBtn" type="Button" parent="UILayer/HUD/BottomBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "⚒ Craft"
+
 [node name="HeroPanel" parent="UILayer" instance=ExtResource("5")]
 visible = false
 
@@ -1053,3 +1060,4 @@ visible = false
 [connection signal="pressed" from="UILayer/HUD/BottomBar/InventoryTabBtn" to="UILayer/HUD" method="_on_inventory_tab_pressed"]
 [connection signal="pressed" from="UILayer/HUD/BottomBar/MapTabBtn" to="UILayer/HUD" method="_on_map_tab_pressed"]
 [connection signal="pressed" from="UILayer/HUD/BottomBar/QuestTabBtn" to="UILayer/HUD" method="_on_quest_tab_pressed"]
+[connection signal="pressed" from="UILayer/HUD/BottomBar/CraftTabBtn" to="UILayer/HUD" method="_on_craft_tab_pressed"]

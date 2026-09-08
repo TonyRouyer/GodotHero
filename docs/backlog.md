@@ -195,7 +195,7 @@
 - [x] CombatHUD — CanvasLayer layer=10
 - [x] guild_hud — HUD principal guilde
 - [x] PauseMenu
-- [ ] CraftPanel — interface craft (liste recettes, file d'attente, progression)
+- [x] CraftPanel — interface craft (liste recettes, file d'attente, progression)
 - [ ] HeroInspectPanel — fiche détaillée héros (traits, stats complètes, historique missions)
 - [ ] Menu options complet — contrôles remappables + résolution + mode fenêtre (audio OK)
 - [ ] Support manette
