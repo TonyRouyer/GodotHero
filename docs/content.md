@@ -147,8 +147,8 @@
 
 ## 3. Compétences par Classe
 
-> Les compétences sont détaillées dans un document séparé (non encore intégré).
 > Chaque héros équipe 4 compétences en combat. Coût en points de compétence (15 pts/niveau).
+> Compétences acquises à la génération : floor(Niveau / 5).
 
 | Rang | Coût |
 |------|------|
@@ -160,12 +160,126 @@
 | A | 150 pts |
 | S | 180 pts |
 
-- [ ] Compétences Guerrier (actives + passives, rangs F → S)
-- [ ] Compétences Mage (actives + passives, rangs F → S)
-- [ ] Compétences Roublard (actives + passives, rangs F → S)
-- [ ] Compétences Chasseur (actives + passives, rangs F → S)
-- [ ] Compétences Guérisseur (actives + passives, rangs F → S)
-- [ ] Compétences Invocateur (actives + passives, rangs F → S)
+### 3.1 Guerrier *(20 compétences)*
+
+- [ ] **Coup Direct** | Rang F | Active | 3s cd | Inflige un coup +10% dégâts
+- [ ] **Endurance** | Rang F | Passive | Résistance dégâts physiques +5%
+- [ ] **Taillade** | Rang E | Active | 6s cd | +20% dégâts si ennemi < 50% PV
+- [ ] **Entraînement au Bouclier** | Rang E | Passive | Réduit dégâts reçus de 10%
+- [ ] **Rage** | Rang D | Active | 30s cd | +15% Force pendant 15s
+- [ ] **Durcissement** | Rang D | Passive | +10% défense permanent
+- [ ] **Coup de Bouclier** | Rang C | Active | 12s cd | 50% dégâts arme + stun 2s
+- [ ] **Résilience** | Rang C | Passive | Réduit tous les dégâts entrants de 5%
+- [ ] **Attaque Frénétique** | Rang C | Active | 15s cd | 5 coups rapides à 75% dégâts chacun
+- [ ] **Cri de Guerre** | Rang B | Active | 45s cd | +10% Force & Défense alliés proches 30s
+- [ ] **Maîtrise de l'Épée** | Rang B | Passive | +15% dégâts avec épée
+- [ ] **Briseur d'Armure** | Rang B | Active | 30s cd | −20% défense ennemi 10s
+- [ ] **Implacable** | Rang B | Passive | Récupère 2% PV max à chaque kill
+- [ ] **Maîtrise du Bouclier** | Rang A | Passive | Réduit dégâts de toutes attaques de 15%
+- [ ] **Frappe du Jugement** | Rang A | Active | 30s cd | 200% dégâts + −25% défense ennemi 10s
+- [ ] **Fureur de Bataille** | Rang A | Active | 45s cd | +30% dégâts, effets négatifs −50% durée 20s
+- [ ] **Invincible** | Rang S | Active | 60s cd | Invulnérable 10s
+- [ ] **Maître d'Armes** | Rang S | Passive | +20% dégâts toutes armes
+- [ ] **Défenseur du Roi** | Rang S | Active | 60s cd | −10% dégâts alliés proches, transfert 5% dégâts sur soi 30s
+- [ ] **Coup de Grâce** | Rang S | Active | 90s cd | Kill instantané sur ennemi < 20% PV
+
+### 3.2 Mage *(19 compétences)*
+
+- [ ] **Projectiles Magiques** | Rang F | Active | 3s cd | 10 mana | Projectiles légers
+- [ ] **Protection Mineure** | Rang F | Active | 20s cd | 8 mana | −5% dégâts subis 15s
+- [ ] **Boule de Feu** | Rang E | Active | 5s cd | 15 mana | Dégâts de feu modérés monocible
+- [ ] **Maîtrise du Mana** | Rang E | Passive | Régénération mana +10%
+- [ ] **Éclair** | Rang E | Active | 5s cd | 14 mana | Dégâts foudre + stun 2s (chance)
+- [ ] **Bouclier Magique** | Rang D | Active | 25s cd | 20 mana | Absorbe 50% dégâts 10s
+- [ ] **Explosion Arcanique** | Rang C | Active | 30s cd | 30 mana | AoE 50px dégâts magiques
+- [ ] **Canalisation** | Rang C | Active | 35s cd | 25 mana | +15% dégâts sorts 20s
+- [ ] **Flammes Infernales** | Rang C | Active | 30s cd | 35 mana | Colonne feu, zone, 10s
+- [ ] **Gelure** | Rang B | Active | 45s cd | 28 mana | Dégâts glace + immobilise 5s
+- [ ] **Nova de Glace** | Rang B | Active | 45s cd | 32 mana | AoE glace + −50% vitesse 5s
+- [ ] **Volonté de Fer** | Rang B | Passive | Durée effets négatifs −25%
+- [ ] **Tempête de Foudre** | Rang A | Active | 45s cd | 40 mana | AoE foudre multi-cibles
+- [ ] **Drain de Vie** | Rang A | Active | 45s cd | 35 mana | Draine 10% PV cible sur 5s, soigne mage
+- [ ] **Explosion Magique** | Rang A | Active | 45s cd | 45 mana | AoE 75px massive
+- [ ] **Maîtrise des Arcanes** | Rang S | Passive | +25% dégâts tous sorts
+- [ ] **Inversion des Sorts** | Rang S | Active | 30s cd | 30 mana | Renvoie sorts adverses 5s
+- [ ] **Flamme Éternelle** | Rang S | Active | 60s cd | 50 mana | Flamme zone constante 15s
+- [ ] **Métamorphose** | Rang S | Active | 90s cd | 60 mana | Forme magique : +50% dégâts mage, −30% dégâts reçus 20s
+
+### 3.3 Roublard *(17 compétences)*
+
+- [ ] **Coup Rapide** | Rang F | Active | 3s cd | Attaque rapide +10% dégâts
+- [ ] **Esquive** | Rang F | Active | 20s cd | +5% esquive 10s
+- [ ] **Lancer de Dague** | Rang E | Active | 5s cd | 20% dégâts à distance
+- [ ] **Camouflage** | Rang E | Active | 15s cd | Invisibilité 5s, −100 aggro
+- [ ] **Coup Bas** | Rang D | Active | 12s cd | +20% dégâts + −10% défense ennemi 5s
+- [ ] **Maître des Poisons** | Rang D | Passive | Dégâts poisons +15%
+- [ ] **Pas de l'Ombre** | Rang C | Active | 15s cd | Téléport derrière ennemi + dégâts critiques
+- [ ] **Piège** | Rang C | Active | 20s cd | Immobilise ennemi 3s
+- [ ] **Attaque Furtive** | Rang C | Passive | +30% dégâts si en furtivité
+- [ ] **Coup Critique** | Rang B | Active | 20s cd | +20% chance de critique 10s
+- [ ] **Maître des Ombres** | Rang B | Passive | Durée furtivité +30%
+- [ ] **Paralysie** | Rang B | Active | 25s cd | Paralyse ennemi 5s
+- [ ] **Saignée** | Rang A | Active | 25s cd | 30% dégâts + saignement
+- [ ] **Danse des Lames** | Rang A | Active | 25s cd | Série d'attaques rapides AoE 30px
+- [ ] **Évasion** | Rang A | Active | 30s cd | 50% esquive toutes attaques 10s
+- [ ] **Assassinat** | Rang S | Active | 60s cd | 50% dégâts + 25% kill instantané si < 30% PV
+- [ ] **Toxines Mortelles** | Rang S | Active | 60s cd | Toutes attaques empoisonnées 15s
+
+### 3.4 Chasseur *(14 compétences)*
+
+- [ ] **Tir Précis** | Rang F | Active | 3s cd | 20% dégâts, précision accrue
+- [ ] **Flèche Empoisonnée** | Rang F | Active | 5s cd | 10% dégâts + poison
+- [ ] **Tir Rapide** | Rang E | Active | 10s cd | 2 flèches à 15% dégâts chacune
+- [ ] **Œil de Faucon** | Rang E | Passive | Portée +10%, dégâts arc +10%
+- [ ] **Tir Explosif** | Rang D | Active | 10s cd | AoE autour de la cible, 20% dégâts
+- [ ] **Flèche Enflammée** | Rang C | Active | 12s cd | Dégâts de feu sur la durée
+- [ ] **Piège à Loups** | Rang C | Active | 20s cd | Immobilise ennemi 5s
+- [ ] **Flèche Perforante** | Rang B | Active | 18s cd | 20% dégâts, ignore 20% défense
+- [ ] **Tir en Cascade** | Rang B | Active | 20s cd | 5 flèches multi-cibles à 15% chacune
+- [ ] **Concentration** | Rang A | Passive | +5% chance de coup critique
+- [ ] **Flèche Mortelle** | Rang A | Active | 30s cd | 50% dégâts + 50% chance critique
+- [ ] **Piqûre de Scorpion** | Rang A | Active | 25s cd | Paralyse + empoisonne 3s
+- [ ] **Tir Légendaire** | Rang S | Active | 60s cd | 300% dégâts + kill instantané si < 20% PV
+- [ ] **Pluie de Flèches** | Rang S | Active | 45s cd | Salve AoE massive
+
+### 3.5 Guérisseur *(14 compétences)*
+
+- [ ] **Soin Mineur** | Rang F | Active | 3s cd | 10 mana | Soigne 15% PV d'un allié
+- [ ] **Lumière Purificatrice** | Rang F | Active | 5s cd | 8 mana | Dissipe 1 effet négatif
+- [ ] **Bouclier de Lumière** | Rang E | Active | 5s cd | 15 mana | Bouclier allié, absorbe 15% dégâts 10s
+- [ ] **Régénération** | Rang E | Active | 20s cd | 20 mana | +2% PV/s allié pendant 10s
+- [ ] **Prière** | Rang D | Active | 20s cd | 18 mana | +10% défense alliés zone 50px, 15s
+- [ ] **Soin de Groupe** | Rang C | Active | 20s cd | 25 mana | +20% PV tous alliés zone 50px
+- [ ] **Barrière Protectrice** | Rang C | Active | 25s cd | 30 mana | −15% dégâts reçus tous alliés 10s
+- [ ] **Lumière Divine** | Rang B | Active | 25s cd | 35 mana | +40% PV allié + dissipe tous effets négatifs
+- [ ] **Main de Lumière** | Rang B | Active | 20s cd | 30 mana | +50% PV allié instantané
+- [ ] **Purification de Masse** | Rang A | Active | 30s cd | 35 mana | Dissipe tous effets négatifs alliés zone 50px
+- [ ] **Bouclier Sacré** | Rang A | Active | 35s cd | 40 mana | Absorbe tous dégâts allié 10s
+- [ ] **Soin Suprême** | Rang S | Active | 45s cd | 60 mana | +75% PV tous alliés zone 75px
+- [ ] **Résurrection** | Rang S | Active | 90s cd | 70 mana | Ressuscite tous alliés tombés à 30% PV
+- [ ] **Bénédiction Divine** | Rang S | Active | 60s cd | 50 mana | +20% toutes stats alliés zone 75px, 15s
+
+### 3.6 Invocateur *(15 compétences)*
+
+- [ ] **Invocation Mineure** | Rang F | Active | 30s cd | 10 mana | Familier mineur 10s
+- [ ] **Maîtrise des Esprits** | Rang F | Passive | Durée invocations +5%
+- [ ] **Lien Spirituel** | Rang E | Active | 15s cd | 15 mana | PV & dégâts invocations +10%
+- [ ] **Invocation de Loup Fantôme** | Rang E | Active | 30s cd | 20 mana | Loup spectral 15s
+- [ ] **Invocation de Golem** | Rang D | Active | 30s cd | 25 mana | Golem tank 15s
+- [ ] **Réanimation** | Rang D | Active | — | 30 mana | Réanime un ennemi tombé (alié 10s)
+- [ ] **Invocation de Feu Follet** | Rang C | Active | 25s cd | 22 mana | Feu follet explosif AoE 15px
+- [ ] **Canalisation Spirituelle** | Rang C | Active | 25s cd | 25 mana | +15% puissance invocations 20s
+- [ ] **Invocation d'Élémentaire** | Rang C | Active | 30s cd | 35 mana | Élémentaire aléatoire 30s
+- [ ] **Maître des Invocations** | Rang B | Passive | Durée invocations +20%
+- [ ] **Invocation de Dragonnet** | Rang A | Active | 45s cd | 40 mana | Dragonnet souffle de feu 15s
+- [ ] **Siphon de Vie** | Rang A | Active | 30s cd | 20 mana | Draine 10% PV invocation pour soigner
+- [ ] **Invocation de Phénix** | Rang S | Active | 60s cd | 50 mana | Phénix (ressuscite 1 fois) 30s
+- [ ] **Armée des Ombres** | Rang S | Active | 60s cd | 45 mana | 5 ombres combattantes
+- [ ] **Gardien Céleste** | Rang S | Active | 60s cd | 50 mana | Gardien −20% dégâts alliés zone 75px
+
+### 3.7 Classes Avancées
+
+*(Compétences à définir — section marquée "à compléter" dans le document de design)*
 
 ---
 
