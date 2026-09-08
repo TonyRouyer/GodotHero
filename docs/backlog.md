@@ -138,20 +138,20 @@
 
 ## 7. Contenu (data)
 
-- [ ] 2/6 classes de base dans `HeroClassRegistry` (Guerrier, Mage)
-- [ ] 0/12 classes avancées dans `HeroClassRegistry`
-- [ ] 0/? compétences dans `SkillLibrary`
-- [ ] 0/42 traits dans `TraitLibrary`
-- [ ] 1/19 mobs dans `MobLibrary` (Slime)
-- [ ] 1/? armes dans `EquipmentLibrary` (Épée d'entraînement)
-- [ ] 0/? armures dans `EquipmentLibrary`
-- [ ] 0/? accessoires dans `EquipmentLibrary`
-- [ ] 0/? potions et consommables dans `EquipmentLibrary`
-- [ ] 0/18 enchantements dans `EnchantmentLibrary`
-- [ ] 1/? matériaux dans `MaterialLibrary` (Bois)
-- [ ] 0/11 plats dans `DishLibrary`
-- [ ] 0/2 fermentés dans `DishLibrary`
-- [ ] 0/8 cultures dans `FarmingManager`
+- [x] 2/2 classes de base dans `HeroClassRegistry` (Guerrier, Mage)
+- [ ] 0 classes avancées dans `HeroClassRegistry`
+- [ ] 0 compétences dans `SkillLibrary`
+- [ ] 0 traits dans `TraitLibrary`
+- [x] 1/1 mob dans `MobLibrary` (Slime)
+- [x] 1/1 arme dans `EquipmentLibrary` (Épée Rouillée)
+- [ ] 0 armures dans `EquipmentLibrary`
+- [ ] 0 accessoires dans `EquipmentLibrary`
+- [ ] 0 consommables dans `EquipmentLibrary`
+- [ ] 0 enchantements dans `EnchantmentLibrary`
+- [x] 1/1 matériau dans `MaterialLibrary` (Bois)
+- [ ] 0 plats dans `DishLibrary`
+- [ ] 0 fermentés dans `DishLibrary`
+- [ ] 0 cultures dans `CropLibrary`
 - [x] 39/39 recherches dans `ResearchLibrary`
 - [x] 50+/50+ objets de construction dans `ItemRegistry`
 

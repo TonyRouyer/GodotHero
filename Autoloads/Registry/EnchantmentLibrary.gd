@@ -134,147 +134,25 @@ func _e(id: String, label: String, rank: String, stats: Dictionary,
 #  RANG C (5 enchantements)
 # ─────────────────────────────────────────────
 func _register_rank_c() -> void:
-	var cost_c : Array = [
-		{"item_id": "arcane_crystal", "qty": 2},
-		{"item_id": "magic_ore",      "qty": 1},
-	]
-
-	_e("ench_acier_trempant", "Acier Trempant", "C",
-		{"atk": 8},
-		["weapon"],
-		cost_c,
-		"Trempe la lame dans un alliage arcanique. +8 ATK.")
-
-	_e("ench_protection", "Protection", "C",
-		{"def": 8},
-		["armor"],
-		cost_c,
-		"Renforce la structure de l'armure. +8 DEF.")
-
-	_e("ench_vitalite", "Vitalité", "C",
-		{"hp": 15},
-		["weapon", "armor", "accessory"],
-		cost_c,
-		"Infuse l'item d'une énergie vitale. +15 HP max.")
-
-	_e("ench_mana_flux", "Flux de Mana", "C",
-		{"mana": 12},
-		["weapon", "armor", "accessory"],
-		cost_c,
-		"Canalisateur de flux magique. +12 MANA max.")
-
-	_e("ench_rapidite", "Rapidité", "C",
-		{"spd": 5},
-		["weapon", "armor", "accessory"],
-		cost_c,
-		"Allège le poids de l'item. +5 SPD.")
+	pass
 
 
 # ─────────────────────────────────────────────
 #  RANG B (5 enchantements)
 # ─────────────────────────────────────────────
 func _register_rank_b() -> void:
-	var cost_b : Array = [
-		{"item_id": "arcane_crystal", "qty": 3},
-		{"item_id": "magic_ore",      "qty": 2},
-	]
-
-	_e("ench_frappe_vive", "Frappe Vive", "B",
-		{"atk": 15, "spd": 5},
-		["weapon"],
-		cost_b,
-		"Accélère la cadence d'attaque. +15 ATK, +5 SPD.")
-
-	_e("ench_resistance_magique", "Résistance Magique", "B",
-		{"mdef": 12},
-		["armor"],
-		cost_b,
-		"Tisse un voile anti-magie dans l'armure. +12 MDEF.")
-
-	_e("ench_vigueur", "Vigueur Suprême", "B",
-		{"hp": 25},
-		["weapon", "armor", "accessory"],
-		cost_b,
-		"Réserve de force vitale majeure. +25 HP max.")
-
-	_e("ench_arcane", "Arcane", "B",
-		{"matk": 12},
-		["weapon", "accessory"],
-		cost_b,
-		"Charge l'item d'énergie arcanique pure. +12 MATK.")
-
-	_e("ench_chance", "Chance du Héros", "B",
-		{"crit": 8},
-		["weapon", "armor", "accessory"],
-		cost_b,
-		"La fortune sourit à ce héros. +8 CRIT.")
+	pass
 
 
 # ─────────────────────────────────────────────
 #  RANG A (5 enchantements)
 # ─────────────────────────────────────────────
 func _register_rank_a() -> void:
-	var cost_a : Array = [
-		{"item_id": "arcane_crystal", "qty": 5},
-		{"item_id": "magic_ore",      "qty": 2},
-		{"item_id": "magic_essence",  "qty": 1},
-	]
-
-	_e("ench_devastateur", "Dévastateur", "A",
-		{"atk": 22},
-		["weapon"],
-		cost_a,
-		"Une puissance dévastatrice gravée dans le métal. +22 ATK.")
-
-	_e("ench_gardien", "Gardien", "A",
-		{"def": 18, "hp": 15},
-		["armor"],
-		cost_a,
-		"Le porteur devient un bastion imprenable. +18 DEF, +15 HP.")
-
-	_e("ench_vitesse_lumiere", "Vitesse de la Lumière", "A",
-		{"spd": 20},
-		["weapon", "armor", "accessory"],
-		cost_a,
-		"Se déplace à la vitesse de la lumière. +20 SPD.")
-
-	_e("ench_arcane_majeur", "Arcane Majeur", "A",
-		{"matk": 20, "mana": 15},
-		["weapon", "accessory"],
-		cost_a,
-		"Un condensé de magie brute. +20 MATK, +15 MANA.")
-
-	_e("ench_critique_mortel", "Critique Mortel", "A",
-		{"crit": 15},
-		["weapon", "armor", "accessory"],
-		cost_a,
-		"Chaque coup porté peut être fatal. +15 CRIT.")
+	pass
 
 
 # ─────────────────────────────────────────────
 #  RANG S (3 enchantements)
 # ─────────────────────────────────────────────
 func _register_rank_s() -> void:
-	var cost_s : Array = [
-		{"item_id": "arcane_crystal", "qty": 5},
-		{"item_id": "magic_ore",      "qty": 3},
-		{"item_id": "magic_essence",  "qty": 2},
-	]
-
-	_e("ench_legendaire_atk", "Légendaire: Attaque", "S",
-		{"atk": 35, "crit": 10},
-		["weapon"],
-		cost_s,
-		"Un enchantement de légende. +35 ATK, +10 CRIT.")
-
-	_e("ench_legendaire_def", "Légendaire: Défense", "S",
-		{"def": 28, "mdef": 28},
-		["armor"],
-		cost_s,
-		"Un bouclier impénétrable. +28 DEF, +28 MDEF.")
-
-	_e("ench_omnipuissant", "Omnipuissant", "S",
-		{"atk": 15, "def": 15, "matk": 15, "mdef": 15},
-		["weapon", "armor", "accessory"],
-		cost_s,
-		"La puissance absolue dans toutes ses formes. +15 à ATK, DEF, MATK, MDEF.")
+	pass
