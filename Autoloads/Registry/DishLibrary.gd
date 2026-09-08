@@ -56,7 +56,35 @@ func _d(id: String, label: String, satiety: float, buff: Dictionary,
 
 
 # ─────────────────────────────────────────────
-#  RECETTES (11 plats)
+#  PLATS SIMPLES (3)
 # ─────────────────────────────────────────────
-func _register_dishes() -> void:
+func _register_simples() -> void:
 	pass
+
+
+# ─────────────────────────────────────────────
+#  PLATS NOURRISSANTS (4)
+# ─────────────────────────────────────────────
+func _register_nourrissants() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  PLATS EXOTIQUES (4)
+# ─────────────────────────────────────────────
+func _register_exotiques() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  BOISSONS FERMENTÉES (2)
+# ─────────────────────────────────────────────
+func _register_fermentes() -> void:
+	pass
+
+
+func _register_dishes() -> void:
+	_register_simples()
+	_register_nourrissants()
+	_register_exotiques()
+	_register_fermentes()

@@ -164,10 +164,9 @@ func _cons(id: String, label: String, subtype: String, stats: Dictionary,
 
 
 # ─────────────────────────────────────────────
-#  ARMES
+#  ARMES — ÉPÉES
 # ─────────────────────────────────────────────
-func _register_weapons() -> void:
-
+func _register_epees() -> void:
 	_w("epee_rouille", "Épée Rouillée", "epee", "F",
 		{"atk": 5},
 		[{"item_id": "iron_ore", "qty": 2}], 15,
@@ -175,35 +174,219 @@ func _register_weapons() -> void:
 
 
 # ─────────────────────────────────────────────
-#  ARMURES
+#  ARMES — HACHES
 # ─────────────────────────────────────────────
+func _register_haches() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMES — LANCES
+# ─────────────────────────────────────────────
+func _register_lances() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMES — DAGUES
+# ─────────────────────────────────────────────
+func _register_daggers() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMES — MARTEAUX
+# ─────────────────────────────────────────────
+func _register_marteaux() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMES — BÂTONS
+# ─────────────────────────────────────────────
+func _register_batons() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMES — ARCS
+# ─────────────────────────────────────────────
+func _register_arcs() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMES — ORBES
+# ─────────────────────────────────────────────
+func _register_orbes() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMES — GRIMOIRES
+# ─────────────────────────────────────────────
+func _register_grimoires() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMES — SHURIKENS
+# ─────────────────────────────────────────────
+func _register_shurikens() -> void:
+	pass
+
+
+func _register_weapons() -> void:
+	_register_epees()
+	_register_haches()
+	_register_lances()
+	_register_daggers()
+	_register_marteaux()
+	_register_batons()
+	_register_arcs()
+	_register_orbes()
+	_register_grimoires()
+	_register_shurikens()
+
+
+# ─────────────────────────────────────────────
+#  ARMURES TORSE — LÉGÈRES (tissu/lin)
+# ─────────────────────────────────────────────
+func _register_armors_legeres() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMURES TORSE — MOYENNES (cuir)
+# ─────────────────────────────────────────────
+func _register_armors_moyennes() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMURES TORSE — LOURDES (métal)
+# ─────────────────────────────────────────────
+func _register_armors_lourdes() -> void:
+	pass
+
+
 func _register_armors() -> void:
+	_register_armors_legeres()
+	_register_armors_moyennes()
+	_register_armors_lourdes()
+
+
+# ─────────────────────────────────────────────
+#  ARMURES TÊTE — LÉGÈRES
+# ─────────────────────────────────────────────
+func _register_armor_heads_legeres() -> void:
 	pass
 
 
 # ─────────────────────────────────────────────
-#  ARMURES — TÊTES
+#  ARMURES TÊTE — MOYENNES
 # ─────────────────────────────────────────────
+func _register_armor_heads_moyennes() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMURES TÊTE — LOURDES
+# ─────────────────────────────────────────────
+func _register_armor_heads_lourdes() -> void:
+	pass
+
+
 func _register_armor_heads() -> void:
+	_register_armor_heads_legeres()
+	_register_armor_heads_moyennes()
+	_register_armor_heads_lourdes()
+
+
+# ─────────────────────────────────────────────
+#  ARMURES JAMBES — LÉGÈRES
+# ─────────────────────────────────────────────
+func _register_armor_legs_legeres() -> void:
 	pass
 
 
 # ─────────────────────────────────────────────
-#  ARMURES — JAMBES
+#  ARMURES JAMBES — MOYENNES
 # ─────────────────────────────────────────────
+func _register_armor_legs_moyennes() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  ARMURES JAMBES — LOURDES
+# ─────────────────────────────────────────────
+func _register_armor_legs_lourdes() -> void:
+	pass
+
+
 func _register_armor_legs() -> void:
+	_register_armor_legs_legeres()
+	_register_armor_legs_moyennes()
+	_register_armor_legs_lourdes()
+
+
+# ─────────────────────────────────────────────
+#  ACCESSOIRES — ANNEAUX
+# ─────────────────────────────────────────────
+func _register_anneaux() -> void:
 	pass
 
 
 # ─────────────────────────────────────────────
-#  ACCESSOIRES
+#  ACCESSOIRES — AMULETTES
 # ─────────────────────────────────────────────
+func _register_amulettes() -> void:
+	pass
+
+
 func _register_accessories() -> void:
+	_register_anneaux()
+	_register_amulettes()
+
+
+# ─────────────────────────────────────────────
+#  CONSOMMABLES — POTIONS DE SOIN
+# ─────────────────────────────────────────────
+func _register_potions_soins() -> void:
 	pass
 
 
 # ─────────────────────────────────────────────
-#  CONSOMMABLES
+#  CONSOMMABLES — POTIONS MAGIQUES
 # ─────────────────────────────────────────────
+func _register_potions_magiques() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  CONSOMMABLES — POTIONS DÉFENSIVES
+# ─────────────────────────────────────────────
+func _register_potions_defensives() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  CONSOMMABLES — POTIONS OFFENSIVES
+# ─────────────────────────────────────────────
+func _register_potions_offensives() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  CONSOMMABLES — POTIONS SPÉCIALES / RARES
+# ─────────────────────────────────────────────
+func _register_potions_speciales() -> void:
+	pass
+
+
 func _register_consumables() -> void:
-	pass
+	_register_potions_soins()
+	_register_potions_magiques()
+	_register_potions_defensives()
+	_register_potions_offensives()
+	_register_potions_speciales()

@@ -25,11 +25,62 @@ const PASSIVE_COMBAT_EFFECTS : Dictionary = {}
 
 
 func _ready() -> void:
+	_register_guerrier_skills()
+	_register_mage_skills()
+	_register_roublard_skills()
+	_register_chasseur_skills()
+	_register_guerisseur_skills()
+	_register_invocateur_skills()
+
+
+
+
+
+
+# ─────────────────────────────────────────────
+#  HELPERS D'ENREGISTREMENT
+# ─────────────────────────────────────────────
+
+# ─────────────────────────────────────────────
+#  GUERRIER (20 compétences — rangs F → S)
+# ─────────────────────────────────────────────
+func _register_guerrier_skills() -> void:
 	pass
 
 
+# ─────────────────────────────────────────────
+#  MAGE (19 compétences — rangs F → S)
+# ─────────────────────────────────────────────
+func _register_mage_skills() -> void:
+	pass
 
 
+# ─────────────────────────────────────────────
+#  ROUBLARD (17 compétences — rangs F → S)
+# ─────────────────────────────────────────────
+func _register_roublard_skills() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  CHASSEUR (14 compétences — rangs F → S)
+# ─────────────────────────────────────────────
+func _register_chasseur_skills() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  GUÉRISSEUR (14 compétences — rangs F → S)
+# ─────────────────────────────────────────────
+func _register_guerisseur_skills() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  INVOCATEUR (15 compétences — rangs F → S)
+# ─────────────────────────────────────────────
+func _register_invocateur_skills() -> void:
+	pass
 
 
 # ─────────────────────────────────────────────

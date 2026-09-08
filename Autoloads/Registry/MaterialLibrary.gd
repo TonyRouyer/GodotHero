@@ -35,10 +35,38 @@ func _register_natural() -> void:
 
 
 # ─────────────────────────────────────────────
-#  MATÉRIAUX ARTISANAUX (craftables)
+#  CRAFTABLES — TEXTILES (Corde, Tissu, Cuir…)
 # ─────────────────────────────────────────────
-func _register_craftable() -> void:
+func _register_craftable_textiles() -> void:
 	pass
+
+
+# ─────────────────────────────────────────────
+#  CRAFTABLES — MÉTALLURGIE (Lingots, Rivets…)
+# ─────────────────────────────────────────────
+func _register_craftable_metals() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  CRAFTABLES — ALCHIMIE (Huiles, Essences…)
+# ─────────────────────────────────────────────
+func _register_craftable_alchemy() -> void:
+	pass
+
+
+# ─────────────────────────────────────────────
+#  CRAFTABLES — DIVERS (Bois renforcé, Verre…)
+# ─────────────────────────────────────────────
+func _register_craftable_divers() -> void:
+	pass
+
+
+func _register_craftable() -> void:
+	_register_craftable_textiles()
+	_register_craftable_metals()
+	_register_craftable_alchemy()
+	_register_craftable_divers()
 
 
 # ─────────────────────────────────────────────
