@@ -138,20 +138,23 @@
 
 ## 7. Contenu (data)
 
-- [x] 2/2 classes de base dans `HeroClassRegistry` (Guerrier, Mage)
-- [ ] 0 classes avancées dans `HeroClassRegistry`
-- [ ] 0 compétences dans `SkillLibrary`
-- [ ] 0 traits dans `TraitLibrary`
-- [x] 1/1 mob dans `MobLibrary` (Slime)
-- [x] 1/1 arme dans `EquipmentLibrary` (Épée Rouillée)
-- [ ] 0 armures dans `EquipmentLibrary`
-- [ ] 0 accessoires dans `EquipmentLibrary`
-- [ ] 0 consommables dans `EquipmentLibrary`
-- [ ] 0 enchantements dans `EnchantmentLibrary`
-- [x] 1/1 matériau dans `MaterialLibrary` (Bois)
-- [ ] 0 plats dans `DishLibrary`
-- [ ] 0 fermentés dans `DishLibrary`
-- [ ] 0 cultures dans `CropLibrary`
+> Stubs prêts dans tous les registries — voir `content.md` pour le détail complet.
+
+- [x] 2/6 classes de base dans `HeroClassRegistry` (Guerrier, Mage)
+- [ ] 4/6 classes de base manquantes (Roublard, Chasseur, Guérisseur, Invocateur)
+- [ ] 0/12 classes avancées dans `HeroClassRegistry`
+- [ ] 0/99 compétences dans `SkillLibrary` (stubs par classe prêts)
+- [ ] 0/42 traits dans `TraitLibrary`
+- [x] 1/19 mobs dans `MobLibrary` (Slime — rangs E→S prêts)
+- [x] 1/44 armes dans `EquipmentLibrary` (Épée Rouillée — tous types prêts)
+- [ ] 0/32 armures dans `EquipmentLibrary` (stubs légère/moyenne/lourde × torse/tête/jambes prêts)
+- [ ] 0/10 accessoires dans `EquipmentLibrary` (stubs anneaux/amulettes prêts)
+- [ ] 0/19 consommables dans `EquipmentLibrary` (stubs 5 catégories prêts)
+- [ ] 0/18 enchantements dans `EnchantmentLibrary` (stubs rangs C→S prêts)
+- [x] 1/33 matériaux dans `MaterialLibrary` (Bois — stubs textiles/métaux/alchimie/divers prêts)
+- [ ] 0/11 plats dans `DishLibrary` (stubs simples/nourrissants/exotiques prêts)
+- [ ] 0/2 fermentés dans `DishLibrary` (stub prêt)
+- [ ] 0/8 cultures dans `CropLibrary`
 - [x] 39/39 recherches dans `ResearchLibrary`
 - [x] 50+/50+ objets de construction dans `ItemRegistry`
 
@@ -159,7 +162,9 @@
 
 ## 8. Technique & Nettoyage
 
-- [ ] Renommer `ItemRegistery.gd` → `ItemRegistry.gd` (typo) — PRIORITE HAUTE
+- [x] Renommer `ItemRegistery.gd` → `ItemRegistry.gd` (typo corrigé)
+- [x] Déplacer `ResearchLibrary` → `Autoloads/Registry/` (cohérence architecture)
+- [x] Supprimer fichiers Resource orphelins (`Ressources/Items/`, `Recipes/`, `Objects/`)
 - [ ] Renommer `heroVisual.gd` → `HeroVisual.gd` (PascalCase)
 - [ ] Supprimer signaux EventBus jamais consommés (`object_freed`, `object_used`)
 - [ ] Refactorer `HeroActivity` — trop de responsabilités (SRP) : extraire `HeroConstructionHandler`, `HeroCraftHandler`
