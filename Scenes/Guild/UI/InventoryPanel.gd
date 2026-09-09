@@ -203,12 +203,12 @@ func _on_slot_hovered(slot_idx: int) -> void:
 		_clear_detail()
 		return
 	var item_id : String = slot_data["item_id"]
-	var def : ItemDefinition = ItemLibrary.get_definition(item_id)
-	if def != null:
-		_det_name.text     = def.label
-		_det_name.modulate = _rarity_color(def.rarity)
-		_det_cat.text      = _type_label(def.type)
-		_det_desc.text     = def.description
+	var mat : Dictionary = MaterialLibrary.get_material(item_id)
+	if not mat.is_empty():
+		_det_name.text     = mat.get("label", item_id)
+		_det_name.modulate = Color.WHITE
+		_det_cat.text      = mat.get("category", "").capitalize()
+		_det_desc.text     = mat.get("description", "")
 	else:
 		var eq : Dictionary = EquipmentLibrary.get_item(item_id)
 		if eq.is_empty():

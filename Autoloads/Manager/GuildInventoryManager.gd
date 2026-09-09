@@ -59,17 +59,17 @@ func _ready() -> void:
 #  AJOUT
 # ─────────────────────────────────────────────
 ## Ajoute `quantity` items dans l'inventaire.
-## Cherche d'abord dans ItemLibrary, puis dans EquipmentLibrary en fallback.
+## Cherche d'abord dans MaterialLibrary, puis dans EquipmentLibrary.
 ## Remplit d'abord les stacks existants, puis les slots vides.
 ## Retourne false si l'inventaire est plein avant la fin.
 func add_item(item_id: String, quantity: int = 1) -> bool:
-	var def : ItemDefinition = ItemLibrary.get_definition(item_id)
 	var stackable : bool = false
 	var max_stack : int  = 1
 
-	if def != null:
-		stackable = def.stackable
-		max_stack = def.max_stack
+	var mat : Dictionary = MaterialLibrary.get_material(item_id)
+	if not mat.is_empty():
+		stackable = true
+		max_stack = 99
 	else:
 		## Fallback : vérifie EquipmentLibrary (armes, armures, accessoires, potions)
 		var eq_item : Dictionary = EquipmentLibrary.get_item(item_id)
@@ -239,16 +239,14 @@ func get_item_count(item_id: String) -> int:
 
 
 func _is_stackable(item_id: String) -> bool:
-	var def : ItemDefinition = ItemLibrary.get_definition(item_id)
-	if def != null:
-		return def.stackable
+	if not MaterialLibrary.get_material(item_id).is_empty():
+		return true
 	return EquipmentLibrary.get_item(item_id).get("type", "") == "consumable"
 
 
 func _get_max_stack(item_id: String) -> int:
-	var def : ItemDefinition = ItemLibrary.get_definition(item_id)
-	if def != null:
-		return def.max_stack
+	if not MaterialLibrary.get_material(item_id).is_empty():
+		return 99
 	if EquipmentLibrary.get_item(item_id).get("type", "") == "consumable":
 		return 99
 	return 1

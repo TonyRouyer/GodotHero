@@ -90,11 +90,11 @@ func refresh() -> void:
 		return
 
 	var item_id : String = slot_data["item_id"]
-	var def : ItemDefinition = ItemLibrary.get_definition(item_id)
-	if def != null:
-		_icon.color          = _TYPE_COLORS.get(def.type, Color.GRAY)
-		_s_full.border_color = _RARITY_COLORS.get(def.rarity, Color.GRAY)
-		_qty_label.text      = str(slot_data["quantity"]) if def.stackable and slot_data["quantity"] > 1 else ""
+	var mat : Dictionary = MaterialLibrary.get_material(item_id)
+	if not mat.is_empty():
+		_icon.color          = _TYPE_COLORS.get(mat.get("category", ""), Color.GRAY)
+		_s_full.border_color = Color(0.5, 0.5, 0.55)
+		_qty_label.text      = str(slot_data["quantity"]) if slot_data["quantity"] > 1 else ""
 	else:
 		var eq : Dictionary = EquipmentLibrary.get_item(item_id)
 		if eq.is_empty():
