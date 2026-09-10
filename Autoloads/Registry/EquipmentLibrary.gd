@@ -167,6 +167,10 @@ func _cons(id: String, label: String, subtype: String, stats: Dictionary,
 #  ARMES — ÉPÉES
 # ─────────────────────────────────────────────
 func _register_epees() -> void:
+	_w("epee_entrainement", "Épée d'Entraînement", "epee", "F",
+		{"atk": 3},
+		[], 5,
+		"Épée émoussée utilisée pour l'entraînement. Inoffensive mais pratique.")
 	_w("epee_rouille", "Épée Rouillée", "epee", "F",
 		{"atk": 5},
 		[{"item_id": "iron_ore", "qty": 2}], 15,
