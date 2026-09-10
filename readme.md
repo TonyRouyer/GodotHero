@@ -206,9 +206,9 @@ GuildScene (Node2D)
 ├── GuildCamera (Camera2D + guild_camera.gd)
 ├── PauseMenu (CanvasLayer)
 └── UILayer (CanvasLayer, layer=5)
-    ├── HUD (guild_hud.gd)
-    ├── HeroPanel (hero_panel.tscn)
-    └── BuildMenu (build_menu.gd)
+	├── HUD (guild_hud.gd)
+	├── HeroPanel (hero_panel.tscn)
+	└── BuildMenu (build_menu.gd)
 ```
 
 **MissionScene** :
@@ -219,12 +219,12 @@ MissionScene (Node2D)
 │   ├── Heroes (Node2D)   ← HeroCombatNode instanciés
 │   └── Mobs (Node2D)     ← MobNode instanciés
 └── CombatHUD (CanvasLayer, layer=10)
-    ├── TopLeft     ← Info mission (full-IA seulement)
-    ├── TopRight    ← BtnPause / BtnPlay / BtnFast
-    ├── BottomLeft  ← HeroCards (1-4, slots pré-alloués)
-    ├── BottomCenter← Slots compétences (Comp.1-4 + Obj.1-2)
-    ├── BottomRight ← Journal de combat (petite fenêtre)
-    └── EndPanel    ← Écran de fin (Victoire / Défaite)
+	├── TopLeft     ← Info mission (full-IA seulement)
+	├── TopRight    ← BtnPause / BtnPlay / BtnFast
+	├── BottomLeft  ← HeroCards (1-4, slots pré-alloués)
+	├── BottomCenter← Slots compétences (Comp.1-4 + Obj.1-2)
+	├── BottomRight ← Journal de combat (petite fenêtre)
+	└── EndPanel    ← Écran de fin (Victoire / Défaite)
 ```
 
 ---

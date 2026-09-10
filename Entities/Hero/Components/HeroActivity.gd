@@ -66,6 +66,17 @@ func _release_used_object() -> void:
 	_release_construction_task()
 
 
+## Appelé par GuildObject quand il libère lui-même le héros (stat à 100).
+## Remet current_task à "idle" pour que le prochain tick réévalue proprement
+## sans que le bonus de continuation de l'ancienne tâche bloque le switch.
+func release_from_object() -> void:
+	_release_used_object()
+	if not is_instance_valid(hero) or not hero.data:
+		return
+	routine.current_task = {"type": "idle"}
+	hero.set_activity_label("Idle")
+
+
 ## Libère la tâche de construction en cours si elle n'est pas encore finalisée.
 ## Appelé à chaque changement de tâche pour garantir qu'aucune tâche ne reste
 ## bloquée en "assigned" si le héros abandonne en cours de route.
@@ -108,7 +119,7 @@ func _eat() -> void:
 
 
 func _work() -> void:
-	var craft_objects : Array = GameConfig.JOB_CRAFT_OBJECTS.get(hero.data.job, [])
+	var craft_objects : Array[String] = Array(GameConfig.JOB_CRAFT_OBJECTS.get(hero.data.job, []), TYPE_STRING, "", null)
 	if craft_objects.is_empty():
 		_idle()
 		return

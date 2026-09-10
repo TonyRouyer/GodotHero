@@ -202,11 +202,11 @@ func _on_time_tick(hour: int, _minute: int) -> void:
 			data.set(restore_stat, minf(100.0, current + restore_per_tick))
 			if data.get(restore_stat) >= release_threshold:
 				if _active_hero.activity:
-					_active_hero.activity._release_used_object()
+					_active_hero.activity.release_from_object()
 		"release_when_full":
 			if data.get(restore_stat) >= release_threshold:
 				if _active_hero.activity:
-					_active_hero.activity._release_used_object()
+					_active_hero.activity.release_from_object()
 	var _h : int = hour
 
 

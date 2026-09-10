@@ -67,9 +67,7 @@ func _physics_process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if not _mouse_over:
 		return
-	if event.is_action_pressed("click"):
-		GameData.select_hero(data)
-	elif event.is_action_pressed("click_cancel"):
+	if event.is_action_pressed("click_cancel"):
 		EventBus.hero_inspect_requested.emit(data, get_viewport().get_mouse_position())
 
 

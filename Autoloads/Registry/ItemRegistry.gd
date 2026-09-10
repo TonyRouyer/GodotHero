@@ -55,22 +55,38 @@ func _build_registry() -> void:
 
 # ── MURS / SOLS / PORTES (7) ──────────────────────────────────────────────────
 func _register_murs_sols() -> void:
-	pass
+	## ── Sols ─────────────────────────────────────────────────────────────────
+	## atlas_id = source_id dans le TileSet sol (TileSet_umkae dans GuildScene.tscn)
+	_add_floor("dirt_floor",  "Terre battue",   2,  "res://Assets/Tiles/dirt_floor.png",  Rect2(0, 0, 16, 16), 0)
+	_add_floor("grass",       "Herbe",           0,  "res://Assets/Tiles/grass_floor.png", Rect2(0, 0, 16, 16), 1)
+	_add_floor("stone_floor", "Dallage pierre", 10,  "res://Assets/Tiles/stone_floor.png", Rect2(0, 0, 16, 16), 2)
+	_add_floor("wood_floor",  "Parquet bois",   15,  "res://Assets/Tiles/wood_floor.png",  Rect2(0, 0, 16, 16), 3)
+
+	## ── Murs ─────────────────────────────────────────────────────────────────
+	## atlas_id = source_id dans le TileSet mur (TileSet_lxujo dans GuildScene.tscn)
+	_add_wall("stone_wall", "Mur pierre", 20, "res://Assets/Tiles/stone_wall.png",  Rect2(0, 0, 16, 16), 0)
+	_add_wall("wood_wall",  "Mur bois",   12, "res://Assets/Tiles/wooden_wall.png", Rect2(0, 0, 16, 16), 1)
+
+	## ── Portes ───────────────────────────────────────────────────────────────
+	_add_door("door", "Porte en bois", 8, "res://Assets/Tiles/wooden_door.png", Rect2(0, 0, 16, 16), 2)
 
 
 # ── HALL (6) ──────────────────────────────────────────────────────────────────
 func _register_hall() -> void:
-	pass
+	_add_object("serving_table", "Table de repas", 100, Vector2(4, 2), 0,
+		"res://Assets/Objects/serving_table.png", Rect2(), "", "hall")
 
 
 # ── CHAMBRE (3) ───────────────────────────────────────────────────────────────
 func _register_chambre() -> void:
-	pass
+	_add_object("bed", "Lit", 50, Vector2(1, 2), 0,
+		"res://Assets/Objects/bed_full.png", Rect2(), "", "chambre")
 
 
 # ── FORGE (5) ─────────────────────────────────────────────────────────────────
 func _register_forge() -> void:
-	pass
+	_add_object("forge", "Forge", 150, Vector2(2, 2), 2,
+		"res://Assets/Objects/forge.png", Rect2(), "", "forge")
 
 
 # ── COUTURE (6) ───────────────────────────────────────────────────────────────
@@ -115,12 +131,16 @@ func _register_ascension() -> void:
 
 # ── LOISIRS (3) ───────────────────────────────────────────────────────────────
 func _register_loisirs() -> void:
-	pass
+	_add_object("luth", "Luth", 60, Vector2(1, 2), 0,
+		"res://Assets/Objects/luth.png", Rect2(), "", "loisirs")
 
 
 # ── SANITAIRES (2) ────────────────────────────────────────────────────────────
 func _register_sanitaires() -> void:
-	pass
+	_add_object("toilet", "Toilettes", 40, Vector2(1, 2), 0,
+		"res://Assets/Objects/toilet.png", Rect2(), "", "sanitaires")
+	_add_object("sink", "Lavabo", 40, Vector2(1, 2), 0,
+		"res://Assets/Objects/sink.png", Rect2(), "", "sanitaires")
 
 
 # ── CUISINE (4) ───────────────────────────────────────────────────────────────

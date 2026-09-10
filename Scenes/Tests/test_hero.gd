@@ -16,7 +16,9 @@ extends Node2D
 # ─────────────────────────────────────────────
 #  CONSTANTES
 # ─────────────────────────────────────────────
-const HERO_SCENE := preload("res://Entities/Hero/Hero.tscn")
+const HERO_SCENE          := preload("res://Entities/Hero/Hero.tscn")
+const GUILD_CAMERA_SCRIPT := preload("res://Scenes/Guild/guild_camera.gd")
+const PLANNING_ROW_SCENE  := preload("res://Scenes/Guild/UI/HeroPanel/PlanningRow.tscn")
 
 const NEED_LABELS : Dictionary = {
 	"hunger":        "Faim",
@@ -24,6 +26,22 @@ const NEED_LABELS : Dictionary = {
 	"entertainment": "Divertissement",
 	"toilet":        "Vessie",
 	"hygiene":       "Hygiène",
+}
+
+const JOB_LABELS : Dictionary = {
+	0: "Libre",
+	1: "Accueil",
+	2: "Forgeron",
+	3: "Alchimiste",
+	4: "Chercheur",
+	5: "Cuisinier",
+}
+
+const ACTIVITY_COLORS := {
+	"sleep": Color(0.20, 0.30, 0.70),
+	"work":  Color(0.80, 0.55, 0.10),
+	"train": Color(0.15, 0.60, 0.25),
+	"free":  Color(0.40, 0.40, 0.45),
 }
 
 const NEED_COLOR_OK   := Color(0.35, 0.85, 0.45)
@@ -39,6 +57,15 @@ var _data : HeroData = null
 
 var _heroes_container  : Node2D = null
 var _objects_container : Node2D = null
+
+## Planning
+var _selected_activity : String = "work"
+var _selected_preset   : String = ""
+var _planning_row      : Node   = null
+var _act_btn_map       : Dictionary = {}   ## activity → Button
+
+## Job
+var _job_option : OptionButton = null
 
 
 # ─────────────────────────────────────────────
@@ -62,6 +89,8 @@ var _log_lines  : Array[String] = []
 func _ready() -> void:
 	_setup_containers()
 	_setup_navigation()
+	_spawn_objects()
+	_setup_camera()
 	_setup_ui()
 	_spawn_hero()
 	_connect_signals()
@@ -113,7 +142,7 @@ func _setup_navigation() -> void:
 	var poly := NavigationPolygon.new()
 	poly.agent_radius = 8.0
 	poly.add_outline(PackedVector2Array([
-		Vector2(0, 0), Vector2(1200, 0), Vector2(1200, 800), Vector2(0, 800)
+		Vector2(300, 100), Vector2(1000, 100), Vector2(1000, 700), Vector2(300, 700)
 	]))
 	poly.make_polygons_from_outlines()
 	nav.navigation_polygon = poly
@@ -122,12 +151,81 @@ func _setup_navigation() -> void:
 
 
 # ─────────────────────────────────────────────
+#  CAMÉRA
+## Réutilise guild_camera.gd (zoom molette, pan clavier, clic-drag bouton milieu).
+# ─────────────────────────────────────────────
+func _setup_camera() -> void:
+	var cam : Camera2D = GUILD_CAMERA_SCRIPT.new()
+	cam.name      = "GuildCamera"
+	cam.map_min   = Vector2(300, 100)
+	cam.map_max   = Vector2(900, 700)
+	cam.zoom      = Vector2(2, 2)
+	cam.position  = Vector2(600, 420)
+	add_child(cam)
+
+
+# ─────────────────────────────────────────────
+#  SPAWN OBJETS
+## Instancie les objets minimum pour que les routines fonctionnent.
+## ObjectFinder cherche dans WorldContext.objects_container (= _objects_container).
+# ─────────────────────────────────────────────
+func _spawn_objects() -> void:
+	var defs : Array = [
+		## ── Besoins de base ──────────────────────────────────────────────────
+		["res://Entities/Objects/Bed/bed.tscn",                    Vector2(400, 300)],
+		["res://Entities/Objects/ServingTable/serving_table.tscn", Vector2(448, 300)],
+		["res://Entities/Objects/Toilet/toilet.tscn",              Vector2(400, 400)],
+		["res://Entities/Objects/Sink/sink.tscn",                  Vector2(432, 400)],
+		["res://Entities/Objects/Luth/luth.tscn",                  Vector2(400, 500)],
+		## ── Objets de travail (job 2 — Forgeron) ─────────────────────────────
+		["res://Entities/Objects/Forge/forge.tscn",                Vector2(560, 300)],
+		["res://Entities/Objects/WorkbenchCraft/workbench_craft.tscn", Vector2(608, 300)],
+		["res://Entities/Objects/TanningRack/tanning_rack.tscn",   Vector2(656, 300)],
+		["res://Entities/Objects/Loom/loom.tscn",                  Vector2(688, 300)],
+		## ── Objets de travail (job 3 — Alchimiste) ───────────────────────────
+		["res://Entities/Objects/AlchemyTable/alchemy_table.tscn", Vector2(560, 400)],
+		["res://Entities/Objects/MagicCauldron/magic_cauldron.tscn", Vector2(608, 400)],
+		## ── Objets de travail (autres jobs) ──────────────────────────────────
+		["res://Entities/Objects/ReceptionDesk/reception_desk.tscn", Vector2(560, 500)],
+		["res://Entities/Objects/ResearchDesk/research_desk.tscn",   Vector2(640, 500)],
+		["res://Entities/Objects/Furnace/furnace.tscn",              Vector2(688, 500)],
+	]
+	for def in defs:
+		var path : String  = def[0]
+		var pos  : Vector2 = def[1]
+		if not ResourceLoader.exists(path):
+			_spawn_placeholder(pos, path.get_file().get_basename())
+			continue
+		var instance : Node2D = (load(path) as PackedScene).instantiate()
+		instance.position = pos
+		_objects_container.add_child(instance)
+
+
+func _spawn_placeholder(pos: Vector2, label_text: String) -> void:
+	var node := Node2D.new()
+	node.position = pos
+	_objects_container.add_child(node)
+
+	var rect := ColorRect.new()
+	rect.color = Color(0.55, 0.20, 0.55, 0.80)
+	rect.size  = Vector2(32, 32)
+	node.add_child(rect)
+
+	var lbl := Label.new()
+	lbl.text = label_text.replace("_", "\n")
+	lbl.position = Vector2(0, 34)
+	lbl.add_theme_font_size_override("font_size", 7)
+	lbl.modulate = Color(1, 1, 1)
+	node.add_child(lbl)
+
+
+# ─────────────────────────────────────────────
 #  SPAWN HÉROS
 # ─────────────────────────────────────────────
 func _spawn_hero() -> void:
 	_data = HeroGenerator.generate()
 	_data.apply_default_planning()
-	_hero = HeroManager.spawn_hero(_data, Vector2(600, 400))
+	_hero = HeroManager.spawn_hero(_data, Vector2(650, 420))
 
 	if _hero == null:
 		_log("ERREUR : impossible de spawner le héros")
@@ -140,6 +238,11 @@ func _spawn_hero() -> void:
 	]
 	_log("Héros spawné : %s (%s)" % [_data.hero_name, _data.hero_class])
 	_refresh_needs()
+	_refresh_job_ui()
+
+	## Planning row
+	if _planning_row and _planning_row.has_method("setup"):
+		_planning_row.setup(_data, self)
 
 
 # ─────────────────────────────────────────────
@@ -159,6 +262,8 @@ func _on_tick(hour: int, minute: int) -> void:
 		_moral_bar.value = _data.moral
 		_moral_val.text  = "%d" % int(_data.moral)
 		_moral_bar.modulate = _need_color(_data.moral)
+	if _planning_row and _planning_row.has_method("highlight_current_hour"):
+		_planning_row.highlight_current_hour(hour)
 
 
 func _on_day_changed(day: int) -> void:
@@ -244,6 +349,91 @@ func _set_speed_1() -> void: TimeManager.set_speed(1)
 func _set_speed_2() -> void: TimeManager.set_speed(2)
 func _set_speed_4() -> void: TimeManager.set_speed(3)
 
+func _on_job_selected(idx: int) -> void:
+	if _data == null:
+		return
+	_data.job = _job_option.get_item_id(idx)
+	_log("Métier → %s" % JOB_LABELS.get(_data.job, "?"))
+
+
+# ─────────────────────────────────────────────
+#  PLANNING — interface requise par planning_row.gd
+# ─────────────────────────────────────────────
+func get_selected_activity() -> String: return _selected_activity
+func get_selected_preset()   -> String: return _selected_preset
+
+
+func _apply_preset_to_hero(_hero_id: int) -> void:
+	if _selected_preset == "" or _data == null:
+		return
+	_data.planning = _build_preset(_selected_preset)
+	if _planning_row and _planning_row.has_method("refresh"):
+		_planning_row.refresh()
+
+
+func _build_preset(preset_id: String) -> Dictionary:
+	var p : Dictionary = {}
+	match preset_id:
+		"morning":
+			for h in range(24):
+				if h < 6:    p[h] = "sleep"
+				elif h < 8:  p[h] = "free"
+				elif h < 12: p[h] = "work"
+				elif h < 13: p[h] = "free"
+				elif h < 18: p[h] = "work"
+				elif h < 22: p[h] = "free"
+				else:        p[h] = "sleep"
+		"night":
+			for h in range(24):
+				if h < 4:    p[h] = "work"
+				elif h < 10: p[h] = "sleep"
+				elif h < 22: p[h] = "free"
+				else:        p[h] = "work"
+		"training":
+			for h in range(24):
+				if h < 6:    p[h] = "sleep"
+				elif h < 20: p[h] = "train"
+				else:        p[h] = "free"
+		"free_day":
+			for h in range(24):
+				p[h] = "sleep" if h < 8 else "free"
+	return p
+
+
+func _select_activity_planning(act: String) -> void:
+	_selected_activity = act
+	_selected_preset   = ""
+	_refresh_activity_btns()
+
+
+func _select_preset_planning(preset_id: String) -> void:
+	_selected_preset   = "" if _selected_preset == preset_id else preset_id
+	_selected_activity = ""
+	_refresh_activity_btns()
+
+
+func _refresh_activity_btns() -> void:
+	for act in _act_btn_map:
+		var btn : Button = _act_btn_map[act]
+		var color : Color = ACTIVITY_COLORS.get(act, Color.GRAY)
+		var active : bool = (act == _selected_activity)
+		var style := StyleBoxFlat.new()
+		style.bg_color = color if active else color.darkened(0.45)
+		style.set_corner_radius_all(4)
+		btn.add_theme_stylebox_override("normal",  style)
+		btn.add_theme_stylebox_override("hover",   style)
+		btn.add_theme_stylebox_override("pressed", style)
+		btn.add_theme_color_override("font_color", Color.WHITE)
+
+
+func _refresh_job_ui() -> void:
+	if _data == null or _job_option == null:
+		return
+	for i in _job_option.item_count:
+		if _job_option.get_item_id(i) == _data.job:
+			_job_option.select(i)
+			break
+
 func _respawn_hero() -> void:
 	if _hero and is_instance_valid(_hero):
 		HeroManager.fire_hero(_data.hero_id)
@@ -253,6 +443,7 @@ func _respawn_hero() -> void:
 	_task_lbl.remove_theme_color_override("font_color")
 	_hero_lbl.text = "—"
 	_spawn_hero()
+	## La planning row est re-setup dans _spawn_hero
 
 
 # ─────────────────────────────────────────────
@@ -297,13 +488,6 @@ func _setup_ui() -> void:
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	canvas.add_child(root)
 
-	## Fond sombre
-	var bg := ColorRect.new()
-	bg.color = Color(0.08, 0.08, 0.12)
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	root.add_child(bg)
-
 	## ── PANEL GAUCHE : infos + besoins + boutons ──
 	var left := PanelContainer.new()
 	left.position = Vector2(10, 10)
@@ -333,6 +517,16 @@ func _setup_ui() -> void:
 	## Identité héros
 	_add_label(col, "Héros", 10, false, Color(0.6, 0.6, 0.6))
 	_hero_lbl = _add_label(col, "—", 11)
+
+	## Métier
+	_add_label(col, "Métier", 10, false, Color(0.6, 0.6, 0.6))
+	_job_option = OptionButton.new()
+	_job_option.add_theme_font_size_override("font_size", 10)
+	_job_option.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	for job_id in JOB_LABELS:
+		_job_option.add_item(JOB_LABELS[job_id], job_id)
+	_job_option.item_selected.connect(_on_job_selected)
+	col.add_child(_job_option)
 
 	## Activité
 	_add_label(col, "Activité courante", 10, false, Color(0.6, 0.6, 0.6))
@@ -432,7 +626,11 @@ func _setup_ui() -> void:
 
 	## ── PANEL DROIT : log événements ──
 	var right := PanelContainer.new()
-	right.position = Vector2(330, 10)
+	right.anchor_left  = 1.0
+	right.anchor_right = 1.0
+	right.offset_left  = -310.0
+	right.offset_right = 0.0
+	right.position.y   = 10.0
 	right.custom_minimum_size = Vector2(300, 0)
 	root.add_child(right)
 
@@ -456,6 +654,63 @@ func _setup_ui() -> void:
 	_log_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_log_vbox.add_theme_constant_override("separation", 2)
 	scroll.add_child(_log_vbox)
+
+	## ── PANEL PLANNING (bas de l'écran) ──────────────────────────────────────
+	var plan_panel := PanelContainer.new()
+	plan_panel.anchor_left   = 0.0
+	plan_panel.anchor_right  = 1.0
+	plan_panel.anchor_top    = 1.0
+	plan_panel.anchor_bottom = 1.0
+	plan_panel.offset_top    = -110.0
+	plan_panel.offset_bottom = -8.0
+	plan_panel.offset_left   = 8.0
+	plan_panel.offset_right  = -8.0
+	root.add_child(plan_panel)
+
+	var pm := MarginContainer.new()
+	for s in ["left","right","top","bottom"]:
+		pm.add_theme_constant_override("margin_" + s, 6)
+	plan_panel.add_child(pm)
+
+	var pv := VBoxContainer.new()
+	pv.add_theme_constant_override("separation", 4)
+	pm.add_child(pv)
+
+	## Ligne 1 : activités + préréglages
+	var act_row := HBoxContainer.new()
+	act_row.add_theme_constant_override("separation", 6)
+	pv.add_child(act_row)
+
+	_add_label(act_row, "Activité :", 10)
+	for act in ["sleep", "work", "train", "free"]:
+		var lbl_map := {"sleep": "Sommeil", "work": "Travail", "train": "Entraîn.", "free": "Libre"}
+		var b := Button.new()
+		b.text = lbl_map[act]
+		b.add_theme_font_size_override("font_size", 10)
+		b.custom_minimum_size = Vector2(70, 0)
+		b.pressed.connect(_select_activity_planning.bind(act))
+		act_row.add_child(b)
+		_act_btn_map[act] = b
+
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	act_row.add_child(spacer)
+
+	_add_label(act_row, "Préréglage :", 10)
+	var preset_defs := [["Matin","morning"],["Nuit","night"],["Entraîn.","training"],["Jour libre","free_day"]]
+	for pd in preset_defs:
+		var b := Button.new()
+		b.text = pd[0]
+		b.add_theme_font_size_override("font_size", 10)
+		b.pressed.connect(_select_preset_planning.bind(pd[1]))
+		act_row.add_child(b)
+
+	## Ligne 2 : planning row du héros
+	_planning_row = PLANNING_ROW_SCENE.instantiate()
+	pv.add_child(_planning_row)
+	## setup() est appelé dans _spawn_hero après que _data est prêt
+
+	_refresh_activity_btns()
 
 
 # ─────────────────────────────────────────────
